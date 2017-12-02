@@ -1219,7 +1219,7 @@ class App extends Component {
 
 Now you can define the components next to your App component. Those components will be ES6 class components as well. They render the same elements like before.
 
-现在你可以定义这些组件，这些组件仍然会使用 [ES6 class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) 来定义。它们会渲染和之前相同的元素。
+现在你可以定义这些组件，这些组件仍然是 [ES6 class 组件](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)。它们会渲染和之前相同的元素。
 
 The first one is the Search component.
 
@@ -1476,19 +1476,31 @@ Now, whenever there is no `className` property specified when using the Button c
 * read more about [ES6 default parameters](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Default_parameters)
 
 * 阅读更多关于 [ES6 默认参数](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Default_parameters)
-## Component Declarations
+## Component Declarations 组件声明
 
 By now you have four ES6 class components. But you can do better. Let me introduce functional stateless components as alternative for ES6 class components. Before you will refactor your components, let's introduce the different types of components in React.
 
+现在你已经有四个 ES6 class 组件了。但是你可以做得更好。让我来给你介绍一下函数式无状态组件 (functional stateless components)，用来替代 ES6 class 组件。在你重构你的组件之前，让我来给你介绍一下 React 不同类型的组件。
+
 * **Functional Stateless Components:** These components are functions which get an input and return an output. The input are the props. The output is a component instance thus plain JSX. So far it is quite similar to an ES6 class component. However, functional stateless components are functions (functional) and they have no local state (stateless). You cannot access or update the state with `this.state` or `this.setState()` because there is no `this` object. Additionally, they have no lifecycle methods. You didn't learn about lifecycle methods yet, but you already used two: `constructor()` and `render()`. Whereas the constructor runs only once in the lifetime of a component, the `render()` class method runs once in the beginning and every time the component updates. Keep in mind that functional stateless component have no lifecycle methods, when you arrive at the lifecycle methods chapter later on.
+
+* **函数式无状态组件:** 这些组件是函数式的，它们接收一个输入并返回一个输出。输入就是 props。输出是一个组件实例，因此是扁平的 JSX。到目前为止，它和 ES6 class 组件非常的相似。然而，函数式无状态组件是函数 (函数式)，并且它们没有本地状态 (无状态)。你不能`this.state` or `this.setState()` 来访问或者更新组件，因为这里没有 `this` 对象。此外，它也没有生命周期方法。你还没有学过生命周期方法，但是你已经用到了其中两个：`constructor()` and `render()`。然而 constructor 在一个组件的生命周期中只执行一次，`render()` 类方法在最开始执行一次，并且每次组件更新时执行。在你阅读生命周期方法这一章节之前，记住函数式无状态组件没有生命周期方法。
 
 * **ES6 Class Components:** You already used this type of component declaration in your four components. In the class definition, they extend from the React component. The `extend` hooks all the lifecycle methods, available in the React component API, to the component. That way you were able to use the `render()` class method. Additionally, you can store and manipulate state in ES6 class components by using `this.state` and `this.setState()`.
 
+* **ES6 Class 组件:** 在你的四个组件中，你已经使用过这类组件了。在 class 的定义中，它们集成于 React 组件。`extend` 挂钩了所有生命周期方法，在 React component API 中的都可以在你的组件中使用。通过这种方式你可以使用 `render()` 类方法。此外，通过使用 `this.state` 和 `this.setState()`，你可以在 ES6 class 组件中储存和操作 state。
+
 * **React.createClass:** The component declaration was used in older versions of React and still in JavaScript ES5 React applications. But [Facebook declared it as deprecated](https://facebook.github.io/react/blog/2015/03/10/react-v0.13.html) in favor of JavaScript ES6. They even added a [deprecation warning in version 15.5](https://facebook.github.io/react/blog/2017/04/07/react-v15.5.0.html). You will not use it in the book.
+
+* **React.createClass:** 这种组件声明曾经在老版本的 React 中使用，仍然存在于很多 ES5 React 应用中。但是为了支持JavaScript ES6， [Facebook 声明它已经被废弃了](https://facebook.github.io/react/blog/2015/03/10/react-v0.13.html)。你不会在本书使用它。
 
 So basically there are only two component declarations left. But when to use functional stateless components over ES6 class components? A rule of thumb is to use functional stateless components when you don't need local state or component lifecycle methods. Usually you start to implement your components as functional stateless components. Once you need access to the state or lifecycle methods, you have to refactor it to an ES6 class component. In our application, we started the other way around for the sake of learning React.
 
+因此这里基本只剩下两种 component 声明了。但是什么时候使用函数式无状态组件或者 ES6 class组件？一个使用函数式无状态组件的规则，就是当你不需要本地状态或者组件生命周期方法的时候。你最开始通常用函数式无状态组件来实现你的组件。一旦你需要访问 state 或者生命周期方法时，你必须要将它重构成一个 ES6 class 组件。在我们的应用中，为了学习 React，我们采用了正好相反的方式。
+
 Let's get back to your application. The App component uses internal state. That's why it has to stay as an ES6 class component. But the other three of your ES6 class components are stateless. They don't need access to `this.state` or `this.setState()`. Even more, they have no lifecycle methods. Let's refactor together the Search component to a stateless functional component. The Table and Button component refactoring will remain as your exercise.
+
+让我们回到你的应用中。App 组件使用内部 state。这就是为什么它必须作为 ES6 class 组件存在的原因。但是你的其他三个 ES6 class 组件都是无状态的。他们不需要访问 `this.state` 或者 `this.setState()`。甚至它们都不需要生命周期函数。让我们将 Search 组件重构成一个函数式无状态组件吧。Table 和 Button 组件的重构将作为你的练习。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1510,6 +1522,8 @@ function Search(props) {
 
 That's basically it. The props are accessible in the function signature and the return value is JSX. But you can do more code wise in a functional stateless component. You already know the ES6 destructuring. The best practice is to use it in the function signature to destructure the props.
 
+基本上就是这样了。props 可以在函数签名和 JSX 的返回值里面访问。但是你可以在函数式无状态组件中写更多更聪明的代码。你已经知道 ES6 解构了。最佳实践就是在函数签名中通过解构 props 来使用它。
+
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
 # leanpub-start-insert
@@ -1529,6 +1543,8 @@ function Search({ value, onChange, children }) {
 
 But it can get better. You know already that ES6 arrow functions allow you to keep your functions concise. You can remove the block body of the function. In a concise body an implicit return is attached thus you can remove the return statement. Since your functional stateless component is a function, you can keep it concise as well.
 
+但是它还可以变得更好。你已经知道，ES6 箭头函数允许让你保持你的函数简洁。你可以移除 function 区块体。在一个更加简洁的主体中已经附加了隐式的返回，因此你可以将 return 语句移除。因为你的函数式无状态组件是一个函数，你可以让它也变得简洁。
+
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
 # leanpub-start-insert
@@ -1544,6 +1560,8 @@ const Search = ({ value, onChange, children }) =>
 ~~~~~~~~
 
 The last step was especially useful to enforce only to have props as input and JSX as output. Nothing in between. Still, you could *do something* in between by using a block body in your ES6 arrow function.
+
+最后一步对于强制只有 props 作为输入和 JSX 作为输出非常有用。这中间没有任何别的东西。但是在这之间，你仍然可以通过在 ES6 箭头函数中使用一个区块体来 *做一些事情*。
 
 {title="Code Playground",lang=javascript}
 ~~~~~~~~
@@ -1565,12 +1583,18 @@ const Search = ({ value, onChange, children }) => {
 
 But you don't need it for now. That's why you can keep the previous version without the block body. When using block bodies, people often tend to do too many things in the function. By leaving the block body out, you can focus on the input and output of your function.
 
+但是你现在并不需要。这也是为什么你可以保持之前的版本没有区块体。当使用去块体时，人们经常很容易在这个函数里面去做过多的事情。通过移除区块体，你就可以关注在函数的输入和输出上了。
+
 Now you have one lightweight functional stateless component. Once you would need access to its internal component state or lifecycle methods, you would refactor it to an ES6 class component. In addition you saw how JavaScript ES6 can be used in React components to make them more concise and elegant.
 
-### Exercises:
+现在你已经有一个轻量的函数式无状态组件了。一旦你需要访问它的内部组件状态或者生命周期方法，你最好将它重构成一个 ES6 class 组件。另外，你也已经看到，JavaScript ES6 是如何被用到 React 组件中并让它们变得更加的简洁和优雅。
+
+### Exercises: 练习：
 
 * refactor the Table and Button component to stateless functional components
+* 将 Table 和 Button 组件重构成函数式无状态组件
 * read more about [ES6 class components and functional stateless components](https://facebook.github.io/react/docs/components-and-props.html)
+* 阅读更多关于 [ES6 class 组件和函数式无状态组件](https://facebook.github.io/react/docs/components-and-props.html)
 
 ## Styling Components
 
