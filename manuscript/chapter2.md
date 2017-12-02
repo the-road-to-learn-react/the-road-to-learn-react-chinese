@@ -1887,22 +1887,39 @@ I don't want to be opinionated here, but I want to leave you some more options. 
 
 You have learned the basics to write your own React application! Let's recap the last chapters:
 
+你已经学会编写你自己的 React 应用的基础了！让我们来总结一下上一个章节:
+
 * React
   * use `this.state` and `setState()` to manage your internal component state
+  * 使用 `this.state` 和 `setState()` 来管理你的内部组件状态
   * pass functions or class methods to your element handler
+  * 将函数或者类方法传递到你的元素处理器
   * use forms and events in React to add interactions
+  * 在 React 中使用 forms 或者 events 来添加交互 
   * unidirectional data flow is an important concept in React
+  * 在 React 中单向数据流是一个非常重要的概念
   * embrace controlled components
+  * 拥抱 controlled components
   * compose components with children and reusable components
+  * 通过 children 和可复用组件来组合组件
   * usage and implementation of ES6 class components and functional stateless components
+  * ES6 class 组件和函数式无状态组件的使用方法和实现
   * approaches to style your components
+  * 给你的组件添加样式的方法
 * ES6
   * functions that are bound to a class are class methods
+  * 绑定到一个类的方法叫作类方法
   * destructuring of objects and arrays
+  * 解构对象和数组
   * default parameters
+  * 默认参数
 * General
   * higher order functions
+  * 高阶函数
 
 Again it makes sense to take a break. Internalize the learnings and apply them on your own. You can experiment with the source code you have written so far. Additionally you can read more in the official [documentation](https://facebook.github.io/react/docs/installation.html).
 
+是该再休息一下了。吸收这些知识然后转化成你自己的东西。到目前为止，你可以用你已经写过的源码来做个实验。另外，你可以进一步阅读官方文档[文档](https://facebook.github.io/react/docs/installation.html)
+
 You can find the source code in the [official repository](https://github.com/rwieruch/hackernews-client/tree/4.2).
+你可以在这里找到源码[官方代码仓库](https://github.com/rwieruch/hackernews-client/tree/4.2)
