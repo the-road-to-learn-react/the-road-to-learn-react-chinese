@@ -1596,11 +1596,15 @@ Now you have one lightweight functional stateless component. Once you would need
 * read more about [ES6 class components and functional stateless components](https://facebook.github.io/react/docs/components-and-props.html)
 * 阅读更多关于 [ES6 class 组件和函数式无状态组件](https://facebook.github.io/react/docs/components-and-props.html)
 
-## Styling Components
+## Styling Components 给组件添加样式
 
 Let's add some basic styling to your application and components. You can reuse the *src/App.css* and *src/index.css* files. These files should already be in your project since you have bootstrapped it with *create-react-app*. They should be imported in your *src/App.js* and *src/index.js* files too. I prepared some CSS which you can simply copy and paste to these files, but feel free to use your own style at this point.
 
+让我们给你的应用和组件加入一些基本的样式。你可以复用 *src/App.css* 和 *src/index.css* 文件。这些文件应该已经在你的项目中了，因为你是用 *create-react-app* 来启动的。它们应该也被导入到你的 *src/App.js* 和 *src/index.js* 文件中了。我准备了一些 CSS，你可以直接复制粘贴到这些文件中，但是这时你也可以随意使用你自己的样式。
+
 First, styling for your overall application.
+
+首先，给你的整个应用添加样式。
 
 {title="src/index.css",lang="css"}
 ~~~~~~~~
@@ -1651,6 +1655,8 @@ button:hover {
 ~~~~~~~~
 
 Second, styling for your components in the App file.
+
+其次，在 App 文件中给你的组件添加样式。
 
 {title="src/App.css",lang="css"}
 ~~~~~~~~
@@ -1721,7 +1727,11 @@ Second, styling for your components in the App file.
 
 Now you can use the style in some of your components. Don't forget to use React `className` instead of `class` as HTML attribute.
 
+现在你可以在你的一些组件中使用这些样式。但是别忘了使用 React `className`， 而不是 HTML 的 `class` 属性。
+
 First, apply it in your App ES6 class component.
+
+首先，将它应用到你的 App ES6 class 组件中。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1760,6 +1770,8 @@ class App extends Component {
 
 Second, apply it in your Table functional stateless component.
 
+其次，将它应用到你的 Table 函数式无状态组件中。
+
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
 const Table = ({ list, pattern, onDismiss }) =>
@@ -1797,7 +1809,11 @@ const Table = ({ list, pattern, onDismiss }) =>
 
 Now you have styled your application and components with basic CSS. It should look quite decent. As you know, JSX mixes up HTML and JavaScript. Now one could argue to add CSS in the mix as well. That's called inline style. You can define JavaScript objects and pass them to the style attribute of an element.
 
+先在你已经给你的应用和组件添加了基本的 CSS 样式。看起来应该非常不错。如你所知，JSX 混合了 HTML 和 JavaScript。现在有人会说将 CSS 也加入进去。这就叫作内联样式 (inline style)。你可以定义 JavaScript 对象，并传给一个元素的 style 属性。
+
 Let's keep the Table column width flexible by using inline style.
+
+让我们通过使用内联样式来保持 Table 的列宽自适应。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1834,6 +1850,8 @@ const Table = ({ list, pattern, onDismiss }) =>
 
 The style is inlined now. You could define the style objects outside of your elements to make it cleaner.
 
+样式现在已经内联了。你可以在你的元素之外定义一个 style 对象，这样可以让它更加干净。
+
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
 const largeColumn = {
@@ -1851,12 +1869,19 @@ const smallColumn = {
 
 After that you would use them in your columns: `<span style={smallColumn}>`.
 
+随后你可以将它们用于你的 columns ：`<span style={smallColumn}>`。
+
 In general, you will find different opinions and solutions for style in React. You used pure CSS and inline style now. That's sufficient to get started.
+
+总而言之，关于 React 中的 style，你会找到不同的意见和解决方案。现在你已经用过纯 CSS 和 内联样式了。这足以开始。
 
 I don't want to be opinionated here, but I want to leave you some more options. You can read about them and apply them on your own. But if you are new to React, I would recommend to stick to pure CSS and inline style for now.
 
+在这里我不想太固执意见，但是我想给你一些更多的建议。你可以阅读和应用它们。但是如果你刚开始使用 React，目前我会推荐你坚持纯 CSS 和内联样式。
+
 * [styled-components](https://github.com/styled-components/styled-components)
 * [CSS Modules](https://github.com/css-modules/css-modules)
+* [CSS 模块化](https://github.com/css-modules/css-modules)
 
 {pagebreak}
 
