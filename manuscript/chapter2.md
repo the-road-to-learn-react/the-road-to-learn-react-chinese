@@ -1296,7 +1296,7 @@ By extracting those components from the App component, you would be able to reus
 
 从 App 组件中提取这些组件之后，你就可以在别的地方去重用它们了。因为组件获取值是通过使用 props 对象，所以当你在别的地方重用它时，你可以每一次都传递不同的 props 
 
-### Exercises: 练习:
+### Exercises: 练习：
 
 * figure out further components that you could split up as you have done with the Search and Table components
 * 想一想你可以从已经完成的 Search 和 Table 组件里面进一步提取出哪些组件
@@ -1305,6 +1305,8 @@ By extracting those components from the App component, you would be able to reus
 ## Composable Components 可组合的组件
 
 There is one more little property which is accessible in the props object: the `children` prop. You can use it to pass elements to your components from above, which are unknown to the component itself, but make it possible to compose components into each other. Let's see how this looks like when you only pass a text (string) as a child to the Search component.
+
+在 props 对象中还有一个属性: `children` 属性。通过它你可以从上层传递元素到你的组件中，这些元素对你的组件来说是未知的，但是为组件彼此之间的组合提供了可能性。让我们来看一看，当你只传递一个作为 child 的文本 (字符串) 到 Search 组件中会怎样。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1337,6 +1339,8 @@ class App extends Component {
 
 Now the Search component can destructure the children property from the props object. Then it can specify where the children should be displayed.
 
+现在 Search 组件可以从 props 对象中将 children 属性解构出来。接下来它可以指定应该在哪里去显示这个 children 。
+
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
 class Search extends Component {
@@ -1361,15 +1365,21 @@ class Search extends Component {
 
 The "Search" text should be visible next to your input field now. When you use the Search component somewhere else, you can choose a different text if you like. After all, it is not only text that you can pass as children. You can pass an element and element trees (which can be encapsulated by components again) as children. The children property makes it possible to weave components into each other.
 
-### Exercises:
+现在你应该可以在输入框旁边看到这个 "Search" 文本了。当你在别的地方使用 Search 组件时，如果你喜欢的话，你可以选择一个不同文本。总之，它不仅仅只是一个你可以作为 children 传递的文本。你还可以传递一个元素或者元素树 (它可以被组件再次压缩) 作为 children 。children 属性让组件相互交织在一起成为可能。
+
+### Exercises: 练习：
 
 * read more about [the composition model of React](https://facebook.github.io/react/docs/composition-vs-inheritance.html)
-
-## Reusable Components
+* 阅读更多关于 [React 组件模型](https://facebook.github.io/react/docs/composition-vs-inheritance.html)
+## Reusable Components 可复用的组件
 
 Reusable and composable components empower you to come up with capable component hierarchies. They are the foundation of React's view layer. The last chapters mentioned the term reusability. You can reuse the Table and Search components by now. Even the App component is reusable, because you could instantiate it somewhere else again.
 
+可复用和可组合组件使你能够想出有效的组件分层。它们是 React 视图层的基础。最后一章提到了可重用性的术语。现在你可以复用 Search 和 Table 组件了。甚至 App 组件都可以被复用，你可以在别的地方重新实例化它。
+
 Let's define one more reusable component, a Button component, which gets reused more often eventually.
+
+让我们再来定义一个可复用的组件，一个 Button 组件，最后可能会被频繁的使用到。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1396,7 +1406,11 @@ class Button extends Component {
 
 It might seem redundant to declare such a component. You will use a `Button` component instead of a `button` element. It only spares the `type="button"`. Except for the type attribute you have to define everything else when you want to use the Button component. But you have to think about the long term investment here. Imagine you have several buttons in your application, but want to change an attribute, style or behavior for the button. Without the component you would have to refactor every button. Instead the Button component ensures to have only one single source of truth. One Button to refactor all buttons at once. One Button to rule them all.
 
+这样声明一个组件看起来可能会有点重复。你会使用 `Button` 组件而不是 `button` 元素。它只节省了 `type="button"`。如果你想使用 Button 组件，除了 type 属性之外，你还必须定义其他所有的东西。但是在这里，你必须要想到长期投资。想象在你的应用中有若干个 button，但是你想改变它们的一个属性、样式或者行为。如果没有组件的话你就必须重构每一个 button。相反，Button 组件有唯一并且真实的数据源。一个 Button 组件可以立即重构所有 button。一个 Button 组件就能统一所有的 button。
+
 Since you already have a button element, you can use the Button component instead. It omits the type attribute, because the Button component specifies it.
+
+既然你已经有了一个 button 元素，你可以用 Button 组件来替代。它忽略了 type 属性，因为 Button 组件已经指定了。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1430,7 +1444,11 @@ class Table extends Component {
 
 The Button component expects a `className` property in the props. The `className` attribute is another React derivate for the HTML attribute class. But we didn't pass any `className` when the Button was used. In the code it should be more explicit in the Button component that the `className` is optional.
 
+Button 组件期望在 props 里面有一个 `className` 属性. 这个 `className` 属性是另一个 React 基于 HTML 属性类的衍生物。但是当使用 Button 组件时，我们并没有传递任何 `className`。在代码中，Button 组件应该更加明确 `className` 是可选项。
+
 Therefore, you can use the default parameter which is a JavaScript ES6 feature.
+
+因此，你可以使用默认参数，它是一个 JavaScript ES6 的特性。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1451,10 +1469,13 @@ class Button extends Component {
 
 Now, whenever there is no `className` property specified when using the Button component, the value will be an empty string instead of `undefined`.
 
-### Exercises:
+现在，无论何时，只要当使用 Button 组件时没有指定 `className` 属性，它的值就会是一个空字符串，而不会是 `undefined`。
+
+### Exercises: 练习：
 
 * read more about [ES6 default parameters](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Default_parameters)
 
+* 阅读更多关于 [ES6 默认参数](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Default_parameters)
 ## Component Declarations
 
 By now you have four ES6 class components. But you can do better. Let me introduce functional stateless components as alternative for ES6 class components. Before you will refactor your components, let's introduce the different types of components in React.
