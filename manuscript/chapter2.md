@@ -1160,7 +1160,7 @@ The whole internal state management and unidirectional data flow might be new to
 
 You have one large App component now. It keeps growing and can become confusing eventually. You can start to split it up into chunks of smaller components.
 
-你现在有一个大型的 App 组件。这个组件仍然在不停的扩展，最后可能会变得很混乱。你可以开始将它拆分成若干个更小的组件。
+现在，你有一个大型的 App 组件。这个组件在不停的扩展，最终可能会变得混乱。你可以开始将它拆分成若干个更小的组件。
 
 Let's start to use a component for the search input and a component for the list of items.
 
@@ -1188,7 +1188,7 @@ class App extends Component {
 
 You can pass those components properties which they can use themselves. In the case of the App component it needs to pass the properties managed in the local state and its class methods.
 
-你可以给这些组件传递它们可用的属性。至于应用组件，它需要传递由本地状态托管的属性和它自己的类方法。
+你可以给这些组件传递它们可用的属性。至于应用组件，它需要传递由本地状态 (state) 托管的属性和它自己的类方法。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1219,7 +1219,7 @@ class App extends Component {
 
 Now you can define the components next to your App component. Those components will be ES6 class components as well. They render the same elements like before.
 
-现在你可以定义这些组件，这些组件仍然是 [ES6 class 组件](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)。它们会渲染和之前相同的元素。
+现在你可以定义这些在 App 里面的组件，这些组件仍然是 ES6 类组件。它们会渲染和之前相同的元素。
 
 The first one is the Search component.
 
@@ -1290,19 +1290,20 @@ class Table extends Component {
 
 Now you have three ES6 class components. Perhaps you have noticed the `props` object that is accessible via the class instance by using `this`. The props, short form for properties, have all the values you have passed to the components when you used them in your App component. That way, components can pass properties down the component tree.
 
-现在你有三个 ES6 class 组件了。你可能已经注意到 `props` 对象可以通过类实例的 `this` 来访问。`props` 是 `properties` 的简写，当你在 App 组件里面使用它时，它已经有你传递给这些组件的全部值了。通过这种方式，组件可以由组件树向下传递属性。
+现在你有三个 ES6 类组件了。你可能已经注意到 `props` 对象可以通过类实例的 `this` 来访问。props 是 properties 的简写，当你在 App 组件里面使用它时，它已经有你传递给这些组件的全部值了。这样，组件可以通过组件树向下传递属性。
 
 By extracting those components from the App component, you would be able to reuse them somewhere else. Since components get their values by using the props object, you can pass every time different props to your components when you use them somewhere else. These components became reusable.
 
-从 App 组件中提取这些组件之后，你就可以在别的地方去重用它们了。因为组件获取值是通过使用 props 对象，所以当你在别的地方重用它时，你可以每一次都传递不同的 props 
+从 App 组件中提取这些组件之后，你就可以在别的地方去重用它们了。因为组件获取值是通过使用 props 对象，所以当你在别的地方重用它时，你可以每一次都传递不同的 props。这些组件就变得可复用了。
 
 ### Exercises: 练习：
 
 * figure out further components that you could split up as you have done with the Search and Table components
-* 想一想你可以从已经完成的 Search 和 Table 组件里面进一步提取出哪些组件
+* 从已经完成的 Search 和 Table 组件中找出可以进一步提取的组件
   * but don't do it now, otherwise you will run into conflicts in the next chapters
   * 但是不要现在就去做，否则在接下来的几个章节你会遇到冲突。  
-## Composable Components 可组合的组件
+  
+## Composable Components 可组合组件
 
 There is one more little property which is accessible in the props object: the `children` prop. You can use it to pass elements to your components from above, which are unknown to the component itself, but make it possible to compose components into each other. Let's see how this looks like when you only pass a text (string) as a child to the Search component.
 
@@ -1371,7 +1372,7 @@ The "Search" text should be visible next to your input field now. When you use t
 
 * read more about [the composition model of React](https://facebook.github.io/react/docs/composition-vs-inheritance.html)
 * 阅读更多关于 [React 组件模型](https://facebook.github.io/react/docs/composition-vs-inheritance.html)
-## Reusable Components 可复用的组件
+## Reusable Components 可复用组件
 
 Reusable and composable components empower you to come up with capable component hierarchies. They are the foundation of React's view layer. The last chapters mentioned the term reusability. You can reuse the Table and Search components by now. Even the App component is reusable, because you could instantiate it somewhere else again.
 
@@ -1379,7 +1380,7 @@ Reusable and composable components empower you to come up with capable component
 
 Let's define one more reusable component, a Button component, which gets reused more often eventually.
 
-让我们再来定义一个可复用的组件，一个 Button 组件，最后可能会被频繁的使用到。
+让我们再来定义一个可复用组件，一个 Button 组件，最后可能会被频繁的使用到。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1480,15 +1481,15 @@ Now, whenever there is no `className` property specified when using the Button c
 
 By now you have four ES6 class components. But you can do better. Let me introduce functional stateless components as alternative for ES6 class components. Before you will refactor your components, let's introduce the different types of components in React.
 
-现在你已经有四个 ES6 class 组件了。但是你可以做得更好。让我来给你介绍一下函数式无状态组件 (functional stateless components)，用来替代 ES6 class 组件。在你重构你的组件之前，让我来给你介绍一下 React 不同类型的组件。
+现在你已经有四个 ES6 类组件了。但是你可以做得更好。让我来给你介绍一下函数式无状态组件 (functional stateless components)，用来替代 ES6 类组件。在你重构你的组件之前，让我来给你介绍一下 React 不同类型的组件。
 
 * **Functional Stateless Components:** These components are functions which get an input and return an output. The input are the props. The output is a component instance thus plain JSX. So far it is quite similar to an ES6 class component. However, functional stateless components are functions (functional) and they have no local state (stateless). You cannot access or update the state with `this.state` or `this.setState()` because there is no `this` object. Additionally, they have no lifecycle methods. You didn't learn about lifecycle methods yet, but you already used two: `constructor()` and `render()`. Whereas the constructor runs only once in the lifetime of a component, the `render()` class method runs once in the beginning and every time the component updates. Keep in mind that functional stateless component have no lifecycle methods, when you arrive at the lifecycle methods chapter later on.
 
-* **函数式无状态组件:** 这些组件是函数式的，它们接收一个输入并返回一个输出。输入就是 props。输出是一个组件实例，因此是扁平的 JSX。到目前为止，它和 ES6 class 组件非常的相似。然而，函数式无状态组件是函数 (函数式)，并且它们没有本地状态 (无状态)。你不能`this.state` or `this.setState()` 来访问或者更新组件，因为这里没有 `this` 对象。此外，它也没有生命周期方法。你还没有学过生命周期方法，但是你已经用到了其中两个：`constructor()` and `render()`。然而 constructor 在一个组件的生命周期中只执行一次，`render()` 类方法在最开始执行一次，并且每次组件更新时执行。在你阅读生命周期方法这一章节之前，记住函数式无状态组件没有生命周期方法。
+* **函数式无状态组件:** 这些组件是函数式的，它们接收一个输入并返回一个输出。输入就是 props。输出是一个组件实例，因此是扁平的 JSX。到目前为止，它和 ES6 类组件非常的相似。然而，函数式无状态组件是函数 (函数式)，并且它们没有本地状态 (无状态)。你不能`this.state` or `this.setState()` 来访问或者更新组件，因为这里没有 `this` 对象。此外，它也没有生命周期方法。你还没有学过生命周期方法，但是你已经用到了其中两个：`constructor()` and `render()`。然而 constructor 在一个组件的生命周期中只执行一次，`render()` 类方法在最开始执行一次，并且每次组件更新时执行。在你阅读生命周期方法这一章节之前，记住函数式无状态组件没有生命周期方法。
 
 * **ES6 Class Components:** You already used this type of component declaration in your four components. In the class definition, they extend from the React component. The `extend` hooks all the lifecycle methods, available in the React component API, to the component. That way you were able to use the `render()` class method. Additionally, you can store and manipulate state in ES6 class components by using `this.state` and `this.setState()`.
 
-* **ES6 Class 组件:** 在你的四个组件中，你已经使用过这类组件了。在 class 的定义中，它们集成于 React 组件。`extend` 挂钩了所有生命周期方法，在 React component API 中的都可以在你的组件中使用。通过这种方式你可以使用 `render()` 类方法。此外，通过使用 `this.state` 和 `this.setState()`，你可以在 ES6 class 组件中储存和操作 state。
+* **ES6 类组件:** 在你的四个组件中，你已经使用过这类组件了。在 class 的定义中，它们集成于 React 组件。`extend` 挂钩了所有生命周期方法，在 React component API 中的都可以在你的组件中使用。通过这种方式你可以使用 `render()` 类方法。此外，通过使用 `this.state` 和 `this.setState()`，你可以在 ES6 类组件中储存和操作 state。
 
 * **React.createClass:** The component declaration was used in older versions of React and still in JavaScript ES5 React applications. But [Facebook declared it as deprecated](https://facebook.github.io/react/blog/2015/03/10/react-v0.13.html) in favor of JavaScript ES6. They even added a [deprecation warning in version 15.5](https://facebook.github.io/react/blog/2017/04/07/react-v15.5.0.html). You will not use it in the book.
 
@@ -1496,11 +1497,11 @@ By now you have four ES6 class components. But you can do better. Let me introdu
 
 So basically there are only two component declarations left. But when to use functional stateless components over ES6 class components? A rule of thumb is to use functional stateless components when you don't need local state or component lifecycle methods. Usually you start to implement your components as functional stateless components. Once you need access to the state or lifecycle methods, you have to refactor it to an ES6 class component. In our application, we started the other way around for the sake of learning React.
 
-因此这里基本只剩下两种 component 声明了。但是什么时候使用函数式无状态组件或者 ES6 class组件？一个使用函数式无状态组件的规则，就是当你不需要本地状态或者组件生命周期方法的时候。你最开始通常用函数式无状态组件来实现你的组件。一旦你需要访问 state 或者生命周期方法时，你必须要将它重构成一个 ES6 class 组件。在我们的应用中，为了学习 React，我们采用了正好相反的方式。
+因此这里基本只剩下两种 component 声明了。但是什么时候使用函数式无状态组件或者 ES6 类组件？一个使用函数式无状态组件的规则，就是当你不需要本地状态或者组件生命周期方法的时候。你最开始通常用函数式无状态组件来实现你的组件。一旦你需要访问 state 或者生命周期方法时，你必须要将它重构成一个 ES6 类组件。在我们的应用中，为了学习 React，我们采用了正好相反的方式。
 
 Let's get back to your application. The App component uses internal state. That's why it has to stay as an ES6 class component. But the other three of your ES6 class components are stateless. They don't need access to `this.state` or `this.setState()`. Even more, they have no lifecycle methods. Let's refactor together the Search component to a stateless functional component. The Table and Button component refactoring will remain as your exercise.
 
-让我们回到你的应用中。App 组件使用内部 state。这就是为什么它必须作为 ES6 class 组件存在的原因。但是你的其他三个 ES6 class 组件都是无状态的。他们不需要访问 `this.state` 或者 `this.setState()`。甚至它们都不需要生命周期函数。让我们将 Search 组件重构成一个函数式无状态组件吧。Table 和 Button 组件的重构将作为你的练习。
+让我们回到你的应用中。App 组件使用内部 state。这就是为什么它必须作为 ES6 类组件存在的原因。但是你的其他三个 ES6 类组件都是无状态的。他们不需要访问 `this.state` 或者 `this.setState()`。甚至它们都不需要生命周期函数。让我们将 Search 组件重构成一个函数式无状态组件吧。Table 和 Button 组件的重构将作为你的练习。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1522,7 +1523,7 @@ function Search(props) {
 
 That's basically it. The props are accessible in the function signature and the return value is JSX. But you can do more code wise in a functional stateless component. You already know the ES6 destructuring. The best practice is to use it in the function signature to destructure the props.
 
-基本上就是这样了。props 可以在函数签名和 JSX 的返回值里面访问。但是你可以在函数式无状态组件中写更多更聪明的代码。你已经知道 ES6 解构了。最佳实践就是在函数签名中通过解构 props 来使用它。
+基本上就是这样了。props 可以在函数签名和 JSX 的返回值里面访问。但是你可以在函数式无状态组件中，用更聪明的方式去写。你已经知道 ES6 解构了。最佳实践就是在函数签名中通过解构 props 来使用它。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1543,7 +1544,7 @@ function Search({ value, onChange, children }) {
 
 But it can get better. You know already that ES6 arrow functions allow you to keep your functions concise. You can remove the block body of the function. In a concise body an implicit return is attached thus you can remove the return statement. Since your functional stateless component is a function, you can keep it concise as well.
 
-但是它还可以变得更好。你已经知道，ES6 箭头函数允许让你保持你的函数简洁。你可以移除 function 区块体。在一个更加简洁的主体中已经附加了隐式的返回，因此你可以将 return 语句移除。因为你的函数式无状态组件是一个函数，你可以让它也变得简洁。
+但是它还可以变得更好。你已经知道，ES6 箭头函数允许让你保持你的函数简洁。你可以移除函数的块声明（译者注：即花括号）。在一个更加简洁的主体中已经附加了隐式的返回，因此你可以将 return 语句移除。因为你的函数式无状态组件是一个函数，你可以让它也变得简洁。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1561,7 +1562,7 @@ const Search = ({ value, onChange, children }) =>
 
 The last step was especially useful to enforce only to have props as input and JSX as output. Nothing in between. Still, you could *do something* in between by using a block body in your ES6 arrow function.
 
-最后一步对于强制只有 props 作为输入和 JSX 作为输出非常有用。这中间没有任何别的东西。但是在这之间，你仍然可以通过在 ES6 箭头函数中使用一个区块体来 *做一些事情*。
+最后一步对于强制只用 props 作为输入和 JSX 作为输出非常有用。这之间没有任何别的东西。但是你仍然可以在 ES6 箭头函数块声明中*做一些事情*。
 
 {title="Code Playground",lang=javascript}
 ~~~~~~~~
@@ -1583,28 +1584,28 @@ const Search = ({ value, onChange, children }) => {
 
 But you don't need it for now. That's why you can keep the previous version without the block body. When using block bodies, people often tend to do too many things in the function. By leaving the block body out, you can focus on the input and output of your function.
 
-但是你现在并不需要。这也是为什么你可以保持之前的版本没有区块体。当使用去块体时，人们经常很容易在这个函数里面去做过多的事情。通过移除区块体，你就可以关注在函数的输入和输出上了。
+但是你现在并不需要。这也是为什么你可以让之前的版本没有块声明。当使用块声明时，人们往往容易在这个函数里面做过多的事情。通过移除块声明，你可以专注在函数的输入和输出上。
 
 Now you have one lightweight functional stateless component. Once you would need access to its internal component state or lifecycle methods, you would refactor it to an ES6 class component. In addition you saw how JavaScript ES6 can be used in React components to make them more concise and elegant.
 
-现在你已经有一个轻量的函数式无状态组件了。一旦你需要访问它的内部组件状态或者生命周期方法，你最好将它重构成一个 ES6 class 组件。另外，你也已经看到，JavaScript ES6 是如何被用到 React 组件中并让它们变得更加的简洁和优雅。
+现在你已经有一个轻量的函数式无状态组件了。一旦你需要访问它的内部组件状态或者生命周期方法，你最好将它重构成一个 ES6 类组件。另外，你也已经看到，JavaScript ES6 是如何被用到 React 组件中并让它们变得更加的简洁和优雅。
 
 ### Exercises: 练习：
 
 * refactor the Table and Button component to stateless functional components
 * 将 Table 和 Button 组件重构成函数式无状态组件
 * read more about [ES6 class components and functional stateless components](https://facebook.github.io/react/docs/components-and-props.html)
-* 阅读更多关于 [ES6 class 组件和函数式无状态组件](https://facebook.github.io/react/docs/components-and-props.html)
+* 阅读更多关于 [ES6 类组件和函数式无状态组件](https://facebook.github.io/react/docs/components-and-props.html)
 
-## Styling Components 给组件添加样式
+## Styling Components 给组件声明样式
 
 Let's add some basic styling to your application and components. You can reuse the *src/App.css* and *src/index.css* files. These files should already be in your project since you have bootstrapped it with *create-react-app*. They should be imported in your *src/App.js* and *src/index.js* files too. I prepared some CSS which you can simply copy and paste to these files, but feel free to use your own style at this point.
 
-让我们给你的应用和组件加入一些基本的样式。你可以复用 *src/App.css* 和 *src/index.css* 文件。这些文件应该已经在你的项目中了，因为你是用 *create-react-app* 来启动的。它们应该也被导入到你的 *src/App.js* 和 *src/index.js* 文件中了。我准备了一些 CSS，你可以直接复制粘贴到这些文件中，但是这时你也可以随意使用你自己的样式。
+让我们给你的应用和组件添加一些基本的样式。你可以复用 *src/App.css* 和 *src/index.css* 文件。因为你是用 *create-react-app* 来创建的，所以这些文件应该已经在你的项目中了。它们应该也被引入到你的 *src/App.js* 和 *src/index.js* 文件中了。我准备了一些 CSS，你可以直接复制粘贴到这些文件中，你也可以随意使用你自己的样式。
 
 First, styling for your overall application.
 
-首先，给你的整个应用添加样式。
+首先，给你的整个应用声明样式。
 
 {title="src/index.css",lang="css"}
 ~~~~~~~~
@@ -1656,7 +1657,7 @@ button:hover {
 
 Second, styling for your components in the App file.
 
-其次，在 App 文件中给你的组件添加样式。
+其次，在 App 文件中给你的组件声明样式。
 
 {title="src/App.css",lang="css"}
 ~~~~~~~~
@@ -1727,11 +1728,11 @@ Second, styling for your components in the App file.
 
 Now you can use the style in some of your components. Don't forget to use React `className` instead of `class` as HTML attribute.
 
-现在你可以在你的一些组件中使用这些样式。但是别忘了使用 React `className`， 而不是 HTML 的 `class` 属性。
+现在你可以在你的一些组件中使用这些样式。但是别忘了使用 React 的 `className`， 而不是 HTML 的 `class` 属性。
 
 First, apply it in your App ES6 class component.
 
-首先，将它应用到你的 App ES6 class 组件中。
+首先，将它应用到你的 App ES6 类组件中。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1809,11 +1810,11 @@ const Table = ({ list, pattern, onDismiss }) =>
 
 Now you have styled your application and components with basic CSS. It should look quite decent. As you know, JSX mixes up HTML and JavaScript. Now one could argue to add CSS in the mix as well. That's called inline style. You can define JavaScript objects and pass them to the style attribute of an element.
 
-先在你已经给你的应用和组件添加了基本的 CSS 样式。看起来应该非常不错。如你所知，JSX 混合了 HTML 和 JavaScript。现在有人会说将 CSS 也加入进去。这就叫作内联样式 (inline style)。你可以定义 JavaScript 对象，并传给一个元素的 style 属性。
+现在你已经给你的应用和组件添加了基本的 CSS 样式。看起来应该非常不错。如你所知，JSX 混合了 HTML 和 JavaScript。现在有人呼吁将 CSS 也加入进去。这就叫作内联样式 (inline style)。你可以定义 JavaScript 对象，并传给一个元素的 style 属性。
 
 Let's keep the Table column width flexible by using inline style.
 
-让我们通过使用内联样式来保持 Table 的列宽自适应。
+让我们通过使用内联样式来使 Table 的列宽自适应。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1850,7 +1851,7 @@ const Table = ({ list, pattern, onDismiss }) =>
 
 The style is inlined now. You could define the style objects outside of your elements to make it cleaner.
 
-样式现在已经内联了。你可以在你的元素之外定义一个 style 对象，这样可以让它更加干净。
+现在样式已经内联了。你可以在你的元素之外定义一个 style 对象，这样可以让它变得更整洁。
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -1877,7 +1878,7 @@ In general, you will find different opinions and solutions for style in React. Y
 
 I don't want to be opinionated here, but I want to leave you some more options. You can read about them and apply them on your own. But if you are new to React, I would recommend to stick to pure CSS and inline style for now.
 
-在这里我不想太固执意见，但是我想给你一些更多的建议。你可以阅读和应用它们。但是如果你刚开始使用 React，目前我会推荐你坚持纯 CSS 和内联样式。
+在这里我不想下定论，但是我想给你一些更多的选择。你可以阅读并应用它们。但是如果你刚开始使用 React，目前我会推荐你坚持纯 CSS 和内联样式。
 
 * [styled-components](https://github.com/styled-components/styled-components)
 * [CSS Modules](https://github.com/css-modules/css-modules)
@@ -1903,9 +1904,9 @@ You have learned the basics to write your own React application! Let's recap the
   * compose components with children and reusable components
   * 通过 children 和可复用组件来组合组件
   * usage and implementation of ES6 class components and functional stateless components
-  * ES6 class 组件和函数式无状态组件的使用方法和实现
+  * ES6 类组件和函数式无状态组件的使用方法和实现
   * approaches to style your components
-  * 给你的组件添加样式的方法
+  * 给你的组件声明样式的方法
 * ES6
   * functions that are bound to a class are class methods
   * 绑定到一个类的方法叫作类方法
