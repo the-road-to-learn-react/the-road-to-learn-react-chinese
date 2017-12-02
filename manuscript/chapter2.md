@@ -1156,11 +1156,15 @@ The whole internal state management and unidirectional data flow might be new to
 
 * read more about [React forms](https://facebook.github.io/react/docs/forms.html)
 
-## Split Up Components
+## Split Up Components 拆分组件 
 
 You have one large App component now. It keeps growing and can become confusing eventually. You can start to split it up into chunks of smaller components.
 
+你现在有一个大型的 App 组件。这个组件仍然在不停的扩展，最后可能会变得很混乱。你可以开始将它拆分成若干个更小的组件。
+
 Let's start to use a component for the search input and a component for the list of items.
+
+让我们开始使用一个用于搜索输入的组件和一个用于列表展示的组件。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1183,6 +1187,8 @@ class App extends Component {
 ~~~~~~~~
 
 You can pass those components properties which they can use themselves. In the case of the App component it needs to pass the properties managed in the local state and its class methods.
+
+你可以给这些组件传递它们可用的属性。至于应用组件，它需要传递由本地状态托管的属性和它自己的类方法。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1213,7 +1219,11 @@ class App extends Component {
 
 Now you can define the components next to your App component. Those components will be ES6 class components as well. They render the same elements like before.
 
+现在你可以定义这些组件，这些组件仍然会使用 [ES6 class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) 来定义。它们会渲染和之前相同的元素。
+
 The first one is the Search component.
+
+第一个是 Search 组件。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1240,6 +1250,8 @@ class Search extends Component {
 ~~~~~~~~
 
 The second one is the Table component.
+
+第二个是 Table 组件。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1278,14 +1290,19 @@ class Table extends Component {
 
 Now you have three ES6 class components. Perhaps you have noticed the `props` object that is accessible via the class instance by using `this`. The props, short form for properties, have all the values you have passed to the components when you used them in your App component. That way, components can pass properties down the component tree.
 
+现在你有三个 ES6 class 组件了。你可能已经注意到 `props` 对象可以通过类实例的 `this` 来访问。`props` 是 `properties` 的简写，当你在 App 组件里面使用它时，它已经有你传递给这些组件的全部值了。通过这种方式，组件可以由组件树向下传递属性。
+
 By extracting those components from the App component, you would be able to reuse them somewhere else. Since components get their values by using the props object, you can pass every time different props to your components when you use them somewhere else. These components became reusable.
 
-### Exercises:
+从 App 组件中提取这些组件之后，你就可以在别的地方去重用它们了。因为组件获取值是通过使用 props 对象，所以当你在别的地方重用它时，你可以每一次都传递不同的 props 
+
+### Exercises: 练习:
 
 * figure out further components that you could split up as you have done with the Search and Table components
+* 想一想你可以从已经完成的 Search 和 Table 组件里面进一步提取出哪些组件
   * but don't do it now, otherwise you will run into conflicts in the next chapters
-
-## Composable Components
+  * 但是不要现在就去做，否则在接下来的几个章节你会遇到冲突。  
+## Composable Components 可组合的组件
 
 There is one more little property which is accessible in the props object: the `children` prop. You can use it to pass elements to your components from above, which are unknown to the component itself, but make it possible to compose components into each other. Let's see how this looks like when you only pass a text (string) as a child to the Search component.
 
