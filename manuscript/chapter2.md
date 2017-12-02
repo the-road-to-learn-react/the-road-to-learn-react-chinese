@@ -1290,7 +1290,7 @@ class Table extends Component {
 
 Now you have three ES6 class components. Perhaps you have noticed the `props` object that is accessible via the class instance by using `this`. The props, short form for properties, have all the values you have passed to the components when you used them in your App component. That way, components can pass properties down the component tree.
 
-现在你有三个 ES6 类组件了。你可能已经注意到 `props` 对象可以通过类实例的 `this` 来访问。props 是 properties 的简写，当你在 App 组件里面使用它时，它已经有你传递给这些组件的全部值了。这样，组件可以通过组件树向下传递属性。
+现在你有了三个 ES6 类组件。你可能已经注意到，`props` 对象可以通过实例的 `this` 来访问。props 是 properties 的简写，当你在 App 组件里面使用它时，它有你传递给这些组件的所有值。这样，组件可以沿着组件树向下传递属性。
 
 By extracting those components from the App component, you would be able to reuse them somewhere else. Since components get their values by using the props object, you can pass every time different props to your components when you use them somewhere else. These components became reusable.
 
@@ -1307,7 +1307,7 @@ By extracting those components from the App component, you would be able to reus
 
 There is one more little property which is accessible in the props object: the `children` prop. You can use it to pass elements to your components from above, which are unknown to the component itself, but make it possible to compose components into each other. Let's see how this looks like when you only pass a text (string) as a child to the Search component.
 
-在 props 对象中还有一个属性: `children` 属性。通过它你可以从上层传递元素到你的组件中，这些元素对你的组件来说是未知的，但是为组件彼此之间的组合提供了可能性。让我们来看一看，当你只传递一个作为 child 的文本 (字符串) 到 Search 组件中会怎样。
+在 props 对象中还有一个小小的属性可访问: `children`。通过它你可以将元素从上层传递到你的组件中，这些元素对你的组件来说是未知的，但是却为组件相互组合提供了可能性。让我们来看一看，当你只将一个文本 (字符串) 作为子元素传递到 Search 组件中会怎样。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1340,7 +1340,7 @@ class App extends Component {
 
 Now the Search component can destructure the children property from the props object. Then it can specify where the children should be displayed.
 
-现在 Search 组件可以从 props 对象中将 children 属性解构出来。接下来它可以指定应该在哪里去显示这个 children 。
+现在 Search 组件可以从 props 对象中将 children 属性解构出来。接下来它可以指定这个 children 应该被显示在哪里。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1366,7 +1366,7 @@ class Search extends Component {
 
 The "Search" text should be visible next to your input field now. When you use the Search component somewhere else, you can choose a different text if you like. After all, it is not only text that you can pass as children. You can pass an element and element trees (which can be encapsulated by components again) as children. The children property makes it possible to weave components into each other.
 
-现在你应该可以在输入框旁边看到这个 "Search" 文本了。当你在别的地方使用 Search 组件时，如果你喜欢的话，你可以选择一个不同文本。总之，它不仅仅只是一个你可以作为 children 传递的文本。你还可以传递一个元素或者元素树 (它可以被组件再次压缩) 作为 children 。children 属性让组件相互交织在一起成为可能。
+现在，你应该可以在输入框旁边看到这个 "Search" 文本了。当你在别的地方使用 Search 组件时，如果你喜欢，你可以选择一个不同的文本。总之，它不仅可以把文本作为子元素传递，还可以将一个元素或者元素树 (它还可以被封装为组件) 作为子元素传递。children 属性让组件相互交织在一起成为可能。
 
 ### Exercises: 练习：
 
@@ -1376,11 +1376,11 @@ The "Search" text should be visible next to your input field now. When you use t
 
 Reusable and composable components empower you to come up with capable component hierarchies. They are the foundation of React's view layer. The last chapters mentioned the term reusability. You can reuse the Table and Search components by now. Even the App component is reusable, because you could instantiate it somewhere else again.
 
-可复用和可组合组件使你能够想出有效的组件分层。它们是 React 视图层的基础。最后一章提到了可重用性的术语。现在你可以复用 Search 和 Table 组件了。甚至 App 组件都可以被复用，你可以在别的地方重新实例化它。
+可复用和可组合组件让你能够给出合理的组件分层。它们是 React 视图层的基础。最后一章提到了可重用性的术语。现在你可以复用 Search 和 Table 组件了。甚至 App 组件都可以被复用，因为你可以在别的地方重新实例化它。
 
 Let's define one more reusable component, a Button component, which gets reused more often eventually.
 
-让我们再来定义一个可复用组件，一个 Button 组件，最后可能会被频繁的使用到。
+让我们再来定义一个可复用组件 Button，最终会被更频繁的复用。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1407,11 +1407,11 @@ class Button extends Component {
 
 It might seem redundant to declare such a component. You will use a `Button` component instead of a `button` element. It only spares the `type="button"`. Except for the type attribute you have to define everything else when you want to use the Button component. But you have to think about the long term investment here. Imagine you have several buttons in your application, but want to change an attribute, style or behavior for the button. Without the component you would have to refactor every button. Instead the Button component ensures to have only one single source of truth. One Button to refactor all buttons at once. One Button to rule them all.
 
-这样声明一个组件看起来可能会有点重复。你会使用 `Button` 组件而不是 `button` 元素。它只节省了 `type="button"`。如果你想使用 Button 组件，除了 type 属性之外，你还必须定义其他所有的东西。但是在这里，你必须要想到长期投资。想象在你的应用中有若干个 button，但是你想改变它们的一个属性、样式或者行为。如果没有组件的话你就必须重构每一个 button。相反，Button 组件有唯一并且真实的数据源。一个 Button 组件可以立即重构所有 button。一个 Button 组件就能统一所有的 button。
+声明这样一个组件可能看起来有点多余。你将会用到一个 `Button` 组件而不是一个 `button` 元素。它只节省了 `type="button"`。如果你想使用 Button 组件，除了 type 属性之外，你还必须定义其他所有的东西。但是在这里，你必须要想到长期投资。想象在你的应用中有若干个 button，但是你想改变它们的一个属性、样式或者行为。如果没有组件的话你就必须重构每一个 button。相反，Button 组件有唯一并且真实的数据源。一个 Button 组件可以立即重构所有 button。一个 Button 组件就能统一所有的 button。
 
 Since you already have a button element, you can use the Button component instead. It omits the type attribute, because the Button component specifies it.
 
-既然你已经有了一个 button 元素，你可以用 Button 组件来替代。它忽略了 type 属性，因为 Button 组件已经指定了。
+既然你已经有了一个 button 元素，你可以用 Button 组件代替。它忽略了 type 属性，因为 Button 组件已经指定了。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1445,7 +1445,7 @@ class Table extends Component {
 
 The Button component expects a `className` property in the props. The `className` attribute is another React derivate for the HTML attribute class. But we didn't pass any `className` when the Button was used. In the code it should be more explicit in the Button component that the `className` is optional.
 
-Button 组件期望在 props 里面有一个 `className` 属性. 这个 `className` 属性是另一个 React 基于 HTML 属性类的衍生物。但是当使用 Button 组件时，我们并没有传递任何 `className`。在代码中，Button 组件应该更加明确 `className` 是可选项。
+Button 组件期望在 props 里面有一个 `className` 属性. 这个 `className` 属性是 React 基于 HTML 属性类的另一个衍生物。但是当使用 Button 组件时，我们并没有传递任何 `className` 属性。在代码中，Button 组件更应该明确 `className` 是可选项。
 
 Therefore, you can use the default parameter which is a JavaScript ES6 feature.
 
@@ -1470,7 +1470,7 @@ class Button extends Component {
 
 Now, whenever there is no `className` property specified when using the Button component, the value will be an empty string instead of `undefined`.
 
-现在，无论何时，只要当使用 Button 组件时没有指定 `className` 属性，它的值就会是一个空字符串，而不会是 `undefined`。
+现在，无论何时，当使用 Button 组件时，若没有指定 `className` 属性，它的值就是一个空字符串，而不是 `undefined`。
 
 ### Exercises: 练习：
 
@@ -1485,19 +1485,19 @@ By now you have four ES6 class components. But you can do better. Let me introdu
 
 * **Functional Stateless Components:** These components are functions which get an input and return an output. The input are the props. The output is a component instance thus plain JSX. So far it is quite similar to an ES6 class component. However, functional stateless components are functions (functional) and they have no local state (stateless). You cannot access or update the state with `this.state` or `this.setState()` because there is no `this` object. Additionally, they have no lifecycle methods. You didn't learn about lifecycle methods yet, but you already used two: `constructor()` and `render()`. Whereas the constructor runs only once in the lifetime of a component, the `render()` class method runs once in the beginning and every time the component updates. Keep in mind that functional stateless component have no lifecycle methods, when you arrive at the lifecycle methods chapter later on.
 
-* **函数式无状态组件:** 这些组件是函数式的，它们接收一个输入并返回一个输出。输入就是 props。输出是一个组件实例，因此是扁平的 JSX。到目前为止，它和 ES6 类组件非常的相似。然而，函数式无状态组件是函数 (函数式)，并且它们没有本地状态 (无状态)。你不能`this.state` or `this.setState()` 来访问或者更新组件，因为这里没有 `this` 对象。此外，它也没有生命周期方法。你还没有学过生命周期方法，但是你已经用到了其中两个：`constructor()` and `render()`。然而 constructor 在一个组件的生命周期中只执行一次，`render()` 类方法在最开始执行一次，并且每次组件更新时执行。在你阅读生命周期方法这一章节之前，记住函数式无状态组件没有生命周期方法。
+* **函数式无状态组件:** 这些组件是函数式的，它们接收一个输入并返回一个输出。输入就是 props。输出是一个组件实例，因此是扁平的 JSX。到目前为止，它和 ES6 类组件非常的相似。然而，函数式无状态组件是函数 (函数式)，并且它们没有本地状态 (无状态)。你不能通过 `this.state` 来访问或者 `this.setState()` 来更新状态，因为这里没有 `this` 对象。此外，它也没有生命周期方法。虽然你还没有学过生命周期方法，但是你已经用到了其中两个：`constructor()` and `render()`。然而 constructor 在一个组件的生命周期中只执行一次，`render()` 方法在最开始执行一次，并且每次组件更新时都会执行。在你阅读生命周期方法这一章节之前，记住函数式无状态组件没有生命周期方法。
 
 * **ES6 Class Components:** You already used this type of component declaration in your four components. In the class definition, they extend from the React component. The `extend` hooks all the lifecycle methods, available in the React component API, to the component. That way you were able to use the `render()` class method. Additionally, you can store and manipulate state in ES6 class components by using `this.state` and `this.setState()`.
 
-* **ES6 类组件:** 在你的四个组件中，你已经使用过这类组件了。在 class 的定义中，它们集成于 React 组件。`extend` 挂钩了所有生命周期方法，在 React component API 中的都可以在你的组件中使用。通过这种方式你可以使用 `render()` 类方法。此外，通过使用 `this.state` 和 `this.setState()`，你可以在 ES6 类组件中储存和操作 state。
+* **ES6 类组件:** 在你的四个组件中，你已经使用过这类组件了。在 class 的定义中，它们继承自 React 组件。`extend` 会注册所有的生命周期方法，只要在 React component API 中，都可以在你的组件中使用。通过这种方式你可以使用 `render()` 类方法。此外，通过使用 `this.state` 和 `this.setState()`，你可以在 ES6 类组件中储存和操作 state。
 
 * **React.createClass:** The component declaration was used in older versions of React and still in JavaScript ES5 React applications. But [Facebook declared it as deprecated](https://facebook.github.io/react/blog/2015/03/10/react-v0.13.html) in favor of JavaScript ES6. They even added a [deprecation warning in version 15.5](https://facebook.github.io/react/blog/2017/04/07/react-v15.5.0.html). You will not use it in the book.
 
-* **React.createClass:** 这种组件声明曾经在老版本的 React 中使用，仍然存在于很多 ES5 React 应用中。但是为了支持JavaScript ES6， [Facebook 声明它已经被废弃了](https://facebook.github.io/react/blog/2015/03/10/react-v0.13.html)。你不会在本书使用它。
+* **React.createClass:** 这种组件声明曾经在老版本的 React 中使用，仍然存在于很多 ES5 React 应用中。但是为了支持 JavaScript ES6， [Facebook 声明它已经被废弃了](https://facebook.github.io/react/blog/2015/03/10/react-v0.13.html)。你不会在本书使用它。
 
 So basically there are only two component declarations left. But when to use functional stateless components over ES6 class components? A rule of thumb is to use functional stateless components when you don't need local state or component lifecycle methods. Usually you start to implement your components as functional stateless components. Once you need access to the state or lifecycle methods, you have to refactor it to an ES6 class component. In our application, we started the other way around for the sake of learning React.
 
-因此这里基本只剩下两种 component 声明了。但是什么时候使用函数式无状态组件或者 ES6 类组件？一个使用函数式无状态组件的规则，就是当你不需要本地状态或者组件生命周期方法的时候。你最开始通常用函数式无状态组件来实现你的组件。一旦你需要访问 state 或者生命周期方法时，你必须要将它重构成一个 ES6 类组件。在我们的应用中，为了学习 React，我们采用了正好相反的方式。
+因此这里基本只剩下两种 component 声明了。但是什么时候更适合使用函数式无状态组件而非 ES6 类组件？一个使用函数式无状态组件的规则，就是当你不需要本地状态或者组件生命周期方法的时候。你最开始通常使用函数式无状态组件来实现你的组件。一旦你需要访问 state 或者生命周期方法时，你必须要将它重构成一个 ES6 类组件。在我们的应用中，为了学习 React，我们采用了正好相反的方式。
 
 Let's get back to your application. The App component uses internal state. That's why it has to stay as an ES6 class component. But the other three of your ES6 class components are stateless. They don't need access to `this.state` or `this.setState()`. Even more, they have no lifecycle methods. Let's refactor together the Search component to a stateless functional component. The Table and Button component refactoring will remain as your exercise.
 
@@ -1523,7 +1523,7 @@ function Search(props) {
 
 That's basically it. The props are accessible in the function signature and the return value is JSX. But you can do more code wise in a functional stateless component. You already know the ES6 destructuring. The best practice is to use it in the function signature to destructure the props.
 
-基本上就是这样了。props 可以在函数签名和 JSX 的返回值里面访问。但是你可以在函数式无状态组件中，用更聪明的方式去写。你已经知道 ES6 解构了。最佳实践就是在函数签名中通过解构 props 来使用它。
+基本上就是这样了。props 可以在[函数签名](https://developer.mozilla.org/zh-CN/docs/Glossary/Signature/Function)（译者注：这里应指函数入参）中访问，返回值是 JSX。但是你可以在函数式无状态组件中，用更聪明的方式去写。你已经知道 ES6 解构了。最佳实践就是在函数签名中通过解构 props 来使用它。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1544,7 +1544,7 @@ function Search({ value, onChange, children }) {
 
 But it can get better. You know already that ES6 arrow functions allow you to keep your functions concise. You can remove the block body of the function. In a concise body an implicit return is attached thus you can remove the return statement. Since your functional stateless component is a function, you can keep it concise as well.
 
-但是它还可以变得更好。你已经知道，ES6 箭头函数允许让你保持你的函数简洁。你可以移除函数的块声明（译者注：即花括号）。在一个更加简洁的主体中已经附加了隐式的返回，因此你可以将 return 语句移除。因为你的函数式无状态组件是一个函数，你可以让它也变得简洁。
+但是它还可以变得更好。你已经知道，ES6 箭头函数允许让你保持你的函数简洁。你可以移除函数的块声明（译者注：即花括号`{}`）。在一个更加简洁的主体中已经附加了隐式的返回，因此你可以将 return 语句移除。因为你的函数式无状态组件是一个函数，你可以让它也变得简洁。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1888,7 +1888,7 @@ I don't want to be opinionated here, but I want to leave you some more options. 
 
 You have learned the basics to write your own React application! Let's recap the last chapters:
 
-你已经学会编写你自己的 React 应用的基础了！让我们来总结一下上一个章节:
+你已经掌握编写 React 应用的基础了！让我们来总结一下上一个章节:
 
 * React
   * use `this.state` and `setState()` to manage your internal component state
@@ -1896,7 +1896,7 @@ You have learned the basics to write your own React application! Let's recap the
   * pass functions or class methods to your element handler
   * 将函数或者类方法传递到你的元素处理器
   * use forms and events in React to add interactions
-  * 在 React 中使用 forms 或者 events 来添加交互 
+  * 在 React 中使用表单或者事件来添加交互 
   * unidirectional data flow is an important concept in React
   * 在 React 中单向数据流是一个非常重要的概念
   * embrace controlled components
