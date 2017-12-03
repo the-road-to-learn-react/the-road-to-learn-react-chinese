@@ -15,27 +15,49 @@
 
 {pagebreak}
 
-# Testimonials
+> # Testimonials
 
-**[Muhammad Kashif](https://twitter.com/appsdevpk/status/848625244956901376):** "The Road to Learn React is a unique book that I recommend to any student or professional interested in learning react basics to advanced level. It is packed with insightful tips and techniques that are hard to find elsewhere, and remarkably thorough in its use of examples and references to sample problems, i have 17 years of experience in web and desktop app development, and before reading this book i was having trouble in learning react, but this book works like magic."
+# 读者赠言
 
-**[Andre Vargas](https://twitter.com/andrevar66/status/853789166987038720):** "The Road to Learn React by Robin Wieruch is such an awesome book! Most of what I learned about React and even ES6 was through it!"
+> **[Muhammad Kashif](https://twitter.com/appsdevpk/status/848625244956901376):** "The Road to Learn React is a unique book that I recommend to any student or professional interested in learning react basics to advanced level. It is packed with insightful tips and techniques that are hard to find elsewhere, and remarkably thorough in its use of examples and references to sample problems, i have 17 years of experience in web and desktop app development, and before reading this book i was having trouble in learning react, but this book works like magic."
 
-**[Nicholas Hunt-Walker, Instructor of Python at a Seattle Coding School](https://twitter.com/nhuntwalker/status/845730837823840256):** "This is one of the most well-written & informative coding books I've ever worked through. A solid React & ES6 introduction."
+**[Muhammad Kashif](https://twitter.com/appsdevpk/status/848625244956901376):** “《》是一本独一无二的书，我推荐给所有的学生或者对React有专业兴趣的初级或高级的读者。她是一个包括了很难在其他地方找到的有启发性的小提示和技术点的合集，最棒的是书中的例子和引用都很缜密的放到一起解决了同一个问题，我有17年的互联网和桌面开发经验，但在学习React的过程中缺并不顺利，而这本书魔术般的有用。”
 
-**[Austin Green](https://twitter.com/AustinGreen/status/845321540627521536):** "Thanks, really loved the book. Perfect blend to learn React, ES6, and higher level programming concepts."
+> **[Andre Vargas](https://twitter.com/andrevar66/status/853789166987038720):** "The Road to Learn React by Robin Wieruch is such an awesome book! Most of what I learned about React and even ES6 was through it!"
 
-**[Nicole Ferguson](https://twitter.com/nicoleffe/status/833488391148822528):** "I'm doing Robin's Road to Learn React course this weekend & I almost feel guilty for having so much fun."
+**[Andre Vargas](https://twitter.com/andrevar66/status/853789166987038720):** “Robin Wieruch的《》是一本非常牛的书！我所学到的绝大部分有关React甚至是ES6的知识都是通过她来的！”
 
-**[Karan](https://twitter.com/kvss1992/status/889197346344493056):** "Just finished your Road to React. Best book for a beginner in the world of React and JS. Elegant exposure to ES. Kudos! :)"
+> **[Nicholas Hunt-Walker, Instructor of Python at a Seattle Coding School](https://twitter.com/nhuntwalker/status/845730837823840256):** "This is one of the most well-written & informative coding books I've ever worked through. A solid React & ES6 introduction."
 
-**[Eric Priou](https://twitter.com/erixtekila/status/840875459730657283):** "The Road to learn React by Robin Wieruch is a must read. Clean and concise for React and JavaScript."
+**[Nicholas Hunt-Walker, Instructor of Python at a Seattle Coding School](https://twitter.com/nhuntwalker/status/845730837823840256):** “这是一本我用过的最严谨和最实用的编程书籍。一本完整的React和ES6使用说明。”
 
-**A Rookie Developer:** "I just finished the book as a rookie developer, thanks for working on this. It was easy to follow and I feel confident in starting a new app from scratch in the coming days. The book was much better than official React.js tutorial that I tried earlier (and couldn't complete due to lack of detail). The exercises at the end of each section were very rewarding."
+> **[Austin Green](https://twitter.com/AustinGreen/status/845321540627521536):** "Thanks, really loved the book. Perfect blend to learn React, ES6, and higher level programming concepts."
 
-**Student:** "The best book to start learning ReactJS. The project moves along with the concepts being learnt which helps to grasp the subject. I have found 'Code and learn' as best way to master programming and this book exactly does that."
+**[Austin Green](https://twitter.com/AustinGreen/status/845321540627521536):** “非常感谢，真的很喜欢这本书。完美的学习曲线，不管是React，ES6，还是抽象编程概念。”
 
-**[Thomas Lockney](https://www.goodreads.com/review/show/1880673388):** "Pretty solid introduction to React that doesn't try to be comprehensive. I just wanted a taste to understand what it was about and this book gave me exactly that. I didn't follow all the little footnotes to learn about the new ES6 features I've missed ("I wouldn't say I've been missing it, Bob."). But I'm sure for those of you who have fallen behind and are diligent about following those, you can probably learn a lot more than just what the book teaches."
+> **[Nicole Ferguson](https://twitter.com/nicoleffe/status/833488391148822528):** "I'm doing Robin's Road to Learn React course this weekend & I almost feel guilty for having so much fun."
+
+**[Nicole Ferguson](https://twitter.com/nicoleffe/status/833488391148822528):** “这个周末我跟着Robin的课程，学习React。发现这一切太有意思了，竟然让我几乎感到了愧疚。”
+
+> **[Karan](https://twitter.com/kvss1992/status/889197346344493056):** "Just finished your Road to React. Best book for a beginner in the world of React and JS. Elegant exposure to ES. Kudos! :)"
+
+**[Karan](https://twitter.com/kvss1992/status/889197346344493056):** “刚刚完成这个课程。这是全世界最好的学习React和JS的一本书。完美展现了ES的优雅。膜拜！ :)”
+
+> **[Eric Priou](https://twitter.com/erixtekila/status/840875459730657283):** "The Road to learn React by Robin Wieruch is a must read. Clean and concise for React and JavaScript."
+
+**[Eric Priou](https://twitter.com/erixtekila/status/840875459730657283):** “Robin的《》是必读的一本书。简明扼要的介绍了React和Javascript。”
+
+> **A Rookie Developer:** "I just finished the book as a rookie developer, thanks for working on this. It was easy to follow and I feel confident in starting a new app from scratch in the coming days. The book was much better than official React.js tutorial that I tried earlier (and couldn't complete due to lack of detail). The exercises at the end of each section were very rewarding."
+
+**一个新手开发:** “作为一个新手开发，我刚刚完成了这本书的学习，非常感谢写了这本书。她非常容易上手，我相信自己在接下来的几天可以开始从头开发一个新应用。这本书比官方的React入门文档好很多，我之前有试过（但是我完全无法继续下去，因为缺乏一些细节的知识点）。每个章节后面的练习题对我有很好的激励效果。”
+
+> **Student:** "The best book to start learning ReactJS. The project moves along with the concepts being learnt which helps to grasp the subject. I have found 'Code and learn' as best way to master programming and this book exactly does that."
+
+**一个学生:** “这是最好的学习React的一本书。我们可以一边做练习项目，一边学习知识点，然后还能紧扣我们的学习主题。我发现‘边码边学’是最好的掌握编程的方法，而这本书完完全全是这样教我的。”
+
+> **[Thomas Lockney](https://www.goodreads.com/review/show/1880673388):** "Pretty solid introduction to React that doesn't try to be comprehensive. I just wanted a taste to understand what it was about and this book gave me exactly that. I didn't follow all the little footnotes to learn about the new ES6 features I've missed ("I wouldn't say I've been missing it, Bob."). But I'm sure for those of you who have fallen behind and are diligent about following those, you can probably learn a lot more than just what the book teaches."
+
+**[Thomas Lockney](https://www.goodreads.com/review/show/1880673388):** “这是一本非常扎实的介绍React的书，完全不需要其他综合性的内容。我本来只想尝试看看这本书到底怎么样，然后我得出了上面的结论。我并没有跟着所有的脚注来学习我还没有注意到的新的ES6语法（我当然不会说我一直没有注意到，Bob）（译者注，这个是在博客中与另外一个朋友互动的话）。但是我想很肯定的对那些没有及时了解到这些新功能并且很勤奋的跟着练习的朋友们说，你们可以额外学到很多书中没有的知识。”
 
 {pagebreak}
 
