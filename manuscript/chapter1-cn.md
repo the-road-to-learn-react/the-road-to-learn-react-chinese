@@ -327,31 +327,44 @@ Additionally you might have noticed the `className` attribute. It reflects the s
 * read more about [JSX](https://facebook.github.io/react/docs/introducing-jsx.html)
 * read more about [React components, elements and instances](https://facebook.github.io/react/blog/2015/12/18/react-components-elements-and-instances.html)
 
-## ES6 const and let
+> ## ES6 const and let
+## ES6 const和let
 
-I guess you noticed that we declared the variable `helloWorld` with a `var` statement. JavaScript ES6 comes with two more options to declare your variables: `const` and `let`. In JavaScript ES6, you will rarely find `var` anymore.
+> I guess you noticed that we declared the variable `helloWorld` with a `var` statement. JavaScript ES6 comes with two more options to declare your variables: `const` and `let`. In JavaScript ES6, you will rarely find `var` anymore.
 
-A variable declared with `const` cannot be re-assigned or re-declared. It cannot get mutated (changed, modified). You embrace immutable data structures by using it. Once the data structure is defined, you cannot change it.
+我猜你已经注意到了，我们在前面的例子中使用的是关键字`var`来声明变量`helloWorld`的。JavaScript ES6中引入了另外两个声明变量的关键字：`const`和`let`。在JavaScript ES6中，你将会几乎不再使用`var`了。
+
+> A variable declared with `const` cannot be re-assigned or re-declared. It cannot get mutated (changed, modified). You embrace immutable data structures by using it. Once the data structure is defined, you cannot change it.
+
+被`const`声明的变量不能被重新赋值或重新声明。换句话说，它将不能再被改变。你会在声明不可改变的变量时使用这个关键字。每当一个变量的结构被声明好之后，你便不能再改变它了。
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
-// not allowed
+> // not allowed
+// 这种写法是不可行的
 const helloWorld = 'Welcome to the Road to learn React';
 helloWorld = 'Bye Bye React';
 ~~~~~~~~
 
-A variable declared with `let` can get mutated.
+> A variable declared with `let` can get mutated.
+
+被关键字`let`声明的变量可以被改变。
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
-// allowed
+> // allowed
+// 这种写法是可行的
 let helloWorld = 'Welcome to the Road to learn React';
 helloWorld = 'Bye Bye React';
 ~~~~~~~~
 
-You would use it when you would need to re-assign a variable.
+> You would use it when you would need to re-assign a variable.
 
-However, you have to be careful with `const`. A variable declared with `const` cannot get modified. But when the variable is an array or object, the value it holds can get updated. The value it holds is not immutable.
+当一个变量需要被重新赋值的话，你应该使用`let`去声明它。
+
+> However, you have to be careful with `const`. A variable declared with `const` cannot get modified. But when the variable is an array or object, the value it holds can get updated. The value it holds is not immutable.
+
+然而，你必须小心地使用`const`。使用`const`声明的变量不能被改变，但是如果这个变量是数组或者对象的话，它里面持有的内容可以被更新。它里面持有的内容不是不可改变的。
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -362,11 +375,17 @@ const helloWorld = {
 helloWorld.text = 'Bye Bye React';
 ~~~~~~~~
 
-But when to use each declaration? There are different opinions about the usage. I suggest using `const` whenever you can. It indicates that you want to keep your data structure immutable even though values in objects and arrays can get modified. If you want to modify your variable, you can use `let`.
+> But when to use each declaration? There are different opinions about the usage. I suggest using `const` whenever you can. It indicates that you want to keep your data structure immutable even though values in objects and arrays can get modified. If you want to modify your variable, you can use `let`.
 
-Immutability is embraced in React and its ecosystem. That's why `const` should be your default choice when you define a variable. Still, in complex objects the values within can get modified. Be careful about this behavior.
+但是，不同的声明方式应该在什么时候使用呢？有很多的选择。我的建议是在任何你可以使用`const`的时候使用它。尽管对象和数组里面的内容可以被改变，但是使用`const`声明的变量数据结构是不可变的。而如果你想要改变你的变量，就使用`let`去声明它。
 
-In your application, you should use `const` over `var`.
+> Immutability is embraced in React and its ecosystem. That's why `const` should be your default choice when you define a variable. Still, in complex objects the values within can get modified. Be careful about this behavior.
+
+React和它的生态是拥抱不可变的。这就是为什么`const`应该是你定义一个变量时的默认选择。当然，一个复杂的对象中的内容还是可能会被改变，请当心这种改变。
+
+> In your application, you should use `const` over `var`.
+
+在你的应用中，你应该用`const`来代替`var`。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -389,13 +408,21 @@ class App extends Component {
 export default App;
 ~~~~~~~~
 
-### Exercises:
+> ### Exercises:
 
-* read more about [ES6 const](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const)
-* read more about [ES6 let](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let)
-* research more about immutable data structures
-  * why do they make sense in programming in general
-  * why are they used in React and its ecosystem
+### 练习:
+
+> * read more about [ES6 const](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const)
+> * read more about [ES6 let](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let)
+> * research more about immutable data structures
+>   * why do they make sense in programming in general
+>   * why are they used in React and its ecosystem
+
+* 阅读更多关于[ES6 const](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const)的内容
+* 阅读更多关于[ES6 let](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let)的内容
+* 研究更多关于不可变数据结构的内容
+  * 在通常情况下，为什么他们是有意义的
+  * 为什么他们会被React和它的生态使用
 
 ## ReactDOM
 
