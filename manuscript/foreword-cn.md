@@ -57,7 +57,7 @@
 
 > **[Thomas Lockney](https://www.goodreads.com/review/show/1880673388):** "Pretty solid introduction to React that doesn't try to be comprehensive. I just wanted a taste to understand what it was about and this book gave me exactly that. I didn't follow all the little footnotes to learn about the new ES6 features I've missed ("I wouldn't say I've been missing it, Bob."). But I'm sure for those of you who have fallen behind and are diligent about following those, you can probably learn a lot more than just what the book teaches."
 
-**[Thomas Lockney](https://www.goodreads.com/review/show/1880673388):** “这是一本非常扎实的介绍React的书，完全不需要其他综合性的内容。我本来只想尝试看看这本书到底怎么样，然后我得出了上面的结论。我并没有跟着所有的脚注来学习我还没有注意到的新的ES6语法（我当然不会说我一直没有注意到，Bob）（译者注，这个是在博客中与另外一个朋友互动的话）。但是我想很肯定的对那些没有及时了解到这些新功能并且很勤奋的跟着练习的朋友们说，你们可以额外学到很多书中没有的知识。”
+**[Thomas Lockney](https://www.goodreads.com/review/show/1880673388):** “这是一本非常扎实的介绍React的书，不会试着把其他的工具混在一起。我本来只想尝试理解看看这本书到底讲了什么，然后我得出了上面的结论。我并没有跟着所有的脚注来学习我还没有注意到的新的ES6语法（我当然不会说我一直没有注意到，Bob）（译者注，这个是在博客中与另外一个朋友互动的话）。但是我想很肯定的对那些没有及时了解到这些新功能并且很勤奋的跟着练习的朋友们说，你们可以额外学到很多书中没有的知识。”
 
 {pagebreak}
 
