@@ -10,7 +10,7 @@ The last chapters will show you how to deploy your application to production. Yo
 
 The following step and knowledge is **not necessary** to deploy your application to production. Still, I want to explain it to you. *create-react-app* comes with one feature to keep it extendable but also to prevent a vendor lock-in. A vendor lock-in usually happens when you buy into a technology but there is no escape hatch of using it in the future. Fortunately in *create-react-app* you have such an escape hatch with "eject".
 
-下面的步骤和知识对部署和上线来说，某种程度上说不是*必须的*。我依然想给你介绍*create-react-app*中的一个特性来让我们的应用保持可拓展性以及避免被外部依赖绑架。有时候我们会遇到为了使用一些第三方技术而导致我们的应用不能被完全掌控的一些情况。幸运的是*create-react-app*提供了一个“eject”命令来让应用依然可以完全被使用者掌控。
+接下来的步骤和知识对于产品环境的部署来说*并不是必须*的。
 
 In your *package.json* you will find the scripts to *start*, *test* and *build* your application. The last script is *eject*. You could try it, but there is no way back. **It is a one-way operation. Once you eject, you can't go back!** If you just started to learn React, it makes no sense to leave the convenient environment of *create-react-app*.
 
