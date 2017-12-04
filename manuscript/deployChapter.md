@@ -1,20 +1,20 @@
 # Final Steps to Production
-# 距离上线部署仅有最后一步
+# 距离上线部署仅有的最后一步
 
 The last chapters will show you how to deploy your application to production. You will use the free hosting service Heroku. On the way to deploy your application, you will learn more about *create-react-app*.
 
-在最后的章节中我们会向你展示如何部署你的应用到产品环境。你可以使用Heroku来免费托管和部署应用，在学习如何部署React应用的同时也可以了解更多create-react-app的相关特性。
+在最后的章节中我们会向你展示如何部署你的应用到产品环境。你可以使用Heroku来免费托管和部署应用，在学习如何部署React应用的同时也可以了解更多*create-react-app*的相关特性。
 
 ## Eject
 ## 弹出
 
 The following step and knowledge is **not necessary** to deploy your application to production. Still, I want to explain it to you. *create-react-app* comes with one feature to keep it extendable but also to prevent a vendor lock-in. A vendor lock-in usually happens when you buy into a technology but there is no escape hatch of using it in the future. Fortunately in *create-react-app* you have such an escape hatch with "eject".
 
-下面的步骤和知识对部署和上线来说，某种程度上说不是*必须的*。我依然想给你介绍*create-react-app*中的一个特性来让我们的应用保持可拓展性以及避免被外部依赖绑架。有时候我们会遇到为了使用一些第三方技术而导致我们的应用不能被完全掌控的一些情况。幸运的是*create-react-app*提供了一个“eject”命令来让应用依然可以完全使用者掌控。
+下面的步骤和知识对部署和上线来说，某种程度上说不是*必须的*。我依然想给你介绍*create-react-app*中的一个特性来让我们的应用保持可拓展性以及避免被外部依赖绑架。有时候我们会遇到为了使用一些第三方技术而导致我们的应用不能被完全掌控的一些情况。幸运的是*create-react-app*提供了一个“eject”命令来让应用依然可以完全被使用者掌控。
 
 In your *package.json* you will find the scripts to *start*, *test* and *build* your application. The last script is *eject*. You could try it, but there is no way back. **It is a one-way operation. Once you eject, you can't go back!** If you just started to learn React, it makes no sense to leave the convenient environment of *create-react-app*.
 
-在你的*package.json*中你可以找到命令“start”、“test”、“build”去启动、测试、构建应用。在最后一个命令是*eject*。你可以试着去执行它，但是这个命令只能被执行一次并且不能撤回。*这是一个破坏性的命令，一旦执行就不能反悔*，如果你只是学习React使用了这个命令将会丢失*create-react-app*提供的那些便利功能。
+在你的*package.json*中你可以找到命令“start”、“test”、“build”去启动、测试、构建应用。在最后一个命令是*eject*。你可以试着去执行它，但是这个命令只能被执行一次并且不能撤回。*这是一个破坏性的命令，一旦执行就不能反悔*，如果你只是学习React，使用了这个命令将会丢失*create-react-app*提供的那些便利功能。
 
 If you would run `npm run eject`, the command would copy all the configuration and dependencies to your *package.json* and a new *config/* folder. You would convert the whole project into a custom setup with tooling that includes Babel and Webpack. After all, you would have full control over all these tools.
 
@@ -37,7 +37,7 @@ The official documentation says that *create-react-app* is suitable for small to
 In the end, no application should stay on localhost. You want to go live. Heroku is a platform as a service where you can host your application. They offer a seamless integration with React. To be more specific: It's possible to deploy a *create-react-app* in minutes. It is a zero-configuration deployment which follows the philosophy of *create-react-app*.
 
 最后，没有应用只是满足于放到本地环境。如果你想发布你的成果到线上，Heroku是一个PASS服务，可以托管你的应用。他们
-提供了和React的无缝集成，甚至可能在几分钟内部署一个用*create-react-app*创建的应用。只要遵守*create-react-app*设计原则就可以零配置的部署。
+提供了和React的无缝集成，甚至可能在几分钟内部署一个用*create-react-app*创建的应用。只要遵守*create-react-app*设计原则就可以实现零配置的部署。
 
 You need to fulfill two requirements before you can deploy your application to Heroku:
 
