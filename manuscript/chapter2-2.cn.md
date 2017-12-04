@@ -1031,7 +1031,7 @@ string.includes(pattern)
 
 >Another neat refactoring can be done with an ES6 arrow function again. It makes the function more concise:
 
-另一个整洁的重构可以用 ES6 箭头函数完成，它可以是函数更加整洁:
+另一个优雅的重构可以用 ES6 箭头函数完成，它可以让函数更加整洁:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -1093,9 +1093,12 @@ class App extends Component {
 >* read more about [higher order functions](https://en.wikipedia.org/wiki/Higher-order_function)
 * 阅读更多 [高阶函数](https://en.wikipedia.org/wiki/Higher-order_function) 相关内容
 
-## ES6 Destructuring
+>## ES6 Destructuring
+## ES6 解构
 
-There is a way in JavaScript ES6 for an easier access to properties in objects and arrays. It's called destructuring. Compare the following snippet in JavaScript ES5 and ES6.
+>There is a way in JavaScript ES6 for an easier access to properties in objects and arrays. It's called destructuring. Compare the following snippet in JavaScript ES5 and ES6.
+
+在 JavaScript ES6 中有一种更方便的方法来访问对象和数组的属性，叫做解构。比较下面 JavaScript ES5 和 ES6 的代码片段。
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -1118,7 +1121,9 @@ console.log(firstname + ' ' + lastname);
 // output: Robin Wieruch
 ~~~~~~~~
 
-While you have to add an extra line each time you want to access an object property in JavaScript ES5, you can do it in one line in JavaScript ES6. A best practice for readability is to use multilines when you destructure an object into multiple properties.
+>While you have to add an extra line each time you want to access an object property in JavaScript ES5, you can do it in one line in JavaScript ES6. A best practice for readability is to use multilines when you destructure an object into multiple properties.
+
+在 JavaScript ES5 中每次访问对象的属性都需要额外添加一行代码，但在 JavaScript ES6 中可以在一行中进行。可读性最好的方法是在将对象解构成多个属性时使用多行。
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -1128,7 +1133,9 @@ const {
 } = user;
 ~~~~~~~~
 
-The same goes for arrays. You can destructure them too. Again, multilines will keep your code scannable and readable.
+>The same goes for arrays. You can destructure them too. Again, multilines will keep your code scannable and readable.
+
+对于数组一样可以使用解构，同样，多行代码会使你的代码保持可读性。
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -1143,7 +1150,9 @@ console.log(userOne, userTwo, userThree);
 // output: Robin Andrew Dan
 ~~~~~~~~
 
-Perhaps you have noticed that the local state object in the App component can get destructured the same way. You can shorten the filter and map line of code.
+>Perhaps you have noticed that the local state object in the App component can get destructured the same way. You can shorten the filter and map line of code.
+
+也许你已经注意到，程序组件内的状态对象也可以使用同样的方式解构，你可以让 map 和 filter 部分的代码更简短。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1163,7 +1172,9 @@ Perhaps you have noticed that the local state object in the App component can ge
     );
 ~~~~~~~~
 
-You can do it the ES5 or ES6 way:
+>You can do it the ES5 or ES6 way:
+
+你可以使用 ES5 或者 ES6 的方式来做：
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -1175,21 +1186,36 @@ var list = this.state.list;
 const { searchTerm, list } = this.state;
 ~~~~~~~~
 
-But since the book uses JavaScript ES6 most of the time, you should stick to it.
+>But since the book uses JavaScript ES6 most of the time, you should stick to it.
 
-### Exercises:
+由于这本书大部分时候都使用了 JavaScript ES6，所以你应该坚持使用它。
 
-* read more about [ES6 destructuring](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
+>### Exercises:
+### 练习：
 
-## Controlled Components
+>* read more about [ES6 destructuring](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
 
-You already learned about the unidirectional data flow in React. The same law applies for the input field, which updates the local state with the `searchTerm` in order to filter the list. When the state changes, the `render()` method runs again and uses the recent `searchTerm` from the local state to apply the filter condition.
+* 阅读更多[ES6 解构](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)的相关内容
 
-But didn't we forget something in the input element? A HTML input tag comes with a `value` attribute. The value attribute usually has the value that is shown in the input field. In this case it would be the `searchTerm` property. However, it seems like we don't need that in React.
+>## Controlled Components
 
-That's wrong. Form elements such as `<input>`, `<textarea>` and `<select>` hold their own state in plain HTML. They modify the value internally once someone changes it from the outside. In React that's called an **uncontrolled component**, because it handles its own state. In React, you should make sure to make those elements **controlled components**.
+## 受控组件
 
-How should you do that? You only have to set the value attribute of the input field. The value is already saved in the `searchTerm` state property. So why not access it from there?
+>You already learned about the unidirectional data flow in React. The same law applies for the input field, which updates the local state with the `searchTerm` in order to filter the list. When the state changes, the `render()` method runs again and uses the recent `searchTerm` from the local state to apply the filter condition.
+
+你已经了解了 React 中的单向数据流, 同样的规则适用于更新本地状态 `searchTerm` 来过滤列表的输入框。当状态变化时，`render()` 方法将再次运行，并使用最新状态中的`searchTerm` 值来作为过滤条件。
+
+>But didn't we forget something in the input element? A HTML input tag comes with a `value` attribute. The value attribute usually has the value that is shown in the input field. In this case it would be the `searchTerm` property. However, it seems like we don't need that in React.
+
+但是我们是否忘记了输入元素的一些东西？一个 HTML 输入标签带有一个 `value` 属性，这个属性通常有一个值作为输入框的显示，在本例中，它是 `searchTerm` 属性。然而，看起来我们在 React 好像并不需要它。
+
+>That's wrong. Form elements such as `<input>`, `<textarea>` and `<select>` hold their own state in plain HTML. They modify the value internally once someone changes it from the outside. In React that's called an **uncontrolled component**, because it handles its own state. In React, you should make sure to make those elements **controlled components**.
+
+这是错误的，表单元素比如 `<input>`, `<textarea>` 和 `<select>` 会以原生 HTML 的形式保存他们自己的状态。一旦有人从外部做了一些修改，它们就会修改内部的值，在 React 中这被称为**不受控组件**，因为它们自己处理状态。在 React 中，你应该确保这些元素变为**受控组件**
+
+>How should you do that? You only have to set the value attribute of the input field. The value is already saved in the `searchTerm` state property. So why not access it from there?
+
+你应该怎么做呢？你只需要设置输入框的值属性，这个值已经在 `searchTerm` 状态属性中保存了，那么为什么不从这里访问呢？
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1217,13 +1243,20 @@ class App extends Component {
 }
 ~~~~~~~~
 
-That's it. The unidirectional data flow loop for the input field is self-contained now. The internal component state is the single source of truth for the input field.
+>That's it. The unidirectional data flow loop for the input field is self-contained now. The internal component state is the single source of truth for the input field.
 
-The whole internal state management and unidirectional data flow might be new to you. But once you are used to it, it will be your natural flow to implement things in React. In general, React brought a novel pattern with the unidirectional data flow to the world of single page applications. It is adopted by several frameworks and libraries by now.
+就是这样。现在输入框的单项数据流循环是自包含的，组件内部状态是输入框的唯一数据来源。
 
-### Exercises:
+>The whole internal state management and unidirectional data flow might be new to you. But once you are used to it, it will be your natural flow to implement things in React. In general, React brought a novel pattern with the unidirectional data flow to the world of single page applications. It is adopted by several frameworks and libraries by now.
 
-* read more about [React forms](https://facebook.github.io/react/docs/forms.html)
+整个内部状态管理和单向数据流可能对你来说比较新，但你一旦习惯了它，你就会自然而然的在 React 中实现它。一般来说，React 带来一种新的模式，将单向数据流引入到单页面应用的生态中，到目前为止，它已经被几个框架和库所采用。
+
+>### Exercises:
+### 练习
+
+>* read more about [React forms](https://facebook.github.io/react/docs/forms.html)
+
+* 阅读更多[React 表单](https://facebook.github.io/react/docs/forms.html)相关内容
 
 ## Split Up Components
 
