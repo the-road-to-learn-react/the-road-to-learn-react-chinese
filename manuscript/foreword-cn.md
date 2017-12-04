@@ -3,7 +3,7 @@
 
 > The Road to learn React teaches you the fundamentals of React. You will build a real world application along the way in plain React without complicated tooling. Everything from project setup to deployment on a server will be explained. The book comes with additional referenced reading material and exercises with each chapter. After reading the book, you will be able to build your own applications in React. The material is kept up to date by me, Robin Wieruch, and the community.
 
-《》会教您一些React的基础知识。通过这套教程，您可以用纯React构建一个真正可用的应用程序，而不需要去理会其他复杂的工具。我将为您注意介绍从开发环境的准备到部署上线的全部过程。本书每一章都包含一些额外的索引资料以及课后练习。在读完本书之后，您会有能力依靠自己构建一个React应用。我，Robin Wieruch，以及整个社区会维护和更新这些资料。
+《》会教您一些React的基础知识。通过这套教程，您可以用纯React构建一个真正可用的应用程序，而不需要去理会其他复杂的工具。我将为您逐一介绍从开发环境的准备到部署上线的全部过程。本书每一章都包含一些额外的索引资料以及课后练习。在读完本书之后，您会有能力依靠自己构建一个React应用。我，Robin Wieruch，以及整个社区会维护和更新这些资料。
 
 > In the Road to learn React, I want to offer a foundation before you start to dive into the broader React ecosystem. It has less tooling and less external state management, but a lot of information around React. It explains general concepts, patterns and best practices in a real world React application.
 
