@@ -535,9 +535,12 @@ If the repetitive binding in the constructor annoys you, you can go ahead with t
 
 * try the different approaches of bindings and console log the `this` object
 
-## Event Handler 事件处理
+>## Event Handler 
+## 事件处理
 
-The chapter should give you a deeper understanding of event handlers in elements. In your application, you are using the following button element to dismiss an item from the list. 本章节会让你对元素的事件处理有更深入的了解，在你的应用程序中，你使用下面的按钮来从列表中忽略一项内容
+>The chapter should give you a deeper understanding of event handlers in elements. In your application, you are using the following button element to dismiss an item from the list. 
+
+本章节会让你对元素的事件处理有更深入的了解，在你的应用程序中，你使用下面的按钮来从列表中忽略一项内容
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -553,7 +556,9 @@ The chapter should give you a deeper understanding of event handlers in elements
 ...
 ~~~~~~~~
 
-That's already a complex use case, because you have to pass a value to the class method and thus you have to wrap it into another (arrow) function. So basically, it has to be a function that is passed to the event handler. The following code wouldn't work, because the class method would be executed immediately when you open the application in the browser. 这已经是一个复杂的例子了，因为你必须传递一个参数到类的方法，因此你需要将它封装到另一个(箭头)函数中，基本上，它必须是一个调用事件处理的函数。下面的代码不会工作，因为类方法会在浏览器中打开程序时立即执行。
+>That's already a complex use case, because you have to pass a value to the class method and thus you have to wrap it into another (arrow) function. So basically, it has to be a function that is passed to the event handler. The following code wouldn't work, because the class method would be executed immediately when you open the application in the browser. 
+
+这已经是一个复杂的例子了，因为你必须传递一个参数到类的方法，因此你需要将它封装到另一个(箭头)函数中，基本上，它必须是一个调用事件处理的函数。下面的代码不会工作，因为类方法会在浏览器中打开程序时立即执行。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -569,9 +574,13 @@ That's already a complex use case, because you have to pass a value to the class
 ...
 ~~~~~~~~
 
-When using `onClick={doSomething()}`, the `doSomething()` function would execute immediately when you open the application in your browser. The expression in the handler is evaluated. Since the returned value of the function isn't a function anymore, nothing would happen when you click the button. But when using `onClick={doSomething}` whereas `doSomething` is a function, it would be executed when clicking the button. The same rules apply for the `onDismiss()` class method that is used in your application. 当使用 `onClick={doSomething()}` 时，`doSomething()` 函数会在浏览器打开程序时立即执行，监听表达式是函数执行的返回值而不再是函数，所以点击按钮时不会有任何事发生。但当使用 `onClick={doSomething}` 时，因为 `doSomething` 是一个函数，所以它会在点击按钮时执行。同样的规则也适用于在程序中使用的 `onDismiss()` 类方法。
+>When using `onClick={doSomething()}`, the `doSomething()` function would execute immediately when you open the application in your browser. The expression in the handler is evaluated. Since the returned value of the function isn't a function anymore, nothing would happen when you click the button. But when using `onClick={doSomething}` whereas `doSomething` is a function, it would be executed when clicking the button. The same rules apply for the `onDismiss()` class method that is used in your application. 
 
-However, using `onClick={this.onDismiss}` wouldn't suffice, because somehow the `item.objectID` property needs to be passed to the class method to identify the item that is going to be dismissed. That's why it can be wrapped into another function to sneak in the property. The concept is called higher order functions in JavaScript and will be explained briefly later on. 然而，使用 `onClick={this.onDismiss}` 并不够，因为 `item.objectID` 属性需要传递给类方法来识别那个将要被忽略的项，这就是为什么它需要被封装到另一个函数中来传递这个属性。这个概念在 JavaScript 中被称为高阶函数，稍后会做简要解释。
+当使用 `onClick={doSomething()}` 时，`doSomething()` 函数会在浏览器打开程序时立即执行，监听表达式是函数执行的返回值而不再是函数，所以点击按钮时不会有任何事发生。但当使用 `onClick={doSomething}` 时，因为 `doSomething` 是一个函数，所以它会在点击按钮时执行。同样的规则也适用于在程序中使用的 `onDismiss()` 类方法。
+
+>However, using `onClick={this.onDismiss}` wouldn't suffice, because somehow the `item.objectID` property needs to be passed to the class method to identify the item that is going to be dismissed. That's why it can be wrapped into another function to sneak in the property. The concept is called higher order functions in JavaScript and will be explained briefly later on. 
+
+然而，使用 `onClick={this.onDismiss}` 并不够，因为 `item.objectID` 属性需要传递给类方法来识别那个将要被忽略的项，这就是为什么它需要被封装到另一个函数中来传递这个属性。这个概念在 JavaScript 中被称为高阶函数，稍后会做简要解释。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -587,7 +596,9 @@ However, using `onClick={this.onDismiss}` wouldn't suffice, because somehow the 
 ...
 ~~~~~~~~
 
-A workaround would be to define the wrapping function somewhere outside and only pass the defined function to the handler. Since it needs access to the individual item, it has to live in the inside of the map function block. 一个解决方案事在外部定义一个包装函数，并且只将定义的函数传递给处理程序。因为它需要访问单独的项，所以它必须位于 map 函数块的内部。
+>A workaround would be to define the wrapping function somewhere outside and only pass the defined function to the handler. Since it needs access to the individual item, it has to live in the inside of the map function block. 
+
+一个解决方案事在外部定义一个包装函数，并且只将定义的函数传递给处理程序。因为它需要访问单独的项，所以它必须位于 map 函数块的内部。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -632,7 +643,9 @@ class App extends Component {
 }
 ~~~~~~~~
 
-After all, it has to be a function that is passed to the element's handler. As an example, try this code instead: 毕竟，它必须是一个传递给元素处理程序的函数。作为一个示例，请尝试以下代码：
+>After all, it has to be a function that is passed to the element's handler. As an example, try this code instead: 
+
+毕竟，它必须是一个传递给元素处理程序的函数。作为一个示例，请尝试以下代码：
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -663,7 +676,9 @@ class App extends Component {
 }
 ~~~~~~~~
 
-It will run when you open the application in the browser but not when you click the button. Whereas the following code would only run when you click the button. It is a function that is executed when you trigger the handler. 它将会在你在浏览器打开程序时执行，但点击按钮时并不会。而下面的代码只会在点击按钮时执行。它是一个在触发事件时才会执行的函数。
+>It will run when you open the application in the browser but not when you click the button. Whereas the following code would only run when you click the button. It is a function that is executed when you trigger the handler. 
+
+它将会在你在浏览器打开程序时执行，但点击按钮时并不会。而下面的代码只会在点击按钮时执行。它是一个在触发事件时才会执行的函数。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -683,7 +698,9 @@ It will run when you open the application in the browser but not when you click 
 ...
 ~~~~~~~~
 
-In order to keep it concise, you can transform it into a JavaScript ES6 arrow function again. That's what we did with the `onDismiss()` class method too. 为了保持简洁，你可以把它转成一个 JavaScript ES6 的箭头函数。和我们在 `onDismiss()` 类方法时做的一样。
+>In order to keep it concise, you can transform it into a JavaScript ES6 arrow function again. That's what we did with the `onDismiss()` class method too. 
+
+为了保持简洁，你可以把它转成一个 JavaScript ES6 的箭头函数。和我们在 `onDismiss()` 类方法时做的一样。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -701,7 +718,9 @@ In order to keep it concise, you can transform it into a JavaScript ES6 arrow fu
 ...
 ~~~~~~~~
 
-Often newcomers to React have difficulties with the topic of using functions in event handlers. That's why I tried to explain it in more detail here. In the end, you should end up with the following code in your button to have a concisely inlined JavaScript ES6 arrow function that has access to the `objectID` property of the `item` object. 经常会有 React 初学者在事件处理中使用函数遇到困难，这就是为什么我要在这里更详细的解释它。最后，你应该使用下面的代码来拥有一个可以访问 `item` 对象的 `objectID` 属性简洁的内联 JavaScript ES6 箭头函数。
+>Often newcomers to React have difficulties with the topic of using functions in event handlers. That's why I tried to explain it in more detail here. In the end, you should end up with the following code in your button to have a concisely inlined JavaScript ES6 arrow function that has access to the `objectID` property of the `item` object. 
+
+经常会有 React 初学者在事件处理中使用函数遇到困难，这就是为什么我要在这里更详细的解释它。最后，你应该使用下面的代码来拥有一个可以访问 `item` 对象的 `objectID` 属性简洁的内联 JavaScript ES6 箭头函数。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -732,11 +751,15 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Another performance relevant topic, that is often mentioned, are the implications of using arrow functions in event handlers. For instance, the `onClick` handler for the `onDismiss()` method is wrapping the method in another arrow function to be able to pass the item identifier. So every time the `render()` method runs, the handler instantiates the higher order arrow function. It *can* have an impact on your application performance, but in most cases you will not notice it. Imagine you have a huge table of data with 1000 items and each row or column has such an arrow function in an event handler. Then it is worth to think about the performance implications and therefore you could implement a dedicated Button component to bind the method in the constructor. But before that happens it is premature optimization. It is more valuable to focus on learning React itself. 另一个性能相关的话题会经常被提到是在事件处理程序中使用箭头函数的影响。例如，`onClick` 事件处理中的 `onDismiss()` 方法被封装在另一个箭头函数中以便能传递项标识。因此每次 `render()` 执行时，事件处理程序就会实例化一个高阶箭头函数，它可能会对你的程序性能产生影响，但在大多数情况下你都不会注意到这个问题。假设你有一个包含1000个项目的巨大数据表，每一行或者列在事件处理程序中都有这样一个箭头函数，这个时候就需要考虑性能影响，因此你可以实现一个专用的按钮组件来在构造函数中绑定方法，但这是一个不成熟的优化。在现在，专注到学习 React 会更有价值。
+>Another performance relevant topic, that is often mentioned, are the implications of using arrow functions in event handlers. For instance, the `onClick` handler for the `onDismiss()` method is wrapping the method in another arrow function to be able to pass the item identifier. So every time the `render()` method runs, the handler instantiates the higher order arrow function. It *can* have an impact on your application performance, but in most cases you will not notice it. Imagine you have a huge table of data with 1000 items and each row or column has such an arrow function in an event handler. Then it is worth to think about the performance implications and therefore you could implement a dedicated Button component to bind the method in the constructor. But before that happens it is premature optimization. It is more valuable to focus on learning React itself. 
+
+另一个性能相关的话题会经常被提到是在事件处理程序中使用箭头函数的影响。例如，`onClick` 事件处理中的 `onDismiss()` 方法被封装在另一个箭头函数中以便能传递项标识。因此每次 `render()` 执行时，事件处理程序就会实例化一个高阶箭头函数，它可能会对你的程序性能产生影响，但在大多数情况下你都不会注意到这个问题。假设你有一个包含1000个项目的巨大数据表，每一行或者列在事件处理程序中都有这样一个箭头函数，这个时候就需要考虑性能影响，因此你可以实现一个专用的按钮组件来在构造函数中绑定方法，但这是一个不成熟的优化。在现在，专注到学习 React 会更有价值。
 
 ### Exercises: 练习：
 
-* try the different approaches of using functions in the `onClick` handler of your button 在按钮的 `onClick` 处理程序中尝试使用函数的不同方法
+* try the different approaches of using functions in the `onClick` handler of your button 
+
+>尝试在按钮的 `onClick` 处理程序中使用函数的不同方法
 
 ## Interactions with Forms and Events
 
