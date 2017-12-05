@@ -1,28 +1,51 @@
-# Getting Real with an API
+# Getting Real with an API 使用真实的API
 
 Now it's time to get real with an API, because it can get boring to deal with sample data.
 
+现在是时候使用真实的API了，因为老是处理样本数据会变得很无聊。
+
 If you are not familiar with APIs, I encourage you [to read my journey where I got to know APIs](https://www.robinwieruch.de/what-is-an-api-javascript/).
+
+如果你对APIs不熟悉，我建议你[去读读我的博客，里面有关于我是怎样了解APIs的](https://www.robinwieruch.de/what-is-an-api-javascript/)。
 
 Do you know the [Hacker News](https://news.ycombinator.com/) platform? It's a great news aggregator about tech topics. In this book, you will use the Hacker News API to fetch trending stories from the platform. There is a [basic](https://github.com/HackerNews/API) and [search](https://hn.algolia.com/api) API to get data from the platform. The latter one makes sense in the case of this application in order to search stories on Hacker News. You can visit the API specification to get an understanding of the data structure.
 
-## Lifecycle Methods
+你知道[Hacker News](https://news.ycombinator.com/)这个平台吗？他是一个很棒的技术话题整合平台。在本书中，你将使用它的API来获取时事报道。这里有一个[basic](https://github.com/HackerNews/API)API和一个[search](https://hn.algolia.com/api)API用来从平台获取数据。后者让我们的应用通过Hacker News搜索报道成为可能。同时你可以通过访问API的说明来理解它的数据结构。
+
+## Lifecycle Methods 生命周期方法
 
 You will need to know about React lifecycle methods before you can start to fetch data in your components by using an API. These methods are a hook into the lifecycle of a React component. They can be used in ES6 class components, but not in functional stateless components.
 
+在你开始在组件中通过API来获取数据之前，你需要知道React的生命周期方法。这些方法是嵌入React组件中的一组挂钩。它们可以在ES6类组件中使用，但是不能在无状态组件中使用。
+
 Do you remember when a previous chapter taught you about JavaScript ES6 classes and how they are used in React? Apart from the `render()` method, there are several methods that can be overridden in a React ES6 class component. All of these are the lifecycle methods. Let's dive into them:
+
+你还记得前一章中讲过的JavaScript ES6类并且他们是怎么在React中使用的吗？除了`render()`方法外，还有几种方法可以在React ES6类组件中被复写。所有的这些方法都是生命周期方法。现在让我们来深入了解他们：
 
 You already know two lifecycle methods that can be used in an ES6 class component: `constructor()` and `render()`.
 
+通过之前的学习，你已经知道两种能够用在ES6类组件中的生命周期方法：`constructor()` 和 `render()`。
+
 The constructor is only called when an instance of the component is created and inserted in the DOM. The component gets instantiated. That process is called mounting of the component.
+
+constructor（构造函数）只有在一个组件实例化并插入到DOM中的时候才会被调用。组件被实例化的过程被称作组件的挂载。
 
 The `render()` method is called during the mount process too, but also when the component updates. Each time when the state or the props of a component change, the `render()` method of the component is called.
 
+`render()` 方法也会在组件挂载的过程中被调用，同时当组件更新的时候也会被调用。每当组件的状态（state）或者属性（props）改变时，组件的`render()`方法都会被调用。
+
+
 Now you know more about the two lifecycle methods and when they are called. You already used them as well. But there are more of them.
+
+现在对于这两个生命周期方法你知道了更多而且也知道他们什么时候会被调用了。你也已经在前面的学习中使用过他们。但是React里还有更多的生命周期方法。
 
 The mounting of a component has two more lifecycle methods: `componentWillMount()` and `componentDidMount()`. The constructor is called first, `componentWillMount()` gets called before the `render()` method and `componentDidMount()` is called after the `render()` method.
 
+一个组件的挂载中还另外两个生命周期方法被调用：`componentWillMount()` 和 `componentDidMount()`。在这四个方法中，首先被调用的是构造函数（constructor）其次是`componentWillMount()`，再者是`render()` ，最后是`componentDidMount()`。
+
 Overall the mounting process has 4 lifecycle methods. They are invoked in the following order:
+
+总而言之在挂载过程中，这四个方法的调用顺序是这样的：
 
 * constructor()
 * componentWillMount()
@@ -30,6 +53,8 @@ Overall the mounting process has 4 lifecycle methods. They are invoked in the fo
 * componentDidMount()
 
 But what about the update lifecycle of a component that happens when the state or the props change? Overall it has 5 lifecycle methods in the following order:
+
+但是当组件的状态（state）或者属性（props）改变的时候用来更新组件的生命周期是什么样的呢？总的来说React有5个生命周期方法来处理更新，他们以下面的顺序先后被调用：
 
 * componentWillReceiveProps()
 * shouldComponentUpdate()
@@ -39,41 +64,74 @@ But what about the update lifecycle of a component that happens when the state o
 
 Last but not least there is the unmounting lifecycle. It has only one lifecycle method: `componentWillUnmount()`.
 
+最后但并非最不重要的是卸载生命周期。它只有一个生命周期方法：`componentWillUnmount()`。
+
 After all, you don't need to know all of these lifecycle methods from the beginning. It can be intimidating yet you will not use all of them. Even in a larger React application you will only use a few of them apart from the `constructor()` and the `render()` method. Still, it is good to know that each lifecycle method can be used for specific use cases:
+
+要知道，你不用一开始就知道所有的生命周期方法，那样可能会吓到你，然而你将不会全部使用它们。即使在一个很大的React应用当中你也只会用到一小部分除了 `constructor()` 和`render()`的生命周期函数。不过，了解每个生命周期方法在什么特定的时候被调用将对你有所帮助：
 
 * **constructor(props)** - It is called when the component gets initialized. You can set an initial component state and bind class methods during that lifecycle method.
 
+* **constructor(props)** - 它在组件初始化时被调用。在这个方法中，你可以设置初始化状态以及绑定类方法。
+
 * **componentWillMount()** - It is called before the `render()` lifecycle method. That's why it could be used to set internal component state, because it will not trigger a second rendering of the component. Generally it is recommended to use the `constructor()` to set the initial state.
+
+* **componentWillMount()** - 它在`render()`方法被调用之前调用。这就是为什么它可以被用作去设置组件内部的状态，因为它不会触发组件的再次渲染。一般来说推荐在`constructor()`中去设置初始化状态。
 
 * **render()** - The lifecycle method is mandatory and returns the elements as an output of the component. The method should be pure and therefore shouldn't modify the component state. It gets an input as props and state and returns an element.
 
+* **render()** - 这个生命周期方法是强制性的，作为组件的输出它返回（需要渲染的）元素。这个方法应该是一个纯函数因此不应该在这个方法中修改组件的状态。它把属性和状态作为输入并且返回（需要渲染的）元素
+
 * **componentDidMount()** - It is called only once when the component mounted. That's the perfect time to do an asynchronous request to fetch data from an API. The fetched data would get stored in the internal component state to display it in the `render()` lifecycle method.
+
+* **componentDidMount()** - 它只有当组件渲染过后才会被立刻调用。这是发起异步请求去从一个API获取数据的绝佳时期。获取到的数据将被保存在内部组件的状态中然后在`render()`生命周期方法中展示出来。
 
 * **componentWillReceiveProps(nextProps)** - The lifecycle method is called during an update lifecycle. As input you get the next props. You can diff the next props with the previous props, by using `this.props`, to apply a different behavior based on the diff. Additionally, you can set state based on the next props.
 
+* **componentWillReceiveProps(nextProps)** - 这个方法在一个更新生命周期（update lifecycle）中被调用。它将下一个属性作为输入。利用`this.props`，你可以对比下一个属性和前一个属性，基于对比的结果去实现不同的行为。此外，你可以基于下一个属性来设置组件的状态
+
 * **shouldComponentUpdate(nextProps, nextState)** - It is always called when the component updates due to state or props changes. You will use it in mature React applications for performance optimizations. Depending on a boolean that you return from this lifecycle method, the component and all its children will render or will not render on an update lifecycle. You can prevent the render lifecycle method of a component.
+
+* **shouldComponentUpdate(nextProps, nextState)** - 它总是在组件因为状态或者属性改变而更新时被调用。你将在成熟的React应用中使用它来进行性能优化。在一个更新生命周期中，组件以及这个组件所有的子组件将根据这个方法返回的布尔值决定渲染或者不渲染。这样你可以阻止组件的渲染生命周期（render lifecycle）方法，避免不必要的渲染。
 
 * **componentWillUpdate(nextProps, nextState)** - The lifecycle method is immediately invoked before the `render()` method. You already have the next props and next state at your disposal. You can use the method as last opportunity to perform preparations before the render method gets executed. Note that you cannot trigger `setState()` anymore. If you want to compute state based on the next props, you have to use `componentWillReceiveProps()`.
 
+* **componentWillUpdate(nextProps, nextState)** - 这个方法在`render()`被调用之前立即被调用。你已经拥有下一个属性和状态，它们可以在这个方法中任由你处置。你可以利用这个方法在渲染方法被执行前进行最后的准备。注意在这个生命周期方法中你不能再触发`setState()`。如果你想基于下一个属性计算状态，你必须利用`componentWillReceiveProps()`。
+
 * **componentDidUpdate(prevProps, prevState)** - The lifecycle method is immediately invoked after the `render()` method. You can use it as opportunity to perform DOM operations or to perform further asynchronous requests.
+
+* **componentDidUpdate(prevProps, prevState)** - 这个方法在`render()`被调用之后立即被调用。你可以用它作为进行DOM的操作或者执行更多异步请求的机会。
 
 * **componentWillUnmount()** - It is called before you destroy your component. You can use the lifecycle method to perform any clean up tasks.
 
+* **componentWillUnmount()** - 它会在你销毁你的组件之前被调用。你可以利用这个生命周期方法去执行任何清理任务。
+
 The `constructor()` and `render()` lifecycle methods are already used by you. These are the commonly used lifecycle methods for ES6 class components. Actually the `render()` method is required, otherwise you wouldn't return a component instance.
+
+ `constructor()` 和 `render()`生命周期方法已经被你使用过了。对于ES6类组件来说他们是常用的生命周期方法。实际上`render()`是必须有的，否则它将不会返回一个组件实例。
 
 There is one more lifecycle method: `componentDidCatch(error, info)`. It was introduced in [React 16](https://www.robinwieruch.de/what-is-new-in-react-16/) and is used to catch errors in components. For instance, displaying the sample list in your application works just fine. But there could be a case when the list in the local state is set to `null` by accident (e.g. when fetching the list from an external API, but the request failed and you set the local state of the list to null). Afterward, it wouldn't be possible to filter and map the list anymore, because it is `null` and not an empty list. The component would be broken and the whole application would fail. Now, by using `componentDidCatch()`, you can catch the error, store it in your local state, and show an optional message to your application user that an error has happened.
 
-### Exercises:
+还有另一个生命周期方法：`componentDidCatch(error, info)`。它在[React 16](https://www.robinwieruch.de/what-is-new-in-react-16/)中被引进并且用来捕获组件的错误。举例来说，在你的应用中显示样本列表工作的很好。但是这种情况可能会发生，列表本地的状态被意外地设置成`null`（例如当从外部API获取列表时请求失败，然后你设置本地状态为空）。之后，它不可能再去过滤以及映射这个列表，因为它不是空列表而是`null`。这样这个组件就会崩溃然后整个应用就会挂。现在，利用`componentDidCatch()`，你可以捕获错误，将它存在本地的状态中，然后像用户显示一条可选信息，说明应用发生了错误。
+
+### Exercises: 练习：
 
 * read more about [lifecycle methods in React](https://facebook.github.io/react/docs/react-component.html)
 * read more about [the state related to lifecycle methods in React](https://facebook.github.io/react/docs/state-and-lifecycle.html)
 * read more about [error handling in components](https://reactjs.org/blog/2017/07/26/error-handling-in-react-16.html)
+* 阅读更多[React生命周期函数](https://facebook.github.io/react/docs/react-component.html)
+* 阅读更多[React中状态与生命周期函数的关系](https://facebook.github.io/react/docs/state-and-lifecycle.html)
+* 阅读更多[组件错误处理](https://reactjs.org/blog/2017/07/26/error-handling-in-react-16.html)
 
-## Fetching Data
+## Fetching Data 获取数据
 
 Now you are prepared to fetch data from the Hacker News API. There was one lifecycle method mentioned that can be used to fetch data: `componentDidMount()`. You will use the native fetch API in JavaScript to perform the request.
 
+现在你做好了从Hacker News API获取数据的准备。在前文曾提到过的`componentDidMount()`生命周期方法可以用来获取数据。你将使用JavaScript原生的fetch API来发起请求。
+
 Before we can use it, let's set up the URL constants and default parameters to breakup the API request into chunks.
+
+在我们用它之前，让我们设置好URL常量以及默认参数来将API请求分解成块。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -93,6 +151,8 @@ const PARAM_SEARCH = 'query=';
 
 In JavaScript ES6, you can use [template strings](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals) to concatenate strings. You will use it to concatenate your URL for the API endpoint.
 
+在JavaScript ES6中，你可以用[模板字符串（template strings）](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals)去链接字符串。你将用它来拼凑访问API端点的URL。
+
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
 // ES6
@@ -107,7 +167,11 @@ console.log(url);
 
 That will keep your URL composition flexible in the future.
 
+那样就可以保证以后你URL组合的灵活性。
+
 But let's get to the API request where you will use the url. The whole data fetch process will be presented at once, but each step will be explained afterward.
+
+让我们开始使用API请求，在这个请求中将用到上述的网址。整个数据获取的过程在下面代码中一次给出，但是对于每一步之后会有详细的解释。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -157,17 +221,31 @@ class App extends Component {
 
 A lot of things happen in the code. I thought about breaking it into smaller pieces. Then again it would be difficult to grasp the relations of each piece to each other. Let me explain each step in detail.
 
+这段代码做了很多事。我想把它分成更小的代码段。但是那样又会很难去理解每段代码之间的关系。接下来我就来详细解释代码中的每一步。
+
 First, you can remove the sample list of items, because you return a real list from the Hacker News API. The sample data is not used anymore. The initial state of your component has an empty result and default search term now. The same default search term is used in the input field of the Search component and in your first request.
+
+首先，你可以删除这些样本列表了，因为你将从Hacker News API得到一个真实的列表。这些样本数据已经没用了。现在组件将一个空的列表结果以及一个默认的搜索项作为初始状态。这个默认搜索项也同样用在Search组件的输入字段和第一个（API）请求中。
 
 Second, you use the `componentDidMount()` lifecycle method to fetch the data after the component did mount. In the very first fetch, the default search term from the local state is used. It will fetch "redux" related stories, because that is the default parameter.
 
+其次，在组件挂载之后，这里用了`componentDidMount()`生命周期方法去获取数据。在第一次获取数据时，用了在本地状态的默认搜索项。它将获取与“redux”相关的报道，因为它是默认的参数。
+
 Third, the native fetch API is used. The JavaScript ES6 template strings allow it to compose the URL with the `searchTerm`. The URL is the argument for the native fetch API function. The response needs to get transformed to a JSON data structure, which is a mandatory step in a native fetch function when dealing with JSON data structures, and can finally be set as result in the internal component state. In addition, the catch block is used in case of an error. If an error happens during the request, the function will run into the catch block instead of the then block. In a later chapter of the book, you will include the error handling.
+
+第三，这里使用了本地的提取API函数。JavaScript ES6模板字符串允许组件利用`searchTerm`来组成URL。该URL是本地提取API函数的参数。响应需要被转化成JSON的数据结构，这是在处理JSON数据结构时本地获取API函数中的强制步骤，最终可以在内部组件状态中设置为结果。此外，一个catch块用来以防出现错误。如果在发起请求时出现错误，这个函数会进入到catch中而不是then中。在本书之后的章节中，将涵盖错误处理。
 
 Last but not least, don't forget to bind your new component methods in the constructor.
 
-Now you can use the fetched data instead of the sample list of items. However, you have to be careful again. The result is not only a list of data. [It's a complex object with meta information and a list of hits which are in our case the stories](https://hn.algolia.com/api). You can output the internal state with `console.log(this.state);` in your `render()` method to visualize it.
+最后在并不是最不重要的，不要忘记在构造函数中绑定你的组件方法。
+
+Now you can use the fetched data instead of the sample list of items. However, you have to be careful again. The result is not only a list of data. [It's a complex object with meta information and a list of hits which are in our case the stories](https://hn.algolia.com/api). You can output the internal state with `console.log(this.state);` in your `render()` method to visualize it
+
+现在你用获取的数据去代替样本数据了。然而，你必须注意一点，这个结果不仅仅是一个数据的列表。它是一个复杂的对象，[它包含了元信息以及一系列点击，在我们这个应用中这些点击就是报道](https://hn.algolia.com/api)。你可以用`console.log(this.state);`将这些信息在`render()`方法中打印出来。
 
 In the next step, you will use the result to render it. But we will prevent it from rendering anything, so we will return null, when there is no result in the first place. Once the request to the API succeeded, the result is saved to the state and the App component will re-render with the updated state.
+
+在接下来的步骤中，你将把之前的得到的结果渲染出来。但是我们不会把所有得到的数据都渲染出来，所以在刚开始没有拿到结果时，我们会返回空。一旦我们发起的请求成功，结果会保存在状态里，然后APP组件将用更新后的状态重新渲染界面。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -200,15 +278,25 @@ class App extends Component {
 
 Let's recap what happens during the component lifecycle. Your component gets initialized by the constructor. After that, it renders for the first time. But you prevent it from displaying anything, because the result in the local state is null. It is allowed to return null for a component in order to display nothing. Then the `componentDidMount()` lifecycle method runs. In that method you fetch the data from the Hacker News API asynchronously. Once the data arrives, it changes your internal component state in `setSearchTopStories()`. Afterward, the update lifecycle comes into play because the local state was updated. The component runs the `render()` method again, but this time with populated result in your internal component state. The component and thus the Table component with its content will be rendered.
 
+让我们回顾一下在整个组将的生命周期中发生了什么。首先组件通过构造函数得到初始化，之后它将初始化的状态渲染出来。但是当结果为空时组件返回空，这阻止了组件的渲染。React允许组件通过返回null来不渲染任何东西。接着`componentDidMount()` 生命周期函数执行。在这个方法中你从Hacker News API中异步地拿到了数据。一旦数据到达，组件就通过`setSearchTopStories()`函数改变组件内部的状态。之后，因为状态的更新，更新生命周期开始运行。组件再次执行`render()`方法，但这一次内部组件的状态中的结果已经被填充不再为null。因此组件将渲染Table组件的内容。
+
 You used the native fetch API that is supported by most browsers to perform an asynchronous request to an API. The *create-react-app* configuration makes sure that it is supported in every browser. There are third-party node packages that you can use to substitute the native fetch API: [superagent](https://github.com/visionmedia/superagent) and [axios](https://github.com/mzabriskie/axios).
+
+你使用了大多数浏览器支持的本机提取API来执行对API的异步请求。*create-react-app*中的配置保证了它被所有浏览器支持。你也可以使用第三方的库来代替本机提取API：[superagent](https://github.com/visionmedia/superagent) 和 [axios](https://github.com/mzabriskie/axios).
 
 Back to your application: The list of hits should be visible now. However, there are two regression bugs in the application now. First, the "Dismiss" button is broken. It doesn't know about the complex result object and still operates on the plain list from the local state when dismissing an item. Second, when the list is displayed but you try to search for something else, the list gets filtered on the client-side even though the initial search was made by searching for stories on the server-side. The perfect behvaior would be to fetch another result object from the API when using the Search component. Both regression bugs will be fixed in the following chapters.
 
-### Exercises:
+回到你的应用中：现在应该可以看到列表了。然而，现在应用中存在两个回归错误。第一，"Dismiss"按钮不工作。它不知道这个复杂的结果对象，并且在关闭项目时仍然从本地状态的简单列表中操作。第二，当这个列表显示出来之后，你尝试搜索其他的东西，即使初始的报道搜索在服务器端进行，该列表也会在客户端进行过滤。我们期待的行为是当我们使用Search组件时从API拿到另外的结果。两个回归错误都将在之后的章节中得到修复。
+
+### Exercises: 练习
 
 * read more about [ES6 template strings](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals)
 * read more about [the native fetch API](https://developer.mozilla.org/en/docs/Web/API/Fetch_API)
 * read more about [data fetching in React](https://www.robinwieruch.de/react-fetching-data/)
+
+* 阅读更多 [ES6 模板字符串](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals)
+* 阅读更多 [本地提取API](https://developer.mozilla.org/en/docs/Web/API/Fetch_API)
+* 阅读更多 [在React中获取数据](https://www.robinwieruch.de/react-fetching-data/)
 
 ## ES6 Spread Operators
 
