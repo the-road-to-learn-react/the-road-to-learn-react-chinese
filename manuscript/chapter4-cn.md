@@ -395,19 +395,56 @@ import SubmitButton from '../Buttons/SubmitButton';
 
 > * refactor your *src/App.js* file into multiple component modules when you finished the book
 
-## Snapshot Tests with Jest
 
-The book will not dive deeply into the topic of testing, but it shouldn't be unmentioned. Testing your code in programming is essential and should be seen as mandatory. You want to keep the quality of your code high and an assurance that everything works.
 
-Perhaps you have heard about the testing pyramid. There are end-to-end tests, integration tests and unit tests. If you are not familiar with those, the book gives you a quick and basic overview. A unit test is used to test an isolated and small block of code. It can be a single function that is tested by an unit test. However, sometimes the units work well in isolation yet don't work in combination with other units. They need to be tested as a group as units. That's where integration tests can help out by covering whether units work well together. Last but not least, an end-to-end test is the simulation of a real user scenario. It could be an automated setup in a browser simulating the login flow of an user in a web application. While unit tests are fast and easy to write and to maintain, end-to-end tests are the opposite of this spectrum.
+## 快照测试和 Jest
 
-How many tests do I need of each type? You want to have many unit tests to cover your isolated functions. After that, you can have several integration tests to cover that the most important functions work in combination as expected. Last but not least, you might want to have only a few end-to-end tests to simulate critical scenarios in your web application. That's it for the general excursion in the world of testing.
+本书不会深入测试这个话题，但是不得不提一下。在编程中测试代码是基本，并应该被视为必不可少的。你应该想去保持高质量的代码并确保一切如预期般工作。
 
-So how do you apply this knowledge in testing your React application? The foundation for testing in React are component tests which can be generalized as unit tests and a part of it as snapshot tests. You will conduct unit tests for your components in the next chapter by using a library called Enzyme. In this chapter, you will focus on another kind of tests: snapshot tests. That's were Jest comes into play.
+> ## Snapshot Tests with Jest
+>
+> The book will not dive deeply into the topic of testing, but it shouldn't be unmentioned. Testing your code in programming is essential and should be seen as mandatory. You want to keep the quality of your code high and an assurance that everything works.
 
-[Jest](https://facebook.github.io/jest/) is a JavaScript testing framework that is used at Facebook. In the React community, it is used for React component tests. Fortunately *create-react-app* already comes with Jest, so you don't need to worry about setting it up.
 
-Let's start to test your first components. Before you can do that, you have to export the components, which you are going to test, from your *src/App.js* file. Afterward you can test them in a different file. You have learned about this in the code organization chapter.
+
+也许你听过测试金字塔。其中有端到端测试，集成测试和单元测试。如果你对这些不熟悉，本书会简单描述下。单元测试用来测试一块独立的小块代码。它可以是被一个单元测试覆盖的一个函数。然而有时候这个测试单元单独运行得很好，但是结合其他单元会就不能正常工作了。这些单元需要被视为一个组单元。集成测试可以覆盖验证是否这些单元组如预期般工作。最后但不意味不重要，端到端测试是一个真实用户场景的模拟。可能是自动地启动一个浏览器，模拟一个用户在 Web 应用中的登录流程。单元测试相对来说快速而且易于书写和维护，端到端测试反之。
+
+
+
+> Perhaps you have heard about the testing pyramid. There are end-to-end tests, integration tests and unit tests. If you are not familiar with those, the book gives you a quick and basic overview. A unit test is used to test an isolated and small block of code. It can be a single function that is tested by an unit test. However, sometimes the units work well in isolation yet don't work in combination with other units. They need to be tested as a group as units. That's where integration tests can help out by covering whether units work well together. Last but not least, an end-to-end test is the simulation of a real user scenario. It could be an automated setup in a browser simulating the login flow of an user in a web application. While unit tests are fast and easy to write and to maintain, end-to-end tests are the opposite of this spectrum.
+
+
+
+每种测试我们需要多少呢？你需要很多的单元测试去覆盖代码中不同的函数。然后，你需要一些基础测试区覆盖最重要的函数功能联动如预期工作。最后单并非最不重要，你可能需要一点点端到端测试去模拟你 Web 应用程序中的关键情境。这就把测试简单说了一遍。
+
+
+
+> How many tests do I need of each type? You want to have many unit tests to cover your isolated functions. After that, you can have several integration tests to cover that the most important functions work in combination as expected. Last but not least, you might want to have only a few end-to-end tests to simulate critical scenarios in your web application. That's it for the general excursion in the world of testing.
+
+
+
+你应该怎样将这些知识点拿去测试你的 React 测试呢？React 中测试的基础是组件测试，基本可以视作单元测试，和部分的快照测试。在下一章（这不是一章么？？？里面的一节也叫章？？）管理组件相关的测试需要用到一个叫 Enzyme 的库。本章中，你会主要关注另外一种测试：快照测试。这里正好引入 Jest。
+
+
+
+> So how do you apply this knowledge in testing your React application? The foundation for testing in React are component tests which can be generalized as unit tests and a part of it as snapshot tests. You will conduct unit tests for your components in the next chapter by using a library called Enzyme. In this chapter, you will focus on another kind of tests: snapshot tests. That's were Jest comes into play.
+
+
+
+[Jest](https://facebook.github.io/jest/) 是一个在 Facebook 使用的测试框架。在 React 社区，它被用来做 React 的组件测试。幸好 *create-react-app* 已经包含了 Jest，所有你不需要担心启动配置的问题。
+
+
+
+> [Jest](https://facebook.github.io/jest/) is a JavaScript testing framework that is used at Facebook. In the React community, it is used for React component tests. Fortunately *create-react-app* already comes with Jest, so you don't need to worry about setting it up.
+
+
+
+我们开始测试第一个组件吧。在此之前，你需要先将需要测试的组件从 *src/App.js* 导出。之后你可以在利用在代码组织章节的方式在不同的文件里去测试。
+
+
+
+> Let's start to test your first components. Before you can do that, you have to export the components, which you are going to test, from your *src/App.js* file. Afterward you can test them in a different file. You have learned about this in the code organization chapter.
+>
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -430,7 +467,9 @@ export {
 # leanpub-end-insert
 ~~~~~~~~
 
-In your *App.test.js* file, you will find a first test that came with *create-react-app*. It verifies that the App component would render without any errors.
+在 *App.test.js* 文件中，你会可以看到 *create-react-app* 创建的第一个测试。它验证了 App 组件在渲染的时候没有任何错误发生。
+
+> In your *App.test.js* file, you will find a first test that came with *create-react-app*. It verifies that the App component would render without any errors.
 
 {title="src/App.test.js",lang=javascript}
 ~~~~~~~~
@@ -444,32 +483,54 @@ it('renders without crashing', () => {
 });
 ~~~~~~~~
 
-The "it"-block describes one test case. It comes with a test description and when you test it, it can either succeed or fail. Furthermore, you could wrap it into a "describe"-block that defines your test suit. A test suit could include a bunch of the "it"-blocks for one specific component. You will see those "describe"-blocks later on. Both blocks are used to separated and organize your test cases.
+”it” 块描述了一个测试用例。它需要带有一段测试的描述，这个测试块可以成功或者失败。或者你可以将它包裹在一个 ”describe“ 块中来定义一个测试套件。一个测试套件可能包含一系列关于特定组件的 ”it“ 块。在后面你会看到 ”describe“ 块的。这两种块都是用来区分和组织你的测试用例的。
 
-You can run your test cases by using the interactive *create-react-app* test script on the command line. You will get the output for all test cases on your command line interface.
+> The "it"-block describes one test case. It comes with a test description and when you test it, it can either succeed or fail. Furthermore, you could wrap it into a "describe"-block that defines your test suit. A test suit could include a bunch of the "it"-blocks for one specific component. You will see those "describe"-blocks later on. Both blocks are used to separated and organize your test cases.
+
+你可以使用 *create-react-app* 提供的命令行测试脚本来运行测试用例。
+
+> You can run your test cases by using the interactive *create-react-app* test script on the command line. You will get the output for all test cases on your command line interface.
 
 {title="Command Line",lang="text"}
 ~~~~~~~~
 npm test
 ~~~~~~~~
 
-**Note:** If errors show up when you run the single test for the App component for the first time, it could be because of the unsupported fetch method that is used in `fetchSearchTopStories()` which is triggered in `componentDidMount()`. You can make it work by following these two steps:
+**注意**：当你第一次运行 App 组件的测试时，如何碰到了错误，可能是因为是在组件的 `componentDitMount()` 方法中触发的 `fetchSearchTopStories()` 中使用的 fetch 不被支持的原因。你可以通过下面两部解决：
 
-* On the command line, install the following package: `npm install isomorphic-fetch`
-* Include it in your *App.js* file: `import fetch from 'isomorphic-fetch';`
 
-Now Jest enables you to write snapshot tests. These tests make a snapshot of your rendered component and run this snapshot against future snapshots. When a future snapshot changes, you will get notified in the test. You can either accept the snapshot change, because you changed the component implementation on purpose, or deny the change and investigate for the error. It complements unit tests very well, because you only test the diffs of the rendered output. It doesn't add big maintenance costs, because you can simply accept changed snapshots when you changed something on purpose for the rendered output in your component.
 
-Jest stores the snapshots in a folder. Only that way it can validate the diff against a future snapshot. Additionally, the snapshots can be shared across teams by having them in one folder.
 
-Before writing your first snapshot test with Jest, you have to install an utility library.
+> **Note:** If errors show up when you run the single test for the App component for the first time, it could be because of the unsupported fetch method that is used in `fetchSearchTopStories()` which is triggered in `componentDidMount()`. You can make it work by following these two steps:
+
+* 在命令行安装：`npm install isomorphic-fetch`
+* 在你的 *App.js* 引入： `import fetch from 'isomorphic-fetch'`
+
+> * On the command line, install the following package: `npm install isomorphic-fetch`
+> * Include it in your *App.js* file: `import fetch from 'isomorphic-fetch';`
+>
+
+Jest 赋予你写快照测试的能力。这些测试会生成一份渲染好的组件的快照，并在作和未来的快照的比对。当一个未来的测试改变了，测试会给出提示。你可以接受这个快照改变，应用你有意改变了组件实现，或者拒绝这个改变，并且去调查错误。快在测试非常好的和单元测试互补，因为这仅会比对渲染输出的差异。这并不会增加巨额的维护成本，因为你只需要在你有意改变组件中渲染输出的时候接受快照改变。
+
+> Now Jest enables you to write snapshot tests. These tests make a snapshot of your rendered component and run this snapshot against future snapshots. When a future snapshot changes, you will get notified in the test. You can either accept the snapshot change, because you changed the component implementation on purpose, or deny the change and investigate for the error. It complements unit tests very well, because you only test the diffs of the rendered output. It doesn't add big maintenance costs, because you can simply accept changed snapshots when you changed something on purpose for the rendered output in your component.
+
+Jest 将快照保持在一个文件夹中。只有这样它才可以和未来的快照比对。此外这些快照也可以通过一个文件夹共享。
+
+> Jest stores the snapshots in a folder. Only that way it can validate the diff against a future snapshot. Additionally, the snapshots can be shared across teams by having them in one folder.
+
+当你写快照之前，可能需要安装一个工具库。
+
+> Before writing your first snapshot test with Jest, you have to install an utility library.
+>
 
 {title="Command Line",lang="text"}
 ~~~~~~~~
 npm install --save-dev react-test-renderer
 ~~~~~~~~
 
-Now you can extend the App component test with your first snapshot test. First, import the new functionality from the node package and wrap your previous "it"-block for the App component into a descriptive "describe"-block. In this case, the test suit is only for the App component.
+现在你可以用第一份快照测试来扩展 App 组件测试了。第一步，从 node 包中引入新功能，并将之前测试 App 组件的 ”it“ 块包裹在一个描述性的 ”describe“ 块中。这个测试套件仅用来测试 App 组件。
+
+> Now you can extend the App component test with your first snapshot test. First, import the new functionality from the node package and wrap your previous "it"-block for the App component into a descriptive "describe"-block. In this case, the test suit is only for the App component.
 
 {title="src/App.test.js",lang=javascript}
 ~~~~~~~~
@@ -494,7 +555,9 @@ describe('App', () => {
 # leanpub-end-insert
 ~~~~~~~~
 
-Now you can implement your first snapshot test by using a "test"-block.
+现在你可以使用 ”test“ 块来实现第一个快照测试了
+
+> Now you can implement your first snapshot test by using a "test"-block.
 
 {title="src/App.test.js",lang=javascript}
 ~~~~~~~~
@@ -523,11 +586,18 @@ describe('App', () => {
 });
 ~~~~~~~~
 
-Run your tests again and see how the tests either succeed or fail. They should succeed. Once you change the output of the render block in your App component, the snapshot test should fail. Then you can decide to update the snapshot or investigate in your App component.
+重新运行你的测试，看测试是成功还是失败。按理它们应该能成功。一旦你改变了 App 组件中的 render 块的输出，这个测试应该会失败。然后你可以决定是否需要更新快照，或去调查 App 组件。
 
-Basically the `renderer.create()` function creates a snapshot of your App component. It renders it virtually and stores the DOM into a snapshot. Afterward, the snapshot is expected to match the previous snapshot from when you ran your snapshot tests the last time. This way, you can assure that your DOM stays the same and doesn't change anything by accident.
+> Run your tests again and see how the tests either succeed or fail. They should succeed. Once you change the output of the render block in your App component, the snapshot test should fail. Then you can decide to update the snapshot or investigate in your App component.
 
-Let's add more tests for our independent components. First, the Search component:
+基本上 `renderer.create()` 函数会创建一份你的 App 组件的快照。它会模拟渲染，并将 DOM 存储在快照中。之后，会期望这个快照和上传测试运行的快照匹配。使用这种方式，可以确保你的 DOM 保持稳定，不会意外被改变。
+
+> Basically the `renderer.create()` function creates a snapshot of your App component. It renders it virtually and stores the DOM into a snapshot. Afterward, the snapshot is expected to match the previous snapshot from when you ran your snapshot tests the last time. This way, you can assure that your DOM stays the same and doesn't change anything by accident.
+
+我们来给我们的组件添加更多的测试，第一步，Search 组件：
+
+> Let's add more tests for our independent components. First, the Search component:
+>
 
 {title="src/App.test.js",lang=javascript}
 ~~~~~~~~
@@ -560,9 +630,16 @@ describe('Search', () => {
 # leanpub-end-insert
 ~~~~~~~~
 
-The Search component has two tests similar to the App component. The first test simply renders the Search component to the DOM and verifies that there is no error during the rendering process. If there would be an error, the test would break even though there isn't any assertion (e.g. expect, match, equal) in the test block. The second snapshot test is used to store a snapshot of the rendered component and to run it against a previous snapshot. It fails when the snapshot has changed.
+Search 组件中有两个和 App 组件测试中类似的测试。第一个测试简单地渲染 Search 组件成 DOM，并验证这个渲染过程没有错误。如果这里有错误的话，测试会中断，即使测试块中没有任何断言（比如 expect， match， equal ）。第二个快照测试用来渲染组件的存储快照并且和之前的快照做比对。当快照改变了，测试会失败。
 
-Second, you can test the Button component whereas the same test rules as in the Search component apply.
+
+
+接下来，你可以使用在 Search 组件测试方式，去测试 Button 组件。
+
+> The Search component has two tests similar to the App component. The first test simply renders the Search component to the DOM and verifies that there is no error during the rendering process. If there would be an error, the test would break even though there isn't any assertion (e.g. expect, match, equal) in the test block. The second snapshot test is used to store a snapshot of the rendered component and to run it against a previous snapshot. It fails when the snapshot has changed.
+>
+> Second, you can test the Button component whereas the same test rules as in the Search component apply.
+>
 
 {title="src/App.test.js",lang=javascript}
 ~~~~~~~~
@@ -593,7 +670,9 @@ describe('Button', () => {
 # leanpub-end-insert
 ~~~~~~~~
 
-Last but not least, the Table component that you can pass a bunch of initial props to render it with a sample list.
+最后但并非不重要，你可以给表格组件一些初始化的 props 来做渲染一个简单的列表。
+
+> Last but not least, the Table component that you can pass a bunch of initial props to render it with a sample list.
 
 {title="src/App.test.js",lang=javascript}
 ~~~~~~~~
@@ -631,27 +710,49 @@ describe('Table', () => {
 # leanpub-end-insert
 ~~~~~~~~
 
-Snapshot tests usually stay pretty basic. You only want to cover that the component doesn't change its output. Once it changes the output, you have to decide if you accept the changes. Otherwise you have to fix the component when the output is not the desired output.
+快照测试常常就保持这样。只需要确保组件输出不会改变。一旦输出改变了，你必须决定是否接受这个改变。否则当输出和期望输出不符合时，你需要去修复组件。
 
-### Exercises:
+> Snapshot tests usually stay pretty basic. You only want to cover that the component doesn't change its output. Once it changes the output, you have to decide if you accept the changes. Otherwise you have to fix the component when the output is not the desired output.
 
-* see how a snapshot test fails once you change your component's return value in the `render()` method
-  * either accept or deny the snapshot change
-* keep your snapshots tests up to date when the implementation of components change in next chapters
-* read more about [Jest in React](https://facebook.github.io/jest/docs/tutorial-react.html)
+### 练习
 
-## Unit Tests with Enzyme
+* 看下当组件 `render()` 方法的返回值有改变，如何导致测试失败
+  * 接受或者拒绝一个快照变更
+* 在后面章节中，当组件实现有改变时，保持你的快照最新。
+* 读一下 [Jest in React](https://facebook.github.io/jest/docs/tutorial-react.html)
 
-[Enzyme](https://github.com/airbnb/enzyme) is a testing utility by Airbnb to assert, manipulate and traverse your React components. You can use it to conduct unit tests to complement your snapshot tests in React.
+> ### Exercises:
+>
+> * see how a snapshot test fails once you change your component's return value in the `render()` method
+>   * either accept or deny the snapshot change
+> * keep your snapshots tests up to date when the implementation of components change in next chapters
+> * read more about [Jest in React](https://facebook.github.io/jest/docs/tutorial-react.html)
+>
 
-Let's see how you can use enzyme. First you have to install it since it doesn't come by default with *create-react-app*. It comes also with an extension to use it in React.
+
+
+### 单元测试和 Enzyme
+
+[Enzyme](https://github.com/airbnb/enzyme) 是一个由 Airbnb 维护的测试工具，可以用来断言，操作，遍历 React 组件。你可以用它来管理单元测试，在 React 测试中与快照测试互补。
+
+> ## Unit Tests with Enzyme
+>
+> [Enzyme](https://github.com/airbnb/enzyme) is a testing utility by Airbnb to assert, manipulate and traverse your React components. You can use it to conduct unit tests to complement your snapshot tests in React.
+>
+
+我们看看如何使用 Enzyme，第一步，因为 *create-react-app* 并不默认包含，你需要安装它。在 React 中还需要安装一个扩展库。
+
+> Let's see how you can use enzyme. First you have to install it since it doesn't come by default with *create-react-app*. It comes also with an extension to use it in React.
 
 {title="Command Line",lang="text"}
+
 ~~~~~~~~
 npm install --save-dev enzyme react-addons-test-utils enzyme-adapter-react-16
 ~~~~~~~~
 
-Second, you need to include it in your test setup and initialize its Adapter for using it in React.
+第二步，你需要在测试启动配置中引入，并为 React 初始化这个适配器。
+
+> Second, you need to include it in your test setup and initialize its Adapter for using it in React.
 
 {title="src/App.test.js",lang=javascript}
 ~~~~~~~~
@@ -669,7 +770,9 @@ Enzyme.configure({ adapter: new Adapter() });
 # leanpub-end-insert
 ~~~~~~~~
 
-Now you can write your first unit test in the Table "describe"-block. You will use `shallow()` to render your component and assert that the Table has two items, because you pass it two list items. The assertion simply checks if the element has two elements with the class `table-row`.
+现在你可以在 Table 的 “describe” 块中书写你第一个单元测试了。你会使用 `shallow()` 方法渲染你的组件，并且断言 Table 有两个子项，因为你传入了两个列表项。断言仅仅检查这个元素两个带有类名叫 `table-row` 的元素。
+
+> Now you can write your first unit test in the Table "describe"-block. You will use `shallow()` to render your component and assert that the Table has two items, because you pass it two list items. The assertion simply checks if the element has two elements with the class `table-row`.
 
 {title="src/App.test.js",lang=javascript}
 ~~~~~~~~
@@ -708,22 +811,42 @@ describe('Table', () => {
 });
 ~~~~~~~~
 
-Shallow renders the component without its child components. That way, you can make the test very dedicated to one component.
+浅渲染组件不会渲染它的子组件。你可以用这种方式让测试只用关心一个组件。
 
-Enzyme has overall three rendering mechanisms in its API. You already know `shallow()`, but there also exist `mount()` and `render()`. Both instantiate instances of the parent component and all child components. Additionally `mount()` gives you access to the component lifecycle methods. But when to use which render mechanism? Here some rules of thumb:
+> Shallow renders the component without its child components. That way, you can make the test very dedicated to one component.
 
-* Always begin with a shallow test
-* If `componentDidMount()` or `componentDidUpdate()` should be tested, use `mount()`
-* If you want to test component lifecycle and children behavior, use `mount()`
-* If you want to test a component's children rendering with less overhead than `mount()` and you are not interested in lifecycle methods, use `render()`
+Enzyme API 中总共有三种渲染机制。你已经知道了 `shallow()`，这里还有 `mount()` 和 `render()` 方法。这两种方式都会初始化父组件和所有的子组件。此外 `mount()` 还给予你调用组件生命周期的方法。但是什时候该使用哪种渲染机制呢？这里有一些建议：
 
-You could continue to unit test your components. But make sure to keep the tests simple and maintainable. Otherwise you will have to refactor them once you change your components. That's why Facebook introduced snapshot tests with Jest in the first place.
+> Enzyme has overall three rendering mechanisms in its API. You already know `shallow()`, but there also exist `mount()` and `render()`. Both instantiate instances of the parent component and all child components. Additionally `mount()` gives you access to the component lifecycle methods. But when to use which render mechanism? Here some rules of thumb:
 
-### Exercises:
+* 不论怎样都优先尝试使用浅渲染
+* 如果需要测试 `componentDidMount()` 或 `componentDidUpdate()`， 使用 `mount()`
+* 如果你想测试组件的生命周期和子组件的行为，使用 `mount()`
+* 如果你想测试一个组件的子组件的渲染，并且不关心生命周期方法和减少些渲染的花销的话，使用 `render()`
 
-* write a unit test with Enzyme for your Button component
-* keep your unit tests up to date during the following chapters
-* read more about [enzyme and its rendering API](https://github.com/airbnb/enzyme)
+> * Always begin with a shallow test
+> * If `componentDidMount()` or `componentDidUpdate()` should be tested, use `mount()`
+> * If you want to test component lifecycle and children behavior, use `mount()`
+> * If you want to test a component's children rendering with less overhead than `mount()` and you are not interested in lifecycle methods, use `render()`
+>
+
+你可以继续对你的组件单元测试。但要确保测试简单和可维护。否则你就需要在你的组件变更后，重构这些测试。这就是为什么 Facebook 在 Jest 中要首先引入快照测试的原因。
+
+> You could continue to unit test your components. But make sure to keep the tests simple and maintainable. Otherwise you will have to refactor them once you change your components. That's why Facebook introduced snapshot tests with Jest in the first place.
+>
+
+### 练习：
+
+* 使用 Enzyme 对你的 Button 组件写一个单元测试
+* 在接下来的章节中，保持你的单元测试跟上
+* 了解更多 [Enzyme 和 它的渲染 API](https://github.com/airbnb/enzyme)
+
+> ### Exercises:
+>
+> * write a unit test with Enzyme for your Button component
+> * keep your unit tests up to date during the following chapters
+> * read more about [enzyme and its rendering API](https://github.com/airbnb/enzyme)
+>
 
 ## Component Interface with PropTypes
 
