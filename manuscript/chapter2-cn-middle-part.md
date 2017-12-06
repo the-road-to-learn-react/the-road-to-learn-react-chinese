@@ -21,7 +21,7 @@
 
 >That's already a complex use case, because you have to pass a value to the class method and thus you have to wrap it into another (arrow) function. So basically, it has to be a function that is passed to the event handler. The following code wouldn't work, because the class method would be executed immediately when you open the application in the browser. 
 
-这已经是一个复杂的例子了，因为你必须传递一个参数到类的方法，因此你需要将它封装到另一个(箭头)函数中，基本上，它必须是一个调用事件处理的函数。下面的代码不会工作，因为类方法会在浏览器中打开程序时立即执行。
+这已经是一个复杂的例子了，因为你必须传递一个参数到类的方法，因此你需要将它封装到另一个（箭头）函数中，基本上，由于要传递给事件处理器使用，因此它必须是一个函数。下面的代码不会工作，因为类方法会在浏览器中打开程序时立即执行。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -39,11 +39,11 @@
 
 >When using `onClick={doSomething()}`, the `doSomething()` function would execute immediately when you open the application in your browser. The expression in the handler is evaluated. Since the returned value of the function isn't a function anymore, nothing would happen when you click the button. But when using `onClick={doSomething}` whereas `doSomething` is a function, it would be executed when clicking the button. The same rules apply for the `onDismiss()` class method that is used in your application. 
 
-当使用 `onClick={doSomething()}` 时，`doSomething()` 函数会在浏览器打开程序时立即执行，监听表达式是函数执行的返回值而不再是函数，所以点击按钮时不会有任何事发生。但当使用 `onClick={doSomething}` 时，因为 `doSomething` 是一个函数，所以它会在点击按钮时执行。同样的规则也适用于在程序中使用的 `onDismiss()` 类方法。
+当使用 `onClick={doSomething()}` 时，`doSomething()` 函数会在浏览器打开程序时立即执行，由于监听表达式是函数执行的返回值而不再是函数，所以点击按钮时不会有任何事发生。但当使用 `onClick={doSomething}` 时，因为 `doSomething` 是一个函数，所以它会在点击按钮时执行。同样的规则也适用于在程序中使用的 `onDismiss()` 类方法。
 
 >However, using `onClick={this.onDismiss}` wouldn't suffice, because somehow the `item.objectID` property needs to be passed to the class method to identify the item that is going to be dismissed. That's why it can be wrapped into another function to sneak in the property. The concept is called higher order functions in JavaScript and will be explained briefly later on. 
 
-然而，使用 `onClick={this.onDismiss}` 并不够，因为 `item.objectID` 属性需要传递给类方法来识别那个将要被忽略的项，这就是为什么它需要被封装到另一个函数中来传递这个属性。这个概念在 JavaScript 中被称为高阶函数，稍后会做简要解释。
+然而，使用 `onClick={this.onDismiss}` 并不够，因为这个类方法需要接收 item.objectID 属性来识别那个将要被忽略的项，这就是为什么它需要被封装到另一个函数中来传递这个属性。这个概念在 JavaScript 中被称为高阶函数，稍后会做简要解释。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -61,7 +61,7 @@
 
 >A workaround would be to define the wrapping function somewhere outside and only pass the defined function to the handler. Since it needs access to the individual item, it has to live in the inside of the map function block. 
 
-一个解决方案事在外部定义一个包装函数，并且只将定义的函数传递给处理程序。因为它需要访问单独的项，所以它必须位于 map 函数块的内部。
+一个解决方案事在外部定义一个包装函数，并且只将定义的函数传递给处理程序。因为需要访问特定的列表项，所以它必须位于 map 函数块的内部。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -108,7 +108,7 @@ class App extends Component {
 
 >After all, it has to be a function that is passed to the element's handler. As an example, try this code instead: 
 
-毕竟，它必须是一个传递给元素处理程序的函数。作为一个示例，请尝试以下代码：
+毕竟，传给元素事件处理器的内容必须是函数。作为一个示例，请尝试以下代码：
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -141,7 +141,7 @@ class App extends Component {
 
 >It will run when you open the application in the browser but not when you click the button. Whereas the following code would only run when you click the button. It is a function that is executed when you trigger the handler. 
 
-它将会在你在浏览器打开程序时执行，但点击按钮时并不会。而下面的代码只会在点击按钮时执行。它是一个在触发事件时才会执行的函数。
+它会在浏览器加载该程序时执行，但点击按钮时并不会。而下面的代码只会在点击按钮时执行。它是一个在触发事件时才会执行的函数。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -163,7 +163,7 @@ class App extends Component {
 
 >In order to keep it concise, you can transform it into a JavaScript ES6 arrow function again. That's what we did with the `onDismiss()` class method too. 
 
-为了保持简洁，你可以把它转成一个 JavaScript ES6 的箭头函数。和我们在 `onDismiss()` 类方法时做的一样。
+为了保持简洁，你可以把它转成一个 JavaScript ES6 的箭头函数，和我们在 `onDismiss()` 类方法时做的一样。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -216,7 +216,7 @@ class App extends Component {
 
 >Another performance relevant topic, that is often mentioned, are the implications of using arrow functions in event handlers. For instance, the `onClick` handler for the `onDismiss()` method is wrapping the method in another arrow function to be able to pass the item identifier. So every time the `render()` method runs, the handler instantiates the higher order arrow function. It *can* have an impact on your application performance, but in most cases you will not notice it. Imagine you have a huge table of data with 1000 items and each row or column has such an arrow function in an event handler. Then it is worth to think about the performance implications and therefore you could implement a dedicated Button component to bind the method in the constructor. But before that happens it is premature optimization. It is more valuable to focus on learning React itself. 
 
-另一个性能相关的话题会经常被提到是在事件处理程序中使用箭头函数的影响。例如，`onClick` 事件处理中的 `onDismiss()` 方法被封装在另一个箭头函数中以便能传递项标识。因此每次 `render()` 执行时，事件处理程序就会实例化一个高阶箭头函数，它可能会对你的程序性能产生影响，但在大多数情况下你都不会注意到这个问题。假设你有一个包含1000个项目的巨大数据表，每一行或者列在事件处理程序中都有这样一个箭头函数，这个时候就需要考虑性能影响，因此你可以实现一个专用的按钮组件来在构造函数中绑定方法，但这是一个不成熟的优化。所以现在，专注到学习 React 会更有价值。
+另一个经常会被提到的性能相关话题是在事件处理程序中使用箭头函数的影响。例如，`onClick` 事件处理中的 `onDismiss()` 方法被封装在另一个箭头函数中以便能传递项标识。因此每次 `render()` 执行时，事件处理程序就会实例化一个高阶箭头函数，它*可能*会对你的程序性能产生影响，但在大多数情况下你都不会注意到这个问题。假设你有一个包含1000个项目的巨大数据表，每一行或者列在事件处理程序中都有这样一个箭头函数，这个时候就需要考虑性能影响，因此你可以实现一个专用的按钮组件来在构造函数中绑定方法，但这是一个不成熟的优化。所以现在，专注到学习 React 会更有价值。
 
 ### Exercises: 练习：
 
@@ -229,7 +229,7 @@ class App extends Component {
 
 >Let's add another interaction for the application to experience forms and events in React. The interaction is a search functionality. The input of the search field should be used to filter your list temporary based on the title property of an item.
 
-让我们在程序中加入表单来体验 React 和表单事件的交互，我们将在程序中加入搜索功能，列表项的内容会根据输入框的内容进行过滤。
+让我们在程序中加入表单来体验 React 和表单事件的交互，我们将在程序中加入搜索功能，列表会根据输入框的内容对标题进行过滤。
 
 >In the first step, you are going to define a form with an input field in your JSX.
 
@@ -260,7 +260,7 @@ class App extends Component {
 
 >In the following scenario you will type into the input field and filter the list temporarily by the search term that is used in the input field. To be able to filter the list based on the value of the input field, you need to store the value of the input field in your local state. But how do you access the value? You can use **synthetic events** in React to access the event payload.
 
-在下面的场景中，将会使用在输入框中的内容作为搜索字段来临时过滤列表。为了能根据输入框的值过滤列表，你需要将输入框的值储存在你的本地状态中，但是如何访问这个值呢，你可以使用 React 的 **合成事件** 来访问事件返回值。
+在下面的场景中，将会使用在输入框中的内容作为搜索字段来临时过滤列表。为了能根据输入框的值过滤列表，你需要将输入框的值储存在你的本地状态中，但是如何访问这个值呢？你可以使用 React 的 **合成事件** 来访问事件返回值。
 
 >Let's define a `onChange` handler for the input field.
 
@@ -343,7 +343,7 @@ class App extends Component {
 
 >The event has the value of the input field in its target object. Hence you are able to update the local state with the search term by using `this.setState()` again.
 
-该事件中有输入框的值在 target 对象中，因此你可以使用 `this.setState()` 来更新本地的搜索词的状态了。
+event 对象的 target 属性中带有输入框的值，因此你可以使用 `this.setState()` 来更新本地的搜索词的状态了。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -435,7 +435,7 @@ class App extends Component {
 
 >First, you have to define the higher order function outside of your App component.
 
-首先，你需要在程序组件外定义一个高阶函数。
+首先，你需要在 App 组件外定义一个高阶函数。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -666,7 +666,7 @@ const { searchTerm, list } = this.state;
 
 >You already learned about the unidirectional data flow in React. The same law applies for the input field, which updates the local state with the `searchTerm` in order to filter the list. When the state changes, the `render()` method runs again and uses the recent `searchTerm` from the local state to apply the filter condition.
 
-你已经了解了 React 中的单向数据流, 同样的规则适用于更新本地状态 `searchTerm` 来过滤列表的输入框。当状态变化时，`render()` 方法将再次运行，并使用最新状态中的`searchTerm` 值来作为过滤条件。
+你已经了解了 React 中的单向数据流，同样的规则适用于更新本地状态 `searchTerm` 来过滤列表的输入框。当状态变化时，`render()` 方法将再次运行，并使用最新状态中的`searchTerm` 值来作为过滤条件。
 
 >But didn't we forget something in the input element? A HTML input tag comes with a `value` attribute. The value attribute usually has the value that is shown in the input field. In this case it would be the `searchTerm` property. However, it seems like we don't need that in React.
 
