@@ -848,22 +848,37 @@ Enzyme API 中总共有三种渲染机制。你已经知道了 `shallow()`，这
 > * read more about [enzyme and its rendering API](https://github.com/airbnb/enzyme)
 >
 
-## Component Interface with PropTypes
 
-You may know [TypeScript](https://www.typescriptlang.org/) or [Flow](https://flowtype.org/) to introduce a type interface to JavaScript. A typed language is less error prone, because the code gets validated based on its program text. Editors and other utilities can catch these errors before the program runs. It makes your program more robust.
 
-In the book, you will not introduce Flow or TypeScript, but another neat way to check your types in components. React comes with a built-in type checker to prevent bugs. You can use PropTypes to describe your component interface. All the props that get passed from a parent component to a child component get validated based on the PropTypes interface assigned to the child component.
+## 组件接口和 PropTypes
 
-The chapter will show you how you can make all your components type safe with PropTypes. I will omit the changes for the following chapters, because they add unnecessary code refactorings. But you should keep and update them along the way to keep your components interface type safe.
+你可能知道 [TypeScript](https://www.typescriptlang.org/)  或者 [Flow](https://flowtype.org/) 在 JavaScript 中引入了类型接口。一个类型语言更不容易出错, 因为代码会被它的程序文本验证。编辑器或者其他工具可以在程序运行之前就捕获这些错误。可以让你的应用更健壮。
 
-First, you have to install a separate package for React.
+> ## Component Interface with PropTypes
+>
+> You may know [TypeScript](https://www.typescriptlang.org/) or [Flow](https://flowtype.org/) to introduce a type interface to JavaScript. A typed language is less error prone, because the code gets validated based on its program text. Editors and other utilities can catch these errors before the program runs. It makes your program more robust.
+
+本书中，不会接受 Flow 或者 Typescript，但是有另外一种简洁方式在组件中检查类型。React 有一种内建的类型检查器来防止出现 Bug。你可以使用 PropTypes 来描述你的组件接口。所有从父组件传递给子组件的的 props 都会基于子组件的 PropTypes 接口得到验证。
+
+> In the book, you will not introduce Flow or TypeScript, but another neat way to check your types in components. React comes with a built-in type checker to prevent bugs. You can use PropTypes to describe your component interface. All the props that get passed from a parent component to a child component get validated based on the PropTypes interface assigned to the child component.
+
+本章会为你展示如何通过 PropTypes 使你的组件都类型安全。我会在接下来的章节里忽略接口的变化，因为这会加上些没必要的重构代码。但是你需要保证组件接口一直更新，确保组件类型安全。
+
+> The chapter will show you how you can make all your components type safe with PropTypes. I will omit the changes for the following chapters, because they add unnecessary code refactorings. But you should keep and update them along the way to keep your components interface type safe.
+>
+
+第一步，你需要为 React 额外安装一个库。
+
+> First, you have to install a separate package for React.
 
 {title="Command Line",lang="text"}
 ~~~~~~~~
 npm install prop-types
 ~~~~~~~~
 
-Now, you can import the PropTypes.
+现在你可以导入 PropTypes。
+
+> Now, you can import the PropTypes.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -872,7 +887,9 @@ import PropTypes from 'prop-types';
 # leanpub-end-insert
 ~~~~~~~~
 
-Let's start to assign a props interface to the components:
+我们开始为组件添加一个 props 接口：
+
+> Let's start to assign a props interface to the components:
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -894,7 +911,9 @@ Button.propTypes = {
 # leanpub-end-insert
 ~~~~~~~~
 
-Basically that's it. You take every argument from the function signature and assign a PropType to it. The basic PropTypes for primitives and complex objects are:
+也就是说，你接受函数上所有的参数签名，并为之添加一个 PropTypes。基础的基本类型和复杂对象 PropTypes 有：
+
+> Basically that's it. You take every argument from the function signature and assign a PropType to it. The basic PropTypes for primitives and complex objects are:
 
 * PropTypes.array
 * PropTypes.bool
@@ -903,14 +922,23 @@ Basically that's it. You take every argument from the function signature and ass
 * PropTypes.object
 * PropTypes.string
 
-Additionally you have two more PropTypes to define a renderable fragment (node), e.g. a string, and a React element:
+
+此外，有另外两个 PropTypes 用来定义一个可渲染的片段（节点）。比如一段字符串，或者一个 React 元素。
+
+> Additionally you have two more PropTypes to define a renderable fragment (node), e.g. a string, and a React element:
+>
 
 * PropTypes.node
 * PropTypes.element
 
-You already used the `node` PropType for the Button component. Overall there are more PropType definitions that you can read up in the official React documentation.
+你已经使用为 Button 组件 使用了  `node` PropTypes。关于全部的 PropTypes 定义，你可以在 React 官方文档中了解到。
 
-At the moment all of the defined PropTypes for the Button are optional. The parameters can be null or undefined. But for several props you want to enforce that they are defined. You can make it a requirement that these props are passed to the component.
+> You already used the `node` PropType for the Button component. Overall there are more PropType definitions that you can read up in the official React documentation.
+>
+
+现在为 Button 定义的所有 PropTypes 都是可选的。参数可以为 null 或者 undefined。但是有几个 props 必须要定义。你可以通过标识这些 props 必须传递给组件。
+
+> At the moment all of the defined PropTypes for the Button are optional. The parameters can be null or undefined. But for several props you want to enforce that they are defined. You can make it a requirement that these props are passed to the component.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -925,9 +953,12 @@ Button.propTypes = {
 };
 ~~~~~~~~
 
-The `className` is not required, because it can default to an empty string. Next you will define a PropType interface for the Table component:
+`className` 不是必须的，因为它默认是空字符串。下一步你将为 Table 组件定义 PropTypes 接口。
+
+> The `className` is not required, because it can default to an empty string. Next you will define a PropType interface for the Table component:
 
 {title="src/App.js",lang=javascript}
+
 ~~~~~~~~
 # leanpub-start-insert
 Table.propTypes = {
@@ -937,7 +968,9 @@ Table.propTypes = {
 # leanpub-end-insert
 ~~~~~~~~
 
-You can define the content of an array PropType more explicit:
+你可以将数组 PropTypes 的元素定义的更加明确：
+
+> You can define the content of an array PropType more explicit:
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -955,9 +988,14 @@ Table.propTypes = {
 };
 ~~~~~~~~
 
-Only the `objectID` is required, because you know that some of your code depends on it. The other properties are only displayed, thus they are not necessarily required. Moreover you cannot be sure that the Hacker News API has always a defined property for each object in the array.
+只有 `objectID` 是必须的，因为有部分代码依赖于它。其他的属性仅仅用来展示，就是说他们不是必须的。另外你也没办法保证骇客新闻 API 总会给每一个对象都定义这些属性。
 
-That's it for PropTypes. But there is one more aspect. You can define default props in your component. Let's take again the Button component. The `className` property has an ES6 default parameter in the component signature.
+> Only the `objectID` is required, because you know that some of your code depends on it. The other properties are only displayed, thus they are not necessarily required. Moreover you cannot be sure that the Hacker News API has always a defined property for each object in the array.
+
+这就是 PropTypes的基本了。其他的，你可以在组件中定义默认 props。我们还拿 Button 组件说吧。`className` 属性在组件生命中有一个 ES6 的默认参数值。
+
+> That's it for PropTypes. But there is one more aspect. You can define default props in your component. Let's take again the Button component. The `className` property has an ES6 default parameter in the component signature.
+>
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -969,7 +1007,9 @@ const Button = ({
   ...
 ~~~~~~~~
 
-You could replace it with the internal React default prop:
+你可以将它替换为 React 默认的 prop：
+
+> You could replace it with the internal React default prop:
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -995,27 +1035,53 @@ Button.defaultProps = {
 # leanpub-end-insert
 ~~~~~~~~
 
-Same as the ES6 default parameter, the default prop ensures that the property is set to a default value when the parent component didn't specify it. The PropType type check happens after the default prop is evaluated.
+和 ES6 的默认参数一样，默认 prop 确保当父组件没有指定属性的时候，这个数据会被设置一个默认值。PropTypes 类型检查会在默认 props 生效后执行校验。
 
-If you run your tests again, you might see PropType errors for your components on your command line. It can happen because you didn't define all props for your components in the tests that are defined as required in your PropType definition. The tests themselves all pass correctly though. You can pass all required props to avoid these errors.
+> Same as the ES6 default parameter, the default prop ensures that the property is set to a default value when the parent component didn't specify it. The PropType type check happens after the default prop is evaluated.
 
-### Exercises:
+如果重新运行你的测试，你可能会在命令行看到一些组件的 PropTypes 错误。 可能是因为在测试中你没有传递在组件里定义为必须的 props。当你正确传递所需的值后，测试就会通过并避免这些错误。
 
-* define the PropType interface for the Search component
-* add and update the PropType interfaces when you add and update components in the next chapters
-* read more about [React PropTypes](https://facebook.github.io/react/docs/typechecking-with-proptypes.html)
+> If you run your tests again, you might see PropType errors for your components on your command line. It can happen because you didn't define all props for your components in the tests that are defined as required in your PropType definition. The tests themselves all pass correctly though. You can pass all required props to avoid these errors.
+
+### 练习：
+
+### ,
+
+* 为 Search 组件定义 PropTypes 接口
+* 在接下来的章节中，确保 PropTypes 接口一直被更新
+* 了解更多 [React PropTypes](https://facebook.github.io/react/docs/typechecking-with-proptypes.html)
+
+> ### Exercises:
+>
+> * define the PropType interface for the Search component
+> * add and update the PropType interfaces when you add and update components in the next chapters
+> * read more about [React PropTypes](https://facebook.github.io/react/docs/typechecking-with-proptypes.html)
+>
 
 {pagebreak}
 
-You have learned how to organize your code and how to test it! Let's recap the last chapters:
+你已经学习道了如何组织和测试你的的代码了。让我会在最后一章回顾下吧：
 
 * React
-  * PropTypes let you define type checks for components
-  * Jest allows you to write snapshot tests for your components
-  * Enzyme allows you to write unit tests for your components
+  * PropTypes 允许你为组件定义测试检查
+  * Jest 允许你为组件属性快照测试
+  * Enzyme 允许你为组件书写单元测试
 * ES6
-  * import and export statements help you to organize your code
-* General
-  * code organization allows you to scale your application with best practices
+  * import 和 export 语句帮组你组织代码
+* 概述
+  * 代码组织让你的代码符合最佳实践并具有可扩展性
 
-You can find the source code in the [official repository](https://github.com/rwieruch/hackernews-client/tree/4.4).
+你可以在[官方仓库](https://github.com/rwieruch/hackernews-client/tree/4.4)中找到源码。
+
+> You have learned how to organize your code and how to test it! Let's recap the last chapters:
+>
+> * React
+>   * PropTypes let you define type checks for components
+>   * Jest allows you to write snapshot tests for your components
+>   * Enzyme allows you to write unit tests for your components
+> * ES6
+>   * import and export statements help you to organize your code
+> * General
+>   * code organization allows you to scale your application with best practices
+>
+> You can find the source code in the [official repository](https://github.com/rwieruch/hackernews-client/tree/4.4).
