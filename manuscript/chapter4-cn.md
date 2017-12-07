@@ -1,6 +1,6 @@
-## 代码优化和测试
+## 代码组织和测试
 
-本章会将重点讨论如何在一个规模增长的应用中保证代码的可维护性这个话题。您将了解如何去组织代码，以便在构建你的工程目录和文件时时遵循最佳实践。本章你将学会的另外一个话题是测试，这能确保你的代码的健壮性。本章会回到练习项目中(TODO: 需要和之前章的翻译对齐)来为你介绍这几个话题。
+本章会将重点讨论如何在一个规模增长的应用中保证代码的可维护性这个话题。你将了解如何去组织代码，以便在构建你的工程目录和文件时时遵循最佳实践。本章你将学会的另外一个话题是测试，这能确保你的代码的健壮性。本章会回到练习项目中(TODO: 需要和之前章的翻译对齐)来为你介绍这几个话题。
 
 > # Code Organization and Testing
 >
@@ -9,9 +9,9 @@
 
 ## ES6模块：Import 和 Export
 
-在 JavaScript ES6 中你可以在模块中导入和导出某些功能。这些功能可能是函数，类，组件，常量等等。基本上你可以将所有东西都赋值到一个变量上。模块可以单个文件，或者一个带有入口文件的文件夹。
+在 JavaScript ES6 中你可以从模块中导入和导出某些功能。这些功能可以是函数，类，组件，常量等等。基本上你可以将所有东西都赋值到一个变量上。模块可以单个文件，或者一个带有入口文件的文件夹。
 
-本书的开头，在你使用*create-react-app*初始化你的应用后，在你的应用初始化的文件中已经有几条`import`和`export`语句。现在正是合适的时机解释这些。
+本书的开头，在你使用*create-react-app*初始化你的应用后，应该有几条`import`和`export`语句已经在应用初始化的文件中。现在正合适解释这些。
 
 > ## ES6 Modules: Import and Export
 >
@@ -20,12 +20,12 @@
 > In the beginning of the book, after you have bootstrapped your application with *create-react-app*, you already had several `import` and `export` statements across your initial files. Now it is the appropriate time to explain these.
 >
 
-`import`和`export`语句可以帮助你非多个文件间共享代码。在此之前，JavaScript 生态中已经有好几种方案了。曾经一度很糟，因为你需要的是遵循一套标准范式，而不是为了同一件事而采取多种方法。从 JavaScript ES6 后，现在有一种原生的方式了。
+`import`和`export`语句可以帮助你非多个文件间共享代码。在此之前，JavaScript 生态中已经有好几种方案了。曾经一度很糟，你需要的是遵循一套标准范式，而不是为了同一件事而采取多种方法。从 JavaScript ES6 后，现在有一种原生的方式了。
 
 > The `import` and `export` statements help you to share code across multiple files. Before there were already several solutions for this in the JavaScript environment. It was a mess, because you would want to follow one standardized way rather than having several approaches for the same thing. Now it is a native behavior since JavaScript ES6.
 >
 
-此外这些语言还有利于代码分割。你可以将你的代码分配到多个文件中去，以保持代码的重用性和可维护性。重用性成立的是因为你可以在不同的文件中导入相同的代码片段。可维护性成立是因为你维护的代码只有一个来源。
+此外这些语言还有利于代码分割。代码风格就是将代码分配到多个文件中去，以保持代码的重用性和可维护性。重用性得以成立是因为你可以在不同的文件中导入相同的代码片段。而可维护性得以成立是因为你维护的代码只有一个来源。
 
 > Additionally these statements embrace code splitting. You distribute your code across multiple files to keep it reusable and maintainable. The former is true because you can import the piece of code in multiple files. The latter is true because you have one single source where you maintain the piece of code.
 >
@@ -52,7 +52,7 @@ const lastname = 'wieruch';
 export { firstname, lastname };
 ~~~~~~~~
 
-并在另外一个文件用相对第一文件的相对路径导出。
+并在另外一个文件用相对第一文件的相对路径导入。
 
 > And import them in another file with a relative path to the first file.
 
@@ -88,7 +88,7 @@ console.log(foo);
 // output: robin
 ~~~~~~~~
 
-最后但并非不重要，存在 `default` 语句。可以被用在一些使用情况下：
+最后但并非不重要，还存在一种 `default` 语句。可以被用在一些使用情况下：
 
 * 为了导出和导入单一功能
 * 为了强调一个模块输出 API 中的主要功能
@@ -122,7 +122,7 @@ console.log(developer);
 // output: { firstname: 'robin', lastname: 'wieruch' }
 ~~~~~~~~
 
-此外，输入的名称可以与导入的 default 名称不一样，您也可以将其与命名的导出和导入语句使用同一个名称。
+此外，输入的名称可以与导入的 default 名称不一样，你也可以将其与命名的导出和导入语句使用同一个名称。
 
 > Furthermore, the import name can differ from the exported default name. You can also use it in conjunction with the named export and import statements.
 
@@ -164,7 +164,7 @@ export const firstname = 'robin';
 export const lastname = 'wieruch';
 ~~~~~~~~
 
-这些是 ES6 模块的主要功能。它们能帮助你组织你的代码，维护你的代码，设计可重用的模块 API。你也可以为了测试导入和导出功能。你将会在接下来的一章中做到这一点。
+这些是 ES6 模块的主要功能。它们能帮助你组织你的代码，维护你的代码，设计可重用的模块 API。你也可以为了测试导入和导出功能。你将会在接下来的章节中做到这一点。
 
 > These are the main functionalities for ES6 modules. They help you to organize your code, to maintain your code and to design reusable module APIs. You can also export and import functionalities to test them. You will do that in one of the following chapters.
 
@@ -180,7 +180,7 @@ export const lastname = 'wieruch';
 
 ## 代码组织与 ES6 模块
 
-你可能想知道：为什么不按照 *src/App.js* 文件的代码分割方式呢？这个文件中，我们已经有了多个定义在的文件/文件夹（模块）了。为了学习 React 的缘故，将这些模块放到一个地方是合理的。但是一旦你的应用增长，你应该考虑将这些组件放到多个模块中去，只有这种方式你的应用才能扩展。
+你可能想知道：为什么不按照 *src/App.js* 文件中的代码分割方式呢？这个文件中，我们已经有了多个文件/文件夹（模块）了。为了学习 React 的缘故，将这些模块放到一个地方是合理的。但是一旦你的应用增长，你应该考虑将这些组件放到多个模块中去，只有这种方式你的应用才能扩展。
 
 > ## Code Organization with ES6 Modules
 >
