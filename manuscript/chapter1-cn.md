@@ -328,15 +328,15 @@ Additionally you might have noticed the `className` attribute. It reflects the s
 * read more about [React components, elements and instances](https://facebook.github.io/react/blog/2015/12/18/react-components-elements-and-instances.html)
 
 > ## ES6 const and let
-## ES6 const和let
+## ES6 const 和 let
 
 > I guess you noticed that we declared the variable `helloWorld` with a `var` statement. JavaScript ES6 comes with two more options to declare your variables: `const` and `let`. In JavaScript ES6, you will rarely find `var` anymore.
 
-我猜你已经注意到了，我们在前面的例子中使用的是关键字`var`来声明变量`helloWorld`的。JavaScript ES6中引入了另外两个声明变量的关键字：`const`和`let`。在JavaScript ES6中，你将会几乎不再使用`var`了。
+我猜你已经注意到了，我们在前面的例子中使用的是关键字 `var` 来声明变量 `helloWorld` 的。JavaScript ES6中引入了另外两个声明变量的关键字：`const` 和 `let`。在JavaScript ES6中，你将会几乎不再使用 `var` 了。
 
 > A variable declared with `const` cannot be re-assigned or re-declared. It cannot get mutated (changed, modified). You embrace immutable data structures by using it. Once the data structure is defined, you cannot change it.
 
-被`const`声明的变量不能被重新赋值或重新声明。换句话说，它将不能再被改变。你会在声明不可改变的变量时使用这个关键字。每当一个变量的结构被声明好之后，你便不能再改变它了。
+被 `const` 声明的变量不能被重新赋值或重新声明。换句话说，它将不能再被改变。你会在声明不可改变的变量时使用这个关键字。每当一个变量的结构被声明好之后，你便不能再改变它了。
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -348,7 +348,7 @@ helloWorld = 'Bye Bye React';
 
 > A variable declared with `let` can get mutated.
 
-被关键字`let`声明的变量可以被改变。
+被关键字 `let` 声明的变量可以被改变。
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -360,11 +360,11 @@ helloWorld = 'Bye Bye React';
 
 > You would use it when you would need to re-assign a variable.
 
-当一个变量需要被重新赋值的话，你应该使用`let`去声明它。
+当一个变量需要被重新赋值的话，你应该使用 `let` 去声明它。
 
 > However, you have to be careful with `const`. A variable declared with `const` cannot get modified. But when the variable is an array or object, the value it holds can get updated. The value it holds is not immutable.
 
-然而，你必须小心地使用`const`。使用`const`声明的变量不能被改变，但是如果这个变量是数组或者对象的话，它里面持有的内容可以被更新。它里面持有的内容不是不可改变的。
+然而，你必须小心地使用 `const` 。使用 `const` 声明的变量不能被改变，但是如果这个变量是数组或者对象的话，它里面持有的内容可以被更新。它里面持有的内容不是不可改变的。
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -377,15 +377,15 @@ helloWorld.text = 'Bye Bye React';
 
 > But when to use each declaration? There are different opinions about the usage. I suggest using `const` whenever you can. It indicates that you want to keep your data structure immutable even though values in objects and arrays can get modified. If you want to modify your variable, you can use `let`.
 
-但是，不同的声明方式应该在什么时候使用呢？有很多的选择。我的建议是在任何你可以使用`const`的时候使用它。尽管对象和数组里面的内容可以被改变，但是使用`const`声明的变量数据结构是不可变的。而如果你想要改变你的变量，就使用`let`去声明它。
+但是，不同的声明方式应该在什么时候使用呢？有很多的选择。我的建议是在任何你可以使用 `const` 的时候使用它。尽管对象和数组里面的内容可以被改变，但是使用 `const` 声明的变量数据结构是不可变的。而如果你想要改变你的变量，就使用 `let` 去声明它。
 
 > Immutability is embraced in React and its ecosystem. That's why `const` should be your default choice when you define a variable. Still, in complex objects the values within can get modified. Be careful about this behavior.
 
-React和它的生态是拥抱不可变的。这就是为什么`const`应该是你定义一个变量时的默认选择。当然，一个复杂的对象中的内容还是可能会被改变，请当心这种改变。
+React和它的生态是拥抱不可变的。这就是为什么 `const` 应该是你定义一个变量时的默认选择。当然，一个复杂的对象中的内容还是可能会被改变，请当心这种改变。
 
 > In your application, you should use `const` over `var`.
 
-在你的应用中，你应该用`const`来代替`var`。
+在你的应用中，你应该用 `const` 来代替 `var`。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -418,15 +418,18 @@ export default App;
 >   * why do they make sense in programming in general
 >   * why are they used in React and its ecosystem
 
-* 阅读更多关于[ES6 const](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const)的内容
-* 阅读更多关于[ES6 let](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let)的内容
+* 阅读更多关于 [ES6 const](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) 的内容
+* 阅读更多关于 [ES6 let](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) 的内容
 * 研究更多关于不可变数据结构的内容
   * 在通常情况下，为什么他们是有意义的
   * 为什么他们会被React和它的生态使用
 
+> ## ReactDOM
 ## ReactDOM
 
-Before you continue with the App component, you might want to see where it is used. It is located in your entry point to the React world: the *src/index.js* file.
+> Before you continue with the App component, you might want to see where it is used. It is located in your entry point to the React world: the *src/index.js* file.
+
+在你学习应用组件之前，你可能想知道它被用在了什么地方。它在你的React世界的入口文件 *src/index.js* 中
 
 {title="src/index.js",lang=javascript}
 ~~~~~~~~
@@ -441,11 +444,17 @@ ReactDOM.render(
 );
 ~~~~~~~~
 
-Basically `ReactDOM.render()` uses a DOM node in your HTML to replace it with your JSX. That's how you can easily integrate React in every foreign application. It is not forbidden to use `ReactDOM.render()` multiple times across your application. You can use it at multiple places to bootstrap simple JSX syntax, a React component, multiple React components or a whole application. But in plain React application you will only use it once to bootstrap your whole component tree.
+>  Basically `ReactDOM.render()` uses a DOM node in your HTML to replace it with your JSX. That's how you can easily integrate React in every foreign application. It is not forbidden to use `ReactDOM.render()` multiple times across your application. You can use it at multiple places to bootstrap simple JSX syntax, a React component, multiple React components or a whole application. But in plain React application you will only use it once to bootstrap your whole component tree.
 
-`ReactDOM.render()` expects two arguments. The first argument is JSX that gets rendered. The second argument specifies the place where the React application hooks into your HTML. It expects an element with an `id='root'`. You can open your *public/index.html* file to find the id attribute.
+简单来说，`ReactDOM.render()` 会使用你的 JSX 来替换你的HTML中的一个 DOM 节点。这样你就可以很容易地把 React 集成到每一个其他的应用中。`ReactDOM.render()` 可以在你的应用中多次使用。你可以在多个地方用它来加载简单的 JSX 语法、单个 React 组件、多个 React 组件或者整个应用。但是在一个纯 React 的应用中，你只会使用它一次，来加载你的整个组件树。
+
+>  `ReactDOM.render()` expects two arguments. The first argument is JSX that gets rendered. The second argument specifies the place where the React application hooks into your HTML. It expects an element with an `id='root'`. You can open your *public/index.html* file to find the id attribute.
+
+`ReactDOM.render()` 有两个传入参数。第一个是准备渲染的 JSX。第二个参数指定了React应用在你的HTML中的放置的位置。这个位置是一个 `id='root'`的元素。你可以在文件 *public/index.html* 中找到这个id属性。
 
 In the implementation `ReactDOM.render()` already takes your App component. However, it would be fine to pass simpler JSX as long as it is JSX. It doesn't have to be an instantiation of a component.
+
+在实现中，`ReactDOM.render()` 总会很好地渲染你的应用组件。你可以将一个简单的 JSX 直接用 JSX 的方式传入，而不是必须传入一个组件的实例。
 
 {title="Code Playground",lang=javascript}
 ~~~~~~~~
@@ -455,16 +464,32 @@ ReactDOM.render(
 );
 ~~~~~~~~
 
-### Exercises:
+> ### Exercises:
+>
 
-* open the *public/index.html* to see where the React applications hooks into your HTML
-* read more about [rendering elements in React](https://facebook.github.io/react/docs/rendering-elements.html)
+> * open the *public/index.html* to see where the React applications hooks into your HTML
+> * read more about [rendering elements in React](https://facebook.github.io/react/docs/rendering-elements.html)
+>
 
-## Hot Module Replacement
+### 练习:
 
-There is one thing that you can do in the *src/index.js* file to improve your development experience as a developer. But it is optional and shouldn't overwhelm you in the beginning when learning React.
+- 打开 *public/index.html* 文件并且找到 React 应用放置在你的HTML的位置
+- 查看更多关于 [元素渲染](https://facebook.github.io/react/docs/rendering-elements.html) 的内容
 
-In *create-react-app* it is already an advantage that the browser automatically refreshes the page when you change your source code. Try it by changing the `helloWorld` variable in your *src/App.js* file. The browser should refresh the page. But there is a better way of doing it.
+> ## Hot Module Replacement
+>
+
+## 模块热替换
+
+
+
+> There is one thing that you can do in the *src/index.js* file to improve your development experience as a developer. But it is optional and shouldn't overwhelm you in the beginning when learning React.
+
+作为一个开发者，你可以在 *src/index.js* 中做一件事情来提高你的开发体验。但是这件事情是可选的，不要让它在你刚开始学习 React 的事情占用你的过多时间。
+
+> In *create-react-app* it is already an advantage that the browser automatically refreshes the page when you change your source code. Try it by changing the `helloWorld` variable in your *src/App.js* file. The browser should refresh the page. But there is a better way of doing it.
+
+用 *create-react-app* 创建的项目中有一个优点，那就是浏览器可以在你更改源代码的时候自动刷新页面。你可以在你的 *src/App.js* 文件中更改变量 `helloWorld` 试试，浏览器应该会自动刷新页面。但是有一个更好的方式实现这个功能。
 
 Hot Module Replacement (HMR) is a tool to reload your application in the browser. The browser doesn't perform a page refresh. You can easily activate it in *create-react-app*. In your *src/index.js*, your entry point to React, you have to add one little configuration.
 
