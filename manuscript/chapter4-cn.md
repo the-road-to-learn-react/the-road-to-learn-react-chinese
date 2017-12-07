@@ -1071,7 +1071,7 @@ Button.defaultProps = {
 * 概述
   * 代码组织让你的代码符合最佳实践并具有可扩展性
 
-你可以在[官方仓库](https://github.com/rwieruch/hackernews-client/tree/4.4)中找到源码。
+你可以在[官方代码ku](https://github.com/rwieruch/hackernews-client/tree/4.4)中找到源码。
 
 > You have learned how to organize your code and how to test it! Let's recap the last chapters:
 >
