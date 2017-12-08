@@ -6,11 +6,11 @@ Now it's time to get real with an API, because it can get boring to deal with sa
 
 If you are not familiar with APIs, I encourage you [to read my journey where I got to know APIs](https://www.robinwieruch.de/what-is-an-api-javascript/).
 
-如果你对APIs不熟悉，我建议你[去读读我的博客，里面有关于我是怎样了解APIs的](https://www.robinwieruch.de/what-is-an-api-javascript/)。
+如果你对API不熟悉，我建议你[去读读我的博客，里面有关于我是怎样了解API的](https://www.robinwieruch.de/what-is-an-api-javascript/)。
 
 Do you know the [Hacker News](https://news.ycombinator.com/) platform? It's a great news aggregator about tech topics. In this book, you will use the Hacker News API to fetch trending stories from the platform. There is a [basic](https://github.com/HackerNews/API) and [search](https://hn.algolia.com/api) API to get data from the platform. The latter one makes sense in the case of this application in order to search stories on Hacker News. You can visit the API specification to get an understanding of the data structure.
 
-你知道[Hacker News](https://news.ycombinator.com/)这个平台吗？他是一个很棒的技术话题整合平台。在本书中，你将使用它的API来获取时事报道。这里有一个[basic](https://github.com/HackerNews/API)API和一个[search](https://hn.algolia.com/api)API用来从平台获取数据。后者让我们的应用通过Hacker News搜索报道成为可能。同时你可以通过访问API的说明来理解它的数据结构。
+你知道 [Hacker News](https://news.ycombinator.com/)这个平台吗？他是一个很棒的技术话题整合平台。在本书中，你将使用它的API来获取时事报道。这里有一个[basic](https://github.com/HackerNews/API)API和一个[search](https://hn.algolia.com/api)API用来从平台获取数据。后者让我们的应用通过Hacker News搜索报道成为可能。同时你可以通过访问API的说明来理解它的数据结构。
 
 ## Lifecycle Methods 生命周期方法
 
@@ -76,7 +76,7 @@ After all, you don't need to know all of these lifecycle methods from the beginn
 
 * **componentWillMount()** - It is called before the `render()` lifecycle method. That's why it could be used to set internal component state, because it will not trigger a second rendering of the component. Generally it is recommended to use the `constructor()` to set the initial state.
 
-* **componentWillMount()** - 它在`render()`方法被调用之前调用。这就是为什么它可以被用作去设置组件内部的状态，因为它不会触发组件的再次渲染。一般来说推荐在`constructor()`中去设置初始化状态。
+* **componentWillMount()** - 它在 `render()` 方法被调用之前调用。这就是为什么它可以被用作去设置组件内部的状态，因为它不会触发组件的再次渲染。一般来说推荐在 `constructor()` 中去设置初始化状态。
 
 * **render()** - The lifecycle method is mandatory and returns the elements as an output of the component. The method should be pure and therefore shouldn't modify the component state. It gets an input as props and state and returns an element.
 
@@ -920,7 +920,7 @@ fetchSearchTopStories(searchTerm, page = 0) {
 
 Afterward, the request to the Hacker News API fetches more list items in one request than before. As you can see, a powerful such as the Hacker News API gives you plenty of ways to experiment with real world data. You should make use of it to make your endeavours when learning something new more exciting. That's [how I learned about the empowerment that APIs provide](https://www.robinwieruch.de/what-is-an-api-javascript/) when learning a new programming language or library.
 
-之后，这个对Hacker News API的请求能比以前在一个请求中获取更多列表项。正如你所看到的，像Hacker News API这样的强大功能，为你提供了大量的真实数据来做练习。学习新的东西时，你应该利用它来做出更多努力。这就是在我学习一门新的编程语言或者库时[如何利用APIs提供的便利](https://www.robinwieruch.de/what-is-an-api-javascript/)。
+之后，这个对Hacker News API的请求能比以前在一个请求中获取更多列表项。正如你所看到的，像Hacker News API这样的强大功能，为你提供了大量的真实数据来做练习。学习新的东西时，你应该利用它来做出更多努力。这就是在我学习一门新的编程语言或者库时[如何利用API提供的便利](https://www.robinwieruch.de/what-is-an-api-javascript/)。
 
 ### Exercises: 练习
 
