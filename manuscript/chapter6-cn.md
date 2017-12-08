@@ -12,7 +12,7 @@ You have already learned the basics of state management in React in the previous
 
 Only the App component is a stateful ES6 component in your application. It handles a lot of application state and logic in its class methods. Maybe you have noticed that you pass a lot of properties to your Table component. Most of these props are only used in the Table component. In conclusion one could argue that it makes no sense that the App component knows about them.
 
-在你的应用程序中，只有 App 是具有状态的 ES6 组件。在该组件的方法中，包含了许多应用程序的状态和业务的处理逻辑。可能你已经注意到了，Table 组件被传入了大量的 props 参数。而这些参数中的绝大部分只有在 Table 组件中才被用到。所以有人可能会提出 App 组件拥有这些只有在 Table 组件中才会用的参数是毫无意义的。
+在你的应用程序中，只有 App 是具有状态的 ES6 组件。在该组件的方法中，包含了许多应用程序的状态和业务的处理逻辑。可能你已经注意到了，Table 组件被传入了大量的属性参数。而这些参数中的绝大部分只有在 Table 组件中才被用到。所以有人可能会提出 App 组件拥有这些只有在 Table 组件中才会用的参数是毫无意义的。
 
 The whole sort functionality is only used in the Table component. You could move it into the Table component, because the App component doesn't need to know about it at all. The process of refactoring substate from one component to another is known as *lifting state*. In your case, you want to move state that isn't used in the App component into the Table component. The state moves down from parent to child component.
 
@@ -164,7 +164,7 @@ class App extends Component {
 
 Additionally, you can make the Table component API more lightweight. Remove the props that are passed to it from the App component, because they are handled internally in the Table component now.
 
-除此之外，你还可以让 Table 组件更加轻量。可以将从 App 组件中传入的 props 移除，因为现在这些 props 可以在 Table 组件内部由 state 进行处理。
+除此之外，你还可以让 Table 组件更加轻量。可以将从 App 组件中传入的参数移除，因为现在这些参数可以在 Table 组件内部由状态进行处理。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -333,11 +333,11 @@ this.setState((prevState, props) => {
 
 Why should you want to do that? There is one crucial use case where it makes sense to use a function over an object. It is when you update the state depending on the previous state or props. If you don't use a function, the internal state management can cause bugs.
 
-为什么你会需要第二种形式呢？使用函数作为参数而不是对象，有一个非常重要的应用场景，就是当更新状态的时候需要取决于之前的状态和 props。如果不使用函数参数的形式，组件的内部状态管理可能会引起 bug。
+为什么你会需要第二种形式呢？使用函数作为参数而不是对象，有一个非常重要的应用场景，就是当更新状态的时候需要取决于之前的状态或者属性。如果不使用函数参数的形式，组件的内部状态管理可能会引起 bug。
 
 But why does it cause bugs to use an object over a function when the update depends on the previous state or props? The React `setState()` method is asynchronous. React batches `setState()` calls and executes them eventually. It can happen that the previous state or props changed in between when you would rely on it in your `setState()` call.
 
-当更新状态需要取决于之前的状态和 props 时，为什么使用对象而不是函数会引起 bug 呢？React 的 `setState()` 方法是异步的。React 批次执行 `setState()` 方法，最终会全部执行完毕。如果你的 `setState()` 方法依赖于之前的状态和属性的话，有可能在批次执行期间，状态和属性的值已经被改变了。
+当更新状态需要取决于之前的状态或者属性时，为什么使用对象而不是函数会引起 bug 呢？React 的 `setState()` 方法是异步的。React 批次执行 `setState()` 方法，最终会全部执行完毕。如果你的 `setState()` 方法依赖于之前的状态或者属性的话，有可能在批次执行期间，状态或者属性的值已经被改变了。
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -508,7 +508,7 @@ That's it. The function over an object approach in `setState()` fixes potential 
 
 * 了解更多关于[在 React 中正确使用 state](https://facebook.github.io/react/docs/state-and-lifecycle.html#using-state-correctly)
 * 将所有使用 `setState()` 方法的地方重构为函数参数形式
-  - 只重构那些需要的地方，即依赖于之前的 props 和 state
+  - 只重构那些需要的地方，即依赖于之前的属性或者状态
 * 重新跑一遍测试，确保一些正常工作
 
 ## Taming the State 
