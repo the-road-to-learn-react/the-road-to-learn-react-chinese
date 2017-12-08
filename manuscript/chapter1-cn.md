@@ -489,9 +489,11 @@ ReactDOM.render(
 
 > In *create-react-app* it is already an advantage that the browser automatically refreshes the page when you change your source code. Try it by changing the `helloWorld` variable in your *src/App.js* file. The browser should refresh the page. But there is a better way of doing it.
 
-用 *create-react-app* 创建的项目中有一个优点，那就是浏览器可以在你更改源代码的时候自动刷新页面。你可以在你的 *src/App.js* 文件中更改变量 `helloWorld` 试试，浏览器应该会自动刷新页面。但是有一个更好的方式实现这个功能。
+用 *create-react-app* 创建的项目有一个优点，那就是浏览器可以在你更改源代码的时候自动刷新页面。试试改变 *src/App.js* 文件中的变量 `helloWorld` ，改变之后浏览器应该会刷新页面。但是有一个更好的方式实现这个功能。
 
-Hot Module Replacement (HMR) is a tool to reload your application in the browser. The browser doesn't perform a page refresh. You can easily activate it in *create-react-app*. In your *src/index.js*, your entry point to React, you have to add one little configuration.
+> Hot Module Replacement (HMR) is a tool to reload your application in the browser. The browser doesn't perform a page refresh. You can easily activate it in *create-react-app*. In your *src/index.js*, your entry point to React, you have to add one little configuration.
+
+模块热替换（HMR）是一个帮助你在浏览器中重新加载应用的工具，并且它不需要让浏览器刷新页面。你可以在 *create-react-app* 中很容易地开启这个工具：在你 React 的入口文件 *src/index.js* 中，添加一些配置代码。
 
 {title="src/index.js",lang=javascript}
 ~~~~~~~~
@@ -512,18 +514,31 @@ if (module.hot) {
 # leanpub-end-insert
 ~~~~~~~~
 
-That's it. Try again to change the `helloWorld` variable in your *src/App.js* file. The browser shouldn't perform a page refresh, but the application reloads and shows the correct output. HMR comes with multiple advantages:
+> That's it. Try again to change the `helloWorld` variable in your *src/App.js* file. The browser shouldn't perform a page refresh, but the application reloads and shows the correct output. HMR comes with multiple advantages:
 
-Imagine you are debugging your code with `console.log()` statements. These statements will stay in your developer console, even though you change your code, because the browser doesn't refresh the page anymore. That can be convenient for debugging purposes.
+配置完成。接下来再尝试在你的 src/App.js 文件中更改一下变量 `helloWorld`，浏览器应该不会刷新页面，但是应用还是会重新加载并且显示正确的输出。HMR 带来很多的优点：
 
-In a growing application a page refresh delays your productivity. You have to wait until the page loads. A page reload can take several seconds in a large application. HMR takes away this disadvantage.
+>  Imagine you are debugging your code with `console.log()` statements. These statements will stay in your developer console, even though you change your code, because the browser doesn't refresh the page anymore. That can be convenient for debugging purposes.
 
-The biggest benefit is that you can keep the application state with HMR. Imagine you have a dialog in your application with multiple steps and you are at step 3. Basically it is a wizard. Without HMR you would change the source code and your browser refreshes the page. You would have to open the dialog again and would have to navigate from step 1 to step 3. With HMR your dialog stays open at step 3. It keeps the application state even though the source code changes. The application itself reloads, but not the page.
+想象一下你正在使用 `console.log()` 调试你的代码。由于浏览器不再会刷新页面，所以即使你更改了你的代码，这些调试信息也会完整地保持在你的开发控制台中。这让调试变得很方便。
 
-### Exercises:
+> In a growing application a page refresh delays your productivity. You have to wait until the page loads. A page reload can take several seconds in a large application. HMR takes away this disadvantage.
 
-* change your *src/App.js* source code a few times to see HMR in action
-* watch the first 10 minutes of [Live React: Hot Reloading with Time Travel](https://www.youtube.com/watch?v=xsSnOQynTHs) by Dan Abramov
+在一个不断开发的应用中，刷新页面将会降低你的生产效率：你必须得等待页面加载完毕。一个大的应用可能会花很多秒钟才能刷新完页面。使用HMR 可以避免这个缺点。
+
+> The biggest benefit is that you can keep the application state with HMR. Imagine you have a dialog in your application with multiple steps and you are at step 3. Basically it is a wizard. Without HMR you would change the source code and your browser refreshes the page. You would have to open the dialog again and would have to navigate from step 1 to step 3. With HMR your dialog stays open at step 3. It keeps the application state even though the source code changes. The application itself reloads, but not the page.
+
+使用 HMR 最大的好处是你可以保持应用的状态。想象一下你的应用中有一个包含很多步骤的对话框，而现在你正在第三步中，换句话说这就是一个向导。如果没有 HMR 的话，当你更改源代码的时候你的浏览器将会刷新页面，你就不得不再次打开这个对话框并且从步骤一开始导航到步骤三。而如果你使用 HMR 的话，你的对话框将会始终保持打开在步骤三的状态。尽管你的源代码改变了，但是应用的状态也会被保持。应用本身会被重新加载，而不是页面被重新加载。
+
+> ### Exercises:
+>
+> * change your *src/App.js* source code a few times to see HMR in action
+> * watch the first 10 minutes of [Live React: Hot Reloading with Time Travel](https://www.youtube.com/watch?v=xsSnOQynTHs) by Dan Abramov
+
+### 练习：
+
+- 改变几次你的 *src/App.js* 中的源代码，来观察 HMR 的工作方式
+- 观看 Dan Abramov 的视频 [Live React: Hot Reloading with Time Travel](https://www.youtube.com/watch?v=xsSnOQynTHs) 的前十分钟
 
 ## Complex JavaScript in JSX
 
