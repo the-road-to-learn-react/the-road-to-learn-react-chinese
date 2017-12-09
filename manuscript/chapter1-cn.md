@@ -705,9 +705,13 @@ React 会帮你完成所有的工作然后显示每一个成员。但是你应�
 - 简要重述 [JavaScript 中标准内建数组函数](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
 - 在 JSX 中使用更多的 JavaScript 表达式
 
-## ES6 Arrow Functions
+> ## ES6 Arrow Functions
 
-JavaScript ES6 introduced arrow functions. An arrow function expression is shorter than a function expression.
+## ES6 箭头函数
+
+> JavaScript ES6 introduced arrow functions. An arrow function expression is shorter than a function expression.
+
+JavaScript ES6 引入了箭头函数。箭头函数表达式比普通的函数表达式更加简洁。
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -718,9 +722,13 @@ function () { ... }
 () => { ... }
 ~~~~~~~~
 
-But you have to be aware of its functionalities. One of them is a different behavior with the `this` object. A function expression always defines its own `this` object. Arrow function expressions still have the `this` object of the enclosing context. Don't get confused when using `this` in an arrow function.
+> But you have to be aware of its functionalities. One of them is a different behavior with the `this` object. A function expression always defines its own `this` object. Arrow function expressions still have the `this` object of the enclosing context. Don't get confused when using `this` in an arrow function.
 
-There is another valuable fact about arrow functions regarding the parenthesis. You can remove the parenthesis when the function gets only one argument, but have to keep them when it gets multiple arguments.
+但是你需要注意它的功能。一个不同的地方是关于 `this` 对象的。一个普通的函数表达式总会定义它自己的 `this` 对象。但是箭头函数表达式仍然会使用包含它的语境下的 `this` 对象。不要被这种箭头函数的 `this` 对象困惑了。
+
+> There is another valuable fact about arrow functions regarding the parenthesis. You can remove the parenthesis when the function gets only one argument, but have to keep them when it gets multiple arguments.
+
+关于箭头函数的括号还有一个值得关注的点。如果函数只有一个参数，你就可以移除掉参数的括号，但是如果有多个参数，你就必须保留这个括号。
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -737,7 +745,9 @@ item, key => { ... }
 (item, key) => { ... }
 ~~~~~~~~
 
-However, let's have a look at the `map` function. You can write it more concisely with an ES6 arrow function.
+> However, let's have a look at the `map` function. You can write it more concisely with an ES6 arrow function.
+
+不管怎样，让我们再看一下 `map` 函数。你可以用 ES6 的箭头函数更加简洁地把它写出来。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -757,7 +767,9 @@ However, let's have a look at the `map` function. You can write it more concisel
 })}
 ~~~~~~~~
 
-Additionally, you can remove the *block body*, meaning the curly braces, of the ES6 arrow function. In a *concise body* an implicit return is attached. Thus you can remove the return statement. That will happen more often in the book, so be sure to understand the difference between a block body and a concise body when using arrow functions.
+> Additionally, you can remove the *block body*, meaning the curly braces, of the ES6 arrow function. In a *concise body* an implicit return is attached. Thus you can remove the return statement. That will happen more often in the book, so be sure to understand the difference between a block body and a concise body when using arrow functions.
+
+此外，在 ES6 的箭头函数中，你可以用简洁函数体来替换块状函数体（用大括号包含的内容），简洁函数体的返回不用显示声明。这样你就可以移除掉函数返回声明。在这本书中这种表达式将会被更多地使用，所以你要确保能够在使用箭头函数的时候要明白块状函数体和简洁函数体的区别。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -777,11 +789,18 @@ Additionally, you can remove the *block body*, meaning the curly braces, of the 
 # leanpub-end-insert
 ~~~~~~~~
 
-Your JSX looks more concise and readable now. It omits the function statement, the curly braces and the return statement. Instead a developer can focus on the implementation details.
+> Your JSX looks more concise and readable now. It omits the function statement, the curly braces and the return statement. Instead a developer can focus on the implementation details.
 
-### Exercises:
+现在你的 JSX 变得更加简洁和可读了。函数声明表达式、大括号和返回声明都被省略了。开发者就可以更加专注在实现细节上。
 
-* read more about [ES6 arrow functions](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+> ### Exercises:
+>
+> * read more about [ES6 arrow functions](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+>
+
+### 练习:
+
+- 阅读更多关于 [ES6 箭头函数](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions) 的内容
 
 ## ES6 Classes
 
