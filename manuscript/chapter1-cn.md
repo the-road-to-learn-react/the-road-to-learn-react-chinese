@@ -540,11 +540,17 @@ if (module.hot) {
 - 改变几次你的 *src/App.js* 中的源代码，来观察 HMR 的工作方式
 - 观看 Dan Abramov 的视频 [Live React: Hot Reloading with Time Travel](https://www.youtube.com/watch?v=xsSnOQynTHs) 的前十分钟
 
-## Complex JavaScript in JSX
+> ## Complex JavaScript in JSX
 
-Let's get back to your App component. So far you rendered some primitive variables in your JSX. Now you will start to render a list of items. The list will be sample data in the beginning, but later you will fetch the data from an external [API](https://www.robinwieruch.de/what-is-an-api-javascript/). That will be far more exciting.
+## JSX 中的复杂 Javascript
 
-First you have to define the list of items.
+> Let's get back to your App component. So far you rendered some primitive variables in your JSX. Now you will start to render a list of items. The list will be sample data in the beginning, but later you will fetch the data from an external [API](https://www.robinwieruch.de/what-is-an-api-javascript/). That will be far more exciting.
+
+让我们回到你的应用组件中。到目前为止你在你的 JSX 中渲染了一些简单的变量。现在你可以开始渲染一个列表了。这个列表一开始可以是一些示例数据，但是以后你可以从一个外部 [API](https://www.robinwieruch.de/what-is-an-api-javascript/) 中获取数据。这会让人更加兴奋。
+
+> First you have to define the list of items.
+
+首先你需要定义一个列表。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -577,9 +583,13 @@ class App extends Component {
 }
 ~~~~~~~~
 
-The sample data will reflect the data we will fetch later on from the API. An item in the list has a title, an url and an author. Additionally it comes with an identifier, points (which indicate how popular an article is) and a count of comments.
+> The sample data will reflect the data we will fetch later on from the API. An item in the list has a title, an url and an author. Additionally it comes with an identifier, points (which indicate how popular an article is) and a count of comments.
 
-Now you can use the built-in JavaScript `map` functionality in your JSX. It enables you to iterate over your list of items to display them. Again you will use curly braces to encapsulate the JavaScript expression in your JSX.
+这个示例数据反应的是我们准备用 API 获取的数据。列表中的每一个成员都有标题、链接和作者信息。另外它还包含有标识符、分数（表示这个文章的流行程度）和评论的数量。
+
+> Now you can use the built-in JavaScript `map` functionality in your JSX. It enables you to iterate over your list of items to display them. Again you will use curly braces to encapsulate the JavaScript expression in your JSX.
+
+现在你可以在你的 JSX 中使用 JavaScript 内置的 `map` 函数。这个函数可以让你遍历你的列表来显示其中的成员。同样的，你需要用大括号把 JavaScript 包含在你的 JSX 中。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -600,9 +610,13 @@ class App extends Component {
 export default App;
 ~~~~~~~~
 
-Using JavaScript in HTML is pretty powerful in JSX. Usually you might have used `map` to convert one list of items to another list of items. This time you use `map` to convert a list of items to HTML elements.
+> Using JavaScript in HTML is pretty powerful in JSX. Usually you might have used `map` to convert one list of items to another list of items. This time you use `map` to convert a list of items to HTML elements.
 
-So far, only the `title` will be displayed for each item. Let's display some more of the item properties.
+在 JSX 中使用 HTML 中的 JavaScript 是很强大的。通常情况下你可以用 `map` 来将一个列表转换成另一个列表。在这个例子中，你使用 `map` 函数将一个列表转换成一组 HTML 元素。
+
+> So far, only the `title` will be displayed for each item. Let's display some more of the item properties.
+
+到目前为止，每个成员只有 `title` 会被显示。让我们显示一些它们的其他属性。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -632,9 +646,13 @@ class App extends Component {
 export default App;
 ~~~~~~~~
 
-You can see how the map function is simply inlined in your JSX. Each item property is displayed in a `<span>` tag. Moreover the url property of the item is used in the `href` attribute of the anchor tag.
+> You can see how the map function is simply inlined in your JSX. Each item property is displayed in a `<span>` tag. Moreover the url property of the item is used in the `href` attribute of the anchor tag.
 
-React will do all the work for you and display each item. But you should add one helper for React to embrace its full potential and improve its performance. You have to assign a key attribute to each list element. That way React is able to identify added, changed and removed items when the list changes. The sample list items come with an identifier already.
+你可以看到 `map` 函数是如何简单地内联到你的 JSX 中的。每一个成员属性会被显示成一个 `<span>` 标签。此外，`url` 属性在另一个标签中被用作为 `href` 属性。
+
+> React will do all the work for you and display each item. But you should add one helper for React to embrace its full potential and improve its performance. You have to assign a key attribute to each list element. That way React is able to identify added, changed and removed items when the list changes. The sample list items come with an identifier already.
+
+React 会帮你完成所有的工作然后显示每一个成员。但是你应该在 React 中添加一个辅助属性来拥抱它的的潜能并提高它的性能。你需要给列表的每一个成员加上一个关键字（key）属性。这样的话 React 可以在列表发生变化的时候识别其中成员的添加、更改和删除的状态。这个示例数据中已经有一个标识符了。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -654,7 +672,9 @@ React will do all the work for you and display each item. But you should add one
 })}
 ~~~~~~~~
 
-You should make sure that the key attribute is a stable identifier. Don't make the mistake of using index of the item in the array. The array index isn't stable at all. For instance, when the list changes its order, React will have a hard time identifying the items properly.
+> You should make sure that the key attribute is a stable identifier. Don't make the mistake of using index of the item in the array. The array index isn't stable at all. For instance, when the list changes its order, React will have a hard time identifying the items properly.
+
+你应该确保这个关键字属性是一个稳定的标识符。不要错误地使用列表成员在数组的索引作为关键字。列表成员的索引是完全不稳定的。在下面的这个例子中，当列表的排序改变了之后，React 将很难正确地识别这些成员。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -668,13 +688,22 @@ You should make sure that the key attribute is a stable identifier. Don't make t
 })}
 ~~~~~~~~
 
-You are displaying both list items now. You can start your app, open your browser and see both items of the list displayed.
+> You are displaying both list items now. You can start your app, open your browser and see both items of the list displayed.
 
-### Exercises:
+你现在可以显示列表的所有成员了。你可以开启你的应用，打开浏览器然后查看这些显示出的列表成员。
 
-* read more about [React lists and keys](https://facebook.github.io/react/docs/lists-and-keys.html)
-* recap the [standard built-in array functionalities in JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
-* use more JavaScript expressions on your own in JSX
+> ### Exercises:
+>
+> * read more about [React lists and keys](https://facebook.github.io/react/docs/lists-and-keys.html)
+> * recap the [standard built-in array functionalities in JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+> * use more JavaScript expressions on your own in JSX
+>
+
+### 练习:
+
+- 查看更过关于 [React 列表和关键字](https://facebook.github.io/react/docs/lists-and-keys.html) 的内容
+- 简要重述 [JavaScript 中标准内建数组函数](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+- 在 JSX 中使用更多的 JavaScript 表达式
 
 ## ES6 Arrow Functions
 
