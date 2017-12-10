@@ -33,7 +33,7 @@ class App extends Component {
 
 When having a constructor in your ES6 class component, it is mandatory to call `super();` because the App component is a subclass of `Component`. Hence the `extends Component` in your App component declaration. You will learn more about ES6 class components later on.
 
-当你使用 ES6 编写的组件有一个构造函数时，它需要强制地调用 `super();` 方法，因为这个 App 组件是 `Component` 的子类。因此在你的APP组件声明 `extends Component` 。 你会在后续内容中更详细了解使用 ES6 编写的组件。
+当你使用 ES6 编写的组件有一个构造函数时，它需要强制地调用 `super();` 方法，因为这个 App 组件是 `Component` 的子类。因此在你的APP组件要声明 `extends Component` 。 你会在后续内容中更详细了解使用 ES6 编写的组件。
 
 You can call `super(props);` as well. It sets `this.props` in your constructor in case you want to access them in the constructor. Otherwise, when accessing `this.props` in your constructor, they would be `undefined`. You will learn more about the props of a React component later on.
 
@@ -41,7 +41,7 @@ You can call `super(props);` as well. It sets `this.props` in your constructor i
 
 Now, in your case, the initial state in your component should be the sample list of items.
 
-现在，在你的示例中，组件中的初始状态应该是一个样例的列表
+现在，在你的示例中，组件中的初始状态应该是一个列表
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -76,7 +76,7 @@ class App extends Component {
 
 The state is bound to the class by using the `this` object. Thus you can access the local state in your whole component. For instance, it can be used in the `render()` method. Previously you have mapped a static list of items in your `render()` method that was defined outside of your component. Now you are about to use the list from your local state in your component.
 
-状态通过使用 `this` 绑定在类中。因此，你可以整个组件中访问局部状态。例如它可以用在 `render()` 方法中。此前你已经在 `render()`  方法中映射一个在组件外定义静态列表。现在你可以把列表换为使用组件中的局部状态。
+state 通过使用 `this` 绑定在类上。因此，你可以在整个组件中访问到 state。例如它可以用在 `render()` 方法中。此前你已经在 `render()`  方法中映射一个在组件外定义静态列表。现在你可以把列表换为使用组件的 state。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -107,11 +107,11 @@ class App extends Component {
 
 The list is part of the component now. It resides in the internal component state. You could add items, change items or remove items in and from your list. Every time you change your component state, the `render()` method of your component will run again. That's how you can simply change your internal component state and be sure that the component re-renders and displays the correct data that comes from the local state.
 
-现在列表是组件的一部分。它驻留在组件的内部状态中。你可以在列表中添加、修改或者删除它们。每次修改你组件的状态，组件的 `render()` 函数会再次运行。这样就可以确保你更改组件局部状态，组件会根据局部状态重新渲染和显示
+现在列表是组件的一部分。它驻留在组件的 state 中。你可以在列表中添加、修改或者删除它们。每次修改你组件的 state，组件的 `render()` 函数会再次运行。这样就可以确保你更改组件的 state，组件会根据 state 重新渲染和显示
 
 But be careful. Don't mutate the state directly. You have to use a method called `setState()` to modify your state. You will get to know it in a following chapter.
 
-但是需要注意，不要直接修改状态。你需要使用 `setState()` 方法来修改状态。你将在接下来的章节了解到它。
+但是需要注意，不要直接修改 state。你需要使用 `setState()` 方法来修改它。你将在接下来的章节了解到它。
 
 ### Exercises: 练习：
 
@@ -120,9 +120,9 @@ But be careful. Don't mutate the state directly. You have to use a method called
   * use and access the state in your `render()` method
 * read more about [the ES6 class constructor](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes#Constructor)
 
-- 练习使用局部状态
-  - 在构造函数中定义更多的初始化状态
-  - 在 `render()`  函数中访问使用状态
+- 练习使用 state
+  - 在构造函数中定义更多的初始化 state
+  - 在 `render()`  函数中访问使用 state
 - 阅读更多关于 [ES6类构造函数](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes#Constructor)
 
 ## ES6 对象初始化
@@ -227,11 +227,11 @@ Perhaps computed property names make no sense for you yet. Why should you need t
 
 Now you have some internal state in your App component. However, you have not manipulated the local state yet. The state is static and thus is the component. A good way to experience state manipulation is to have some component interaction.
 
-现在你的组件中有一些内部状态。但是你还没有操纵内部状态，因此状态是静态的。一个练习状态操作好方法是增加一些组件的交互。
+现在你的组件中有一些内部的 state。但是你还没有操纵它们，因此 state 是静态的。一个练习 state 操作好方法是增加一些组件的交互。
 
 Let's add a button for each item in the displayed list. The button says "Dismiss" and is going to remove the item from the list. It could be useful eventually when you only want to keep a list of unread items and dismiss the items that you are not interested in.
 
-让我们为列表中的每一项增加一个按钮。按钮的文案为 “删除” ，意味着将从列表中删除该项。当你希望保留未读列表和删除不感兴趣的项时是有很用的。
+让我们为列表中的每一项增加一个按钮。按钮的文案为 “删除” ，意味着将从列表中删除该项。这个按钮会在你希望保留未读列表和删除不感兴趣的项时被用到。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -270,15 +270,15 @@ class App extends Component {
 
 The `onDismiss()` class method is not defined yet. We will do it in a moment, but for now the focus should be on the `onClick` handler of the button element. As you can see, the `onDismiss()` method in the `onClick` handler is enclosed by another function. It is an arrow function. That way, you can sneak in the `objectID` property of the `item` object to identify the item that will be dismissed. An alternative way would be to define the function outside of the `onClick` handler and only pass the defined function to the handler. A later chapter will explain the topic of handlers in elements in more detail.
 
-这个类方法  `onDismiss()`  还没有被定义。 我们一会儿会做，但是目前把重点先放在按钮元素的 ` onClick ` 事件句柄上。正如你看见的，  `onDismiss()`  方法被另外一个函数包裹在 ` onClick ` 事件句柄中。 它是一个箭头函数。这样你可以拿到 `item` 对象中的 `objectID` 属性来确定那一项会被删除掉。另外一个方法是在 ` onClick ` 句柄外定义函数并只传已定义的函数到句柄。后续的章节会解释更多细节关于元素句柄。
+这个类方法  `onDismiss()`  还没有被定义， 我们一会儿来会。目前先把重点放在按钮元素的 ` onClick ` 事件句柄上。正如你看见的，  `onDismiss()`  方法被另外一个函数包裹在 ` onClick ` 事件句柄中，它是一个箭头函数。这样你可以拿到 `item` 对象中的 `objectID` 属性来确定那一项会被删除掉。另外一种方法是在 ` onClick ` 句柄外定义函数并只传已定义的函数到句柄。后续的章节会解释更多细节关于元素句柄。
 
 Did you notice the multilines for the button element? Note that elements with multiple attributes get messy as one line at some point. That's why the button element is used with multilines and indentations to keep it readable. But it is not mandatory. It is only a code style recommendation that I highly recommend.
 
-你有没有注意到按钮元素是多行代码的？元素中一行有多个属性会看起来比较混乱。所以这就是按钮元素使用多行格式来保持它的可读性。这虽然不是强制的，但这是我的极力推荐的代码风格。
+你有没有注意到按钮元素是多行代码的？元素中一行有多个属性会看起来比较混乱。所以这个按钮使用多行格式来书写以保持它的可读性。这虽然不是强制的，但这是我的极力推荐的代码风格。
 
 Now you have to implement the `onDismiss()` functionality. It takes an id to identify the item to dismiss. The function is bound to the class and thus becomes a class method. That's why you access it with `this.onDismiss()` and not `onDismiss()`. The `this` object is your class instance. In order to define the `onDismiss()` as class method, you have to bind it in the constructor. Bindings will be explained in another chapter later on.
 
-现在你需要来完成 `onDismiss()` 的功能，它通过id来标示那一项被删除。此函数绑定到类，因此成为类方法。这就是为什么你访问它使用 `this.onDismiss()` 而不是 `onDismiss()`。 `this` 对象是类的实例，为了将 `onDismiss()` 定义为类方法，你需要在构造函数中绑定它。绑定稍后将在另一章中解释。
+现在你需要来完成 `onDismiss()` 的功能，它通过id来标示那一项需被删除。此函数绑定到类，因此成为类方法。这就是为什么你访问它使用 `this.onDismiss()` 而不是 `onDismiss()`。 `this` 对象是类的实例，为了将 `onDismiss()` 定义为类方法，你需要在构造函数中绑定它。绑定稍后将在另一章中详细解释。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -334,11 +334,11 @@ class App extends Component {
 
 Now you are able to define what happens inside of the class method. Basically you want to remove the item identified by the id from the list and store an updated list to your local state. Afterward, the updated list will be used in the re-running `render()` method to display it. The removed item shouldn't appear anymore.
 
-现在你可以定义方法内部的功能。总的来说，你希望从列表中删除由id标识的项并且保存更新后的列表到局部状态中。随后这个更新后列表被使用到再次运行的 `render()` 方法中并渲染，最后这个删除项就不再显示了。
+现在你可以定义方法内部的功能。总的来说你希望从列表中删除由id标识的项，并且保存更新后的列表到 state 中。随后这个更新后列表被使用到再次运行的 `render()` 方法中并渲染，最后这个被删除项就不再显示了。
 
 You can remove an item from a list by using the JavaScript built-in filter functionality. The filter function takes a function as input. The function has access to each value in the list, because it iterates over the list. That way, you can evaluate each item in the list based on a filter condition. If the evaluation for an item is true, the item stays in the list. Otherwise it will be filtered from the list. Additionally, it is good to know that the function returns a new list and doesn't mutate the old list. It supports the convention in React of having immutable data structures.
 
-又可以通过 JavaScript 内置的 filter 方法来删除列表中的一项。fitler 方法以一个函数作为输入。这个函数可以访问列表中的每个值，因为它会遍历整个列表。通过这个方式，你可以基于过滤条件来判断列表的每一项。如果该项判断结果为true，则该项保留在列表中。否则将从列表中过滤掉。另外，好的一点是这个方法会返回一个新的列表也不是改变旧列表。它遵循 React 中不可变数据的约定。
+你可以通过 JavaScript 内置的 filter 方法来删除列表中的一项。fitler 方法以一个函数作为输入。这个函数可以访问列表中的每一项，因为它会遍历整个列表。通过这种方式，你可以基于过滤条件来判断列表的每一项。如果该项判断结果为true，则该项保留在列表中。否则将从列表中过滤掉。另外，好的一点是这个方法会返回一个新的列表也不是改变旧列表。它遵循了 React 中不可变数据的约定。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -353,7 +353,7 @@ onDismiss(id) {
 
 In the next step, you can extract the function and pass it to the filter function.
 
-在下一步中，您可以抽取函数并将其传递给过 filter 函数。
+在下一步中，您可以抽取函数并将其传递给 filter 函数。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -384,7 +384,7 @@ onDismiss(id) {
 
 You could even inline it again, like you did in the `onClick` handler of the button, but it might get less readable.
 
-你甚至可以内联到一行完成，就像在按钮的 `onClick`句柄做的一样，但这样会损失一些可读性
+你甚至可以内联到一行内完成，就像在按钮的 `onClick` 句柄做的一样，但如此会损失一些可读性
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -397,7 +397,7 @@ onDismiss(id) {
 
 The list removes the clicked item now. However the state isn't updated yet. Therefore you can finally use the `setState()` class method to update the list in the internal component state.
 
-现在已经从列表中删除了点击项，但是状态还并没有更新。因此你需要最后使用类方法 `setState()` 来更新组件内部状态的列表了。
+现在已经从列表中删除了点击项，但是 state 还并没有更新。因此你需要最后使用类方法 `setState()` 来更新组件 satate 中的列表了。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -412,7 +412,7 @@ onDismiss(id) {
 
 Now run again your application and try the "Dismiss" button. It should work. What you experience now is the **unidirectional data flow** in React. You trigger an action in your view with `onClick()`, a function or class method modifies the internal component state and the `render()` method of the component runs again to update the view.
 
-现在重新运行你的程序并尝试点击“删除”按钮，它应该是工作的。你现在所练习的就是 React 中的**单向数据流**。你在界面通过 `onClick` 触发一个动作，再通过函数或类方法修改组件的内部状态，最后组件的 `render()` 方法再次运行并更新界面。 	 
+现在重新运行你的程序并尝试点击“删除”按钮，它应该是工作的。你现在所练习的就是 React 中的**单向数据流**。你在界面通过 `onClick` 触发一个动作，再通过函数或类方法修改组件的 state，最后组件的 `render()` 方法再次运行并更新界面。 	 
 
 ![Internal state update with unidirectional data flow](images/set-state-to-render-unidirectional.png)
 
@@ -430,7 +430,7 @@ Now run again your application and try the "Dismiss" button. It should work. Wha
 
 It is important to learn about bindings in JavaScript classes when using React ES6 class components. In the previous chapter, you have bound your class method `onDismiss()` in the constructor.
 
-当使用 ES6 编写的React组件时，了解在 JavaScript 类的绑定非常重要。在前面章节，你已经在构造函数中绑定了  `onDismiss()` 方法
+当使用 ES6 编写的React组件时，了解在 JavaScript 类的绑定会非常重要。在前面章节，你已经在构造函数中绑定了  `onDismiss()` 方法
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -475,7 +475,7 @@ class ExplainBindingsComponent extends Component {
 
 The component renders just fine, but when you click the button, you will get `undefined` in your developer console log. That's a main source of bugs when using React, because if you want to access `this.state` in your class method, it cannot be retrieved because `this` is `undefined`. So in order to make `this` accessible in your class methods, you have to bind the class methods to `this`.
 
-组件正确的渲染，但是当你点击按钮时候，你会在开发调试控制台中得到 `undefined` 。这是使用 React 主要的 bug 来源，因为当你想在类方法中访问 `this.state` 时，它不能被检索到因为 `this` 是 `undefined` 的。所以为了确保 `this` 在类方法中是可访问的，你需要将 `this` 绑定到类方法上。
+组件正确的渲染，但是当你点击按钮时候，你会在开发调试控制台中得到 `undefined` 。这是使用 React 主要的 bug 来源，因为当你想在类方法中访问 `this.state` 时，它不能被检索到是因为 `this` 是 `undefined` 的。所以为了确保 `this` 在类方法中是可访问的，你需要将 `this` 绑定到类方法上。
 
 In the following class component the class method is properly bound in the class constructor.
 
@@ -575,7 +575,7 @@ class ExplainBindingsComponent extends Component {
 
 You should avoid it too, because it will clutter your constructor over time. The constructor is only there to instantiate your class with all its properties. That's why the business logic of class methods should be defined outside of the constructor.
 
-你同样也应该避免这样，因为随着时间的推移它会让你的构造函数变得混乱。构造函数目的只是实例化你的类以所有的属性。这就是为什么我们应该把业务逻辑应该定义在构造函数之外。
+你同样也应该避免这样，因为随着时间的推移它会让你的构造函数变得混乱。构造函数目的只是实例化你的类以及所有的属性。这就是为什么我们应该把业务逻辑应该定义在构造函数之外。
 
 {title="Code Playground",lang=javascript}
 ~~~~~~~~
@@ -625,7 +625,7 @@ class ExplainBindingsComponent extends Component {
 
 If the repetitive binding in the constructor annoys you, you can go ahead with this approach instead. The official React documentation sticks to the class method bindings in the constructor. That's why the book will stick to those as well.
 
-如果在构造函数中重复的绑定比较困扰你，你可以使用这种方式代替。在 React 的官方文档中坚持在构造函数中绑定类方法，所以本书也采用同样方式。
+如果在构造函数中重复的绑定比较困扰你，你可以使用这种方式代替。在 React 的官方文档中坚持在构造函数中绑定类方法，所以本书也会采用同样方式。
 
 ### Exercises:
 
