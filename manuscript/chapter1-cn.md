@@ -802,13 +802,21 @@ item, key => { ... }
 
 - 阅读更多关于 [ES6 箭头函数](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions) 的内容
 
-## ES6 Classes
+> ## ES6 Classes
 
-JavaScript ES6 introduced classes. A class is commonly used in object-oriented programming languages. JavaScript was and is very flexible in its programming paradigms. You can do functional programming and object-oriented programming side by side for their particular use cases.
+## ES6 类
 
-Even though React embraces functional programming, for instance with immutable data structures, classes are used to declare components. They are called ES6 class components. React mixes the good parts of both programming paradigms.
+> JavaScript ES6 introduced classes. A class is commonly used in object-oriented programming languages. JavaScript was and is very flexible in its programming paradigms. You can do functional programming and object-oriented programming side by side for their particular use cases.
 
-Let's consider the following Developer class to examine a JavaScript ES6 class without thinking about a component.
+JavaScript ES6 引入了类的概念。类通常在面向对象编程语言中被使用。JavaScript 的编程范式在过去和现在都是非常灵活的。你可以根据使用情况一边使用函数式编程一边使用面向对象编程。
+
+> Even though React embraces functional programming, for instance with immutable data structures, classes are used to declare components. They are called ES6 class components. React mixes the good parts of both programming paradigms.
+
+尽管 React 为了例如不可变数据结构等的特性而拥抱函数式编程，但是它还是使用类来声明组件。这些组件被称为 ES6 类组件。React 混合使用了两种编程范式中的有益的部分。
+
+> Let's consider the following Developer class to examine a JavaScript ES6 class without thinking about a component.
+
+作为 JavaScript ES6 类的例子，让我们先不管组件，思考如下这个 Developer 类。
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -824,11 +832,17 @@ class Developer {
 }
 ~~~~~~~~
 
-A class has a constructor to make it instantiable. The constructor can take arguments to assign it to the class instance. Additionally a class can define functions. Because the function is associated with a class, it is called a method. Often it is referenced as a class method.
+> A class has a constructor to make it instantiable. The constructor can take arguments to assign it to the class instance. Additionally a class can define functions. Because the function is associated with a class, it is called a method. Often it is referenced as a class method.
 
-The Developer class is only the class declaration. You can create multiple instances of the class by invoking it. It is similar to the ES6 class component, that has a declaration, but you have to use it somewhere else to instantiate it.
+类都有一个用来实例化自己的构造函数。这个构造函数可以用来传入参数来赋给类的实例。此外，类可以定义函数。因为这个函数被关联给了类，所以它被称为方法。通常它被当称为类的方法。
 
-Let's see how you can instantiate the class and how you can use its methods.
+> The Developer class is only the class declaration. You can create multiple instances of the class by invoking it. It is similar to the ES6 class component, that has a declaration, but you have to use it somewhere else to instantiate it.
+
+这个 Developer 类只有类的声明。你可以使用它来创建多个类的示例。它和 ES6 类组件很类似，都有声明，但是你需要在别的地方实例化这个类。
+
+> Let's see how you can instantiate the class and how you can use its methods.
+
+让我们你可以怎样初始化类以及怎么使用它的方法。
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -837,7 +851,9 @@ console.log(robin.getName());
 // output: Robin Wieruch
 ~~~~~~~~
 
-React uses JavaScript ES6 classes for ES6 class components. You already used one ES6 class component.
+> React uses JavaScript ES6 classes for ES6 class components. You already used one ES6 class component.
+
+React 使用 JavaScript ES6 类来实现 ES6 类组件。你已经使用过一个 ES6 类组件了。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -852,37 +868,81 @@ class App extends Component {
 }
 ~~~~~~~~
 
-The App class extends from `Component`. Basically you declare the App component, but it extends from another component. What does extend mean? In object-oriented programming you have the principle of inheritance. It is used to pass over functionalities from one class to another class.
+> The App class extends from `Component`. Basically you declare the App component, but it extends from another component. What does extend mean? In object-oriented programming you have the principle of inheritance. It is used to pass over functionalities from one class to another class.
 
-The App class extends functionality from the Component class. To be more specific, it inherits functionalities from the Component class. The Component class is used to extend a basic ES6 class to a ES6 component class. It has all the functionalities that a component in React needs to have. The render method is one of these functionalities that you have already used. You will learn about other component class methods later on.
+这个 App 类继承自 `Component`。简单来说，你可以声明你的 App 组件，但是这个组件需要继承自另一个组件。继承是什么意思？在一个面向对象编程的语言中，你需要遵循继承原则。它可以把功能从一个类传递到另一个类。
 
-The `Component` class encapsulates all the implementation details of a React component. It enables developers to use classes as components in React.
+> The App class extends functionality from the Component class. To be more specific, it inherits functionalities from the Component class. The Component class is used to extend a basic ES6 class to a ES6 component class. It has all the functionalities that a component in React needs to have. The render method is one of these functionalities that you have already used. You will learn about other component class methods later on.
 
-The methods a React `Component` exposes is the public interface. One of these methods has to be overridden, the others don't need to be overridden. You will learn about the latter ones when the book arrives at lifecycle methods in a later chapter. The `render()` method has to be overridden, because it defines the output of a React `Component`. It has to be defined.
+这个 App 类就从 Component 类中继承了它的功能。这个 Component 类是从一个基本 ES6 类中继承来的 ES6 组件类。它有一个 React 组件所需要的所有功能。渲染（render）方法就是其中你可以使用的一个功能。之后你可以学到更多其他组件类的方法。
 
-Now you know the basics around JavaScript ES6 classes and how they are used in React to extend them to components. You will learn more about the Component methods when the book describes React lifecycle methods.
+> The `Component` class encapsulates all the implementation details of a React component. It enables developers to use classes as components in React.
 
-### Exercises:
+这个 `Component` 类封装了所有 React 类需要的实现细节。它使得开发者们可以在 React 中使用类来创建组件。
 
-* read more about [ES6 classes](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes)
+> The methods a React `Component` exposes is the public interface. One of these methods has to be overridden, the others don't need to be overridden. You will learn about the latter ones when the book arrives at lifecycle methods in a later chapter. The `render()` method has to be overridden, because it defines the output of a React `Component`. It has to be defined.
+
+React `Component` 类暴露出来的方法都是公共的接口。这些方法中有一个方法必须被重写，其他的则不一定要被重写。你会在以后的讲述生命周期的章节中学到它们。这个 `render()` 方法是必须被重写的方法，因为它定义了一个 React 组件的输出。它必须被定义。
+
+> Now you know the basics around JavaScript ES6 classes and how they are used in React to extend them to components. You will learn more about the Component methods when the book describes React lifecycle methods.
+
+现在你已经知道了 JavaScript ES6 类的基本内容，以及它们是怎么在 React 中被继承为组件的。在本书描述 React 生命周期方法地方，你可以学到更多 Component 的方法。
+
+> ### Exercises:
+>
+> * read more about [ES6 classes](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes)
+>
+
+### 练习:
+
+- 阅读更多关于 [ES6 类](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) 的内容
 
 {pagebreak}
 
-You have learned to bootstrap your own React application! Let's recap the last chapters:
+> You have learned to bootstrap your own React application! Let's recap the last chapters:
+
+你已经学会如何开始一个你自己的 React 应用了！让我们回顾一下这一章的内容：
+
+> * React
+>   * create-react-app bootstraps a React application
+>   * JSX mixes up HTML and JavaScript to define the output of React components in their render methods
+>   * components, instances and elements are different things in React
+>   * `ReactDOM.render()` is an entry point for a React application to hook React into the DOM
+>   * built-in JavaScript functionalities can be used in JSX
+>     * map can be used to render a list of items as HTML elements
 
 * React
-  * create-react-app bootstraps a React application
-  * JSX mixes up HTML and JavaScript to define the output of React components in their render methods
-  * components, instances and elements are different things in React
-  * `ReactDOM.render()` is an entry point for a React application to hook React into the DOM
-  * built-in JavaScript functionalities can be used in JSX
-    * map can be used to render a list of items as HTML elements
-* ES6
-  * variable declarations with `const` and `let` can be used for specific use cases
-    * use const over let in React applications
-  * arrow functions can be used to keep your functions concise
-  * classes are used to define components in React by extending them
 
-It makes sense to take a break at this point. Internalize the learnings and apply them on your own. You can experiment with the source code you have written so far.
+  * 使用 create-react-app 创建一个 React 应用
 
-You can find the source code in the [official repository](https://github.com/rwieruch/hackernews-client/tree/4.1).
+  * JSX 混合使用了 HTML 和 JavaScript 在React 组件的方法中定义它的输出
+
+  * React 中，组件、示例和元素是不同的概念
+
+  * `ReactDOM.render()` 是 React 应用连接 DOM 的入口方法
+
+  * JavaScript 内建函数可以在 JSX 中使用
+
+    - map 可以被用来把列表成员渲染成 HTML 的元素
+
+
+> * ES6
+>   * variable declarations with `const` and `let` can be used for specific use cases
+>     * use const over let in React applications
+>   * arrow functions can be used to keep your functions concise
+>   * classes are used to define components in React by extending them
+
+ES6
+
+- 根据不同的使用场景，选择用 `const` 和 `let` 来声明变量
+  - 在 React 应用中尽量使用 const 来声明变量
+- 箭头函数可以用来是你的函数变得更简洁
+- 在 React 中，通过继承类的方式来声明组件
+
+> It makes sense to take a break at this point. Internalize the learnings and apply them on your own. You can experiment with the source code you have written so far.
+
+现在我们可以休息一下。巩固下这章的内容。你可以试验一下你现在所写的代码。
+
+> You can find the source code in the [official repository](https://github.com/rwieruch/hackernews-client/tree/4.1).
+
+你可以在[官方代码库](https://github.com/rwieruch/hackernews-client/tree/4.1)中找到源代码。
