@@ -34,7 +34,7 @@ Second, all building blocks are interchangeable. It makes the ecosystem around R
 
 其次，SPA 的各部分都是可替换的。这样就使得 React 的周边生态圈充满新的创意。各种各样的解决方案相互之间竞争，你可以挑选最吸引你或者最适合你的使用场景的那一个。
 
-The first generation of SPA frameworks arrived at an enterprise level. They are more rigid. React stays innovative and gets adopted by multiple tech thought leader companies like [Airbnb, Netflix and of course Facebook](). All of them invest in the future of React and are content with React and the ecosystem itself.
+The first generation of SPA frameworks arrived at an enterprise level. They are more rigid. React stays innovative and gets adopted by multiple tech thought leader companies like [Airbnb, Netflix and of course Facebook](https://github.com/facebook/react/wiki/Sites-Using-React). All of them invest in the future of React and are content with React and the ecosystem itself.
 
 第一代 SPA 框架更贴近企业级。它们缺乏足够的灵活性。React 时刻保持创新并且被 [Airbnb、Netflix 和 Facebook](https://github.com/facebook/react/wiki/Sites-Using-React) 这些技术界的领导企业所采用。这些企业都对 React 的未来，以及 React 生态圈给予了充分的资助。
 
