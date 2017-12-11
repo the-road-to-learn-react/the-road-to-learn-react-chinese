@@ -429,7 +429,7 @@ export default App;
 
 > Before you continue with the App component, you might want to see where it is used. It is located in your entry point to the React world: the *src/index.js* file.
 
-在你学习应用组件之前，你可能想知道它被用在了什么地方。它在你的React世界的入口文件 *src/index.js* 中
+在你学习这个 App 组件之前，你可能想知道它被用在了什么地方。它在你的React世界的入口文件 *src/index.js* 中
 
 {title="src/index.js",lang=javascript}
 ~~~~~~~~
@@ -454,7 +454,7 @@ ReactDOM.render(
 
 In the implementation `ReactDOM.render()` already takes your App component. However, it would be fine to pass simpler JSX as long as it is JSX. It doesn't have to be an instantiation of a component.
 
-在实现中，`ReactDOM.render()` 总会很好地渲染你的应用组件。你可以将一个简单的 JSX 直接用 JSX 的方式传入，而不是必须传入一个组件的实例。
+在实现中，`ReactDOM.render()` 总会很好地渲染你的 App 组件。你可以将一个简单的 JSX 直接用 JSX 的方式传入，而不是必须传入一个组件的实例。
 
 {title="Code Playground",lang=javascript}
 ~~~~~~~~
@@ -546,7 +546,7 @@ if (module.hot) {
 
 > Let's get back to your App component. So far you rendered some primitive variables in your JSX. Now you will start to render a list of items. The list will be sample data in the beginning, but later you will fetch the data from an external [API](https://www.robinwieruch.de/what-is-an-api-javascript/). That will be far more exciting.
 
-让我们回到你的应用组件中。到目前为止你在你的 JSX 中渲染了一些简单的变量。现在你可以开始渲染一个列表了。这个列表一开始可以是一些示例数据，但是以后你可以从一个外部 [API](https://www.robinwieruch.de/what-is-an-api-javascript/) 中获取数据。这会让人更加兴奋。
+让我们回到你的 App 组件中。到目前为止你在你的 JSX 中渲染了一些简单的变量。现在你可以开始渲染一个列表了。这个列表一开始可以是一些示例数据，但是以后你可以从一个外部 [API](https://www.robinwieruch.de/what-is-an-api-javascript/) 中获取数据。这会让人更加兴奋。
 
 > First you have to define the list of items.
 
