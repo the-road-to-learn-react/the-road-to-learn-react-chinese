@@ -525,7 +525,7 @@ console.log(result);
 
 In React you can make use of that behavior. If the condition is true, the expression after the logical `&&` operator will be the output. If the condition is false, React ignores and skips the expression. It is applicable in the Table conditional rendering case, because it should return a Table or nothing.
 
-在 React 中你也可以利用这个运算符。如果条件判断为 true，`&&` 操作符后面的表达式的值将会被输出。如果条件判断为 false，React 将会忽略并跳过后面的表达式。这完全可以运用在 Table 组件的条件渲染中，因为它返回一个 Table 组件或者什么都不返回。
+在 React 中你也可以利用这个运算符。如果条件判断为 true，`&&` 操作符后面的表达式的值将会被输出。如果条件判断为 false，React 将会忽略并跳过后面的表达式。这个操作符可以用来实现 Table 组件的条件渲染，因为它返回一个 Table 组件或者什么都不返回。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
