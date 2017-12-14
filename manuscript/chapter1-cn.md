@@ -332,11 +332,11 @@ Additionally you might have noticed the `className` attribute. It reflects the s
 
 > I guess you noticed that we declared the variable `helloWorld` with a `var` statement. JavaScript ES6 comes with two more options to declare your variables: `const` and `let`. In JavaScript ES6, you will rarely find `var` anymore.
 
-我猜你已经注意到了，我们在前面的例子中使用的是关键字 `var` 来声明变量 `helloWorld` 的。JavaScript ES6中引入了另外两个声明变量的关键字：`const` 和 `let`。在JavaScript ES6中，你将会几乎不再使用 `var` 了。
+我猜你已经注意到了，我们在前面的例子中使用的是关键字 `var` 来声明变量 `helloWorld` 的。JavaScript ES6中引入了另外两个声明变量的关键字：`const` 和 `let`。在JavaScript ES6中，你将会很少能看到 `var` 了。
 
 > A variable declared with `const` cannot be re-assigned or re-declared. It cannot get mutated (changed, modified). You embrace immutable data structures by using it. Once the data structure is defined, you cannot change it.
 
-被 `const` 声明的变量不能被重新赋值或重新声明。换句话说，它将不能再被改变。你会在声明不可改变的变量时使用这个关键字。每当一个变量的结构被声明好之后，你便不能再改变它了。
+被 `const` 声明的变量不能被重新赋值或重新声明。换句话说，它将不能再被改变。你可以使用它创建不可变数据结构，一旦数据结构被定义好，你就不能再改变它了。
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -377,7 +377,7 @@ helloWorld.text = 'Bye Bye React';
 
 > But when to use each declaration? There are different opinions about the usage. I suggest using `const` whenever you can. It indicates that you want to keep your data structure immutable even though values in objects and arrays can get modified. If you want to modify your variable, you can use `let`.
 
-但是，不同的声明方式应该在什么时候使用呢？有很多的选择。我的建议是在任何你可以使用 `const` 的时候使用它。尽管对象和数组里面的内容可以被改变，但是使用 `const` 声明的变量数据结构是不可变的。而如果你想要改变你的变量，就使用 `let` 去声明它。
+但是，不同的声明方式应该在什么时候使用呢？有很多的选择。我的建议是在任何你可以使用 `const` 的时候使用它。这表示尽管对象和数组的内容是可以被修改的，你仍希望保持该数据结构不可变。而如果你想要改变你的变量，就使用 `let` 去声明它。
 
 > Immutability is embraced in React and its ecosystem. That's why `const` should be your default choice when you define a variable. Still, in complex objects the values within can get modified. Be careful about this behavior.
 
@@ -589,7 +589,7 @@ class App extends Component {
 
 > Now you can use the built-in JavaScript `map` functionality in your JSX. It enables you to iterate over your list of items to display them. Again you will use curly braces to encapsulate the JavaScript expression in your JSX.
 
-现在你可以在你的 JSX 中使用 JavaScript 内置的 `map` 函数。这个函数可以让你遍历你的列表来显示其中的成员。同样的，你需要用大括号把 JavaScript 包含在你的 JSX 中。
+现在你可以在你的 JSX 中使用 JavaScript 内置的 `map` 函数。这个函数可以让你遍历你的列表来显示其中的成员。同样的，你需要用花括号把 JavaScript 包含在你的 JSX 中。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -769,7 +769,7 @@ item, key => { ... }
 
 > Additionally, you can remove the *block body*, meaning the curly braces, of the ES6 arrow function. In a *concise body* an implicit return is attached. Thus you can remove the return statement. That will happen more often in the book, so be sure to understand the difference between a block body and a concise body when using arrow functions.
 
-此外，在 ES6 的箭头函数中，你可以用简洁函数体来替换块状函数体（用大括号包含的内容），简洁函数体的返回不用显示声明。这样你就可以移除掉函数返回声明。在这本书中这种表达式将会被更多地使用，所以你要确保能够在使用箭头函数的时候要明白块状函数体和简洁函数体的区别。
+此外，在 ES6 的箭头函数中，你可以用简洁函数体来替换块状函数体（用花括号包含的内容），简洁函数体的返回不用显示声明。这样你就可以移除掉函数返回声明。在这本书中这种表达式将会被更多地使用，所以你要确保能够在使用箭头函数的时候要明白块状函数体和简洁函数体的区别。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -791,7 +791,7 @@ item, key => { ... }
 
 > Your JSX looks more concise and readable now. It omits the function statement, the curly braces and the return statement. Instead a developer can focus on the implementation details.
 
-现在你的 JSX 变得更加简洁和可读了。函数声明表达式、大括号和返回声明都被省略了。开发者就可以更加专注在实现细节上。
+现在你的 JSX 变得更加简洁和可读了。函数声明表达式、花括号和返回声明都被省略了。开发者就可以更加专注在实现细节上。
 
 > ### Exercises:
 >
