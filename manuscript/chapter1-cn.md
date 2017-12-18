@@ -520,7 +520,7 @@ if (module.hot) {
 
 >  Imagine you are debugging your code with `console.log()` statements. These statements will stay in your developer console, even though you change your code, because the browser doesn't refresh the page anymore. That can be convenient for debugging purposes.
 
-想象一下你正在使用 `console.log()` 调试你的代码。由于浏览器不再会刷新页面，所以即使你更改了你的代码，这些调试信息也会完整地保持在你的开发控制台中。这让调试变得很方便。
+设想你正在使用 `console.log()` 调试你的代码。由于浏览器不再会刷新页面，所以即使你更改了你的代码，这些调试信息也会完整地保持在你的开发控制台中。这让调试变得很方便。
 
 > In a growing application a page refresh delays your productivity. You have to wait until the page loads. A page reload can take several seconds in a large application. HMR takes away this disadvantage.
 
@@ -528,7 +528,7 @@ if (module.hot) {
 
 > The biggest benefit is that you can keep the application state with HMR. Imagine you have a dialog in your application with multiple steps and you are at step 3. Basically it is a wizard. Without HMR you would change the source code and your browser refreshes the page. You would have to open the dialog again and would have to navigate from step 1 to step 3. With HMR your dialog stays open at step 3. It keeps the application state even though the source code changes. The application itself reloads, but not the page.
 
-使用 HMR 最大的好处是你可以保持应用的状态。想象一下你的应用中有一个包含很多步骤的对话框，而现在你正在第三步中，换句话说这就是一个向导。如果没有 HMR 的话，当你更改源代码的时候你的浏览器将会刷新页面，你就不得不再次打开这个对话框并且从步骤一开始导航到步骤三。而如果你使用 HMR 的话，你的对话框将会始终保持打开在步骤三的状态。尽管你的源代码改变了，但是应用的状态也会被保持。应用本身会被重新加载，而不是页面被重新加载。
+使用 HMR 最大的好处是你可以保持应用的状态。设想你的应用中有一个包含很多步骤的对话框，而现在你正在第三步中，换句话说这就是一个向导。如果没有 HMR 的话，当你更改源代码的时候你的浏览器将会刷新页面，你就不得不再次打开这个对话框并且从步骤一开始导航到步骤三。而如果你使用 HMR 的话，你的对话框将会始终保持打开在步骤三的状态。尽管你的源代码改变了，但是应用的状态也会被保持。应用本身会被重新加载，而不是页面被重新加载。
 
 > ### Exercises:
 >
