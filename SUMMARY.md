@@ -1,6 +1,6 @@
 # Summary
 
-- [Introduction](README-cn.md)
+- [简介](README-cn.md)
 - [前言](manuscript/foreword-cn.md)
 - [第一章](manuscript/chapter1-cn.md)
 - [第二章](manuscript/chapter2-cn.md)
