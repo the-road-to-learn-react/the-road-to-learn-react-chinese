@@ -3,6 +3,7 @@
     "version": "0.0.1",
     "dependencies": {
         "gitbook-plugin-disqus": "*",
-        "gitbook-plugin-autocover": "*"
+        "gitbook-plugin-autocover": "*",
+        "gitbook-plugin-anchor-navigation": "*"
     }
 }
