@@ -1,0 +1,8 @@
+{
+    "name": "the-road-to-learn-react-chinese",
+    "version": "0.0.1",
+    "dependencies": {
+        "gitbook-plugin-disqus": "*",
+        "gitbook-plugin-autocover": "*"
+    }
+}

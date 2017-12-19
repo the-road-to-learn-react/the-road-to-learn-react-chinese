@@ -1,0 +1,27 @@
+{
+    "plugins": [
+        "disqus",
+        "autocover"
+    ],
+    "pluginsConfig": {
+        "disqus": {
+            "shortName": "the-road-to-learn-react-chinese"
+        },
+        "autocover": {
+            "title": "The Road to learn React 简体中文版",
+            "author": "ThoughtWorks JS Community",
+            "font": {
+                "size": null,
+                "family": "Impact",
+                "color": "#FFF"
+            },
+            "size": {
+                "w": 1800,
+                "h": 2360
+            },
+            "background": {
+                "color": "#09F"
+            }
+        }
+    }
+}
