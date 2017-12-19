@@ -14,11 +14,11 @@ The following step and knowledge is **not necessary** to deploy your application
 
 In your *package.json* you will find the scripts to *start*, *test* and *build* your application. The last script is *eject*. You could try it, but there is no way back. **It is a one-way operation. Once you eject, you can't go back!** If you just started to learn React, it makes no sense to leave the convenient environment of *create-react-app*.
 
-在*package.json*中，你可以找到“start”、“test”和“build”这些命令，用来启动、测试和构建应用。在最后一个命令是*eject*。你可以试着去执行它，但是这个命令只能被执行一次并且不能撤回。**这是一个破坏性的命令，一旦执行就不能反悔**，如果你只是学习React，使用了这个命令将会丢失*create-react-app*提供的那些便利功能。
+在*package.json*中，你可以找到“start”、“test”和“build”这些命令，用来启动、测试和构建应用。最后的命令就是*eject*。你可以试着去执行它，但是这个命令只能被执行一次并且不能撤回。**这是一个破坏性的命令，一旦执行就不能反悔**，如果你只是学习React，那就没有理由离开*create-react-app*提供给你的便利环境。。
 
 If you would run `npm run eject`, the command would copy all the configuration and dependencies to your *package.json* and a new *config/* folder. You would convert the whole project into a custom setup with tooling that includes Babel and Webpack. After all, you would have full control over all these tools.
 
-如果你运行了 `npm run eject`，它会复制所有的配置和依赖到package.json中，同时创建一个新的*config/*文件夹。你会将整个项目完全转换成带有Babel和Webpack等工具的自定义配置。最终，你将可以完全控制所有这些工具。
+假设你运行了 `npm run eject`，它会复制所有的配置和依赖到package.json中，同时创建一个新的*config/*文件夹。你会将整个项目完全转换成带有Babel和Webpack等工具的自定义配置。最终，你将可以完全控制所有这些工具。
 
 The official documentation says that *create-react-app* is suitable for small to mid size projects. You shouldn't feel obligated to use the "eject" command.
 
@@ -28,7 +28,7 @@ The official documentation says that *create-react-app* is suitable for small to
 ### 练习
 
 * read more about [eject](https://github.com/facebookincubator/create-react-app#converting-to-a-custom-setup)
-* 阅读更多关于“eject”的内容 [eject](https://github.com/facebookincubator/create-react-app#converting-to-a-custom-setup)
+* 阅读更多关于 [eject](https://github.com/facebookincubator/create-react-app#converting-to-a-custom-setup) 的内容 
 
 
 ## Deploy your App
@@ -36,22 +36,21 @@ The official documentation says that *create-react-app* is suitable for small to
 
 In the end, no application should stay on localhost. You want to go live. Heroku is a platform as a service where you can host your application. They offer a seamless integration with React. To be more specific: It's possible to deploy a *create-react-app* in minutes. It is a zero-configuration deployment which follows the philosophy of *create-react-app*.
 
-说到底，没有哪个应用应该止步于本地环境（localhost），大家都想要有正式上线的一天。Heroku是一个提供平台即服务（PaaS）的服务商，你可以在上面托管你的应用。他们
-提供了和React的无缝集成，确切地说，它可以让你在几分钟之内部署一个通过*create-react-app*创建的应用。和*create-react-app*的理念一样，它可以做到零配置部署。
+说到底，没有哪个应用应该止步于本地环境（localhost），大家都想要有正式上线的一天。Heroku是一个提供平台即服务（PaaS）的服务商，你可以在上面托管你的应用。他们提供了和React的无缝集成，确切地说，它可以让你在几分钟之内部署一个通过*create-react-app*创建的应用。和*create-react-app*的理念一样，它可以做到零配置部署。
 
 You need to fulfill two requirements before you can deploy your application to Heroku:
 
 * install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
 * create a [free Heroku account](https://www.heroku.com/)
 
-部署你的应用到Heroku之前你需要满足两个条件：
+在部署应用到Heroku之前，你需要先满足两个条件：
 
 * 安装 [Heroku命令行工具](https://devcenter.heroku.com/articles/heroku-command-line)
 * 创建一个 [免费的Heroku账号](https://www.heroku.com/)
 
 If you have installed Homebrew, you can install the Heroku CLI from command line:
 
-如果你的Mac上已经安装了Homebrew，你可以用终端安装Heroku命令行工具：
+如果你的Mac上已经安装了Homebrew，你可以用终端安装Heroku命令行：
 
 {title="Command Line",lang="text"}
 ~~~~~~~~
