@@ -226,11 +226,11 @@ A lot of things happen in the code. I thought about breaking it into smaller pie
 
 First, you can remove the sample list of items, because you return a real list from the Hacker News API. The sample data is not used anymore. The initial state of your component has an empty result and default search term now. The same default search term is used in the input field of the Search component and in your first request.
 
-首先，你可以移除样本列表了，因为你将从 Hacker News API 得到一个真实的列表。这些样本数据已经没用了。现在组件将一个空的列表结果以及一个默认的搜索项作为初始状态。这个默认搜索项也同样用在 Search 组件的输入字段和第一个 API 请求中。
+首先，你可以移除样本列表了，因为你将从 Hacker News API 得到一个真实的列表。这些样本数据已经没用了。现在组件将一个空的列表结果以及一个默认的搜索词作为初始状态。这个默认搜索词也同样用在 Search 组件的输入字段和第一个 API 请求中。
 
 Second, you use the `componentDidMount()` lifecycle method to fetch the data after the component did mount. In the very first fetch, the default search term from the local state is used. It will fetch "redux" related stories, because that is the default parameter.
 
-其次，在组件挂载之后，它用了 `componentDidMount()` 生命周期方法去获取数据。在第一次获取数据时，使用的是本地状态中的默认搜索项。它将获取与 “redux” 相关的资讯，因为它是默认的参数。
+其次，在组件挂载之后，它用了 `componentDidMount()` 生命周期方法去获取数据。在第一次获取数据时，使用的是本地状态中的默认搜索词。它将获取与 “redux” 相关的资讯，因为它是默认的参数。
 
 Third, the native fetch API is used. The JavaScript ES6 template strings allow it to compose the URL with the `searchTerm`. The URL is the argument for the native fetch API function. The response needs to get transformed to a JSON data structure, which is a mandatory step in a native fetch function when dealing with JSON data structures, and can finally be set as result in the internal component state. In addition, the catch block is used in case of an error. If an error happens during the request, the function will run into the catch block instead of the then block. In a later chapter of the book, you will include the error handling.
 
@@ -558,11 +558,11 @@ After all, you should be able to see the fetched data in your application. Every
 
 When you use the Search component with its input field now, you will filter the list. That's happening on the client-side though. Now you are going to use the Hacker News API to search on the server-side. Otherwise you would deal only with the first API response which you got on `componentDidMount()` with the default search term parameter.
 
-目前当你使用 Search 组件的输入栏时，你将在客户端上过滤 _(翻译成过滤总感觉有点奇怪)_ 之前的样本列表。所以你现在要做的是使用 Hacker News API 在服务器端来进行搜索。否则，你将只能处理第一次从 `componentDidMount()` 拿到的默认搜索项的 API 响应。
+目前当你使用 Search 组件的输入栏时，你会在客户端过滤这个列表。所以你现在要做的是使用 Hacker News API 在服务器端来进行搜索。否则，你将只能处理第一次从 `componentDidMount()` 拿到的默认搜索词的 API 响应。
 
 You can define an `onSearchSubmit()` method in your App component which fetches results from the Hacker News API when executing a search in the Search component. It will be the same fetch as in your `componentDidMount()` lifecycle method, but this time with a modified search term from the local state and not with the initial default search term.
 
-你可以在 App 组件中定义一个 `onSearchSubmit()` 方法。当 Search 组件执行搜索时，可以用这个方法来从 Hacker News API 获取结果。这与 `componentDidMount()` 生命周期方法中的获取数据的方式相同，但是这次搜索的的内容变了，不用初始设定里的默认搜索项了。
+你可以在 App 组件中定义一个 `onSearchSubmit()` 方法。当 Search 组件执行搜索时，可以用这个方法来从 Hacker News API 获取结果。这与 `componentDidMount()` 生命周期方法中的获取数据的方式相同，但是这次搜索的的内容变了，不用初始设定里的默认搜索词了。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -608,7 +608,7 @@ As alternative you could debounce (delay) the `onChange()` function and spare th
 
 First, pass the `onSearchSubmit()` method to your Search component.
 
-首先，传递 `onSearchSubmit()` 方法到你的 Search 组件。
+首先，把 `onSearchSubmit()` 方法传给 Search 组件。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -646,7 +646,7 @@ class App extends Component {
 
 Second, introduce a button in your Search component. The button has the `type="submit"` and the form uses its `onSubmit()` attribute to pass the `onSubmit()` method. You can reuse the children property, but this time it will be used as the content of the button.
 
-随后，在你的 Search 组件中加一个按钮。将这个按钮设置为 `type="submit"`，并且表单（form）用它的 `onSubmit` _(这里作者应该是写错了onSubmit属性应该是没有括号的吧)_ 属性去传递 `onSubmit()` 方法。这里 children 属性将作为按钮的显示内容，当然你也可以另作他用。
+随后，在你的 Search 组件中加一个按钮。将这个按钮设置为 `type="submit"`，并通过表单（form）的 `onSubmit` 属性去传递 `onSubmit()` 方法。你可以复用 children 属性，但这里它会被用作按钮的显示内容。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -714,7 +714,7 @@ const Table = ({ list, onDismiss }) =>
 
 When you try to search now, you will notice that the browser reloads. That's a native browser behavior for a submit callback in a HTML form. In React you will often come across the `preventDefault()` event method to suppress the native browser behavior.
 
-现在当你尝试去搜索时，你将注意到浏览器重新加载了。这是本地浏览器在提交一个 HTML 表单后的行为。在 React 中，你会经常遇到用 `preventDefault()` 事件方法来阻止类似于这样的本地浏览器行为。
+现在当你尝试去搜索时，你会注意到浏览器重新加载了。这是提交 HTML 表单后的浏览器原生行为。在 React 中，你会经常遇到用 `preventDefault()` 事件方法来阻止类似于这样的浏览器原生行为。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -731,7 +731,7 @@ onSearchSubmit(event) {
 
 Now you should be able to search different Hacker News stories. Perfect, you interact with a real world API. There should be no client-side search anymore.
 
-现在你已经能搜索不同的资讯了。非常棒，这说明你现在能与一个真正 API 打交道，这样也就不再需要在客户端进行搜索了。
+现在你已经能搜索不同的资讯了。非常棒，这说明你在和一个真正 API 打交道，这样也就不再需要在客户端进行搜索了。
 
 ### Exercises: 练习
 
@@ -745,7 +745,7 @@ Now you should be able to search different Hacker News stories. Perfect, you int
 
 Did you have a closer look at the returned data structure yet? The [Hacker News API](https://hn.algolia.com/api) returns more than a list of hits. Precisely it returns a paginated list. The page property, which is `0` in the first response, can be used to fetch more paginated sublists as result. You only need to pass the next page with the same search term to the API.
 
-你仔细看过返回回来的数据结构吗？[Hacker News API](https://hn.algolia.com/api) 不仅仅只返回资讯（hits）的列表。确切的说它返回的是一个分页列表。利用分页属性（在第一个响应中为“0”），将具有相同搜索字项的下一页传递给 API，你就可以获取更多分页的子列表了。
+你仔细看过返回回来的数据结构吗？[Hacker News API](https://hn.algolia.com/api) 返回的不仅仅只有资讯（hits）列表。确切地说它返回的是一个分页列表。利用分页属性（在第一个响应中为 `0`），将具有相同搜索词的下一页传给 API，你就可以获取更多分页的子列表了。
 
 Let's extend the composable API constants so that it can deal with paginated data.
 
@@ -777,7 +777,7 @@ console.log(url);
 
 The `fetchSearchTopStories()` method will take the page as second argument. If you don't provide the second argument, it will fallback to the `0` page for the initial request. Thus the `componentDidMount()` and `onSearchSubmit()` methods fetch the first page on the first request. Every additional fetch should fetch the next page by providing the second argument.
 
-`fetchSearchTopStories()` 函数接收分页作为第二个参数。如果你不提供第二个参数，它将使用‘0’作为初始参数并发起请求。因此 `componentDidMount()` 和 `onSearchSubmit()` 方法在第一个请求中默认获取首页。之后的请求将根据提供的第二个参数抓取下一个页面的数据。
+`fetchSearchTopStories()` 函数接收分页作为第二个参数。如果你不提供第二个参数，它将使用`0`作为初始参数并发起请求。因此 `componentDidMount()` 和 `onSearchSubmit()` 方法在第一个请求中默认获取第一页。之后的请求将根据提供的第二个参数抓取下一个页面的数据。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -801,7 +801,7 @@ class App extends Component {
 
 Now you can use the current page from the API response in `fetchSearchTopStories()`. You can use this method in a button to fetch more stories on a `onClick` button handler. Let's use the Button to fetch more paginated data from the Hacker News API. You only need to define the `onClick()` handler which takes the current search term and the next page (current page + 1).
 
-现在你可以使用在 `fetchSearchTopStories()` 函数返回的当前页面数据。你也可以通过 `onClick` 点击事件来使用这个方法，以便抓取更多的资讯。现在让我们来实现通过按钮从 Hacker News API 中获取更多的分页数据的功能。你只需要定义 `onClick()` 事件处理器，这个处理器以当前的搜索关键词和下一页的页码作为参数（当前页码+1）。
+现在你可以使用在 `fetchSearchTopStories()` 中 API 返回中的当前页。你也可以通过 `onClick` 点击事件来使用这个方法，以便抓取更多的资讯。现在让我们来实现通过按钮从 Hacker News API 中获取更多的分页数据的功能。你只需要定义 `onClick()` 事件处理器，这个处理器以当前的搜索词和下一页的页码作为参数（当前页码 + 1）。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -839,7 +839,7 @@ class App extends Component {
 
 In addition, in your `render()` method you should make sure to default to page 0 when there is no result yet. Remember that the `render()` method is called before the data is fetched asynchronously in the `componentDidMount()` lifecycle method.
 
-此外，当还没有返回结果时，在你的 `render()` 方法中你应该保证你的默认分页为0。记住 `render()` 方法是在 `componentDidMount()` 生命周期方法去异步获取数据之前调用的。
+此外，当结果还没有返回时，你应该保证 `render()` 方法中的默认分页为0。记住 `render()` 方法是在 `componentDidMount()` 生命周期方法去异步获取数据之前调用的。
 
 There is one step missing. You fetch the next page of data, but it will override your previous page of data. It would be ideal to concatenate the old and new list of hits from the local state and new result object. Let's adjust the functionality to add the new data rather than to override it.
 
@@ -873,19 +873,19 @@ A couple of things happen in the `setSearchTopStories()` method now. First, you 
 
 Second, you have to check if there are already old hits. When the page is 0, it is a new search request from `componentDidMount()` or `onSearchSubmit()`. The hits are empty. But when you click the "More" button to fetch paginated data the page isn't 0. It is the next page. The old hits are already stored in your state and thus can be used.
 
-第二，你必须检查老的 hits 字段是否存在。当页码为0时，它应该是一个来自 `componentDidMount()` 或者 `onSearchSubmit()` 方法的新的搜索请求。那么 hits 现在是空的。但是当你通过点击 “More” 按钮去抓取更过的分页数据时，页码不为0。此时它是下一页。老的 hits 已经储存在状态中等待着与新的分页合并。
+第二，你必须检查老的 hits 字段是否存在。当页码为0时，这应该是一个来自 `componentDidMount()` 或者 `onSearchSubmit()` 方法的新的搜索请求；所以 hits 是空的。但是当你通过点击 “More” 按钮去抓取更多的分页数据时，页码不为0；此时它是下一页。老的 hits 已经储存在状态中等待着与新的分页合并。
 
 Third, you don't want to override the old hits. You can merge old and new hits from the recent API request. The merge of both lists can be done with the JavaScript ES6 array spread operator.
 
-第三，你不想覆盖老的 hits。你可以合并老的 hits 及 API 返回的新的 hits。并且这两个列表的合并可以通过 JavaScript ES6 数据扩展操作符完成。
+第三，你不想覆盖老的 hits。你可以合并老的 hits 及 API 返回的新的 hits。这两个列表的合并可以通过 JavaScript ES6 数据扩展操作符完成。
 
 Fourth, you set the merged hits and page in the local component state.
 
-第四，你将合并后的 hits 和页码设置到本地组件的状态中。
+第四，将合并后的 hits 和页码设置到本地组件的状态中。
 
 You can make one last adjustment. When you try the "More" button it only fetches a few list items. The API URL can be extended to fetch more list items with each request. Again, you can add more composable path constants.
 
-你还可以做一个最后的调整。当你尝试点击 “More” 按钮时，它只抓取一定数量的资讯。但在每个请求的中，你可以通过设置 API URL 来获取更多的资讯。再者，你还可以添加更多的可组合路径常量。
+你还可以做一个最后的调整。当你尝试点击 “More” 按钮时，它只抓取一定数量的资讯。但在每个请求的中，你可以通过设置 API URL 来获取更多的资讯。同样地，你还可以添加更多的可组合路径常量。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -921,27 +921,27 @@ fetchSearchTopStories(searchTerm, page = 0) {
 
 Afterward, the request to the Hacker News API fetches more list items in one request than before. As you can see, a powerful such as the Hacker News API gives you plenty of ways to experiment with real world data. You should make use of it to make your endeavours when learning something new more exciting. That's [how I learned about the empowerment that APIs provide](https://www.robinwieruch.de/what-is-an-api-javascript/) when learning a new programming language or library. 
 
-现在，我们能够在一个请求中从 Hacker News API 获取更多的数据了。如你所见，功能强大的 Hacker News API 为你提供了大量的方法，以便让你用真实数据做练习。在学习新的东西时，你应该利用真实的 API 来让整个过程更加有趣。这就是当我学习一门新的编程语言或者库时，[如何去利用API提供的便利] (https://www.robinwieruch.de/what-is-an-api-javascript/)。 _(这就是当我学习一门新的编程语言或者库时，如何去利用API提供的便利。->这里感觉翻译得不是很好，请多给意见)_
+现在，我们能够在一个请求中从 Hacker News API 获取更多的数据了。如你所见，功能强大的 Hacker News API 为你提供了大量的方法，以便让你用真实数据做练习。在学习新的东西时，你应该利用真实的 API 来让整个过程更加有趣。这就是我[如何利用 API 提供的便利](https://www.robinwieruch.de/what-is-an-api-javascript/)来学习新的编程语言或库的。
 
 ### Exercises: 练习
 
 * experiment with the [Hacker News API parameters](https://hn.algolia.com/api)
 
-* 练习 [Hacker News API 变量](https://hn.algolia.com/api)
+* 体验 [Hacker News API 变量](https://hn.algolia.com/api)
 
-## Client Cache 用户缓存
+## Client Cache 客户端缓存
 
 Each search submit makes a request to the Hacker News API. You might search for "redux", followed by "react" and eventually "redux" again. In total it makes 3 requests. But you searched for "redux" twice and both times it took a whole asynchronous roundtrip to fetch the data. In a client-sided cache you would store each result. When a request to the API is made, it checks if a result is already there. If it is there, the cache is used. Otherwise an API request is made to fetch the data.
 
-每次提交表单都会发起一个对 Hacker News API 的请求。你可能先搜索了 “redux”，然后搜索了 “react”，最后再次搜索了 “redux”。这样它总共发起了3次请求。但是你搜索了 “redux” 两次并且每一次都会执行一次异步操作去获取数据。如果有客户端的缓存，它将保存每次搜索的结果。当发起一个请求时，它首先检查这个请求的结果是否已经在缓存中。如果在，那就使用缓存数据。否则发起一个新的 API 去获取数据。
+每次提交表单都会发起一个对 Hacker News API 的请求。你可能先搜索了 “redux”，然后搜索了 “react”，最后再次搜索了 “redux”。这样它总共发起了3次请求。但是你搜索了 “redux” 两次并且每次都会执行一次异步操作去获取数据。如果有客户端的缓存，它将保存每次搜索的结果。当需要请求 API 的时候，它首先检查这个请求的结果是否已经在缓存中。如果在，那就使用缓存数据。否则再发 API 请求去获取数据。
 
 In order to have a client cache for each result, you have to store multiple `results` rather than one `result` in your internal component state. The results object will be a map with the search term as key and the result as value. Each result from the API will be saved by search term (key).
 
-为了实现在客户端对搜索结果的缓存，你必须在你的内部组件的状态中存储多个`结果`而不是一个`结果`。这些结果对象将会与搜索词映射成一个键值对。而每一个从 API 得到的结果会以搜索的词语为键（key）保存下来。
+为了实现在客户端对搜索结果的缓存，你必须在你的内部组件的状态中存储多个结果（`results`）而不是一个结果（`result`）。这些结果对象将会与搜索词映射成一个键值对。而每一个从 API 得到的结果会以搜索词为键（key）保存下来。
 
 At the moment, your result in the local state looks similar to the following:
 
-此时，在本地状态中，你的result看起应该是这样：
+此时，在本地状态中，你的 result 看起应该是这样：
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -953,7 +953,7 @@ result: {
 
 Imagine you have made two API requests. One for the search term "redux" and another one for "react". The results object should look like the following:
 
-想想一下你已经发起了两次 API 请求。一次搜索 “redux”，另一次搜索 “react”。那你的 results 对象看起来应该是这样：
+假设你已经发起了两次 API 请求。一次搜索 “redux”，另一次搜索 “react”。那你的 results 对象看起来应该是这样：
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -972,7 +972,7 @@ results: {
 
 Let's implement a client-side cache with React `setState()`. First, rename the `result` object to `results` in the initial component state. Second, define a temporary `searchKey` which is used to store each `result`.
 
-让我们用 React 的 `setState()` 方法来实现客户端缓存。首先，在初始化组件状态中重命名 `result` 对象为 `results`。第二，定义一个临时的 `searchKey` 用来储存单个 `result`。
+让我们用 React 的 `setState()` 方法来实现客户端缓存。首先，在初始化组件状态中重命名 `result` 对象为 `results`。其次，定义一个临时的 `searchKey` 用来储存单个 `result`。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1000,7 +1000,7 @@ class App extends Component {
 
 The `searchKey` has to be set before each request is made. It reflects the `searchTerm`. You might wonder: Why don't we use the `searchTerm` in the first place? That's a crucial part to understand before continuing with the implementation. The `searchTerm` is a fluctuant variable, because it gets changed every time you type into the Search input field. However, in the end you will need a non fluctuant variable. It determines the recent submitted search term to the API and can be used to retrieve the correct result from the map of results. It is a pointer to your current result in the cache and thus can be used to display the current result in your `render()` method.
 
-`searchKey` 必须在发起请求之前设值。它的值来自 `searchTerm`。你可能会想：为什么我们不直接使用 `searchTerm` 呢？这是在我们继续之前需要理解的重点。`searchTerm` 是一个动态的变量，因此它随输入的关键字变化而变化。然而，这里你需要的是一个稳定的变量。它保存最近一次提交给 API 的搜索词，也可以用它来检索结果集中的某个结果。由于它指向缓存中的当前返回结果，因此还可以在 `render()` 方法中用来显示当前结果。
+`searchKey` 的值必须在发起请求之前设置。它的值来自 `searchTerm`。你可能会想：为什么我们不直接使用 `searchTerm` 呢？这是在我们继续之前需要理解的重点。`searchTerm` 是一个动态的变量，因此它随输入的关键字变化而变化。然而，这里你需要的是一个稳定的变量。它保存最近一次提交给 API 的搜索词，也可以用它来检索结果集中的某个结果。由于它指向缓存中的当前返回结果，因此还可以在 `render()` 方法中用来显示当前结果。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1076,7 +1076,7 @@ Second, the old hits have to get merged with the new hits as before. But this ti
 
 Third, a new result can be set in the `results` map in the state. Let's examine the `results` object in `setState()`.
 
-第三，在状态里，一个新的 result 可以设置在 `results` 集中。让我们来看看 `setState()` 中的 `results` 对象是什么样子。
+第三，在状态里，一个新的 `result` 可以设置在 `results` 集中。让我们来看看 `setState()` 中的 `results` 对象是什么样子。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1088,15 +1088,15 @@ results: {
 
 The bottom part makes sure to store the updated result by `searchKey` in the results map. The value is an object with a hits and page property. The `searchKey` is the search term. You already learned the `[searchKey]: ...` syntax. It is an ES6 computed property name. It helps you to allocate values dynamically in an object.
 
-下面部分的代码是为了保证，通过 `searchKey` 将更新后的 result 对象保存在 results 集中。它包含 hits 和 page 属性的对象。而 `searchKey` 的值就是搜索词。现在你学会了 `[searchKey]: ...` 这样的语法。这个语法中，ES6 是通过计算得到属性名的。它可以帮助你实现动态分配对象的值。
+下半部分的代码是为了保证，通过 `searchKey` 将更新后的 `result` 对象保存在 `results` 集中。它包含 hits 和 page 属性的对象。而 `searchKey` 的值就是搜索词。现在你学会了 `[searchKey]: ...` 这样的语法。这个语法中，ES6 是通过计算得到属性名的。它可以帮助你实现动态分配对象的值。
 
 The upper part needs to spread all other results by `searchKey` in the state by using the object spread operator. Otherwise you would lose all results that you have stored before.
 
-上面部分的代码则是用对象扩展运算符将所有其它包含在 results 集中的 `searchKey` 展开。否则，你将会失去之前所有储存过的 results。
+上半部分的代码则是用对象扩展运算符将所有其它包含在 results 集中的 `searchKey` 展开。否则，你将会失去之前所有储存过的 results。
 
 Now you store all results by search term. That's the first step to enable your cache. In the next step, you can retrieve the result depending on the non fluctuant `searchKey` from your map of results. That's why you had to introduce the `searchKey` in the first place as non fluctuant variable. Otherwise the retrieval would be broken when you would use the fluctuant `searchTerm` to retrieve the current result, because this value might change when you would use the Search component.
 
-现在你以搜索词为键名，将所有 results 储存了起来。这是实现缓存的第一步。接下来，你可以根据稳定的 `searchKey` 从 results 集中检索 result。这就是为什么一开始你必须引进 `searchKey` 作为一个稳定的 _(不变的？不易发生变化的？静态的？)_ 变量。否则，当你用动态的 `searchTerm` 去检索当前的 result 时，这个检索过程会崩溃，因为它的值可能在你使用 Search 组件时改变过了。
+现在你以搜索词为键名，将所有结果储存了起来。这是实现缓存的第一步。接下来，你可以根据稳定的 `searchKey` 从 results 集中检索 result。这就是为什么一开始你必须引进 `searchKey` 作为一个稳定的变量。不然用动态的 `searchTerm` 去检索当前的 result 时，这个检索过程会崩溃，因为它的值可能在你使用 Search 组件时改变过了。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1151,7 +1151,7 @@ class App extends Component {
 
 Since you default to an empty list when there is no result by `searchKey`, you can spare the conditional rendering for the Table component now. Additionally you will need to pass the `searchKey` rather than the `searchTerm` to the "More" button. Otherwise your paginated fetch depends on the `searchTerm` value which is fluctuant. Moreover make sure to keep the fluctuant `searchTerm` property for the input field in the "Search" component.
 
-由于没有 `searchKey` 的 result 默认为空列表，所以你现在可以节省 Table 组件的条件渲染了。此外，你需要传 `searchKey` 给 “More” 按钮来代替 `searchTerm`。否则，你抓取分页的搜索词将是 `searchTerm` 这个可能变化的值。另外，确保 “Search” 组件的输入字段用的是动态的 `searchTerm`。
+当 `searchKey` 没有对应的结果时，你默认得到一个空列表，所以现在可以节省 Table 组件的条件渲染了。此外，你需要传 `searchKey` 给 “More” 按钮来代替 `searchTerm`。否则，你抓取分页的搜索词将是 `searchTerm` 这个可能变化的值。另外，确保 “Search” 组件的输入字段用的是动态的 `searchTerm`。
 
 The search functionality should work again. It stores all results from the Hacker News API.
 
@@ -1237,17 +1237,17 @@ class App extends Component {
 
 Now your client makes a request to the API only once although you search for a search term twice. Even paginated data with several pages gets cached that way, because you always save the last page for each result in the `results` map. Isn't that a powerful approach to introduce caching to your application? The Hacker News API provides you with everything you need to even cache paginated data effectively.
 
-现在就算你重复搜索一个词，你的客户端也只会发起一次请求。以这种方式进行缓存的话分页的数据也会保存下来，因为结果的每一页都将保存在 `results` 集中。这是不是一个很强大的方法来引入缓存呢？而且 Hacker News API 为你提供了一切，哪怕是分页数据的高效缓存。_(而且 Hacker News API 为你提供了一切，哪怕是有效地缓存分页数据。)_
+现在就算你重复搜索一个词，你的客户端也只会发起一次请求。以这种方式进行缓存的话分页的数据也会保存下来，因为结果的每一页都将保存在 `results` 集中。这是不是一个很强大的方法来引入缓存呢？而且 Hacker News API 为你提供了一切，哪怕是分页数据的高效缓存。
 
 ## Error Handling 错误处理
 
 Everything is in place for your interactions with the Hacker News API. You even have introduced an elegant way to cache your results from the API and make use of its paginated list functionality to fetch an endless list of sublists of stories from the API. But there is one piece missing. Unfortunately it is often missed when developing applications nowadays: error handling. It is too easy to implement the happy path without worrying about the errors that can happen along the way.
 
-你用来与 Hacker News API 交互的所有功能都已就位。你甚至引入了一种优雅的方式来进行 API 缓存，并能够通过分页列表功能从 API 中获取无尽的资讯子列表。但是我们还忽略一项。并且它在日常开发中经常被遗忘，它就是：错误处理。人们常常容易沉浸于主逻辑的开发中，却忘记去添加错误处理。
+你与 Hacker News API 交互的所有功能都已就位。你甚至引入了一种优雅的方式来缓存 API 结果，而且通过分页列表功能还可以从 API 中获取无尽的资讯子列表。但是我们还忽略了一项。并且它在日常开发中经常被遗忘，那就是：错误处理。人们常常容易沉浸于主逻辑的开发中，却忘记了添加错误处理。
 
 In this chapter, you will introduce an efficient solution to add error handling for your application in case of an erroneous API request. You have already learned about the necessary building blocks in React to introduce error handling: local state and conditional rendering. Basically, the error is only another state in React. When an error occurs, you will store it in the local state and display it with a conditional rendering in your component. That's it. Let's implement it in the App component, because it's the component that is used to fetch the data from the Hacker News API in the first place. First, you have to introduce the error in the local state. It is initialized as null, but will be set to the error object in case of an error.
 
-在本章中，引入了一个高效的方法来为你的应用添加一个错误处理，以防发生错误的 API 请求 _(API请求发生错误？)_。其实你已经掌握了在 React 中构建错误处理的知识，那就是：本地状态和条件渲染。追本溯源地讲，错误只是 React 的另一种状态。当一个错误发生时，你先将它存在本地状态中，而后利用条件渲染在组件中显示错误信息。听起来是不是很简单。现在让我们在 App 组件中实现它，因为它是向 Hacker News API 发起请求的组件。首先，你要在本地状态中引入 error 这个状态。它初始化为 null，但当错误发生时它会被置成一个 error 对象。
+在本章中，引入了一个高效的方法来为你的应用添加一个当发生错误的 API 请求时的错误处理。其实你已经掌握了在 React 中构建错误处理的知识点，它们就是：本地状态和条件渲染。追本溯源地讲，错误只是 React 的另一种状态。当一个错误发生时，你先将它存在本地状态中，而后利用条件渲染在组件中显示错误信息。听起来是不是很简单。现在让我们在 App 组件中实现它，因为它是向 Hacker News API 发起请求的组件。首先，你要在本地状态中引入 error 这个状态。它初始化为 null，但当错误发生时它会被置成一个 error 对象。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1274,7 +1274,7 @@ class App extends Component {
 
 Second, you can use the catch block in your native fetch to store the error object in the local state by using `setState()`. Every time the API request isn't successful, the catch block would be executed.
 
-第二，通过结合使用catch 块和 `setState()`，你可以捕获错误对象并将它存在本地状态中。如果 API 请求失败，catch 块就会执行。
+第二，通过结合使用 catch 和 `setState()`，你可以捕获错误对象并将它存在本地状态中。如果 API 请求失败，catch 就会执行。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1298,7 +1298,7 @@ class App extends Component {
 
 Third, you can retrieve the error object from your local state in the `render()` method and display a message in case of an error by using React's conditional rendering.
 
-第三，如果错误发生了，你可以在 `render()` 方法中对 error 对象进行本地检索，然后利用条件渲染来显示一个错误信息。
+第三，如果错误发生了，你可以在 `render()` 方法中把 error 对象从本地状态中检索出来，然后利用条件渲染来显示一个错误信息。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1344,7 +1344,7 @@ const PATH_BASE = 'https://hn.foo.bar.com/api/v1';
 
 Afterward, you should get the error message instead of your application. It is up to you where you want to place the conditional rendering for the error message. In this case, the whole app isn't displayed anymore. That wouldn't be the best user experience. So what about displaying either the Table component or the error message? The remaining application would still be visible in case of an error.
 
-之后，你应该得到一个错误信息而不是应用的渲染。你可以自己决定放置错误信息渲染的位置。在上述代码下，整个 app 不再显示。显然这不是最佳用户体验。我们将 Table 组件和错误信息择一而渲染之如何？这样的话当错误发生时，除了 Table 组件，应用其余的部分仍然可见。
+之后，你应该得到一个错误信息而不是应用界面。你可以自己决定错误信息渲染的位置。在上述代码下，整个 app 不再显示。显然这不是最佳用户体验。我们将 Table 组件和错误信息择一而渲染之如何？这样的话当错误发生时，除了 Table 组件，应用其余的部分仍然可见。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1406,7 +1406,7 @@ const PATH_BASE = 'https://hn.algolia.com/api/v1';
 
 Your application should still work, but this time with error handling in case the API request fails.
 
-你的应用应该仍然可以工作，不过此时如果 API 请求失败应用就已经有错误处理了。
+你的应用应该仍然可以工作，不过此时如果 API 请求失败应用就有错误处理了。
 
 ### Exercises: 练习
 
@@ -1438,7 +1438,7 @@ You have learned to interact with an API in React! Let's recap the last chapters
   * client-side caching
 
 * React
-  * 针对不同用例的ES6类组件生命周期方法
+  * 针对不同用例的 ES6 类组件生命周期方法
   * componentDidMount() 如何用于 API 交互
   * 条件渲染
   * 表单上的合成事件
@@ -1456,7 +1456,7 @@ You have learned to interact with an API in React! Let's recap the last chapters
 
 Again it makes sense to take a break. Internalize the learnings and apply them on your own. You can experiment with the source code you have written so far.
 
-再次强调，此时小憩一下，将学过的知识点消化理解并应用是有必要的。你还可以试一试之前写过的代码。
+同样地，此时小憩一下，将学过的知识点消化理解并应用是有必要的。你还可以试一试之前写过的代码。
 
 You can find the source code in the [official repository](https://github.com/rwieruch/hackernews-client/tree/4.3).
 
