@@ -4,7 +4,7 @@
 
 The chapter gives you an introduction to React. You may ask yourself: Why should I learn React in the first place? The chapter might give you the answer to that question. Afterward, you will dive into the ecosystem by bootstrapping your first React application from scratch with zero-configuration. Along the way, you will get an introduction to JSX and ReactDOM. So be prepared for your first React components.
 
-本章会对 React 做一个简单的介绍，你也许会这样问自己：为什么我要首先学习 React 呢？本章可以回应你这个问题。然后，你学习零配置构建第一个 React 应用，进而深入整个生态圈。你会进一步地了解关于 JSX 和 ReactDOM 的相关知识。所以准备好开始构建你的第一个 React 组件吧。
+本章会对 React 做一个介绍，你也许会这样问自己：为什么我要首先学习 React 呢？本章可以回应你这个问题。然后，你会学习零配置构建第一个 React 应用，进而深入整个生态圈。进一步地你会了解关于 JSX 和 ReactDOM 的相关知识。所以准备好开始构建你的第一个 React 组件吧。
 
 ## Hi, my name is React.
 
@@ -12,23 +12,23 @@ The chapter gives you an introduction to React. You may ask yourself: Why should
 
 **Why should you bother to learn React?** In recent years single page applications ([SPA](https://en.wikipedia.org/wiki/Single-page_application)) have become popular. Frameworks like Angular, Ember and Backbone helped JavaScript developers to build modern web applications beyond the usage of vanilla JavaScript and jQuery. The list of these popular solutions is not exhaustive. There exists a wide range of SPA frameworks. When you consider the release dates, most of them are among the first generation of SPAs: Angular 2010, Backbone 2010 and Ember 2011.
 
-**为什么你应该学习 React？**近年来，[单页面应用]((https://en.wikipedia.org/wiki/Single-page_application))（SPA，single page applications）变得越来越流行。像 Angular、Ember 以及 Backbone 这些框架，帮助 JavaScript 开发者构建了超越纯 JavaScript（vanilla JavaScript）和 jQuery 的现代 Web 应用。这个流行的解决方案清单并不够详尽，现在仍然有大量的 SPA 框架。如果你去关注他们的发布日期的话，大部分都属于第一代 SPA：Angular 发布于2010年，Backbone 发布于2010年，以及 Ember，发布于2011年。
+**为什么你应该学习 React？**近年来，[单页面应用]((https://en.wikipedia.org/wiki/Single-page_application))（SPA，single page application）变得越来越流行。像 Angular、Ember 以及 Backbone 这些框架，帮助 JavaScript 开发者构建了超越纯 JavaScript（vanilla JavaScript）和 jQuery 的现代 Web 应用。这个流行的解决方案清单并不够详尽，现在仍然有大量的 SPA 框架。如果你去关注他们的发布日期的话，大部分都属于第一代 SPA：Angular 发布于2010年，Backbone 发布于2010年，以及 Ember，发布于2011年。
 
 The initial React release was 2013 by Facebook. React is not an SPA framework but a view library. It is the V in the [MVC](https://de.wikipedia.org/wiki/Model_View_Controller) (model view controller). It only enables you to render components as viewable elements in a browser. Yet the whole ecosystem around React makes it possible to build single page applications.
 
-Facebook 在2013年首次发布了 React。React 并不是一个 SPA 框架，而是一个视图库。也就是 [MVC]((https://de.wikipedia.org/wiki/Model_View_Controller))（model view controller, 模型-视图-控制器）里的 M。它的功能仅仅是把组件渲染成浏览器中的可见元素。然而，围绕 React 周边的整个生态系统让构建单页面应用成为可能。
+Facebook 在2013年首次发布了 React。React 并不是一个 SPA 框架，而是一个视图库。也就是 [MVC]((https://de.wikipedia.org/wiki/Model_View_Controller))（model view controller, 模型-视图-控制器）里的 V。它的功能仅仅是把组件渲染成浏览器中的可见元素。但是，围绕 React 周边的整个生态系统让构建单页面应用成为可能。
 
 But why should you consider using React over the first generation of SPA frameworks? While the first generation of frameworks tried to solve a lot of things at once, React only helps you to build your view layer. It's a library and not a framework. The idea behind it: Your view is a hierarchy of composable components.
 
-那么为什么你应该选 React 而不是其他第一代 SPA 框架呢？其他的第一代框架尝试一次性解决太多的问题，而 React 仅仅帮助你构建视图层。它更多的是一个库而非框架。其背后的思路是：应用的视图应该是一系列层次分明的可组合的组件。
+那么为什么你应该选 React 而不是其他第一代 SPA 框架呢？其他的第一代框架尝试一次性解决很多问题，而 React 仅仅帮助你构建视图层。它更多的是一个库而非框架。其背后的思路是：应用的视图应该是一系列层次分明的可组合的组件。
 
 In React you can keep the focus on your view layer before you introduce more aspects to your application. Every other aspect is another building block for your SPA. These building blocks are essential to build a mature application. They come with two advantages.
 
-通过使用 React，你可以在引入更多应用部件之前把重点放在视图层。其他的每一个部件都是 SPA 的一部分。这所有的部分是构成一个成熟应用的基础。这样做有两个优点。
+通过使用 React，你可以在引入更多应用部件之前重点关注视图层。其他的每一个部件都是 SPA 的一部分。这所有的部分是构成一个成熟应用的基础。这样做有两个优点。
 
 First, you can learn the building blocks step by step. You don't have to worry about understanding them altogether. It is different from a framework that gives you every building block from the start. This book focuses on React as the first building block. More building blocks follow eventually.
 
-首先，你可以按部就班地学习 SPA 的每一部分。你不需要被无法一次性地理解所有的东西而困扰。这与其他的框架不同，其他的框架会在开始就需要你了解所有的内容。本书的重点把 React 作为首要的目标。其他的部分则会在后面一一讲解。
+首先，你可以按部就班地学习 SPA 的每一部分。你不用担心要一次性理解全部。这与其他的框架不同，其他的框架会在开始就需要你了解所有的内容。本书的重点把 React 作为首要的目标。其他的部分则会在后面一一讲解。
 
 Second, all building blocks are interchangeable. It makes the ecosystem around React such an innovative place. Multiple solutions are competing with each other. You can pick the most appealing solution for you and your use case.
 
@@ -70,7 +70,7 @@ What about the development environment? You will need a running editor or IDE an
 
 Optionally, you can use git and GitHub on your own, while conducting the exercises in the book, to keep your projects and the progress in repositories on GitHub. There exists a [little guide](https://www.robinwieruch.de/git-essential-commands/) on how to use these tools. But once again, it is not mandatory for the book and can be overwhelming when learning everything from scratch. So you can skip it if you are a newcomer in web development to focus on the essential parts taught in this book.
 
-你也可以选择使用 git 和 GitHub 把来保存与本书相关的个人项目以及学习进度。这篇简短的[指南](https://www.robinwieruch.de/git-essential-commands/)讲述了他们的使用方法。但是再次提醒一下，你并不一定非要这样做，因为如果所有东西都从头学起可能会给你带来更多压力。所以如果你只是一个新手，并且希望专注于本书的基础内容的话，你可以跳过这一步。
+你也可以选择使用 git 和 GitHub 把来保存与本书相关的个人项目以及学习进度。这篇简短的[指南](https://www.robinwieruch.de/git-essential-commands/)讲述了它们的使用方法。但是再次提醒一下，你并不一定非要这样做，因为如果所有东西都从头学起可能会给你带来更多压力。所以如果你只是一个新手，并且希望专注于本书的基础内容的话，你可以跳过这一步。
 
 ### Node and NPM
 
@@ -106,7 +106,7 @@ Node 包管理器（npm，node package manager）帮助你通过命令行安装�
 
 Global node packages are accessible from everywhere in the terminal and you have to install them only once to your global directory. You can install a global package by typing in your terminal:
 
-全局 node 包只需要一次性地安装在全局目录，可以在中段的任何地方使用。你可以通过以下命令来安装一个全局 node 包：
+全局 node 包只需要一次性地安装在全局目录，可以在终端的任何地方使用。你可以通过以下命令来安装一个全局 node 包：
 
 {title="Command Line",lang="text"}
 ~~~~~~~~
@@ -163,7 +163,7 @@ npm install --save-dev <package>
 
 The `--save-dev` flag indicates that the node package is only used in the development environment. It will not be used in production when you deploy your application on a server. What kind of node package could that be? Imagine you want to test your application with the help of a node package. You need to install that package via npm, but want to exclude it from your production environment. Testing should only happen during the development process but not when your application is already running in production. There you don't want to test your application anymore. It should be tested already and work out of the box for your users. That's only one use case where you would want to use the `--save-dev` flag.
 
-`--save-dev` 标记表示该 node 包只是用作开发环境的一部分，并不会被作为你产品代码的一部分发布。哪种 node 包适用这个场景呢？设想你需要一些 node 包辅助测试你的应用，所以需要通过 npm 来安装这些包，但是不希望他们混入产品代码里面。测试过程应该只会发生在开发阶段，而不是在线上部署运行的时候。因为那个时候已经用不到测试代码了，你的应用应该已经被测试完而且可以被你的用户使用了。这可能是你唯一的使用 `--save-dev` 的场景。
+`--save-dev` 标记表示该 node 包只是用作开发环境的一部分，并不会被作为你产品代码的一部分发布。哪种 node 包适用这个场景呢？设想你需要一些 node 包辅助测试你的应用，然后需要通过 npm 来安装这些包，但是不希望他们混入产品代码里面。测试过程应该只会发生在开发阶段，而不是在线上部署运行的时候。因为那个时候已经用不到测试代码了，你的应用应该已经被测试完而且可以被你的用户使用了。这可能是你唯一的使用 `--save-dev` 的场景。
 
 You will encounter more npm commands on your way. But these will be sufficient for now.
 
