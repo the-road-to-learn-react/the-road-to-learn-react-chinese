@@ -1159,7 +1159,7 @@ The search functionality should work again. It stores all results from the Hacke
 
 Additionally the `onDismiss()` method needs to get improved. It still deals with the `result` object. Now it has to deal with multiple `results`.
 
-此外，`onDismiss()` 方法也需要优化。它仍然只能处理 `result` 对象。现在它必须处理 `results` 了。
+此外，`onDismiss()` 方法也需要优化。它仍还在处理 `result` 对象。现在它必须处理 `results` 了。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1185,11 +1185,11 @@ Additionally the `onDismiss()` method needs to get improved. It still deals with
 
 The "Dismiss" button should work again.
 
-这样“Dismiss” 按钮就可以再次工作了。
+这样 “Dismiss” 按钮就可以再次工作了。
 
 However, nothing stops the application from sending an API request on each search submit. Even though there might be already a result, there is no check that prevents the request. Thus the cache functionality is not complete yet. It caches the results, but it doesn't make use of them. The last step would be to prevent the API request when a result is available in the cache.
 
-然后，现在还没有任何东西阻止应用每次都对一个搜索发起一次 API 请求。即使我们保存了某一个结果，但还差一个用于阻止重复请求它的检查。因此缓存功能仍需完善。虽然应用缓存了所有 result，但它还没有将这些 result 利用起来。所有我们的最后一步就是：对缓存中已经存在的 result 进行搜索时，阻止 API 请求。
+然而，现在（我们）还不能阻止应用对每一次搜索都发起一个 API 请求。即使我们保存了某一个结果，但还没有任何阻止重复请求的检查。也就是说缓存功能仍不完整。虽然应用缓存了所有结果，但它还没有将这些结果利用起来。所有我们的最后一步就是：如果搜索的结果已经存在于缓存中，就阻止 API 请求。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1237,17 +1237,17 @@ class App extends Component {
 
 Now your client makes a request to the API only once although you search for a search term twice. Even paginated data with several pages gets cached that way, because you always save the last page for each result in the `results` map. Isn't that a powerful approach to introduce caching to your application? The Hacker News API provides you with everything you need to even cache paginated data effectively.
 
-现在就算你重复搜索一个词，你的客户端也只会发起一次请求。以这种方式进行缓存的话分页的数据也会保存下来，因为结果的每一页都将保存在 `results` 集中。这是不是一个很强大的方法来引入缓存呢？而且 Hacker News API 为你提供了一切，哪怕是分页数据的高效缓存。
+现在就算你重复搜索一个词，客户端也只会发起一次请求。以这种方式进行缓存的话分页的数据也会保存下来，因为结果的每一页都将保存在 `results` 集中。这是不是一个很强大的方法来引入缓存呢？而且 Hacker News API 提供了你所需的一切，甚至可以高效地缓存分页数据。
 
 ## Error Handling 错误处理
 
 Everything is in place for your interactions with the Hacker News API. You even have introduced an elegant way to cache your results from the API and make use of its paginated list functionality to fetch an endless list of sublists of stories from the API. But there is one piece missing. Unfortunately it is often missed when developing applications nowadays: error handling. It is too easy to implement the happy path without worrying about the errors that can happen along the way.
 
-你与 Hacker News API 交互的所有功能都已就位。你甚至引入了一种优雅的方式来缓存 API 结果，而且通过分页列表功能还可以从 API 中获取无尽的资讯子列表。但是我们还忽略了一项。并且它在日常开发中经常被遗忘，那就是：错误处理。人们常常容易沉浸于主逻辑的开发中，却忘记了添加错误处理。
+你与 Hacker News API 交互的所有功能都已就位。你甚至引入了一种优雅的方式来缓存 API 结果，而且通过分页列表功能还可以从 API 中获取无尽的资讯子列表。但是我们还忽略了一项。但我们忘了一件事情，不幸的是，它在日常开发中经常被忽略：错误处理。人们常常容易沉浸于主逻辑的开发中，却忘记错误也会随之而来。
 
 In this chapter, you will introduce an efficient solution to add error handling for your application in case of an erroneous API request. You have already learned about the necessary building blocks in React to introduce error handling: local state and conditional rendering. Basically, the error is only another state in React. When an error occurs, you will store it in the local state and display it with a conditional rendering in your component. That's it. Let's implement it in the App component, because it's the component that is used to fetch the data from the Hacker News API in the first place. First, you have to introduce the error in the local state. It is initialized as null, but will be set to the error object in case of an error.
 
-在本章中，引入了一个高效的方法来为你的应用添加一个当发生错误的 API 请求时的错误处理。其实你已经掌握了在 React 中构建错误处理的知识点，它们就是：本地状态和条件渲染。追本溯源地讲，错误只是 React 的另一种状态。当一个错误发生时，你先将它存在本地状态中，而后利用条件渲染在组件中显示错误信息。听起来是不是很简单。现在让我们在 App 组件中实现它，因为它是向 Hacker News API 发起请求的组件。首先，你要在本地状态中引入 error 这个状态。它初始化为 null，但当错误发生时它会被置成一个 error 对象。
+在本章中，引入了一个高效的方法来为你的应用添加一个当发生错误的 API 请求时的错误处理。其实你已经掌握了在 React 中处理错误的基础知识，也就是本地状态和条件渲染。本质上来讲，错误只是 React 的另一种状态。当一个错误发生时，你先将它存在本地状态中，而后利用条件渲染在组件中显示错误信息。听起来是不是很简单。现在让我们在 App 组件中实现它，因为它是向 Hacker News API 发起请求的组件。首先，你要在本地状态中引入 error 这个状态。它初始化为 null，但当错误发生时它会被置成一个 error 对象。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1298,7 +1298,7 @@ class App extends Component {
 
 Third, you can retrieve the error object from your local state in the `render()` method and display a message in case of an error by using React's conditional rendering.
 
-第三，如果错误发生了，你可以在 `render()` 方法中把 error 对象从本地状态中检索出来，然后利用条件渲染来显示一个错误信息。
+第三，如果错误发生了，你可以在 `render()` 方法中在本地状态里获取到 error 对象，然后利用条件渲染来显示一个错误信息。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1344,7 +1344,7 @@ const PATH_BASE = 'https://hn.foo.bar.com/api/v1';
 
 Afterward, you should get the error message instead of your application. It is up to you where you want to place the conditional rendering for the error message. In this case, the whole app isn't displayed anymore. That wouldn't be the best user experience. So what about displaying either the Table component or the error message? The remaining application would still be visible in case of an error.
 
-之后，你应该得到一个错误信息而不是应用界面。你可以自己决定错误信息渲染的位置。在上述代码下，整个 app 不再显示。显然这不是最佳用户体验。我们将 Table 组件和错误信息择一而渲染之如何？这样的话当错误发生时，除了 Table 组件，应用其余的部分仍然可见。
+之后，你应该得到一个错误信息而不是应用界面。你可以自己决定错误信息渲染的位置。在这种情况下，整个 app 不再显示。显然这不是最佳用户体验。我们将 Table 组件和错误信息择一渲染如何？这样的话当错误发生时，除了 Table 组件，应用其余的部分仍然可见。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1397,7 +1397,7 @@ class App extends Component {
 
 In the end, don't forget to revert the URL for the API to the existent one.
 
-最后，别忘了把 URL 还原成一个真实存在的 URL。
+最后，别忘了把 URL 还原成一个真实的 URL。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1448,16 +1448,16 @@ You have learned to interact with an API in React! Let's recap the last chapters
   * 扩展运算符用于不可变数据结构
   * 可计算的属性名称
 * General
-  * Hacker News API交互
-  * 本机提取浏览器 API
+  * Hacker News API 交互
+  * 浏览器原生 fetch API
   * 客户端和服务器端搜索
-  * 分页数据
+  * 数据分页
   * 客户端缓存
 
 Again it makes sense to take a break. Internalize the learnings and apply them on your own. You can experiment with the source code you have written so far.
 
-同样地，此时小憩一下，将学过的知识点消化理解并应用是有必要的。你还可以试一试之前写过的代码。
+同样地，此时小憩一下，将学过的知识点消化理解并应用是有必要的。你还可以在之前写过的代码上做实验（小试牛刀）。
 
 You can find the source code in the [official repository](https://github.com/rwieruch/hackernews-client/tree/4.3).
 
-你可以在官方代码库中找到[源码](https://github.com/rwieruch/hackernews-client/tree/4.3).
+你可以在[官方代码库](https://github.com/rwieruch/hackernews-client/tree/4.3)中找到源码.
