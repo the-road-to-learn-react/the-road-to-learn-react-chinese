@@ -4,7 +4,7 @@
 
 ## 你好，我叫 React。
 
-**为什么你应该学习 React？**近年来，[单页面应用](https://en.wikipedia.org/wiki/Single-page_application)（SPA，single page application）变得越来越流行。像 Angular、Ember 以及 Backbone 这些框架，帮助 JavaScript 开发者构建了超越纯 JavaScript（vanilla JavaScript）和 jQuery 的现代 Web 应用。这个流行的解决方案清单并不够详尽，现在仍然有大量的 SPA 框架。如果你去关注他们的发布日期的话，大部分都属于第一代 SPA：Angular 发布于2010年，Backbone 发布于2010年，以及 Ember，发布于2011年。
+**为什么你应该学习 React** 近年来，[单页面应用](https://en.wikipedia.org/wiki/Single-page_application)（SPA，single page application）变得越来越流行。像 Angular、Ember 以及 Backbone 这些框架，帮助 JavaScript 开发者构建了超越纯 JavaScript（vanilla JavaScript）和 jQuery 的现代 Web 应用。这个流行的解决方案清单并不够详尽，现在仍然有大量的 SPA 框架。如果你去关注他们的发布日期的话，大部分都属于第一代 SPA：Angular 发布于2010年，Backbone 发布于2010年，以及 Ember，发布于2011年。
 
 Facebook 在2013年首次发布了 React。React 并不是一个 SPA 框架，而是一个视图库。也就是 [MVC]((https://de.wikipedia.org/wiki/Model_View_Controller))（model view controller, 模型-视图-控制器）里的 V。它的功能仅仅是把组件渲染成浏览器中的可见元素。但是，围绕 React 周边的整个生态系统让构建单页面应用成为可能。
 
@@ -329,9 +329,9 @@ export default App;
 
 ## ES6 const 和 let
 
-我猜你已经注意到了，我们在前面的例子中使用的是关键字 `var` 来声明变量 `helloWorld` 的。JavaScript ES6中引入了另外两个声明变量的关键字：`const` 和 `let`。在JavaScript ES6中，你将会很少能看到 `var` 了。
+我猜你已经注意到了，我们在前面的例子中使用的是关键字 `var` 来声明变量 `helloWorld` 的。JavaScript ES6中引入了另外两个声明变量的关键字：`const` 和 `let`。在JavaScript ES6中，你将会很少能看到 `var` 了。
 
-被 `const` 声明的变量不能被重新赋值或重新声明。换句话说，它将不能再被改变。你可以使用它创建不可变数据结构，一旦数据结构被定义好，你就不能再改变它了。
+被 `const` 声明的变量不能被重新赋值或重新声明。换句话说，它将不能再被改变。你可以使用它创建不可变数据结构，一旦数据结构被定义好，你就不能再改变它了。
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -340,7 +340,7 @@ const helloWorld = 'Welcome to the Road to learn React';
 helloWorld = 'Bye Bye React';
 ~~~~~~~~
 
-被关键字 `let` 声明的变量可以被改变。
+被关键字 `let` 声明的变量可以被改变。
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -349,9 +349,9 @@ let helloWorld = 'Welcome to the Road to learn React';
 helloWorld = 'Bye Bye React';
 ~~~~~~~~
 
-当一个变量需要被重新赋值的话，你应该使用 `let` 去声明它。
+当一个变量需要被重新赋值的话，你应该使用 `let` 去声明它。
 
-然而，你必须小心地使用 `const` 。使用 `const` 声明的变量不能被改变，但是如果这个变量是数组或者对象的话，它里面持有的内容可以被更新。它里面持有的内容不是不可改变的。
+然而，你必须小心地使用 `const` 。使用 `const` 声明的变量不能被改变，但是如果这个变量是数组或者对象的话，它里面持有的内容可以被更新。它里面持有的内容不是不可改变的。
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -362,9 +362,9 @@ const helloWorld = {
 helloWorld.text = 'Bye Bye React';
 ~~~~~~~~
 
-但是，不同的声明方式应该在什么时候使用呢？有很多的选择。我的建议是在任何你可以使用 `const` 的时候使用它。这表示尽管对象和数组的内容是可以被修改的，你仍希望保持该数据结构不可变。而如果你想要改变你的变量，就使用 `let` 去声明它。
+但是，不同的声明方式应该在什么时候使用呢？有很多的选择。我的建议是在任何你可以使用 `const` 的时候使用它。这表示尽管对象和数组的内容是可以被修改的，你仍希望保持该数据结构不可变。而如果你想要改变你的变量，就使用 `let` 去声明它。
 
-React和它的生态是拥抱不可变的。这就是为什么 `const` 应该是你定义一个变量时的默认选择。当然，一个复杂的对象中的内容还是可能会被改变，请当心这种改变。
+React和它的生态是拥抱不可变的。这就是为什么 `const` 应该是你定义一个变量时的默认选择。当然，一个复杂的对象中的内容还是可能会被改变，请当心这种改变。
 
 在你的应用中，你应该用 `const` 来代替 `var`。
 
@@ -393,13 +393,13 @@ export default App;
 
 * 阅读更多关于 [ES6 const](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) 的内容
 * 阅读更多关于 [ES6 let](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) 的内容
-* 研究更多关于不可变数据结构的内容
+* 研究更多关于不可变数据结构的内容
   * 在通常情况下，为什么他们是有意义的
   * 为什么他们会被React和它的生态使用
 
 ## ReactDOM
 
-在你学习这个 App 组件之前，你可能想知道它被用在了什么地方。它在你的React世界的入口文件 *src/index.js* 中
+在你学习这个 App 组件之前，你可能想知道它被用在了什么地方。它在你的React世界的入口文件 *src/index.js* 中
 
 {title="src/index.js",lang=javascript}
 ~~~~~~~~
