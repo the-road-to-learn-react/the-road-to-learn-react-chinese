@@ -9,7 +9,7 @@
 ## 引用DOM元素
 >## Ref a DOM Element
 
-有时我们需要在 React 中与 DOM 节点进行交互。`ref`属性可以让我们访问元素中的一个节点。通常，访问 DOM 节点是 React 中的一种反模式，因为我们应该遵循它的声明式编程和单向数据流。当我们实现第一个搜索输入组件时，就已经了解这些了。(NOTE:You have learned about it when you have introduced your first search input field.) 但是在某些情况下，我们仍然需要访问 DOM 节点。官方文档提到了三种情况：
+有时我们需要在 React 中与 DOM 节点进行交互。`ref`属性可以让我们访问元素中的一个节点。通常，访问 DOM 节点是 React 中的一种反模式，因为我们应该遵循它的声明式编程和单向数据流。当我们引入第一个搜索输入组件时，就已经了解这些了。但是在某些情况下，我们仍然需要访问 DOM 节点。官方文档提到了三种情况：
 >Sometimes you need to interact with your DOM nodes in React. The ref attribute gives you access to a node in your elements. Usually that is an anti pattern in React, because you should use its declarative way of doing things and its unidirectional data flow. You have learned about it when you have introduced your first search input field. But there are certain cases where you need access to the DOM node. The official documentation mentions three use cases:
 
 * 使用 DOM API（focus事件，媒体播放等）
@@ -22,10 +22,10 @@
 > 
 > to integrate with third-party library that needs the DOM node (e.g. D3.js)
 
-让我们通过 Search 组件这个例子看一下。当应用程序第一次渲染时，input 字段应该被聚焦。这是需要访问 DOM API 的一种用例。本章将展示它是如何工作的，但由于它对于应用程度并不是很有用，所以我们将在本章之后省略这些更改。尽管如此，你仍然可以为自己的应用程序保留它。
+让我们通过 Search 组件这个例子看一下。当应用程序第一次渲染时，input 字段应该被聚焦。这是需要访问 DOM API 的一种用例。本章将展示渲染时聚焦 input 字段是如何工作的，但由于这个功能对于应用程序并不是很有用，所以我们将在本章之后省略这些更改。尽管如此，你仍然可以为自己的应用程序保留它。
 >Let's do it by example with the Search component. When the application renders the first time, the input field should be focused. That's one use case where you would need access to the DOM API. This chapter will show you how it works, but since it is not very useful for the application itself, we will omit the changes after the chapter. You can keep it for your own application though.
 
-通常，无状态组件和ES6类组件中都可以使用`ref`属性。在聚焦 input 字段的用例中，我们需要一个生命周期方法。这就是为什么接下来会先展示如何在 ES6 类组件中使用`ref`属性。
+通常，无状态组件和ES6类组件中都可以使用`ref`属性。在聚焦 input 字段的用例中，我们就需要一个生命周期方法。这就是为什么接下来会先在 ES6 类组件中展示如何使用`ref`属性。
 >In general, you can use the ref attribute in both functional stateless components and ES6 class components. In the example of the focus use case, you will need a lifecycle method. That's why the approach is first showcased by using the ref attribute with an ES6 class component.
 
 第一步是将无状态组件重构为 ES6 类组件。
@@ -64,7 +64,7 @@ class Search extends Component {
 
 ```
 
-ES6 类组件的`this`对象可以帮助我们用`ref`属性引用 DOM 节点。
+ES6 类组件的`this`对象可以帮助我们通过`ref`属性引用 DOM 节点。
 >The this object of an ES6 class component helps us to reference the DOM node with the ref attribute.
 
 {title="src/App.js",lang=javascript}
@@ -99,7 +99,7 @@ class Search extends Component {
 
 ```
 
-现在，当组件挂载的时候，我们可以通过使用`this`对象，相应的生命周期方法和 DOM API ，聚焦在input 字段上。
+现在，你可以通过使用 this 对象、适当的生命周期方法和 DOM API 在组件挂载的时候来聚焦 input 字段。
 >Now you can focus the input field when the component mounted by using the this object, the appropriate lifecycle method, and the DOM API.
 
 {title="src/App.js",lang=javascript}
@@ -138,7 +138,7 @@ class Search extends Component {
 
 ```
 
-当应用程序渲染时，input 字段应该被聚焦。这是`ref`属性的基本用法。(NOTE: That's it basically for using the ref attribute.)
+当应用程序渲染时，input 字段应该被聚焦。这就是`ref`属性的基本用法。
 >The input field should be focused when the application renders. That's it basically for using the ref attribute.
 
 但是我们怎样在没有`this`对象的无状态组件中访问`ref`属性呢？接下来我们在无状态组件中演示。
@@ -175,7 +175,7 @@ const Search = ({
 
 ```
 
-现在我们能够访问 input DOM 元素。但是这对于聚焦 input 字段这个用例而言，没什么用。因为在无状态组件中，没有生命周期方法去触发聚焦事件。但是在将来，你可能会遇到其他一些合适的需要在无状态组件中使用`ref`属性的情况。
+现在我们能够访问 input DOM 元素。由于在无状态组件中，没有生命周期方法去触发聚焦事件，这个功能对于聚焦 input 字段这个用例而言没什么用。但是在将来，你可能会遇到其他一些合适的需要在无状态组件中使用`ref`属性的情况。
 >Now you would be able to access the input DOM element. In the example of the focus use case it wouldn't help you, because you have no lifecycle method in a functional stateless component to trigger the focus. But in the future you might come across other use cases where it can make sense to use a functional stateless component with the ref attribute.
 
 ### 练习
@@ -188,11 +188,11 @@ const Search = ({
 >
 >read more about the usage of the ref attribute in React
 
-## 加载 ...
+## 加载 ……
 >## Loading ...
 
 现在让我们回到应用程序。当向 Hacker News API 发起搜索请求时，我们想要显示一个加载指示符。
-请求是异步的，此时应该向用户显示一些即将发生事情的反馈。(NOTE: The request is asynchronous and you should show your user some feedback that something is about to happen.) 让我们在 `src／App.js` 中定义一个可重用的 Loading 组件。
+请求是异步的，此时应该向用户展示某些事情即将发生的反馈。让我们在 `src／App.js` 中定义一个可重用的 Loading 组件。
 >Now let's get back to the application. You might want to show a loading indicator when you submit a search request to the Hacker News API. The request is asynchronous and you should show your user some feedback that something is about to happen. Let's define a reusable Loading component in your src/App.js file.
 
 {title="src/App.js",lang=javascript}
@@ -275,7 +275,7 @@ class App extends Component {
 
 ```
 
-最后一步，我们将在应用程序中使用 Loading 组件。基于加载状态 (isLoading) 的条件渲染将决定是显示 Loading 组件还是 Button 组件。Button 组件是一个获取更多数据的按钮。
+最后一步，我们将在应用程序中使用 Loading 组件。基于加载状态 (isLoading) 的条件来决定渲染 Loading 组件或 Button 组件。后者为一个用于获取更多数据的按钮。
 >In the last step, you will use the Loading component in your App. A conditional rendering based on the loading state will decide whether you show a Loading component or the Button component. The latter one is your button to fetch more data.
 
 {title="src/App.js",lang=javascript}
@@ -319,7 +319,7 @@ class App extends Component {
 
 ```
 
-由于我们在`componentDidMount（）`中发起请求，当启动应用程序的时候，Loading 组件会显示。此时，因为列表是空的，所以不显示 Table 组件。当响应数据从 Hacker News API 返回时，返回的数据会通过 Table 组件显示出来，加载状态 (isLoading) 设置为 false，然后 Loading 组件消失。同时，出现了可以获取更多的数据的“More”按钮。一旦点击按钮，获取更多的数据，该按钮将消失，加载组件会重新出现。(NOTE)
+由于我们在`componentDidMount（）`中发起请求，Loading 组件会在应用程序启动的时候显示。此时，因为列表是空的，所以不显示 Table 组件。当响应数据从 Hacker News API 返回时，返回的数据会通过 Table 组件显示出来，加载状态 (isLoading) 设置为 false，然后 Loading 组件消失。同时，出现了可以获取更多的数据的“More”按钮。一旦点击按钮，获取更多的数据，该按钮将消失，加载组件会重新出现。
 >Initially the Loading component will show up when you start your application, because you make a request on componentDidMount(). There is no Table component, because the list is empty. When the response returns from the Hacker News API, the result is shown, the loading state is set to false and the Loading component disappears. Instead, the "More" button to fetch more data appears. Once you fetch more data, the button will disappear again and the Loading component will show up.
 
 ### 练习:
@@ -335,7 +335,7 @@ class App extends Component {
 高阶组件（HOC）是 React 中的一个高级概念。HOC 与高阶函数是等价的。它接受任何输入 - 多数时候是一个组件，也可以是可选参数 - 并返回一个组件作为输出。返回的组件是输入组件的增强版本，并且可以在JSX中使用。
 >Higher order components (HOC) are an advanced concept in React. HOCs are an equivalent to higher order functions. They take any input - most of the time a component, but also optional arguments - and return a component as output. The returned component is an enhanced version of the input component and can be used in your JSX.
 
-HOC可用于不同的情况，比如：准备属性 (NOTE: prepare properties)，管理状态或更改组件的表示形式。其中一种情况是将 HOC 用于帮助实现条件渲染。想象一下，现在有一个 List 组件，它可以渲染一个列表或者什么也不渲染，因为列表可以为空。当没有列表的时候，HOC 可以屏蔽掉这个不显示任何内容的列表。另一方面，这个简单的 List 组件不关心列表存不存在，它只关心渲染列表。
+HOC可用于不同的情况，比如：准备属性，管理状态或更改组件的表示形式。其中一种情况是将 HOC 用于帮助实现条件渲染。想象一下现在有一个 List 组件，由于列表可以为空或无，那么它可以渲染一个列表或者什么也不渲染。当没有列表的时候，HOC 可以屏蔽掉这个不显示任何内容的列表。另一方面，这个简单的 List 组件不再需要关心列表存不存在，它只关心渲染列表。
 >HOCs are used for different use cases. They can prepare properties, manage state or alter the representation of a component. One use case could be to use a HOC as a helper for a conditional rendering. Imagine you have a List component that renders a list of items or nothing, because the list is empty or null. The HOC could shield away that the list would render nothing when there is no list. On the other hand, the plain List component doesn't need to bother anymore about an non existent list. It only cares about rendering the list.
 
 我们接下来创建一个简单的 HOC，它将一个组件作为输入并返回一个组件。我们可以把它放在 `src / App.js` 文件中。
@@ -363,7 +363,7 @@ const withFoo = (Component) => (props) =>
 
 ```
 
-在这个例子中，输入组件将和输出组件一样。什么都没发生。它渲染与输入组件相同的实例，并将所有的属性(props)传递给输出组件。但是这个 HOC 没意义。我们来增强输出组件。当加载状态 (isLoading) 为 true 时，组件显示 Loading 组件，否则显示输入的组件。条件渲染是 HOC 的良好的应用场景 (NOTE: great use case )。
+在这个例子中，没有做任何改变，输入组件将和输出组件一样。它渲染与输入组件相同的实例，并将所有的属性(props)传递给输出组件，但是这个 HOC 没意义。我们来增强输出组件功能：当加载状态 (isLoading) 为 true 时，组件显示 Loading 组件，否则显示输入的组件。条件渲染是 HOC 的一种绝佳用例。
 >In the example, the input component would stay the same as the output component. Nothing happens. It renders the same component instance and passes all of the props to the output component. But that's useless. Let's enhance the output component. The output component should show the Loading component, when the loading state is true, otherwise it should show the input component. A conditional rendering is a great use case for a HOC.
 
 
@@ -413,11 +413,11 @@ const withLoading = (Component) => ({ isLoading, ...rest }) =>
 
 ```
 
-它从对象中取出一个属性，将剩余的属性收集到 rest 中。它也适用于多个属性。你可能已经在 [解构赋值](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)中了解了它。
+这段代码从 `props` 对象中取出一个属性，并保留剩下的属性。这也适用于多个属性。你可能已经在 [解构赋值](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)中了解过它。
 >It takes one property out of the object, but keeps the remaining object. It works with multiple properties as well. You might have already read about it in the destructuring assignment.
 
 现在，我们以在 JSX 中使用 HOC。应用程序中的用例可能是显示 “More” 按钮或 Loading 组件。
-Loading 组件已经封装在 HOC 中，但输入组件缺失。在显示 Button 组件或 Loading 组件的用例中，Button 是 HOC 的输入组件。增强的输出组件是一个 ButtonWithLoading 的组件。
+Loading 组件已经封装在 HOC 中，缺失了输入组件。在显示 Button 组件或 Loading 组件的用例中，Button 是 HOC 的输入组件。增强的输出组件是一个 ButtonWithLoading 的组件。
 >Now you can use the HOC in your JSX. An use case in the application could be to show either the "More" button or the Loading component. The Loading component is already encapsulated in the HOC, but an input component is missing. In the use case of showing a Button component or a Loading component, the Button is the input component of the HOC. The enhanced output component is a ButtonWithLoading component.
 
 {title="src/App.js",lang=javascript}
@@ -446,7 +446,7 @@ const ButtonWithLoading = withLoading(Button);
 
 ```
 
-现在所有的东西已经定义好了。最后一步，就是使用 ButtonWithLoading 组件，它接收加载状态 (isLoading) 作为附加属性。当 HOC 消费加载属性 (isLoading) 时，所有其他 props 都被传递给 Button 组件。
+现在所有的东西已经被定义好了。最后一步，就是使用 ButtonWithLoading 组件，它接收加载状态 (isLoading) 作为附加属性。当 HOC 消费加载属性 (isLoading) 时，再将所有其他 props 传递给 Button 组件。
 >Everything is defined now. As a last step, you have to use the ButtonWithLoading component, which receives the loading state as an additional property. While the HOC consumes the loading property, all other props get passed to the Button component.
 
 {title="src/App.js",lang=javascript}
@@ -500,7 +500,7 @@ class App extends Component {
 高阶组件是 React 中的高级技术。它可以使组件具有更高的重用性，更好的抽象性，更强的组合性，以及提升对 props，state 和视图的可操作性。如果不能马上理解，别担心。我们需要时间去熟悉它。
 >Higher order components are an advanced technique in React. They have multiple purposes like improved reusability of components, greater abstraction, composability of components and manipulations of props, state and view. Don't worry if you don't understand them immediately. It takes time to get used to them.
 
-我们鼓励阅读[高阶组件的简单介绍](https://www.robinwieruch.de/gentle-introduction-higher-order-components/)。这篇文章介绍了另一种学习高阶组件的方法，展示了如何用函数式的方式定义高阶组件并优雅的使用它，以及使用高阶组件解决条件渲染的问题。(NOTE: shows you an elegant way to use them a functional programming way and solves specifically the problem of conditional rendering with higher order components.)
+我们推荐阅读[高阶组件的简单介绍](https://www.robinwieruch.de/gentle-introduction-higher-order-components/)。这篇文章介绍了另一种学习高阶组件的方法，展示了如何用函数式的方式定义高阶组件并优雅的使用它，以及使用高阶组件解决条件渲染的问题。
 >I encourage you to read the gentle introduction to higher order components. It gives you another approach to learn them, shows you an elegant way to use them a functional programming way and solves specifically the problem of conditional rendering with higher order components.
 
 ### 练习:
@@ -522,10 +522,10 @@ class App extends Component {
 ## 高级排序
 >## Advanced Sorting
 
-我们已经实现了客户机和服务器端搜索交互。现在我们已经拥有了 Table 组件，所以增强 Table 组件的交互性是有意义的。那接下来我们给 Table 组件引入根据列标题给每列排序的功能怎么样呢？
+我们已经实现了客户端和服务器端搜索交互。因为我们已经拥了 Table 组件，所以增强 Table 组件的交互性是有意义的。那接下来，我们为 Table 组件加入根据列标题进行排序的功能如何？
 >You have already implemented a client- and server-side search interaction. Since you have a Table component, it would make sense to enhance the Table with advanced interactions. What about introducing a sort functionality for each column by using the column headers of the Table?
 
-你自己写一个排序函数，但是一般这种情况，我个人更喜欢使用第三方工具库。[lodash](https://lodash.com/)是其中的一个工具库，你可以使用任何适合的库。我们接下来安装 lodash 并使用它的排序方法。
+你自己写一个排序函数，但是一般这种情况，我个人更喜欢使用第三方工具库。[lodash](https://lodash.com/)就是这些工具库之一，当然你也可以选择适用于你的任何第三方库。让我们安装 lodash 并使用。
 >It would be possible to write your own sort function, but personally I prefer to use a utility library for such cases. Lodash is one of these utility libraries, but you can use whatever library suits you. Let's install Lodash and use it for the sort functionality.
 
 {title="Command Line",lang="text"}
@@ -548,7 +548,7 @@ import { sortBy } from 'lodash';
 import './App.css';
 ```
 
-Table 组件中有好几列，它们分别是标题，作者，评论和评分。你可以定义排序函数，而每个函数接受一个列表并返回按照指定属性排序过的列表。此外，还需要一个默认排序函数，该函数不做排序，只返回未排序的列表。默认排序函数是 Table 组件的初始状态。
+Table 组件中有好几列，分别是标题，作者，评论和评分。你可以定义排序函数，而每个函数接受一个列表并返回按照指定属性排序过的列表。此外，我们还需要一个默认的排序函数，该函数不做排序而只是用于返回未排序的列表。这将作为组件的初始状态。
 >You have several columns in your Table. There are title, author, comments and points columns. You can define sort functions whereas each function takes a list and returns a list of items sorted by a specific property. Additionally, you will need one default sort function which doesn't sort but only returns the unsorted list. That will be your initial state.
 
 {title="src/App.js",lang=javascript}
@@ -579,7 +579,7 @@ class App extends Component {
 现在，SORTS 对象允许你引用任何排序函数。
 >The SORTS object allows you to reference any sort function now.
 
-我们的 App 组件负责存储排序函数的状态。组件的初始状态存储的是默认排序函数，它不对列表排序并返回输入列表作为输出。
+我们的 App 组件负责存储排序函数的状态。组件的初始状态存储的是默认排序函数，它不对列表排序而只是将输入的list作为输出。
 >Again your App component is responsible for storing the state of the sort. The initial state will be the initial default sort function, which doesn't sort at all and returns the input list as output.
 
 {title="src/App.js",lang=javascript}
@@ -601,7 +601,7 @@ this.state = {
 一旦用户选择了一个不同的`sortKey`，比如说 `AUTHOR`，App组件将从`SORTS`对象中选取合适的排序函数对列表进行排序。
 >Once you choose a different sortKey, let's say the AUTHOR key, you will sort the list with the appropriate sort function from the SORTS object.
 
-现在，我们要在App组件中定义一个新的类方法，它将`sortKey`设置为App组件的状态。之后，`sortKey` 用来选取对应的排序函数，并应用到列表上。
+现在，我们要在App组件中定义一个新的类方法，用来将`sortKey`设置为App组件的状态。然后，`sortKey` 可以被用来选取对应的排序函数并对其列表进行排序。
 >Now you can define a new class method in your App component that simply sets a sortKey to your local component state. Afterward, the sortKey can be used to retrieve the sorting function to apply it on your list.
 
 {title="src/App.js",lang=javascript}
@@ -679,7 +679,7 @@ class App extends Component {
 
 ```
 
-Table 组件负责对列表排序。它通过`sortKey`选取`SORT`对象中对应的排序函数，并列表作为该函数的输入。之后，Table 组件将保持在排序列表上的映射。
+Table 组件负责对列表排序。它通过`sortKey`选取`SORT`对象中对应的排序函数，并列表作为该函数的输入。之后，Table 组件将在已排序的列表上继续 mapping。
 >The Table component is responsible for sorting the list. It takes one of the SORT functions by sortKey and passes the list as input. Afterward it keeps mapping over the sorted list.
 
 {title="src/App.js",lang=javascript}
@@ -705,7 +705,7 @@ const Table = ({
 
 ```
 
-理论上，列表可以按照其中的任意排序函数进行排序，但是默认的排序 (sortKey) 是`NONE`，所以列表不进行排序。至此，没有人执行`onSort()`方法来改变`sortKey`。我们接下来用一行列标题来扩展表格，每个列标题会使用列中的 Sort 组件对每列进行排序。
+理论上，列表可以按照其中的任意排序函数进行排序，但是默认的排序 (sortKey) 是`NONE`，所以列表不进行排序。至此，还没有人执行`onSort()`方法来改变`sortKey`。让我们接下来用一行列标题来扩展表格，每个列标题会使用列中的 Sort 组件对每列进行排序。
 >In theory the list would get sorted by one of the functions. But the default sort is set to NONE, so nothing is sorted yet. So far, no one executes the onSort() method to change the sortKey. Let's extend the Table with a row of column headers that use Sort components in columns to sort each column.
 
 {title="src/App.js",lang=javascript}
@@ -776,7 +776,7 @@ const Sort = ({ sortKey, onSort, children }) =>
   </Button>
 ```
 
-如你所见，Sort 组件重用了我们的 Button 组件，当点击按钮时，每个传入的`sortKey`都会被`onSort（）`方法设置。现在，点击列标题，应该可以对列表进行排序了。
+如你所见，Sort 组件重用了我们的 Button 组件，当点击按钮时，每个传入的`sortKey`都会被`onSort（）`方法设置。现在，我们应该能够通过点击列标题来对列表进行排序了。
 >As you can see, the Sort component reuses your common Button component. On a button click each individual passed sortKey will get set by the onSort() method. Now you should be able to sort the list when you click on the column headers.
 
 这里有个改善外观的小建议。到目前为止，列标题中的按钮看起来有点傻。我们给 Sort 组件中的按钮添加一个合适的`className`。
@@ -815,7 +815,7 @@ this.state = {
 };
 ```
 
-现在在排序方法中，可以评判列表是否被反向排序。如果状态中的 sortKey 与传入的 sortKey 相同，并且反向状态 (isSortReverse) 尚未设置为 true，则相反--反向状态 (isSortReverse) 设置为 true。
+现在在排序方法中，可以评判列表是否被反向排序。如果状态中的 sortKey 与传入的 sortKey 相同，并且反向状态 (isSortReverse) 尚未设置为 true，则相反——反向状态 (isSortReverse) 设置为 true。
 >Now in your sort method, you can evaluate if the list is reverse sorted. It is reverse if the sortKey in the state is the same as the incoming sortKey and the reverse state is not already set to true.
 
 {title="src/App.js",lang=javascript}
@@ -874,8 +874,7 @@ class App extends Component {
 }
 ```
 
-现在 Table 组件有一个块体箭头函数去计算数据了。
-(NOTE: an arrow function block body - 一个块体箭头函数, 照着MDN翻译的)
+现在 Table 组件有一个块体箭头函数用于计算数据。
 >The Table has to have an arrow function block body to compute the data now.
 
 {title="src/App.js",lang=javascript}
@@ -915,7 +914,7 @@ const Table = ({
 反向排序现在应该可以工作。
 >The reverse sort should work now.
 
-最后值得一提，为了改善用户体验，我们可以思考一个开放性的问题：用户可以区分哪个列排序是被激活的吗？(NOTE: Can a user distinguish which column is actively sorted? 用户可以区分当前是根据哪一列进行排序的嘛？)目前，用户是区别不出来的。我们可以给用户一个视觉反馈。
+最后值得一提，为了改善用户体验，我们可以思考一个开放性的问题：用户可以区分当前是根据哪一列进行排序的吗？目前为止，用户是区别不出来的。我们可以给用户一个视觉反馈。
 >Last but not least, you have to deal with one open question for the sake of an improved user experience. Can a user distinguish which column is actively sorted? So far, it is not possible. Let's give the user a visual feedback.
 
 每个 Sort 组件都已经有了其的特定`sortKey`。它可以用来识别被激活的排序。我们可以将内部组件状态`sortKey`作为激活排序标识 (activeSortKey) 传递给 Sort 组件。
@@ -996,7 +995,7 @@ const Table = ({
 
 ```
 
-现在在 Sort 组件中，基于`sortKey`和`activeSortKey`，我们知道排序是否被激活。给 Sort 组件增加一个`className`属性，如果排序被激活，给用户一个视觉上响应。
+现在在 Sort 组件中，我们可以基于`sortKey`和`activeSortKey`得知排序是否被激活。给 Sort 组件增加一个`className`属性，用于在排序被激活的时候给用户一个视觉反馈。
 >Now in your Sort component, you know based on the sortKey and activeSortKey whether the sort is active. Give your Sort component an extra className attribute, in case it is sorted, to give the user a visual feedback.
 
 {title="src/App.js",lang=javascript}
@@ -1055,8 +1054,7 @@ import './App.css';
 
 ```
 
-现在，我们可以使用它的条件类来定义组件的`className`。
-(NOTE:Now you can use it to define your component `className` with conditional classes.)
+现在，我们可以通过条件式语句来定义组件的`className`。
 >Now you can use it to define your component className with conditional classes.
 
 {title="src/App.js",lang=javascript}
@@ -1088,7 +1086,7 @@ const Sort = ({
 }
 ```
 
-同样，当运行测试时，会看到 Table 组件失败的快照测试，及其失败的单元测试。由于我们再次更改了组件显示，因此可以选择接受快照测试。但是必须修复单元测试。在我们的 `src / App.test.js`文件中，需要为 Table 组件提供`sortKey`和`isSortReverse`。
+同样在运行测试时，我们会看到 Table 组件失败的快照测试，及一些失败的单元测试。由于我们再次更改了组件显示，因此可以选择接受快照测试。但是必须修复单元测试。在我们的 `src / App.test.js`文件中，需要为 Table 组件提供`sortKey`和`isSortReverse`。
 >Again, when you run your tests, you should see failing snapshot tests but also failing unit tests for the Table component. Since you changed again your component representations, you can accept the snapshot tests. But you have to fix the unit test. In your src/App.test.js file, you need to provide a sortKey and the isSortReverse boolean for the Table component.
 
 {title="src/App.test.js",lang=javascript}
@@ -1139,10 +1137,10 @@ describe('Table', () => {
 >You have learned advanced component techniques in React! Let's recap the last chapters:
 
 * React
-  * ref 属性引用 DOM 节点
+  * 通过 ref 属性引用 DOM 节点
   * 高阶组件是构建高级组件的常用方法
-  * 在 React 中实现高级交互
-  * 一个简洁的库帮助实现条件 classNames
+  * 高级交互在 React 中的实现
+  * 帮助实现条件 classNames 的一个优雅库
 * ES6
   * rest 解构拆分对象和数组
 
@@ -1160,5 +1158,5 @@ describe('Table', () => {
 >
 >rest destructuring to split up objects and arrays
   
- 你可以在[官方 repo ](https://github.com/rwieruch/hackernews-client/tree/4.5)找到源代码。
+ 你可以在[官方代码库](https://github.com/rwieruch/hackernews-client/tree/4.5)找到源代码。
 >You can find the source code in the official repository.
