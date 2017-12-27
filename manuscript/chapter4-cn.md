@@ -1,6 +1,6 @@
 ## 代码组织和测试
 
-本章会将重点讨论如何在一个规模增长的应用中保证代码的可维护性这个话题。你将了解如何去组织代码，以便在构建你的工程目录和文件时时遵循最佳实践。本章你将学会的另外一个话题是测试，这能确保你的代码的健壮性。本章会回到练习项目中(TODO: 需要和之前章的翻译对齐)来为你介绍这几个话题。
+本章将专注在几个重要话题来保证在一个规模增长的应用中代码的可维护性。你将了解如何去组织代码，以便在构建你的工程目录和文件时时遵循最佳实践。本章你将学会的另外一个话题是测试，这对你代码的健壮性非常重要。本章会回到练习项目中(TODO: 需要和之前章的翻译对齐)来为你介绍这几个话题。
 
 > # Code Organization and Testing
 >
@@ -9,7 +9,7 @@
 
 ## ES6模块：Import 和 Export
 
-在 JavaScript ES6 中你可以从模块中导入和导出某些功能。这些功能可以是函数，类，组件，常量等等。基本上你可以将所有东西都赋值到一个变量上。模块可以单个文件，或者一个带有入口文件的文件夹。
+在 JavaScript ES6 中你可以从模块中导入和导出某些功能。这些功能可以是函数，类，组件，常量等等。基本上你可以将所有东西都赋值到一个变量上。模块可以是单个文件，或者一个带有入口文件的文件夹。
 
 本书的开头，在你使用*create-react-app*初始化你的应用后，应该有几条`import`和`export`语句已经在应用初始化的文件中。现在正合适解释这些。
 
@@ -20,17 +20,17 @@
 > In the beginning of the book, after you have bootstrapped your application with *create-react-app*, you already had several `import` and `export` statements across your initial files. Now it is the appropriate time to explain these.
 >
 
-`import`和`export`语句可以帮助你非多个文件间共享代码。在此之前，JavaScript 生态中已经有好几种方案了。曾经一度很糟，你需要的是遵循一套标准范式，而不是为了同一件事而采取多种方法。从 JavaScript ES6 后，现在有一种原生的方式了。
+`import`和`export`语句可以帮助你在多个不同的文件间共享代码。在此之前，JavaScript 生态中已经有好几种方案了。曾经一度很糟，你需要的是遵循一套标准范式，而不是为了同一件事而采取多种方法。从 JavaScript ES6 后，现在是一种原生的方式了。
 
 > The `import` and `export` statements help you to share code across multiple files. Before there were already several solutions for this in the JavaScript environment. It was a mess, because you would want to follow one standardized way rather than having several approaches for the same thing. Now it is a native behavior since JavaScript ES6.
 >
 
-此外这些语言还有利于代码分割。代码风格就是将代码分配到多个文件中去，以保持代码的重用性和可维护性。重用性得以成立是因为你可以在不同的文件中导入相同的代码片段。而可维护性得以成立是因为你维护的代码只有一个来源。
+此外这些语言还有利于代码分割。代码风格就是将代码分配到多个文件中去，以保持代码的重用性和可维护性。前者得以成立是因为你可以在不同的文件中导入相同的代码片段。而后者得以成立是因为你维护的代码是唯一的代码源。
 
 > Additionally these statements embrace code splitting. You distribute your code across multiple files to keep it reusable and maintainable. The former is true because you can import the piece of code in multiple files. The latter is true because you have one single source where you maintain the piece of code.
 >
 
-最后但并非不重要，它能帮助你思考代码封装。不是所有的功能都需要从一个文件导出。其中一些功能应该只在定义它的文件中使用。一个文件的导出功能是这个文件公共 API。只有导出的功能才能被其他地方重用。这遵循了封装的最佳实践。
+最后但并非最不重要的是，它能帮助你思考代码封装。不是所有的功能都需要从一个文件导出。其中一些功能应该只在定义它的文件中使用。一个文件导出的功能是这个文件公共 API。只有导出的功能才能被其他地方重用。这遵循了封装的最佳实践。
 
 > Last but not least, it helps you to think about code encapsulation. Not every functionality needs to get exported from a file. Some of these functionalities should only be used in the file where they have been defined. The exports of a file are basically the public API to the file. Only the exported functionalities are available to be reused somewhere else. It follows the best practice of encapsulation.
 >
@@ -48,7 +48,7 @@
 ~~~~~~~~
 const firstname = 'robin';
 const lastname = 'wieruch';
- 
+
 export { firstname, lastname };
 ~~~~~~~~
 
@@ -88,11 +88,11 @@ console.log(foo);
 // output: robin
 ~~~~~~~~
 
-最后但并非不重要，还存在一种 `default` 语句。可以被用在一些使用情况下：
+最后但并非最不重要的是，还存在一种 `default` 语句。可以被用在一些使用情况下：
 
 * 为了导出和导入单一功能
 * 为了强调一个模块输出 API 中的主要功能
-* 为了有一个导出功能的回退 (这段不是很理解)
+* 这样可以向后兼容ES5只有一个导出物的功能
 
 > Last but not least there exists the `default` statement. It can be used > for a few use cases:
 >
@@ -214,7 +214,7 @@ src/
   Search.css
 ~~~~~~~~
 
-这里将组件封装到各自文件中，但是这看起来不是很好。你可以看到非常多的命名冗余，并且只有文件的扩展文字不同。另外一个一种模块的结构大概类似：
+这里将组件封装到各自文件中，但是这看起来不是很好。你可以看到非常多的命名冗余，并且只有文件的扩展文字不同。另外一种模块的结构大概类似：
 
 > It separates the components into their own files, but it doesn't look too promising. You can see a lot of naming duplications and only the file extension differs. Another module structure could be:
 
@@ -245,7 +245,7 @@ src/
 
 > It looks cleaner than before. The index naming of a file describes it as an entry point file to the folder. It is just a common naming convention, but you can use your own naming as well. In this module structure, a component is defined by its component declaration in the JavasScript file, but also by its style and tests.
 
-另外一个步骤可能要将 App 组件中的变量抽出。这些变量用来组合出骇客新闻的 API URL。
+另外一个步骤可能要将 App 组件中的变量抽出。这些变量用来组合出 Hacker News 的 API URL。
 
 > Another step could be extracting the constant variables from the App component. These constants were used to compose the Hacker News API URL.
 
@@ -304,7 +304,7 @@ import {
 ...
 ~~~~~~~~
 
-当你使用 *index.js* 这个明明共识的时候，你可以在相对路径中省略文件名。
+当你使用 *index.js* 这个命名共识的时候，你可以在相对路径中省略文件名。
 
 > When you use the *index.js* naming convention, you can omit the filename from the relative path.
 
@@ -325,7 +325,7 @@ import {
 ...
 ~~~~~~~~
 
-但是 *index.js* 文件名称后面发生了什么？这个共识是在 node.js 世界里面被引入的。index 文件是一个模块的入口。它描述了一个模块的公共 API。外部模块只允许通过 *index.js* 文件导入模块中的共享代码。考虑用下面构造的模块结构进行演示：
+但是 *index.js* 文件名称后面发生了什么？这个约定是在 node.js 世界里面被引入的。index 文件是一个模块的入口。它描述了一个模块的公共 API。外部模块只允许通过 *index.js* 文件导入模块中的共享代码。考虑用下面虚构的模块结构进行演示：
 
 > But what's behind the *index.js* file naming? The convention was introduced in the node.js world. The index file is the entry point to a module. It describes the public API to the module. External modules are only allowed to use the *index.js* file to import shared code from the module. Consider the following made up module structure to demonstrate it:
 
@@ -342,7 +342,7 @@ src/
     CancelButton.js
 ~~~~~~~~
 
-这个 *Buttons/* 文件夹有多个按钮组件定义在了不同的文件中。每个文件都 `export default` 特定的组件，使组件能够被 *Buttons/index.js*导入。*Buttons/index.js* 文件导入所有不同的表现的按钮，并将他们导出作为模块的公共 API。
+这个 *Buttons/* 文件夹有多个按钮组件定义在了不同的文件中。每个文件都 `export default` 特定的组件，使组件能够被 *Buttons/index.js* 导入。*Buttons/index.js* 文件导入所有不同的表现的按钮，并将他们导出作为模块的公共 API。
 
 > The *Buttons/* folder has multiple button components defined in its distinct files. Each file can `export default` the specific component making it available to *Buttons/index.js*. The *Buttons/index.js* file imports all different button representations and exports them as public module API.
 
@@ -359,7 +359,7 @@ export {
 };
 ~~~~~~~~
 
-现在*src/App/index.js*可以通过定位在 *index.js* 文件模块的公共 API 导入这些按钮。
+现在 *src/App/index.js* 可以通过定位在 *index.js* 文件模块的公共 API 导入这些按钮。
 
 > Now the *src/App/index.js* can import the buttons from the public module API located in the *index.js* file.
 
@@ -372,7 +372,7 @@ import {
 } from '../Buttons';
 ~~~~~~~~
 
-在这些约束下，通过其他文件导入而不是通过 *index.js* 模块的话会是糟糕的实践。这会破坏封装的规则。
+在这些约束下，通过其他文件导入而不是通过 *index.js* 模块的话会是糟糕的实践。这会破坏封装的原则。
 
 > By going with this constraint, it would be a bad practice to reach into other files than the *index.js* in the module. It would break the rules of encapsulation.
 
@@ -415,7 +415,7 @@ import SubmitButton from '../Buttons/SubmitButton';
 
 
 
-每种测试我们需要多少呢？你需要很多的单元测试去覆盖代码中不同的函数。然后，你需要一些基础测试区覆盖最重要的函数功能联动如预期工作。最后单并非最不重要，你可能需要一点点端到端测试去模拟你 Web 应用程序中的关键情境。这就把测试简单说了一遍。
+每种测试我们需要多少呢？你需要很多的单元测试去覆盖代码中不同的函数。然后，你需要一些基础测试，去覆盖最重要的函数功能的联动，是否如预期一样工作。。最后单并非最不重要，你可能需要一点点端到端测试去模拟你 Web 应用程序中的关键情境。这就把测试简单说了一遍。
 
 
 
@@ -423,7 +423,7 @@ import SubmitButton from '../Buttons/SubmitButton';
 
 
 
-你应该怎样将这些知识点拿去测试你的 React 测试呢？React 中测试的基础是组件测试，基本可以视作单元测试，和部分的快照测试。在下一章（这不是一章么？？？里面的一节也叫章？？）管理组件相关的测试需要用到一个叫 Enzyme 的库。本章中，你会主要关注另外一种测试：快照测试。这里正好引入 Jest。
+你应该怎样将这些知识点拿去测试你的 React 测试呢？React 中测试的基础是组件测试，基本可以视作单元测试，和部分的快照测试。在后面的章节中管理组件相关的测试需要用到一个叫 Enzyme 的库。本章中，你会主要关注另外一种测试：快照测试。这里正好引入 Jest。
 
 
 
@@ -431,17 +431,13 @@ import SubmitButton from '../Buttons/SubmitButton';
 
 
 
-[Jest](https://facebook.github.io/jest/) 是一个在 Facebook 使用的测试框架。在 React 社区，它被用来做 React 的组件测试。幸好 *create-react-app* 已经包含了 Jest，所有你不需要担心启动配置的问题。
+[Jest](https://facebook.github.io/jest/) 是一个在 Facebook 使用的测试框架。在 React 社区，它被用来做 React 的组件测试。幸好 *create-react-app* 已经包含了 Jest，所以你不需要担心启动配置的问题。
 
 
 
 > [Jest](https://facebook.github.io/jest/) is a JavaScript testing framework that is used at Facebook. In the React community, it is used for React component tests. Fortunately *create-react-app* already comes with Jest, so you don't need to worry about setting it up.
 
-
-
-我们开始测试第一个组件吧。在此之前，你需要先将需要测试的组件从 *src/App.js* 导出。之后你可以在利用在代码组织章节的方式在不同的文件里去测试。
-
-
+我们开始测试第一个组件吧。在此之前，你必须先将需要测试的组件从 *src/App.js* 导出。之后，你可以在不同的单个文件里去测试，相信你已经在代码组织章节学会了怎么去做。
 
 > Let's start to test your first components. Before you can do that, you have to export the components, which you are going to test, from your *src/App.js* file. Afterward you can test them in a different file. You have learned about this in the code organization chapter.
 >
@@ -467,7 +463,7 @@ export {
 # leanpub-end-insert
 ~~~~~~~~
 
-在 *App.test.js* 文件中，你会可以看到 *create-react-app* 创建的第一个测试。它验证了 App 组件在渲染的时候没有任何错误发生。
+在 *App.test.js* 文件中，你可以看到 *create-react-app* 创建的第一个测试。它验证了 App 组件在渲染的时候没有任何错误发生。
 
 > In your *App.test.js* file, you will find a first test that came with *create-react-app*. It verifies that the App component would render without any errors.
 
@@ -510,11 +506,11 @@ npm test
 > * Include it in your *App.js* file: `import fetch from 'isomorphic-fetch';`
 >
 
-Jest 赋予你写快照测试的能力。这些测试会生成一份渲染好的组件的快照，并在作和未来的快照的比对。当一个未来的测试改变了，测试会给出提示。你可以接受这个快照改变，应用你有意改变了组件实现，或者拒绝这个改变，并且去调查错误。快在测试非常好的和单元测试互补，因为这仅会比对渲染输出的差异。这并不会增加巨额的维护成本，因为你只需要在你有意改变组件中渲染输出的时候接受快照改变。
+Jest 赋予你写快照测试的能力。这些测试会生成一份渲染好的组件的快照，并在作和未来的快照的比对。当一个未来的测试改变了，测试会给出提示。你可以接受这个快照改变，因为你有意改变了组件实现，或者拒绝这个改变，并且去调查错误。快照测试可以非常好地和单元测试互补，因为这仅会比对渲染输出的差异。这并不会增加巨额的维护成本，因为只有在你有意改变组件中渲染输出的时候，才需要接受快照改变。
 
 > Now Jest enables you to write snapshot tests. These tests make a snapshot of your rendered component and run this snapshot against future snapshots. When a future snapshot changes, you will get notified in the test. You can either accept the snapshot change, because you changed the component implementation on purpose, or deny the change and investigate for the error. It complements unit tests very well, because you only test the diffs of the rendered output. It doesn't add big maintenance costs, because you can simply accept changed snapshots when you changed something on purpose for the rendered output in your component.
 
-Jest 将快照保持在一个文件夹中。只有这样它才可以和未来的快照比对。此外这些快照也可以通过一个文件夹共享。
+Jest 将快照保存在一个文件夹中。只有这样它才可以和未来的快照比对。此外这些快照也可以通过一个文件夹共享。
 
 > Jest stores the snapshots in a folder. Only that way it can validate the diff against a future snapshot. Additionally, the snapshots can be shared across teams by having them in one folder.
 
@@ -630,11 +626,11 @@ describe('Search', () => {
 # leanpub-end-insert
 ~~~~~~~~
 
-Search 组件中有两个和 App 组件测试中类似的测试。第一个测试简单地渲染 Search 组件成 DOM，并验证这个渲染过程没有错误。如果这里有错误的话，测试会中断，即使测试块中没有任何断言（比如 expect， match， equal ）。第二个快照测试用来渲染组件的存储快照并且和之前的快照做比对。当快照改变了，测试会失败。
+Search 组件中有两个和 App 组件测试中类似的测试。第一个测试简单地渲染 Search 组件成 DOM，并验证这个渲染过程没有错误。如果这里有错误的话，即使测试块中没有任何断言（比如 expect， match， equal ），测试也会中断。第二个快照测试用来渲染组件的存储快照并且和之前的快照做比对。当快照改变了，测试会失败。
 
 
 
-接下来，你可以使用在 Search 组件测试方式，去测试 Button 组件。
+接下来，你可以使用在 Search 组件中相同的测试方式，去测试 Button 组件。
 
 > The Search component has two tests similar to the App component. The first test simply renders the Search component to the DOM and verifies that there is no error during the rendering process. If there would be an error, the test would break even though there isn't any assertion (e.g. expect, match, equal) in the test block. The second snapshot test is used to store a snapshot of the rendered component and to run it against a previous snapshot. It fails when the snapshot has changed.
 >
@@ -670,7 +666,7 @@ describe('Button', () => {
 # leanpub-end-insert
 ~~~~~~~~
 
-最后但并非不重要，你可以给表格组件一些初始化的 props 来做渲染一个简单的列表。
+最后但并非最不重要的是，你可以给表格组件一些初始化的 props 来做渲染一个简单的列表。
 
 > Last but not least, the Table component that you can pass a bunch of initial props to render it with a sample list.
 
@@ -716,7 +712,7 @@ describe('Table', () => {
 
 ### 练习
 
-* 看下当组件 `render()` 方法的返回值有改变，如何导致测试失败
+* 当组件 render() 方法的返回值有改变时，请留意测试会如何失败的？
   * 接受或者拒绝一个快照变更
 * 在后面章节中，当组件实现有改变时，保持你的快照最新。
 * 读一下 [Jest in React](https://facebook.github.io/jest/docs/tutorial-react.html)
@@ -811,7 +807,7 @@ describe('Table', () => {
 });
 ~~~~~~~~
 
-浅渲染组件不会渲染它的子组件。你可以用这种方式让测试只用关心一个组件。
+浅渲染组件不会渲染它的子组件。这样的话，你可以让测试只对一个组件负责。
 
 > Shallow renders the component without its child components. That way, you can make the test very dedicated to one component.
 
@@ -838,7 +834,7 @@ Enzyme API 中总共有三种渲染机制。你已经知道了 `shallow()`，这
 ### 练习：
 
 * 使用 Enzyme 对你的 Button 组件写一个单元测试
-* 在接下来的章节中，保持你的单元测试跟上
+* 在接下来的章节中，保持你的单元测试的更新
 * 了解更多 [Enzyme 和 它的渲染 API](https://github.com/airbnb/enzyme)
 
 > ### Exercises:
@@ -852,7 +848,7 @@ Enzyme API 中总共有三种渲染机制。你已经知道了 `shallow()`，这
 
 ## 组件接口和 PropTypes
 
-你可能知道 [TypeScript](https://www.typescriptlang.org/)  或者 [Flow](https://flowtype.org/) 在 JavaScript 中引入了类型接口。一个类型语言更不容易出错, 因为代码会被它的程序文本验证。编辑器或者其他工具可以在程序运行之前就捕获这些错误。可以让你的应用更健壮。
+你可能知道 [TypeScript](https://www.typescriptlang.org/)  或者 [Flow](https://flowtype.org/) 在 JavaScript 中引入了类型接口。一个类型语言更不容易出错, 因为代码会被它的程序文本验证。编辑器或者其他工具可以在程序运行之前就捕获这些错误，可以让你的应用更健壮。
 
 > ## Component Interface with PropTypes
 >
@@ -936,7 +932,7 @@ Button.propTypes = {
 > You already used the `node` PropType for the Button component. Overall there are more PropType definitions that you can read up in the official React documentation.
 >
 
-现在为 Button 定义的所有 PropTypes 都是可选的。参数可以为 null 或者 undefined。但是有几个 props 必须要定义。你可以通过标识这些 props 必须传递给组件。
+现在为 Button 定义的所有 PropTypes 都是可选的。参数可以为 null 或者 undefined。但是有几个 props 必须要定义。你可以标记这些 props 是必须传递给组件的。
 
 > At the moment all of the defined PropTypes for the Button are optional. The parameters can be null or undefined. But for several props you want to enforce that they are defined. You can make it a requirement that these props are passed to the component.
 
@@ -953,7 +949,7 @@ Button.propTypes = {
 };
 ~~~~~~~~
 
-`className` 不是必须的，因为它默认是空字符串。下一步你将为 Table 组件定义 PropTypes 接口。
+`className` 不是必需的，因为它默认是空字符串。下一步你将为 Table 组件定义 PropTypes 接口。
 
 > The `className` is not required, because it can default to an empty string. Next you will define a PropType interface for the Table component:
 
@@ -988,7 +984,7 @@ Table.propTypes = {
 };
 ~~~~~~~~
 
-只有 `objectID` 是必须的，因为有部分代码依赖于它。其他的属性仅仅用来展示，就是说他们不是必须的。另外你也没办法保证骇客新闻 API 总会给每一个对象都定义这些属性。
+只有 `objectID` 是必须的，因为有部分代码依赖于它。其他的属性仅仅用来展示，就是说他们不是必须的。另外你也没办法保证 Hacker News API 总会给每一个对象都定义这些属性。
 
 > Only the `objectID` is required, because you know that some of your code depends on it. The other properties are only displayed, thus they are not necessarily required. Moreover you cannot be sure that the Hacker News API has always a defined property for each object in the array.
 
@@ -1060,7 +1056,7 @@ Button.defaultProps = {
 
 {pagebreak}
 
-你已经学习道了如何组织和测试你的的代码了。让我会在最后一章回顾下吧：
+你已经学习道了如何组织和测试你的的代码了。让我们会在最后一章回顾下吧：
 
 * React
   * PropTypes 允许你为组件定义测试检查
@@ -1071,7 +1067,7 @@ Button.defaultProps = {
 * 概述
   * 代码组织让你的代码符合最佳实践并具有可扩展性
 
-你可以在[官方代码ku](https://github.com/rwieruch/hackernews-client/tree/4.4)中找到源码。
+你可以在[官方代码库](https://github.com/rwieruch/hackernews-client/tree/4.4)中找到源码。
 
 > You have learned how to organize your code and how to test it! Let's recap the last chapters:
 >
