@@ -10,7 +10,7 @@ The chapter will guide you through the basics of React. It covers state and inte
 
 Internal component state, also known as local state, allows you to save, modify and delete properties that are stored in your component. The ES6 class component can use a constructor to initialize internal component state later on. The constructor is called only once when the component initializes.
 
-组件内部状态也被称为局部状态，允许你保存，修改和删除存储在组件内部的属性。使用 ES6 编写的组件可以在构造函数中初始化组件的状态 。 构造函数只会在组件初始化时调用一次。
+组件内部状态也被称为局部状态，允许你保存，修改和删除存储在组件内部的属性。使用 ES6 类组件可以在构造函数中初始化组件的状态。 构造函数只会在组件初始化时调用一次。
 
 Let's introduce a class constructor.
 
@@ -37,7 +37,7 @@ When having a constructor in your ES6 class component, it is mandatory to call `
 
 You can call `super(props);` as well. It sets `this.props` in your constructor in case you want to access them in the constructor. Otherwise, when accessing `this.props` in your constructor, they would be `undefined`. You will learn more about the props of a React component later on.
 
-你调用 `super(props);` 后，它会在你的构造函数中设置  `this.props` 以供在构造函数中访问它们。 否则当在构造函数中访问  `this.props` ，会得到 `undefined`。稍后您将了解更多关于 React 组件的 props。
+你也可以调用 `super(props);`，它会在你的构造函数中设置  `this.props` 以供在构造函数中访问它们。 否则当在构造函数中访问  `this.props` ，会得到 `undefined`。稍后您将了解更多关于 React 组件的 props。
 
 Now, in your case, the initial state in your component should be the sample list of items.
 
@@ -76,7 +76,7 @@ class App extends Component {
 
 The state is bound to the class by using the `this` object. Thus you can access the local state in your whole component. For instance, it can be used in the `render()` method. Previously you have mapped a static list of items in your `render()` method that was defined outside of your component. Now you are about to use the list from your local state in your component.
 
-state 通过使用 `this` 绑定在类上。因此，你可以在整个组件中访问到 state。例如它可以用在 `render()` 方法中。此前你已经在 `render()`  方法中映射一个在组件外定义静态列表。现在你可以把列表换为使用组件的 state。
+state 通过使用 `this` 绑定在类上。因此，你可以在整个组件中访问到 state。例如它可以用在 `render()` 方法中。此前你已经在 `render()`  方法中映射一个在组件外定义静态列表。现在你可以在组件中使用 state 里的 list了。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -107,11 +107,11 @@ class App extends Component {
 
 The list is part of the component now. It resides in the internal component state. You could add items, change items or remove items in and from your list. Every time you change your component state, the `render()` method of your component will run again. That's how you can simply change your internal component state and be sure that the component re-renders and displays the correct data that comes from the local state.
 
-现在列表是组件的一部分。它驻留在组件的 state 中。你可以在列表中添加、修改或者删除它们。每次修改你组件的 state，组件的 `render()` 函数会再次运行。这样就可以确保你更改组件的 state，组件会根据 state 重新渲染和显示
+现在 list 是组件的一部分。它驻留在组件的 state 中。你可以从 list 中添加、修改或者删除列表项。每次你修改组件的内部状态，组件的 `render` 方法会再次运行。这样你可以简单地修改组件内部状态，确保组件重新渲染并且展示从内部状态获取到的正确数据。
 
 But be careful. Don't mutate the state directly. You have to use a method called `setState()` to modify your state. You will get to know it in a following chapter.
 
-但是需要注意，不要直接修改 state。你需要使用 `setState()` 方法来修改它。你将在接下来的章节了解到它。
+但是需要注意，不要直接修改 state。你必须使用 `setState()` 方法来修改它。你将在接下来的章节了解到它。
 
 ### Exercises: 练习：
 
@@ -129,7 +129,7 @@ But be careful. Don't mutate the state directly. You have to use a method called
 
 In JavaScript ES6, you can use a shorthand property syntax to initialize your objects more concisely. Imagine the following object initialization:
 
-在ES6中，你可以更简洁地使用简写属性来初始化对象。想象下面的对象初始化：
+在 ES6 中，你可以通过简写属性更加简洁地初始化对象。想象下面的对象初始化：
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -231,7 +231,7 @@ Now you have some internal state in your App component. However, you have not ma
 
 Let's add a button for each item in the displayed list. The button says "Dismiss" and is going to remove the item from the list. It could be useful eventually when you only want to keep a list of unread items and dismiss the items that you are not interested in.
 
-让我们为列表中的每一项增加一个按钮。按钮的文案为 “删除” ，意味着将从列表中删除该项。这个按钮会在你希望保留未读列表和删除不感兴趣的项时被用到。
+让我们为列表中的每一项增加一个按钮。按钮的文案为 “删除” ，意味着将从列表中删除该项。这个按钮在你希望保留未读列表和删除不感兴趣的项时会非常有用。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -270,7 +270,7 @@ class App extends Component {
 
 The `onDismiss()` class method is not defined yet. We will do it in a moment, but for now the focus should be on the `onClick` handler of the button element. As you can see, the `onDismiss()` method in the `onClick` handler is enclosed by another function. It is an arrow function. That way, you can sneak in the `objectID` property of the `item` object to identify the item that will be dismissed. An alternative way would be to define the function outside of the `onClick` handler and only pass the defined function to the handler. A later chapter will explain the topic of handlers in elements in more detail.
 
-这个类方法  `onDismiss()`  还没有被定义， 我们一会儿来会。目前先把重点放在按钮元素的 ` onClick ` 事件句柄上。正如你看见的，  `onDismiss()`  方法被另外一个函数包裹在 ` onClick ` 事件句柄中，它是一个箭头函数。这样你可以拿到 `item` 对象中的 `objectID` 属性来确定那一项会被删除掉。另外一种方法是在 ` onClick ` 句柄外定义函数并只传已定义的函数到句柄。后续的章节会解释更多细节关于元素句柄。
+这个类方法  `onDismiss()`  还没有被定义， 我们稍后再来做这件事。目前先把重点放在按钮元素的 ` onClick ` 事件句柄上。正如你看见的，  `onDismiss()`  方法被另外一个函数包裹在 ` onClick ` 事件句柄中，它是一个箭头函数。这样你可以拿到 `item` 对象中的 `objectID` 属性来确定那一项会被删除掉。另外一种方法是在 ` onClick ` 句柄之外定义函数，并只将已定义的函数传到句柄。在后续的章节中会解释更多细节关于元素句柄。
 
 Did you notice the multilines for the button element? Note that elements with multiple attributes get messy as one line at some point. That's why the button element is used with multilines and indentations to keep it readable. But it is not mandatory. It is only a code style recommendation that I highly recommend.
 
