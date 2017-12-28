@@ -1035,7 +1035,7 @@ Button.defaultProps = {
 
 > Same as the ES6 default parameter, the default prop ensures that the property is set to a default value when the parent component didn't specify it. The PropType type check happens after the default prop is evaluated.
 
-如果重新运行你的测试，你可能会在命令行看到一些组件的 PropTypes 错误。 可能是因为在测试中你没有传递在组件里定义为必须的 props。当你正确传递所需的值后，测试就会通过并避免这些错误。
+如果重新运行你的测试，你可能会在命令行看到一些组件的 PropTypes 错误。 可能是因为在测试中你没有传递在组件里定义为必需的 props。当你正确传递所需的值后，测试就会通过并避免这些错误。
 
 > If you run your tests again, you might see PropType errors for your components on your command line. It can happen because you didn't define all props for your components in the tests that are defined as required in your PropType definition. The tests themselves all pass correctly though. You can pass all required props to avoid these errors.
 
