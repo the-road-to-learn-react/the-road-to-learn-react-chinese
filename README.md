@@ -22,15 +22,15 @@
 
 | 章节   | 翻译作者                                     | 校对作者                                     |
 | ---- | ---------------------------------------- | ---------------------------------------- |
-| 前言   | @LeiZeng（曾磊）                             | @JimmyLv（吕靖）                             |
-| 第一章  | @kenpusney（刘清）、@SBeator（曾星星）             | @SBeator（曾星星）、@azzgo（文一山）、@kenpusney（刘清） |
-| 第二章  | @ariesjia（陈嘉）、@HelloRuiLi（李睿）、@Yixi（刘应皓） | @trotyl（余泽江）、@lazurey（梁越）、@HelloRuiLi（李睿） |
-| 第三章  | @zengyang2014（曾扬）                        | @lazurey（梁越）                             |
-| 第四章  | @azzgo（文一山）                              | @LeiZeng（曾磊）                             |
-| 第五章  | @liujiefengfeng（刘杰凤）                     | @JimmyLv（吕靖）                             |
-| 第六章  | @futantan（付坦坦）                           | @lazurey（梁越）                             |
-| 附：部署 | @linksgo2011（林宁）                         | @lazurey（梁越）                             |
-| 概述   | @JimmyLv（吕靖）                             | @lazurey（梁越）                             |
+| 前言   | @LeiZeng （曾磊）                             | @JimmyLv （吕靖）                             |
+| 第一章  | @kenpusney （刘清）、@SBeator （曾星星）             | @SBeator （曾星星）、@azzgo （文一山）、@kenpusney （刘清） |
+| 第二章  | @ariesjia （陈嘉）、@HelloRuiLi （李睿）、@Yixi （刘应皓） | @trotyl （余泽江）、@lazurey （梁越）、@HelloRuiLi （李睿） |
+| 第三章  | @zengyang2014 （曾扬）                        | @lazurey （梁越）                             |
+| 第四章  | @azzgo （文一山）                              | @LeiZeng （曾磊）                             |
+| 第五章  | @liujiefengfeng （刘杰凤）                     | @JimmyLv （吕靖）                             |
+| 第六章  | @futantan （傅坦坦）                           | @lazurey （梁越）                             |
+| 附：部署 | @linksgo2011 （林宁）                         | @lazurey （梁越）                             |
+| 概述   | @JimmyLv （吕靖）                             | @lazurey （梁越）                             |
 
 ---
 
