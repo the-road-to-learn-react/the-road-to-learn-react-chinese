@@ -22,15 +22,15 @@
 
 | 章节   | 翻译作者                                     | 校对作者                                     |
 | ---- | ---------------------------------------- | ---------------------------------------- |
-| 前言   | @LeiZeng （曾磊）                             | @JimmyLv （吕靖）                             |
-| 第一章  | @kenpusney （刘清）、@SBeator （曾星星）             | @SBeator （曾星星）、@azzgo （文一山）、@kenpusney （刘清） |
-| 第二章  | @ariesjia （陈嘉）、@HelloRuiLi （李睿）、@Yixi （刘应皓） | @trotyl （余泽江）、@lazurey （梁越）、@HelloRuiLi （李睿） |
-| 第三章  | @zengyang2014 （曾扬）                        | @lazurey （梁越）                             |
-| 第四章  | @azzgo （文一山）                              | @LeiZeng （曾磊）                             |
-| 第五章  | @liujiefengfeng （刘杰凤）                     | @JimmyLv （吕靖）                             |
-| 第六章  | @futantan （傅坦坦）                           | @lazurey （梁越）                             |
-| 附：部署 | @linksgo2011 （林宁）                         | @lazurey （梁越）                             |
-| 概述   | @JimmyLv （吕靖）                             | @lazurey （梁越）                             |
+| 前言   | [@LeiZeng](https://github.com/LeiZeng) （曾磊）                             | [@JimmyLv](https://github.com/JimmyLv) （吕靖）                             |
+| 第一章  | [@kenpusney](https://github.com/kenpusney) （刘清）、[@SBeator](https://github.com/SBeator) （曾星星）             | [@SBeator](https://github.com/SBeator) （曾星星）、[@azzgo](https://github.com/azzgo) （文一山）、[@kenpusney](https://github.com/kenpusney) （刘清） |
+| 第二章  | [@ariesjia](https://github.com/ariesjia) （陈嘉）、[@HelloRuiLi](https://github.com/HelloRuiLi) （李睿）、[@Yixi](https://github.com/Yixi) （刘应皓） | [@trotyl](https://github.com/trotyl) （余泽江）、[@lazurey](https://github.com/lazurey) （梁越）、[@HelloRuiLi](https://github.com/HelloRuiLi) （李睿） |
+| 第三章  | [@zengyang2014](https://github.com/zengyang2014) （曾扬）                        | [@lazurey](https://github.com/lazurey) （梁越）                             |
+| 第四章  | [@azzgo](https://github.com/azzgo) （文一山）                              | [@LeiZeng](https://github.com/LeiZeng) （曾磊）                             |
+| 第五章  | [@liujiefengfeng](https://github.com/liujiefengfeng) （刘杰凤）                     | [@JimmyLv](https://github.com/JimmyLv) （吕靖）                             |
+| 第六章  | [@futantan](https://github.com/futantan) （傅坦坦）                           | [@lazurey](https://github.com/lazurey) （梁越）                             |
+| 附：部署 | [@linksgo2011](https://github.com/linksgo2011) （林宁）                         | [@lazurey](https://github.com/lazurey) （梁越）                             |
+| 概述   | [@JimmyLv](https://github.com/JimmyLv) （吕靖）                             | [@lazurey](https://github.com/lazurey) （梁越）                             |
 
 ---
 
