@@ -1,3 +1,540 @@
+# React 基础
+
+本章将指导你了解 React 的基础知识。因为静态的组件会有些枯燥，所以内容会包含组件的状态与交互。此外，你将学习用不同方式声明组件以及如何保持组件的可重用, 可组合性。准备好创造你自己的组件。
+
+## 组件内部状态
+
+组件内部状态也被称为局部状态，允许你保存，修改和删除存储在组件内部的属性。使用 ES6 类组件可以在构造函数中初始化组件的状态。 构造函数只会在组件初始化时调用一次。
+
+让我们引入类构造函数
+
+{title="src/App.js",lang=javascript}
+~~~~~~~~
+class App extends Component {
+
+# leanpub-start-insert
+  constructor(props) {
+    super(props);
+  }
+# leanpub-end-insert
+
+  ...
+
+}
+~~~~~~~~
+
+当你使用 ES6 编写的组件有一个构造函数时，它需要强制地调用 `super();` 方法，因为这个 App 组件是 `Component` 的子类。因此在你的APP组件要声明 `extends Component` 。 你会在后续内容中更详细了解使用 ES6 编写的组件。
+
+你也可以调用 `super(props);`，它会在你的构造函数中设置  `this.props` 以供在构造函数中访问它们。 否则当在构造函数中访问  `this.props` ，会得到 `undefined`。稍后您将了解更多关于 React 组件的 props。
+
+现在，在你的示例中，组件中的初始状态应该是一个列表。
+
+{title="src/App.js",lang=javascript}
+~~~~~~~~
+const list = [
+  {
+    title: 'React',
+    url: 'https://facebook.github.io/react/',
+    author: 'Jordan Walke',
+    num_comments: 3,
+    points: 4,
+    objectID: 0,
+  },
+  ...
+];
+
+class App extends Component {
+
+  constructor(props) {
+    super(props);
+
+# leanpub-start-insert
+    this.state = {
+      list: list,
+    };
+# leanpub-end-insert
+  }
+
+  ...
+
+}
+~~~~~~~~
+
+state 通过使用 `this` 绑定在类上。因此，你可以在整个组件中访问到 state。例如它可以用在 `render()` 方法中。此前你已经在 `render()`  方法中映射一个在组件外定义静态列表。现在你可以在组件中使用 state 里的 list了。
+
+{title="src/App.js",lang=javascript}
+~~~~~~~~
+class App extends Component {
+
+  ...
+
+  render() {
+    return (
+      <div className="App">
+# leanpub-start-insert
+        {this.state.list.map(item =>
+# leanpub-end-insert
+          <div key={item.objectID}>
+            <span>
+              <a href={item.url}>{item.title}</a>
+            </span>
+            <span>{item.author}</span>
+            <span>{item.num_comments}</span>
+            <span>{item.points}</span>
+          </div>
+        )}
+      </div>
+    );
+  }
+}
+~~~~~~~~
+
+现在 list 是组件的一部分。它驻留在组件的 state 中。你可以从 list 中添加、修改或者删除列表项。每次你修改组件的内部状态，组件的 `render` 方法会再次运行。这样你可以简单地修改组件内部状态，确保组件重新渲染并且展示从内部状态获取到的正确数据。
+
+但是需要注意，不要直接修改 state。你必须使用 `setState()` 方法来修改它。你将在接下来的章节了解到它。
+
+### 练习：
+
+- 练习使用 state
+  - 在构造函数中定义更多的初始化 state
+  - 在 `render()`  函数中访问使用 state
+- 阅读更多关于 [ES6类构造函数](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes#Constructor)
+
+## ES6 对象初始化
+
+在 ES6 中，你可以通过简写属性更加简洁地初始化对象。想象下面的对象初始化：
+
+{title="Code Playground",lang="javascript"}
+~~~~~~~~
+const name = 'Robin';
+
+const user = {
+  name: name,
+};
+~~~~~~~~
+
+当你的对象中的属性名与变量名相同时，您可以执行以下的操作：
+
+{title="Code Playground",lang="javascript"}
+~~~~~~~~
+const name = 'Robin';
+
+const user = {
+  name,
+};
+~~~~~~~~
+
+在应用程序中，你也可以这样做。列表变量名和状态属性名称共享同一名称。
+
+{title="Code Playground",lang="javascript"}
+~~~~~~~~
+// ES5
+this.state = {
+  list: list,
+};
+
+// ES6
+this.state = {
+  list,
+};
+~~~~~~~~
+
+另一个整洁的辅助办法是简写方法名。在 ES6 中，你能更简洁地初始化一个对象的方法。
+
+{title="Code Playground",lang="javascript"}
+~~~~~~~~
+// ES5
+var userService = {
+  getUserName: function (user) {
+    return user.firstname + ' ' + user.lastname;
+  },
+};
+
+// ES6
+const userService = {
+  getUserName(user) {
+    return user.firstname + ' ' + user.lastname;
+  },
+};
+~~~~~~~~
+
+最后值得一提的是你可以在 ES6 中使用计算属性名
+
+{title="Code Playground",lang="javascript"}
+~~~~~~~~
+// ES5
+var user = {
+  name: 'Robin',
+};
+
+// ES6
+const key = 'name';
+const user = {
+  [key]: 'Robin',
+};
+~~~~~~~~
+
+或许你目前还觉得计算属性名没有意义。为什么需要他们呢？在后续的章节中，当你为一个对象动态地根据 key 分配值时便会涉及到。在 JavaScript 中生成查找表是很简单的。
+
+### 练习：
+
+- ES6 对象初始化练习
+- 阅读更多关于  [ES6 对象初始化](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer)
+
+## 单向数据流
+
+现在你的组件中有一些内部的 state。但是你还没有操纵它们，因此 state 是静态的。一个练习 state 操作好方法是增加一些组件的交互。
+
+让我们为列表中的每一项增加一个按钮。按钮的文案为 “删除” ，意味着将从列表中删除该项。这个按钮在你希望保留未读列表和删除不感兴趣的项时会非常有用。
+
+{title="src/App.js",lang=javascript}
+~~~~~~~~
+class App extends Component {
+
+  ...
+
+  render() {
+    return (
+      <div className="App">
+        {this.state.list.map(item =>
+          <div key={item.objectID}>
+            <span>
+              <a href={item.url}>{item.title}</a>
+            </span>
+            <span>{item.author}</span>
+            <span>{item.num_comments}</span>
+            <span>{item.points}</span>
+# leanpub-start-insert
+            <span>
+              <button
+                onClick={() => this.onDismiss(item.objectID)}
+                type="button"
+              >
+                Dismiss
+              </button>
+            </span>
+# leanpub-end-insert
+          </div>
+        )}
+      </div>
+    );
+  }
+}
+~~~~~~~~
+
+这个类方法  `onDismiss()`  还没有被定义， 我们稍后再来做这件事。目前先把重点放在按钮元素的 ` onClick ` 事件句柄上。正如你看见的，  `onDismiss()`  方法被另外一个函数包裹在 ` onClick ` 事件句柄中，它是一个箭头函数。这样你可以拿到 `item` 对象中的 `objectID` 属性来确定那一项会被删除掉。另外一种方法是在 ` onClick ` 句柄之外定义函数，并只将已定义的函数传到句柄。在后续的章节中会解释更多细节关于元素句柄。
+
+你有没有注意到按钮元素是多行代码的？元素中一行有多个属性会看起来比较混乱。所以这个按钮使用多行格式来书写以保持它的可读性。这虽然不是强制的，但这是我的极力推荐的代码风格。
+
+现在你需要来完成 `onDismiss()` 的功能，它通过id来标示那一项需被删除。此函数绑定到类，因此成为类方法。这就是为什么你访问它使用 `this.onDismiss()` 而不是 `onDismiss()`。 `this` 对象是类的实例，为了将 `onDismiss()` 定义为类方法，你需要在构造函数中绑定它。绑定稍后将在另一章中详细解释。
+
+{title="src/App.js",lang=javascript}
+~~~~~~~~
+class App extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      list,
+    };
+
+# leanpub-start-insert
+    this.onDismiss = this.onDismiss.bind(this);
+# leanpub-end-insert
+  }
+
+  render() {
+    ...
+  }
+}
+~~~~~~~~
+
+下一步，你需要在类中定义它的功能和业务逻辑。类方法可以用以下方式定义。
+
+{title="src/App.js",lang=javascript}
+~~~~~~~~
+class App extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      list,
+    };
+
+    this.onDismiss = this.onDismiss.bind(this);
+  }
+
+# leanpub-start-insert
+  onDismiss(id) {
+    ...
+  }
+# leanpub-end-insert
+
+  render() {
+    ...
+  }
+}
+~~~~~~~~
+
+现在你可以定义方法内部的功能。总的来说你希望从列表中删除由id标识的项，并且保存更新后的列表到 state 中。随后这个更新后列表被使用到再次运行的 `render()` 方法中并渲染，最后这个被删除项就不再显示了。
+
+你可以通过 JavaScript 内置的 filter 方法来删除列表中的一项。fitler 方法以一个函数作为输入。这个函数可以访问列表中的每一项，因为它会遍历整个列表。通过这种方式，你可以基于过滤条件来判断列表的每一项。如果该项判断结果为true，则该项保留在列表中。否则将从列表中过滤掉。另外，好的一点是这个方法会返回一个新的列表也不是改变旧列表。它遵循了 React 中不可变数据的约定。
+
+{title="src/App.js",lang=javascript}
+~~~~~~~~
+onDismiss(id) {
+# leanpub-start-insert
+  const updatedList = this.state.list.filter(function isNotId(item) {
+    return item.objectID !== id;
+  });
+# leanpub-end-insert
+}
+~~~~~~~~
+
+在下一步中，您可以抽取函数并将其传递给 filter 函数。
+
+{title="src/App.js",lang=javascript}
+~~~~~~~~
+onDismiss(id) {
+# leanpub-start-insert
+  function isNotId(item) {
+    return item.objectID !== id;
+  }
+
+  const updatedList = this.state.list.filter(isNotId);
+# leanpub-end-insert
+}
+~~~~~~~~
+
+另外，可以通过使用 ES6 的箭头函数让代码更简洁。
+
+{title="src/App.js",lang=javascript}
+~~~~~~~~
+onDismiss(id) {
+# leanpub-start-insert
+  const isNotId = item => item.objectID !== id;
+  const updatedList = this.state.list.filter(isNotId);
+# leanpub-end-insert
+}
+~~~~~~~~
+
+你甚至可以内联到一行内完成，就像在按钮的 `onClick` 句柄做的一样，但如此会损失一些可读性
+
+{title="src/App.js",lang=javascript}
+~~~~~~~~
+onDismiss(id) {
+# leanpub-start-insert
+  const updatedList = this.state.list.filter(item => item.objectID !== id);
+# leanpub-end-insert
+}
+~~~~~~~~
+
+现在已经从列表中删除了点击项，但是 state 还并没有更新。因此你需要最后使用类方法 `setState()` 来更新组件 satate 中的列表了。
+
+{title="src/App.js",lang=javascript}
+~~~~~~~~
+onDismiss(id) {
+  const isNotId = item => item.objectID !== id;
+  const updatedList = this.state.list.filter(isNotId);
+# leanpub-start-insert
+  this.setState({ list: updatedList });
+# leanpub-end-insert
+}
+~~~~~~~~
+
+现在重新运行你的程序并尝试点击“删除”按钮，它应该是工作的。你现在所练习的就是 React 中的**单向数据流**。你在界面通过 `onClick` 触发一个动作，再通过函数或类方法修改组件的 state，最后组件的 `render()` 方法再次运行并更新界面。   
+
+![Internal state update with unidirectional data flow](images/set-state-to-render-unidirectional.png)
+
+### 练习:
+
+- 阅读更多关于 [React的状态与生命周期](https://facebook.github.io/react/docs/state-and-lifecycle.html)
+
+## 绑定
+
+当使用 ES6 编写的React组件时，了解在 JavaScript 类的绑定会非常重要。在前面章节，你已经在构造函数中绑定了  `onDismiss()` 方法
+
+{title="src/App.js",lang=javascript}
+~~~~~~~~
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      list,
+    };
+
+    this.onDismiss = this.onDismiss.bind(this);
+  }
+
+  ...
+}
+~~~~~~~~
+
+为什么一开始就需要这么做呢？绑定的步骤是非常重要的，因为类方法不会自动绑定 `this` 到实例上。让我们通过下面的代码来做验证。
+
+{title="Code Playground",lang=javascript}
+~~~~~~~~
+class ExplainBindingsComponent extends Component {
+  onClickMe() {
+    console.log(this);
+  }
+
+  render() {
+    return (
+      <button
+        onClick={this.onClickMe}
+        type="button"
+      >
+        Click Me
+      </button>
+    );
+  }
+}
+~~~~~~~~
+
+组件正确的渲染，但是当你点击按钮时候，你会在开发调试控制台中得到 `undefined` 。这是使用 React 主要的 bug 来源，因为当你想在类方法中访问 `this.state` 时，它不能被检索到是因为 `this` 是 `undefined` 的。所以为了确保 `this` 在类方法中是可访问的，你需要将 `this` 绑定到类方法上。
+
+在下面的组件中，类方法在构造函数中正确绑定。
+
+{title="Code Playground",lang=javascript}
+~~~~~~~~
+class ExplainBindingsComponent extends Component {
+# leanpub-start-insert
+  constructor() {
+    super();
+
+    this.onClickMe = this.onClickMe.bind(this);
+  }
+# leanpub-end-insert
+
+  onClickMe() {
+    console.log(this);
+  }
+
+  render() {
+    return (
+      <button
+        onClick={this.onClickMe}
+        type="button"
+      >
+        Click Me
+      </button>
+    );
+  }
+}
+~~~~~~~~
+
+再次尝试点击按钮，这个 `this` 对象就指向了类的实例。你现在就可以访问到  `this.state` 或者是后面会学习到的 `this.props`。
+
+类方法的绑定也可以写起其他地方，比如写在 `render()` 函数中。
+
+{title="Code Playground",lang=javascript}
+~~~~~~~~
+class ExplainBindingsComponent extends Component {
+  onClickMe() {
+    console.log(this);
+  }
+
+  render() {
+    return (
+      <button
+# leanpub-start-insert
+        onClick={this.onClickMe.bind(this)}
+# leanpub-end-insert
+        type="button"
+      >
+        Click Me
+      </button>
+    );
+  }
+}
+~~~~~~~~
+
+但是你应该避免这样做，因为它会在每次 `render()` 方法执行时绑定类方法。总结来说组件每次运行更新时都会导致性能消耗。当在构造函数中绑定时，绑定只会在组件实例化时运行一次，这样做是一个更好的方式。
+
+另外有一些人们提出在构造函数中定义业务逻辑类方法。
+
+{title="Code Playground",lang=javascript}
+~~~~~~~~
+class ExplainBindingsComponent extends Component {
+  constructor() {
+    super();
+
+# leanpub-start-insert
+    this.onClickMe = () => {
+      console.log(this);
+    }
+# leanpub-end-insert
+  }
+
+  render() {
+    return (
+      <button
+        onClick={this.onClickMe}
+        type="button"
+      >
+        Click Me
+      </button>
+    );
+  }
+}
+~~~~~~~~
+
+你同样也应该避免这样，因为随着时间的推移它会让你的构造函数变得混乱。构造函数目的只是实例化你的类以及所有的属性。这就是为什么我们应该把业务逻辑应该定义在构造函数之外。
+
+{title="Code Playground",lang=javascript}
+~~~~~~~~
+class ExplainBindingsComponent extends Component {
+  constructor() {
+    super();
+
+    this.doSomething = this.doSomething.bind(this);
+    this.doSomethingElse = this.doSomethingElse.bind(this);
+  }
+
+  doSomething() {
+    // do something
+  }
+
+  doSomethingElse() {
+    // do something else
+  }
+
+  ...
+}
+~~~~~~~~
+
+最后值得一提的是类方法可以通过 ES6 的箭头函数做到自动地绑定。
+
+{title="Code Playground",lang=javascript}
+~~~~~~~~
+class ExplainBindingsComponent extends Component {
+  onClickMe = () => {
+    console.log(this);
+  }
+
+  render() {
+    return (
+      <button
+        onClick={this.onClickMe}
+        type="button"
+      >
+        Click Me
+      </button>
+    );
+  }
+}
+~~~~~~~~
+
+如果在构造函数中重复的绑定比较困扰你，你可以使用这种方式代替。在 React 的官方文档中坚持在构造函数中绑定类方法，所以本书也会采用同样方式。
+
+### 练习:
+
+- 尝试绑定不同的方法并且控制台中打印 `this` 对象
+
 ## 事件处理
 
 本章节会让你对元素的事件处理有更深入的了解，在你的应用程序中，你将使用下面的按钮来从列表中忽略一项内容
