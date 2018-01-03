@@ -22,8 +22,8 @@
 
 | 章节   | 翻译作者                                     | 校对作者                                     |
 | ---- | ---------------------------------------- | ---------------------------------------- |
-| 前言   | [@LeiZeng](https://github.com/LeiZeng) （曾磊） | [@JimmyLv](https://github.com/JimmyLv) （吕靖） |
-| 第一章  | [@kenpusney](https://github.com/kenpusney) （刘清）、[@SBeator](https://github.com/SBeator) （曾星星） | [@SBeator](https://github.com/SBeator) （曾星鑫）、[@azzgo](https://github.com/azzgo) （文一山）、[@kenpusney](https://github.com/kenpusney) （刘清） |
+| 前言   | [@LeiZeng](https://github.com/LeiZeng) （曾磊）                             | [@JimmyLv](https://github.com/JimmyLv) （吕靖）                             |
+| 第一章  | [@kenpusney](https://github.com/kenpusney) （刘清）、[@SBeator](https://github.com/SBeator) （曾星鑫）             | [@SBeator](https://github.com/SBeator) （曾星鑫）、[@azzgo](https://github.com/azzgo) （文一山）、[@kenpusney](https://github.com/kenpusney) （刘清） |
 | 第二章  | [@ariesjia](https://github.com/ariesjia) （陈嘉）、[@HelloRuiLi](https://github.com/HelloRuiLi) （李睿）、[@Yixi](https://github.com/Yixi) （刘应皓） | [@trotyl](https://github.com/trotyl) （余泽江）、[@lazurey](https://github.com/lazurey) （梁越）、[@HelloRuiLi](https://github.com/HelloRuiLi) （李睿） |
 | 第三章  | [@zengyang2014](https://github.com/zengyang2014) （曾扬） | [@lazurey](https://github.com/lazurey) （梁越） |
 | 第四章  | [@azzgo](https://github.com/azzgo) （文一山） | [@LeiZeng](https://github.com/LeiZeng) （曾磊） |
