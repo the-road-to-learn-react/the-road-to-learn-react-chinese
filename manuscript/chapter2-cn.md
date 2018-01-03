@@ -344,7 +344,7 @@ onDismiss(id) {
 }
 ~~~~~~~~
 
-现在重新运行你的程序并尝试点击“Dismiss”按钮，它应该是工作的。你现在所练习的就是 React 中的**单向数据流**。你在界面通过 `onClick` 触发一个动作，再通过函数或类方法修改组件的 state，最后组件的 `render()` 方法再次运行并更新界面。
+现在重新运行你的程序并尝试点击 “Dismiss” 按钮，它应该是工作的。你现在所练习的就是 React 中的**单向数据流**。你在界面通过 `onClick` 触发一个动作，再通过函数或类方法修改组件的 state，最后组件的 `render()` 方法再次运行并更新界面。
 
 ![Internal state update with unidirectional data flow](images/set-state-to-render-unidirectional.png)
 
