@@ -185,7 +185,7 @@ const user = {
 
 现在你的组件中有一些内部的 state。但是你还没有操纵它们，因此 state 是静态的。一个练习 state 操作好方法是增加一些组件的交互。
 
-让我们为列表中的每一项增加一个按钮。按钮的文案为 “删除” ，意味着将从列表中删除该项。这个按钮在你希望保留未读列表和删除不感兴趣的项时会非常有用。
+让我们为列表中的每一项增加一个按钮。按钮的文案为 “Dismiss” ，意味着将从列表中删除该项。这个按钮在你希望保留未读列表和删除不感兴趣的项时会非常有用。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -344,7 +344,7 @@ onDismiss(id) {
 }
 ~~~~~~~~
 
-现在重新运行你的程序并尝试点击“删除”按钮，它应该是工作的。你现在所练习的就是 React 中的**单向数据流**。你在界面通过 `onClick` 触发一个动作，再通过函数或类方法修改组件的 state，最后组件的 `render()` 方法再次运行并更新界面。   
+现在重新运行你的程序并尝试点击 “Dismiss” 按钮，它应该是工作的。你现在所练习的就是 React 中的**单向数据流**。你在界面通过 `onClick` 触发一个动作，再通过函数或类方法修改组件的 state，最后组件的 `render()` 方法再次运行并更新界面。
 
 ![Internal state update with unidirectional data flow](images/set-state-to-render-unidirectional.png)
 
