@@ -1280,12 +1280,12 @@ class Table extends Component {
 
 从 App 组件中提取这些组件之后，你就可以在别的地方去重用它们了。因为组件是通过 props 对象来获取它们的值，所以当你在别的地方重用它时，你可以每一次都传递不同的 props，这些组件就变得可复用了。
 
-### Exercises: 练习：
+### 练习：
 
 * 从已经完成的 Search 和 Table 组件中找出可以进一步提取的组件。
   * 但是不要现在就去做，否则在接下来的几个章节你会遇到冲突。  
 
-## Composable Components 可组合组件
+## 可组合组件
 
 在 props 对象中还有一个小小的属性可供使用: `children` 属性。通过它你可以将元素从上层传递到你的组件中，这些元素对你的组件来说是未知的，但是却为组件相互组合提供了可能性。让我们来看一看，当你只将一个文本（字符串）作为子元素传递到 Search 组件中会怎样。
 
@@ -1344,11 +1344,11 @@ class Search extends Component {
 
 现在，你应该可以在输入框旁边看到这个 "Search" 文本了。当你在别的地方使用 Search 组件时，如果你喜欢，你可以选择一个不同的文本。总之，它不仅可以把文本作为子元素传递，还可以将一个元素或者元素树（它还可以再次封装成组件）作为子元素传递。children 属性让组件相互组合到一起成为可能。
 
-### Exercises: 练习：
+### 练习：
 
 * 阅读更多关于 [React 组件模型](https://facebook.github.io/react/docs/composition-vs-inheritance.html) 的内容
 
-## Reusable Components 可复用组件
+## 可复用组件
 
 可复用和可组合组件让你能够思考合理的组件分层，它们是 React 视图层的基础。前面几章提到了可重用性的术语。现在你可以复用 Search 和 Table 组件了。甚至 App 组件都是可复用的了，因为你可以在别的地方重新实例化它。
 
@@ -1434,7 +1434,7 @@ class Button extends Component {
 
 这样当使用 Button 组件时，若没有指定 `className` 属性，它的值就是一个空字符串，而非 `undefined`。
 
-### Exercises: 练习：
+### 练习：
 
 * 阅读更多关于 [ES6 默认参数](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Default_parameters) 的内容
 ## Component Declarations 组件声明
@@ -1528,12 +1528,12 @@ const Search = ({ value, onChange, children }) => {
 
 现在你已经有一个轻量的函数式无状态组件了。一旦你需要访问它的内部组件状态或者生命周期方法，你最好将它重构成一个 ES6 类组件。另外，你也已经看到，JavaScript ES6 是如何被用到 React 组件中并让它们变得更加的简洁和优雅。
 
-### Exercises: 练习：
+### 练习：
 
 * 将 Table 和 Button 组件重构成函数式无状态组件
 * 阅读更多关于 [ES6 类组件和函数式无状态组件](https://facebook.github.io/react/docs/components-and-props.html) 的内容
 
-## Styling Components 给组件声明样式
+## 给组件声明样式
 
 让我们给你的应用和组件添加一些基本的样式。你可以复用 *src/App.css* 和 *src/index.css* 文件。因为你是用 *create-react-app* 来创建的，所以这些文件应该已经在你的项目中了。它们应该也被引入到你的 *src/App.js* 和 *src/index.js* 文件中了。我准备了一些 CSS，你可以直接复制粘贴到这些文件中，你也可以随意使用你自己的样式。
 
