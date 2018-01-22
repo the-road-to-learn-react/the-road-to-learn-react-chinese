@@ -8,11 +8,11 @@
 
 * 使用 DOM API（focus事件，媒体播放等）
 * 调用命令式 DOM 节点动画
-* 与需要 DOM 节点的第三方库集成（例如 [D3.js]（https://d3js.org/））
+* 与需要 DOM 节点的第三方库集成（例如 [D3.JavaScript](https://d3js.org/)）
 
 让我们通过 Search 组件这个例子看一下。当应用程序第一次渲染时，input 字段应该被聚焦。这是需要访问 DOM API 的一种用例。本章将展示渲染时聚焦 input 字段是如何工作的，但由于这个功能对于应用程序并不是很有用，所以我们将在本章之后省略这些更改。尽管如此，你仍然可以为自己的应用程序保留它。
 
-通常，无状态组件和ES6类组件中都可以使用`ref`属性。在聚焦 input 字段的用例中，我们就需要一个生命周期方法。这就是为什么接下来会先在 ES6 类组件中展示如何使用`ref`属性。
+通常，无状态组件和 ES6 类组件中都可以使用 `ref` 属性。在聚焦 input 字段的用例中，我们就需要一个生命周期方法。这就是为什么接下来会先在 ES6 类组件中展示如何使用 `ref` 属性。
 
 第一步是将无状态组件重构为 ES6 类组件。
 
@@ -158,7 +158,8 @@ const Search = ({
 ## 加载 ……
 
 现在让我们回到应用程序。当向 Hacker News API 发起搜索请求时，我们想要显示一个加载指示符。
-请求是异步的，此时应该向用户展示某些事情即将发生的反馈。让我们在 `src／App.js` 中定义一个可重用的 Loading 组件。
+
+请求是异步的，此时应该向用户展示某些事情即将发生的某种反馈。让我们在 `src／App.js` 中定义一个可重用的 Loading 组件。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -174,7 +175,7 @@ const Loading = () =>
   <div>Loading ...</div>
 ~~~~~~~~
 
-Now you will need a property to store the loading state. Based on the loading state you can decide to show the Loading component later on.
+现在你将需要一个属性来存储加载状态。根据加载状态可以决定稍后是否显示所加载的组件。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -340,6 +341,7 @@ const { foo, bar } = props;
 ~~~~~~~~
 
 有一点应该避免。我们把包括`isLoading`属性在内的所有 props 通过展开对象传递给输入的组件。
+
 然而，输入的组件可能不关心`isLoading`属性。我们可以使用 ES6 中的 rest 解构来避免它。
 
 {title="src/App.js",lang=javascript}
@@ -355,6 +357,7 @@ const withLoading = (Component) => ({ isLoading, ...rest }) =>
 这段代码从 `props` 对象中取出一个属性，并保留剩下的属性。这也适用于多个属性。你可能已经在 [解构赋值](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)中了解过它。
 
 现在，我们以在 JSX 中使用 HOC。应用程序中的用例可能是显示 “More” 按钮或 Loading 组件。
+
 Loading 组件已经封装在 HOC 中，缺失了输入组件。在显示 Button 组件或 Loading 组件的用例中，Button 是 HOC 的输入组件。增强的输出组件是一个 ButtonWithLoading 的组件。
 
 {title="src/App.js",lang=javascript}
@@ -436,7 +439,7 @@ class App extends Component {
 * 阅读 [高阶组件的简单介绍](https://www.robinwieruch.de/gentle-introduction-higher-order-components/)
 * 使用创建的高阶组件
 * 思考一个适合使用高阶组件的场景
-	* 如果想到了使用场景，请实现这个高阶组件
+  * 如果想到了使用场景，请实现这个高阶组件
 
 ## 高级排序
 
@@ -790,7 +793,7 @@ const Table = ({
 # leanpub-end-insert
 ~~~~~~~~
 
-反向排序现在应该可以工作。
+反向排序现在应该可以工作了。
 
 最后值得一提，为了改善用户体验，我们可以思考一个开放性的问题：用户可以区分当前是根据哪一列进行排序的吗？目前为止，用户是区别不出来的。我们可以给用户一个视觉反馈。
 
@@ -905,7 +908,7 @@ const Sort = ({
 npm install classnames
 ~~~~~~~~
 
-其次，需要将其导入 `src / App.js` 文件。
+其次，需要将其导入 `src/App.js` 文件。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -948,7 +951,7 @@ const Sort = ({
 }
 ~~~~~~~~
 
-同样在运行测试时，我们会看到 Table 组件失败的快照测试，及一些失败的单元测试。由于我们再次更改了组件显示，因此可以选择接受快照测试。但是必须修复单元测试。在我们的 `src / App.test.js`文件中，需要为 Table 组件提供`sortKey`和`isSortReverse`。
+同样在运行测试时，我们会看到 Table 组件失败的快照测试，及一些失败的单元测试。由于我们再次更改了组件显示，因此可以选择接受快照测试。但是必须修复单元测试。在我们的 `src/App.test.js`文件中，需要为 Table 组件提供`sortKey`和`isSortReverse`。
 
 {title="src/App.test.js",lang=javascript}
 ~~~~~~~~
@@ -979,7 +982,7 @@ describe('Table', () => {
 ### 练习:
 
 * 使用像[Font Awesome](http://fontawesome.io/)这样的库来指示（反向）排序
-	* 就是在每个排序标题旁边显示向上箭头或向下箭头图标
+  * 就是在每个排序标题旁边显示向上箭头或向下箭头图标
 * 阅读了解[classnames](https://github.com/JedWatson/classnames)
 
 {pagebreak}
