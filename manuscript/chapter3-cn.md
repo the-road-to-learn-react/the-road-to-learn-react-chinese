@@ -10,7 +10,7 @@
 
 在你开始在组件中通过 API 来获取数据之前，你需要知道 React 的生命周期方法。这些方法是嵌入 React 组件生命周期中的一组挂钩。它们可以在 ES6 类组件中使用，但是不能在无状态组件中使用。
 
-你还记得前章中讲过的 JavaScript ES6 类以及如何在 React 中使用它们吗？除了 `render()` 方法外，还有几个方法可以在 React ES6 类组件中覆写。所有的这些都是生命周期方法。现在让我们来深入了解他们：
+你还记得前章中讲过的 JavaScript ES6 类以及如何在 React 中使用它们吗？除了 `render()` 方法外，还有几个方法可以在 React ES6 类组件中被覆写。所有的这些都是生命周期方法。现在让我们来深入了解他们：
 
 通过之前的学习，你已经知道两种能够用在 ES6 类组件中的生命周期方法：`constructor()` 和 `render()`。
 
@@ -24,10 +24,10 @@ constructor（构造函数）只有在组件实例化并插入到 DOM 中的时�
 
 总而言之，在挂载过程中有四个生命周期方法，它们的调用顺序是这样的：
 
--* constructor()
--* componentWillMount()
--* render()
--* componentDidMount()
+* constructor()
+* componentWillMount()
+* render()
+* componentDidMount()
 
 但是当组件的状态或者属性改变的时候用来更新组件的生命周期是什么样的呢？总的来说，它一共有5个生命周期方法用于组件更新，调用顺序如下：
 
@@ -39,7 +39,7 @@ constructor（构造函数）只有在组件实例化并插入到 DOM 中的时�
 
 最后但同样重要的，组件卸载也有生命周期。它只有一个生命周期方法：`componentWillUnmount()`。
 
-但是毕竟你不用一开始就了解所有生命周期方法。这样可能吓到你，而你也不会用到所有的方法。即使在一个很大的 React 应用当中，除了 `constructor()` 和 `render()` 比较常用外，你只会用到一小部分生命周期函数。即使这样，了解每个生命周期方法的适用场景还是对你有帮助的：
+但是毕竟你不用一开始就了解所有生命周期方法。这样可能吓到你，而你也并不会用到所有的方法。即使在一个很大的 React 应用当中，除了 `constructor()` 和 `render()` 比较常用外，你只会用到一小部分生命周期函数。即使这样，了解每个生命周期方法的适用场景还是对你有帮助的：
 
 * **constructor(props)** - 它在组件初始化时被调用。在这个方法中，你可以设置初始化状态以及绑定类方法。
 
@@ -59,7 +59,7 @@ constructor（构造函数）只有在组件实例化并插入到 DOM 中的时�
 
 * **componentWillUnmount()** - 它会在组件销毁之前被调用。你可以利用这个生命周期方法去执行任何清理任务。
 
- 你已经用过了 `constructor()` 和 `render()` 生命周期方法。对于 ES6 类组件来说他们是常用的生命周期方法。实际上 `render()` 是必须有的，否则它将不会返回一个组件实例。
+之前你已经用过了 `constructor()` 和 `render()` 生命周期方法。对于 ES6 类组件来说他们是常用的生命周期方法。实际上 `render()` 是必须有的，否则它将不会返回一个组件实例。
 
 还有另一个生命周期方法：`componentDidCatch(error, info)`。它在 [React 16](https://www.robinwieruch.de/what-is-new-in-react-16/) 中引入，用来捕获组件的错误。举例来说，在你的应用中展示样本数据本来是没问题的。但是可能会有列表的本地状态被意外设置成 `null` 的情况发生（例如从外部 API 获取列表失败时，你把本地状态设置为空了）。然后它就不能像之前一样去过滤（filter）和映射（map）这个列表，因为它不是一个空列表（`[]`）而是 `null`。这时组件就会崩溃，然后整个应用就会挂掉。现在你可以用 `componentDidCatch()` 来捕获错误，将它存在本地的状态中，然后像用户展示一条信息，说明应用发生了错误。
 
@@ -71,7 +71,7 @@ constructor（构造函数）只有在组件实例化并插入到 DOM 中的时�
 
 ## 获取数据
 
-现在你已经做好了从 Hacker News API 获取数据的准备。 我们可以用前文曾提到过的 `componentDidMount()` 生命周期方法来获取数据。你将使用 JavaScript 原生的 fetch API 来发起请求。
+现在你已经做好了从 Hacker News API 获取数据的准备。 我们可以用上文所提到过的 `componentDidMount()` 生命周期方法来获取数据。你将使用 JavaScript 原生的 fetch API 来发起请求。
 
 在开始之前，让我们设置好 URL 常量和默认参数，来将 API 请求分解成几步。
 
@@ -165,7 +165,7 @@ class App extends Component {
 
 最后但同样重要的是，不要忘记在构造函数中绑定你的组件方法。
 
-现在你可以用获取的数据去代替样本数据了。然而，你必须注意一点，这个结果不仅仅是一个数据的列表。它是一个复杂的对象，[它包含了元数据信息以及一系列的hits，在我们的应用里就是这些资讯](https://hn.algolia.com/api)。你可以在 `render()` 方法中用 `console.log(this.state);` 将这些信息打印出来，以便有一个直观的认识。
+现在你可以用获取的数据去代替样本数据了。然而，你必须注意一点，这个结果不仅仅是一个数据的列表。它也是一个复杂的对象，[它包含了元数据信息以及一系列的hits，在我们的应用里就是这些资讯](https://hn.algolia.com/api)。你可以在 `render()` 方法中用 `console.log(this.state);` 将这些信息打印出来，以便有一个直观的认识。
 
 在接下来的步骤中，你将把之前的得到的结果渲染出来。但我们不会什么都渲染，在刚开始没有拿到结果时，我们会返回空。一旦 API 请求成功，我们会将结果保存在状态里，然后 App 组件将用更新后的状态重新渲染。
 
@@ -200,7 +200,7 @@ class App extends Component {
 
 让我们回顾一下在组将的整个生命周期中发生了什么。首先组件通过构造函数得到初始化，之后它将初始化的状态渲染出来。但是你阻止了组件的显示，因为此时本地状态中的结果为空。React允许组件通过返回 null 来不渲染任何东西。接着 `componentDidMount()` 生命周期函数执行。在这个方法中你从 Hacker News API 中异步地拿到了数据。一旦数据到达，组件就通过 `setSearchTopStories()` 函数改变组件内部的状态。之后，因为状态的更新，更新生命周期开始运行。组件再次执行 `render()` 方法，但这次组件的内部状态中的结果已经填充，不再是空了。因此组件将重新渲染 Table 组件的内容。
 
-你使用了大多数浏览器支持的原生 fetch API 来执行对 API 的异步请求。*create-react-app* 中的配置保证了它被所有浏览器支持。你也可以使用第三方库来代替原生 fetch API，例如：[superagent](https://github.com/visionmedia/superagent) 和 [axios](https://github.com/mzabriskie/axios).
+你使用了大多数浏览器支持的原生 fetch API 来执行对 API 的异步请求。*create-react-app* 中的配置保证了它被所有浏览器支持。你也可以使用第三方库来代替原生 fetch API，例如：[superagent](https://github.com/visionmedia/superagent) 和 [axios](https://github.com/mzabriskie/axios)。
 
 让我们重回到你的应用，现在你应该可以看到资讯列表了。然而，现在应用中仍然存在两个bug。第一，“Dismiss” 按钮不工作。因为它还不能处理这个复杂的 result 对象。当我们点击 “Dismiss” 按钮时，它仍然在操作之前那个简单的 result 对象。第二，当这个列表显示出来之后，你再尝试搜索其他的东西时，它只会在客户端过滤已有的列表，即使初始化的资讯搜索是在服务器端进行的。我们期待的行为是：当我们使用 Search 组件时，从 API 拿到新的结果，而不是去过滤样本数据。不用担心，两个 bug 都将在之后的章节中得到修复。
 
@@ -276,7 +276,7 @@ console.log(allUsers);
 // output: ['Robin', 'Andrew', 'Dan', 'Jordan']
 ~~~~~~~~
 
-这里`allUsers` 是一个全新的数组变量，而变量 `userList` 和 `additionalUser` 还是和原来一样。用这个运算符，你甚至可以合并两个数组到一个新的数组中。
+这里 `allUsers` 是一个全新的数组变量，而变量 `userList` 和 `additionalUser` 还是和原来一样。用这个运算符，你甚至可以合并两个数组到一个新的数组中。
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -610,7 +610,7 @@ console.log(url);
 // output: https://hn.algolia.com/api/v1/search?query=redux&page=
 ~~~~~~~~
 
-`fetchSearchTopStories()` 函数接收分页作为第二个参数。如果你不提供第二个参数，它将使用`0`作为初始参数并发起请求。因此 `componentDidMount()` 和 `onSearchSubmit()` 方法在第一个请求中默认获取第一页。之后的请求将根据提供的第二个参数抓取下一个页面的数据。
+`fetchSearchTopStories()` 函数接收分页作为第二个参数。如果你不提供第二个参数，它将使用 `0` 作为初始参数并发起请求。因此 `componentDidMount()` 和 `onSearchSubmit()` 方法在第一个请求中默认获取第一页。之后的请求将根据提供的第二个参数抓取下一个页面的数据。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -668,7 +668,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-此外，当结果还没有返回时，你应该保证 `render()` 方法中的默认分页为0。记住 `render()` 方法是在 `componentDidMount()` 生命周期方法去异步获取数据之前调用的。
+此外，当结果还没有返回时，你应该保证 `render()` 方法中的默认分页为 0。记住 `render()` 方法是在 `componentDidMount()` 生命周期方法去异步获取数据之前调用的。
 
 这里还遗漏了一步。你抓取了下一个分页的数据，但新数据会覆盖你之前的分页数据。理想的情况下，result 对象中新的列表和本地状态中老的列表应该合并起来才对。现在让我们来实现将新的数据添加到老的数据上而不是去覆盖它。
 
@@ -962,7 +962,7 @@ class App extends Component {
 
 这样 “Dismiss” 按钮就可以再次工作了。
 
-然而，现在（我们）还不能阻止应用对每一次搜索都发起一个 API 请求。即使我们保存了某一个结果，但还没有任何阻止重复请求的检查。也就是说缓存功能仍不完整。虽然应用缓存了所有结果，但它还没有将这些结果利用起来。所有我们的最后一步就是：如果搜索的结果已经存在于缓存中，就阻止 API 请求。
+然而，现在我们还不能阻止应用对每一次搜索都发起一个 API 请求。即使我们保存了某一个结果，但也还没有任何阻止重复请求的检查。也就是说缓存功能仍不完整。虽然应用缓存了所有结果，但它还没有将这些结果利用起来。所有我们的最后一步就是：如果搜索的结果已经存在于缓存中，就阻止 API 请求。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1188,6 +1188,6 @@ const PATH_BASE = 'https://hn.algolia.com/api/v1';
   * 数据分页
   * 客户端缓存
 
-同样地，此时小憩一下，将学过的知识点消化理解并应用是有必要的。你还可以在之前写过的代码上做实验（小试牛刀）。
+同样地，此时小憩一下，将学过的知识点消化理解并应用是有必要的。你还可以在之前写过的代码上做做实验，小试牛刀。
 
-你可以在[官方代码库](https://github.com/rwieruch/hackernews-client/tree/4.3)中找到源码.
+你可以在[官方代码库](https://github.com/rwieruch/hackernews-client/tree/4.3)中找到源码。

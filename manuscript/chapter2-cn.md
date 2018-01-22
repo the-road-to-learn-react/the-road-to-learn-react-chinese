@@ -4,7 +4,7 @@
 
 ## 组件内部状态
 
-组件内部状态也被称为局部状态，允许你保存，修改和删除存储在组件内部的属性。使用 ES6 类组件可以在构造函数中初始化组件的状态。 构造函数只会在组件初始化时调用一次。
+组件内部状态也被称为局部状态，允许你保存、修改和删除存储在组件内部的属性。使用 ES6 类组件可以在构造函数中初始化组件的状态。 构造函数只会在组件初始化时调用一次。
 
 让我们引入类构造函数。
 
@@ -25,7 +25,7 @@ class App extends Component {
 
 当你使用 ES6 编写的组件有一个构造函数时，它需要强制地调用 `super();` 方法，因为这个 App 组件是 `Component` 的子类。因此在你的APP组件要声明 `extends Component` 。 你会在后续内容中更详细地了解使用 ES6 编写的组件。
 
-你也可以调用 `super(props);`，它会在你的构造函数中设置  `this.props` 以供在构造函数中访问它们。 否则当在构造函数中访问  `this.props` ，会得到 `undefined`。稍后您将了解更多关于 React 组件的 props。
+你也可以调用 `super(props);`，它会在你的构造函数中设置  `this.props` 以供在构造函数中访问它们。 否则当在构造函数中访问  `this.props` ，会得到 `undefined`。稍后你将了解更多关于 React 组件的 props。
 
 现在，在你的示例中，组件中的初始状态应该是一个列表。
 
@@ -1794,7 +1794,6 @@ const smallColumn = {
 
 * [styled-components](https://github.com/styled-components/styled-components)
 * [CSS Modules](https://github.com/css-modules/css-modules)
-* [CSS 模块化](https://github.com/css-modules/css-modules)
 
 {pagebreak}
 

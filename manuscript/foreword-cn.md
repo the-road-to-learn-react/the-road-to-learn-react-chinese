@@ -153,16 +153,16 @@
 
 既然你在看这本书，我猜你还是个React新手。那真是太好了。最后我希望你能给我你的反馈，来帮助我完善学习资料，以帮助人人都可以掌握React。你可以直接提交代码到[GitHub](https://github.com/rwieruch/the-road-to-learn-react)，或者在[Twitter](https://twitter.com/rwieruch)给我发消息。
 
-# 你可以期望学到什么（目前为止...)
+# 你可以期望学到什么（目前为止...）
 
 * [Hacker News的React版本](https://intense-refuge-78753.herokuapp.com/)
 * 没有复杂的配置
 * 用create-react-app来初始化你的应用
 * 高效而轻量级的代码
-* 只用React setState来做状态管理（目前为止...)
+* 只用React setState来做状态管理（目前为止...）
 * 从JavaScript ES5一路平滑过渡到ES6
 * React setState和生命周期函数的用法
-* 和真实API的交互（Hacker News)
+* 和真实API的交互（Hacker News）
 * 高级用户交互
   * 客户端排序
   * 客户端过滤
