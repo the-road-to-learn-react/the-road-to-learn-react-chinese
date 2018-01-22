@@ -416,7 +416,7 @@ console.log(result);
 * 阅读更多关于 [React条件渲染](https://facebook.github.io/react/docs/conditional-rendering.html)的内容。
 * 阅读更多关于[实现条件渲染的不同方法](https://www.robinwieruch.de/conditional-rendering-react/)的内容。
 
-## Client- or Server-side Search 客户端或服务端搜索
+## 客户端或服务端搜索
 
 目前当你使用 Search 组件的输入栏时，你会在客户端过滤这个列表。所以你现在要做的是使用 Hacker News API 在服务器端来进行搜索。否则，你将只能处理第一次从 `componentDidMount()` 拿到的默认搜索词的 API 响应。
 
