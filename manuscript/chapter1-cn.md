@@ -6,7 +6,7 @@
 
 **为什么你应该学习 React** 近年来，[单页面应用](https://en.wikipedia.org/wiki/Single-page_application)（SPA，single page application）变得越来越流行。像 Angular、Ember 以及 Backbone 这些框架，帮助 JavaScript 开发者构建了超越纯 JavaScript（vanilla JavaScript）和 jQuery 的现代 Web 应用。这个流行的解决方案清单并不够详尽，现在仍然有大量的 SPA 框架。如果你去关注他们的发布日期的话，大部分都属于第一代 SPA：Angular 发布于2010年，Backbone 发布于2010年，以及 Ember，发布于2011年。
 
-Facebook 在2013年首次发布了 React。React 并不是一个 SPA 框架，而是一个视图库。也就是 [MVC]((https://de.wikipedia.org/wiki/Model_View_Controller))（model view controller, 模型-视图-控制器）里的 V。它的功能仅仅是把组件渲染成浏览器中的可见元素。但是，围绕 React 周边的整个生态系统让构建单页面应用成为可能。
+Facebook 在2013年首次发布了 React。React 并不是一个 SPA 框架，而是一个视图库。也就是 [MVC](https://www.wikiwand.com/zh/MVC)（Model View Controller，模型-视图-控制器）里的 V。它的功能仅仅是把组件渲染成浏览器中的可见元素。但是，围绕 React 周边的整个生态系统让构建单页面应用成为可能。
 
 那么为什么你应该选 React 而不是其他第一代 SPA 框架呢？其他的第一代框架尝试一次性解决很多问题，而 React 仅仅帮助你构建视图层。它更多的是一个库而非框架。其背后的思路是：应用的视图应该是一系列层次分明的可组合的组件。
 
