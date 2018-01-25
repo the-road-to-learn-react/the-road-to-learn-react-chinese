@@ -46,6 +46,4 @@
 
 ## 成为赞助者
 
-The Road to learn React is a free ebook which should enable everyone to learn about React. This kind of educational content needs your support to sustain itself. Robin Wieruch writes a lot of this educational content on [his website](https://www.robinwieruch.de/) too. So you can support him be being his [Patron on Patreon](https://www.patreon.com/rwieruch).
-
 《React 学习之道》是一本免费的电子书，致力于让每个人都能学习 React。这样的教育内容需要你的支持才能得以维持下去。Robin Wieruch 还在他的[网站](https://www.robinwieruch.de/)上写了很多的教育内容。所以你可以通过在[Patreon](https://www.patreon.com/rwieruch)成为他的赞助人来支持他。
