@@ -1,4 +1,12 @@
-# 《React 学习之道》 The Road to learn React 简体中文版
+# 《React 学习之道》The Road to learn React (简体中文版)
+
+> 通往 React 实战大师之旅：掌握 React 最简单，且最实用的教程。
+
+[《React 学习之道》The Road to learn React (简体中文版) [PDF/iPad/Kindle] - Leanpub](https://leanpub.com/the-road-to-learn-react-chinese/)
+
+支持 PDF、EPUB、MOBI、Kindle 多种格式下载，并支持 Leanpub 在线阅读。
+
+------
 
 这是 [The Road to learn React](https://www.robinwieruch.de/the-road-to-learn-react/) 官方代码仓库。另外，你还可以在这里找到[源代码](https://github.com/the-road-to-learn-react/hackernews-client)和[完整课程](https://roadtoreact.com/)。如果你想的话，还可以在[亚马逊](https://www.amazon.com/dp/B077HJFCQX)或 [Goodreads](https://www.goodreads.com/book/show/37503118-the-road-to-learn-react) 留下你的评论。
 
