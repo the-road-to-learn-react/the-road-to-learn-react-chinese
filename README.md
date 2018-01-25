@@ -1,6 +1,6 @@
 # 《React 学习之道》 The Road to learn React 简体中文版
 
-这是 [The Road to learn React](https://www.robinwieruch.de/the-road-to-learn-react/) 官方代码仓库。另外，你还可以在这里找到[源代码](https://github.com/the-road-to-learn-react/hackernews-client)和[完整课程](https://roadtoreact.com/)。
+这是 [The Road to learn React](https://www.robinwieruch.de/the-road-to-learn-react/) 官方代码仓库。另外，你还可以在这里找到[源代码](https://github.com/the-road-to-learn-react/hackernews-client)和[完整课程](https://roadtoreact.com/)。如果你想的话，还可以在 [亚马逊](https://www.amazon.com/dp/B077HJFCQX) 或 [Goodreads](https://www.goodreads.com/book/show/37503118-the-road-to-learn-react) 留下你的评论。
 
 ## 更新，帮助和支持
 
@@ -34,5 +34,10 @@
 
 ---
 
-非常感谢您的帮助，
-Robin
+非常感谢您的帮助!
+
+## 成为赞助者
+
+The Road to learn React is a free ebook which should enable everyone to learn about React. This kind of educational content needs your support to sustain itself. Robin Wieruch writes a lot of this educational content on [his website](https://www.robinwieruch.de/) too. So you can support him be being his [Patron on Patreon](https://www.patreon.com/rwieruch).
+
+《React 学习之道》是一本免费的电子书，致力于让每个人都能学习 React。这样的教育内容需要你的支持才能得以维持下去。Robin Wieruch 还在他的[网站](https://www.robinwieruch.de/)上写了很多的教育内容。所以你可以通过在[Patreon](https://www.patreon.com/rwieruch)成为他的赞助人来支持他。

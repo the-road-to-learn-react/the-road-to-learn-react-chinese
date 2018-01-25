@@ -183,6 +183,7 @@ hackernews/
   public/
     favicon.ico
     index.html
+    manifest.json
   src/
     App.css
     App.js
@@ -190,6 +191,7 @@ hackernews/
     index.css
     index.js
     logo.svg
+    registerServiceWorker.js
 ~~~~~~~~
 
 简单划分一下这些文件和文件夹，目前你并不需要做一个很全面的了解：
@@ -203,6 +205,8 @@ hackernews/
 * **.gitignore:** 这个文件包含了所有不应该添加到 git 仓库（repository）中的文件和文件夹。他们应该只能存活在你本地项目文件夹中。一个典型的例子是 *node_modules/* ，把 *package.json* 共享给你的伙伴们就足够他们获取和安装所有的依赖了，没必要把整个依赖打包共享给他们。
 
 * **public/:** 这个文件夹包含了所有你的项目构建出的产品文件。最终所有你写在 *src/* 文件夹里面的代码都会在项目构建的时候被打包放在 public 文件夹下。
+
+* **manifest.json** 和 **registerServiceWorker.js:** 在这个阶段不用担心这些文件用来干什么，我们不会在这个项目中用到他们。
 
 总之，你不需要去修改提到的这些文件和文件夹。所有你需要的文件都在 *src/* 文件夹中。首要关注的是实现 React 组件的 *src/App.js* 文件。它主要用于实现你的应用，不过之后你可能会把你的组件分离到多个文件中，其中每个文件来维护一个或者多个特定的组件。
 
@@ -226,7 +230,7 @@ npm run build
 
 ### 练习：
 
-* 通过 `npm start` 运行并在浏览器中访问你的应用。
+* 通过 `npm start` 运行并在浏览器中访问你的应用（你可以通过 `Control + C` 来退出此命令）
 * 运行交互式的 `npm test` 脚本
 * 运行 `npm run build` 并确认项目中出现了 *build/* 文件夹（你可以在之后把它删除掉；注意 build 文件夹可以用来[部署你的应用](https://www.robinwieruch.de/deploy-applications-digital-ocean/)）
 * 熟悉一下项目的文件结构

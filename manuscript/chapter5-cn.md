@@ -86,7 +86,9 @@ class Search extends Component {
 class Search extends Component {
 # leanpub-start-insert
   componentDidMount() {
-    this.input.focus();
+    if(this.input) {
+      this.input.focus();
+    }
   }
 # leanpub-end-insert
 
