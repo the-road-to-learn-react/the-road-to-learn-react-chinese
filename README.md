@@ -47,3 +47,9 @@
 ## 成为赞助者
 
 《React 学习之道》是一本免费的电子书，致力于让每个人都能学习 React。这样的教育内容需要你的支持才能得以维持下去。Robin Wieruch 还在他的[网站](https://www.robinwieruch.de/)上写了很多的教育内容。所以你可以通过在[Patreon](https://www.patreon.com/rwieruch)成为他的赞助人来支持他。
+
+也欢迎支持我们的译者：
+
+![](http://7xjbdq.com1.z0.glb.clouddn.com/images/2016/1517208464758.png)
+![](http://7xjbdq.com1.z0.glb.clouddn.com/images/2016/1517208386149.png)
+
