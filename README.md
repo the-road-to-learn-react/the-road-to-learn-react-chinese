@@ -50,6 +50,7 @@
 
 也欢迎支持我们的译者：
 
-![](http://7xjbdq.com1.z0.glb.clouddn.com/images/2016/1517208464758.png)
-![](http://7xjbdq.com1.z0.glb.clouddn.com/images/2016/1517208386149.png)
+|微信|支付宝|
+|----|-----|
+|![](http://7xjbdq.com1.z0.glb.clouddn.com/images/2016/1517208464758.png)|![](http://7xjbdq.com1.z0.glb.clouddn.com/images/2016/1517208386149.png)|
 
