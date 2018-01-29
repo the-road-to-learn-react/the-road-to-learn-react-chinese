@@ -420,7 +420,7 @@ console.log(result);
 
 目前当你使用 Search 组件的输入栏时，你会在客户端过滤这个列表。所以你现在要做的是使用 Hacker News API 在服务器端来进行搜索。否则，你将只能处理第一次从 `componentDidMount()` 拿到的默认搜索词的 API 响应。
 
-你可以在 App 组件中定义一个 `onSearchSubmit()` 方法。当 Search 组件执行搜索时，可以用这个方法来从 Hacker News API 获取结果。这与 `componentDidMount()` 生命周期方法中的获取数据的方式相同，但是这次搜索的的内容变了，不用初始设定里的默认搜索词了。
+你可以在 App 组件中定义一个 `onSearchSubmit()` 方法。当 Search 组件执行搜索时，可以用这个方法来从 Hacker News API 获取结果。这与 `componentDidMount()` 生命周期方法中的获取数据的方式相同，但是这次搜索的内容变了，不用初始设定里的默认搜索词了。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -520,7 +520,7 @@ const Search = ({
 # leanpub-end-insert
 ~~~~~~~~
 
-在 Table 组件中，你可以移除过滤功能了，因为已经不会再客户端进行过滤（搜索）了。同时别忘记移除 `isSearched()` 函数。它也不会使用了。现在，当你点击 “Search” 按钮时，搜索结果将直接从 Hacker News API 中得到。
+在 Table 组件中，你可以移除过滤功能了，因为已经不会在客户端进行过滤（搜索）了。同时别忘记移除 `isSearched()` 函数。它也不会使用了。现在，当你点击 “Search” 按钮时，搜索结果将直接从 Hacker News API 中得到。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
