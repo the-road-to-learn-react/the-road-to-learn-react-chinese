@@ -719,7 +719,7 @@ class Developer {
 
 这个 Developer 类只有类的声明。你可以使用它来创建多个类的示例。它和 ES6 类组件很类似，都有声明，但是你需要在别的地方实例化这个类。
 
-让我们你可以怎样初始化类以及怎么使用它的方法。
+让我们看看如何实例化这个类，以及如何使用它的方法。
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -751,7 +751,7 @@ class App extends Component {
 
 React `Component` 类暴露出来的方法都是公共的接口。这些方法中有一个方法必须被重写，其他的则不一定要被重写。你会在以后的讲述生命周期的章节中学到它们。这个 `render()` 方法是必须被重写的方法，因为它定义了一个 React 组件的输出。它必须被定义。
 
-现在你已经知道了 JavaScript ES6 类的基本内容，以及它们是怎么在 React 中被继承为组件的。在本书描述 React 生命周期方法地方，你可以学到更多 Component 的方法。
+现在你已经知道了 JavaScript ES6 类的基本内容，以及它们是怎么在 React 中被继承为组件的。在本书描述 React 生命周期方法的地方，你将会学到关于更多 Component 的方法。
 
 ### 练习:
 
