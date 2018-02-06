@@ -587,7 +587,7 @@ class ExplainBindingsComponent extends Component {
 ...
 ~~~~~~~~
 
-一个解决方案事在外部定义一个包装函数，并且只将定义的函数传递给处理程序。因为需要访问特定的列表项，所以它必须位于 map 函数块的内部。
+其中一个解决方案是在外部定义一个包装函数，并且只将定义的函数传递给处理程序。因为需要访问特定的列表项，所以它必须位于 map 函数块的内部。
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
