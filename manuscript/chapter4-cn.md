@@ -367,7 +367,7 @@ it('renders without crashing', () => {
 npm test
 ~~~~~~~~
 
-**注意**：当你第一次运行 App 组件的测试时，如何碰到了错误，可能是因为是在组件的 `componentDitMount()` 方法中触发的 `fetchSearchTopStories()` 中使用的 fetch 不被支持的原因。你可以通过下面两部解决：
+**注意**：如果当你第一次运行 App 组件测试的时候碰到了错误，可能是因为是在组件的 `componentDitMount()` 方法中触发的 `fetchSearchTopStories()` 中使用的 fetch 不被支持的原因。你可以通过下面两部解决：
 
 * 在命令行安装：`npm install isomorphic-fetch`
 * 在你的 *App.js* 引入： `import fetch from 'isomorphic-fetch'`
@@ -800,7 +800,7 @@ Button.defaultProps = {
 
 {pagebreak}
 
-你已经学习道了如何组织和测试你的代码了。让我们会在最后一章回顾下吧：
+你已经学习到了如何组织和测试你的代码。让我们来回顾一下这最后几章吧：
 
 * React
   * PropTypes 允许你为组件定义测试检查
