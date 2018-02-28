@@ -173,14 +173,6 @@ const Loading = () =>
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
-const Loading = () =>
-  <div>Loading ...</div>
-~~~~~~~~
-
-现在你将需要一个属性来存储加载状态。根据加载状态可以决定稍后是否显示所加载的组件。
-
-{title="src/App.js",lang=javascript}
-~~~~~~~~
 class App extends Component {
 
   constructor(props) {
@@ -358,7 +350,7 @@ const withLoading = (Component) => ({ isLoading, ...rest }) =>
 
 这段代码从 `props` 对象中取出一个属性，并保留剩下的属性。这也适用于多个属性。你可能已经在 [解构赋值](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)中了解过它。
 
-现在，我们以在 JSX 中使用 HOC。应用程序中的用例可能是显示 “More” 按钮或 Loading 组件。
+现在，我们已在 JSX 中使用 HOC。应用程序中的用例可能是显示 “More” 按钮或 Loading 组件。
 
 Loading 组件已经封装在 HOC 中，缺失了输入组件。在显示 Button 组件或 Loading 组件的用例中，Button 是 HOC 的输入组件。增强的输出组件是一个 ButtonWithLoading 的组件。
 
