@@ -1,5 +1,7 @@
 # 《React 学习之道》The Road to learn React (简体中文版)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/the-road-to-learn-react/the-road-to-learn-react-chinese.svg)](https://greenkeeper.io/)
+
 > 通往 React 实战大师之旅：掌握 React 最简单，且最实用的教程。
 
 [《React 学习之道》The Road to learn React (简体中文版) [PDF/iPad/Kindle] - Leanpub](https://leanpub.com/the-road-to-learn-react-chinese/)
