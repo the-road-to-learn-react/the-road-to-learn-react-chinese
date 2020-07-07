@@ -52,5 +52,5 @@
 
 |微信|支付宝|
 |----|-----|
-|![](http://7xjbdq.com1.z0.glb.clouddn.com/images/2016/1517208853931.png)|![](http://7xjbdq.com1.z0.glb.clouddn.com/images/2016/1517208386149.png)|
+|![](https://jimmylv.github.io/images/2016/1517208853931.png)|![](https://jimmylv.github.io/images/2016/1517208386149.png)|
 
